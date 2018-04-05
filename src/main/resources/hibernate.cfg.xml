@@ -23,5 +23,9 @@
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
+
+        <mapping class="persons.Account"/>
+        <mapping class="property.Property"/>
+
     </session-factory>
 </hibernate-configuration>

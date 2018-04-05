@@ -13,10 +13,11 @@
             body{
                 background-color: rgb(236, 255, 253);
                 font-family: Arial, sans-serif;
+                text-align: justify-all;
             }
             h3{
                 font-family: Arial, sans-serif;
-                text-align: center;
+                text-align: justify-all;
                 font-size: 30px;
                 color: rgb(73, 161, 140);
             }
@@ -27,25 +28,31 @@
                 font-size: 16px;
                 margin: 0 auto;
                 font-family: Arial, sans-serif;
+                text-align: justify-all;
+
             }
             input[type="email"] {
                 margin-top: 10px;
                 margin-bottom: 10px;
+                text-align: justify-all;
             }
 
             input[type="password"] {
                 margin-top: 10px;
                 margin-bottom: 10px;
+                text-align: center;
             }
 
             input[type="number"] {
                 margin-top: 10px;
                 margin-bottom: 10px;
+                text-align: justify-all;
             }
 
             input[type="text"] {
                 margin-top: 10px;
                 margin-bottom: 10px;
+                text-align: justify-all;
             }
 
             .inbox-style{
@@ -55,10 +62,11 @@
                 padding: 5px;
                 font-size: 16px;
                 font-family: Arial, sans-serif;
+                text-align: justify-all;
             }
 
             p{
-                text-align: center;
+                text-align: justify-all;
                 margin-top: 40px;
                 font-family: Arial, sans-serif;
                 font-size: 20px;
@@ -75,32 +83,49 @@
 
     <body class="text-center">
         <form class="form-style" method="GET" action="signup">
-            <h3 class="h3 mb-3 font-weight-normal">Not a member? Create an account </h3>
+            <h3 class="h3 mb-3 font-weight-normal"><nobr>Crea tu propia cuenta </nobr> </h3>
 
-            <label for="newAccountName">Name</label>
-            <input type="text" name="name" id="newAccountName" class="inbox-style" placeholder="Name" required><br> <%--TODO hacerlo required--%>
+            <label for="newAccountName">Nombre        </label>
+            <input type="text" name="name" id="newAccountName" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
 
-            <label for="newAccoutSurname">Surname</label>
-            <input type="text" name="surname" id="newAccoutSurname" class="inbox-style" placeholder="Surname" required><br>
+            <label for="newAccoutSurname">Apellido       </label>
+            <input type="text" name="surname" id="newAccoutSurname" class="inbox-style" placeholder="" required><br>
 
-            <label for="newAccountIdentityNumber">Identity number</label> <%--dni--%>
-            <input type="number" name="identityNumber" id="newAccountIdentityNumber" class="inbox-style" placeholder="Identity number" required><br>
+            <label for="newAccountIdentityNumber">D.N.I.     </label> <%--dni--%>
+            <input type="number" name="identityNumber" id="newAccountIdentityNumber" class="inbox-style" placeholder="" required><br>
 
-            <label for="newAccountPhoneNumber">Phone number</label>
-            <input type="number" name="phoneNumber" id="newAccountPhoneNumber" class="inbox-style" placeholder="Phone number"><br>
+            <label for="newNationality">Nacionalidad  </label>
+            <input type="text" name="nationality" id="newNationality" class="inbox-style" placeholder="" required><br>
 
-            <label for="newAccountEmail">Email address</label>
-            <input type="email" name="email" id="newAccountEmail" class="inbox-style" placeholder="Email address" required><br>
+            <label for="newMaritalStatus">Estado Civil  </label>
+            <input type="text" name="maritalStatus" id="newMaritalStatus" class="inbox-style" placeholder="" required><br>
 
-            <label for="newAccountPassword">Password</label>
-            <input type="password" name="password" id="newAccountPassword" class="inbox-style" placeholder="Password" required><br>
+            <label for="newAddress">Direccion     </label>
+            <input type="text" name="address" id="newAddress" class="inbox-style" placeholder="" required><br>
 
-            <label>
-                <input type="radio" name="role" value="Owner" class="inbox-style" checked>
-            </label> Owner<br>
-            <label>
-                <input type="radio" name="role" value="Employee" class="inbox-style" checked>
-            </label> Employee<br>
+            <label for="newAddressCountry">Pais            </label>
+            <input type="text" name="addressCountry" id="newAddressCountry" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
+
+            <label for="newAddressProvince">Provincia    </label>
+            <input type="text" name="addressProvince" id="newAddressProvince" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
+
+            <label for="newAddressCity">Ciudad       </label>
+            <input type="text" name="addressCity" id="newAddressCity" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
+
+            <label for="newAddressTown">Localidad     </label>
+            <input type="text" name="addressTown" id="newAddressTown" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
+
+            <label for="newAddressZipCode">C.P.           </label>
+            <input type="text" name="addressZipCode" id="newAddressZipCode" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
+
+            <label for="newAccountPhoneNumber">Telefono     </label>
+            <input type="number" name="phoneNumber" id="newAccountPhoneNumber" class="inbox-style" placeholder=""><br>
+
+            <label for="newAccountEmail">E-Mail      </label>
+            <input type="email" name="email" id="newAccountEmail" class="inbox-style" placeholder="" required><br>
+
+            <label for="newAccountPassword">Contraseña       </label>
+            <input type="password" name="password" id="newAccountPassword" class="inbox-style" placeholder="" required><br>
 
             <button type="submit">Sign in</button>
 

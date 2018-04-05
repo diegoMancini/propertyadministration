@@ -32,9 +32,6 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
-    public User() {
-    }
-
     public User(String name, String surname, String mail, String identityNumber, String phoneNumber, String role, String password) {
         this.name = name;
         this.surname = surname;

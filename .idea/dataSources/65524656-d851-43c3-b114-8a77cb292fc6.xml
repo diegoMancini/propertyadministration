@@ -70,8 +70,8 @@
     </role>
     <schema id="12" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-04-05.02:37:20.146</IntrospectionTimestamp>
-      <IntrospectionStateNumber>3725</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-04-05.14:32:39.103</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1185454</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -90,63 +90,183 @@
     <schema id="17" parent="2" name="information_schema">
       <ObjectId>12708</ObjectId>
     </schema>
-    <table id="18" parent="12" name="users">
+    <sequence id="18" parent="12" name="hibernate_sequence">
+      <ObjectId>16419</ObjectId>
+      <StateNumber>1185330</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+    </sequence>
+    <table id="19" parent="12" name="accounts">
+      <ObjectId>16411</ObjectId>
+      <StateNumber>1185454</StateNumber>
+    </table>
+    <table id="20" parent="12" name="users">
       <ObjectId>16405</ObjectId>
       <StateNumber>3722</StateNumber>
     </table>
-    <column id="19" parent="18" name="name">
+    <column id="21" parent="19" name="email">
+      <Position>1</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="22" parent="19" name="address">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="23" parent="19" name="address_city">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="24" parent="19" name="address_country">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="25" parent="19" name="address_province">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="26" parent="19" name="address_town">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="27" parent="19" name="address_zipcode">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="28" parent="19" name="id">
+      <Position>8</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="29" parent="19" name="logged">
+      <Position>9</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="30" parent="19" name="marital_status">
+      <Position>10</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="31" parent="19" name="name">
+      <Position>11</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="32" parent="19" name="nationality">
+      <Position>12</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="33" parent="19" name="password">
+      <Position>13</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="34" parent="19" name="phone">
+      <Position>14</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="35" parent="19" name="surname">
+      <Position>15</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1185329</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="36" parent="19" name="account_id">
+      <Position>16</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1185454</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="37" parent="19" name="accounts_pkey">
+      <ObjectId>16417</ObjectId>
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="38" parent="19" name="accounts_pkey">
+      <ObjectId>16418</ObjectId>
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>accounts_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="39" parent="20" name="name">
       <Position>1</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3543</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="20" parent="18" name="surname">
+    <column id="40" parent="20" name="surname">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3544</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="21" parent="18" name="email">
+    <column id="41" parent="20" name="email">
       <Position>3</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3663</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="22" parent="18" name="password">
+    <column id="42" parent="20" name="password">
       <Position>4</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3665</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="23" parent="18" name="phone">
+    <column id="43" parent="20" name="phone">
       <Position>5</Position>
       <DataType>varchar(15)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3666</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="24" parent="18" name="id">
+    <column id="44" parent="20" name="id">
       <Position>6</Position>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>3722</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="25" parent="18" name="users_id_pk">
+    <index id="45" parent="20" name="users_id_pk">
       <ObjectId>16409</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="26" parent="18" name="users_id_uindex">
+    <index id="46" parent="20" name="users_id_uindex">
       <ObjectId>16408</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="27" parent="18" name="users_id_pk">
+    <key id="47" parent="20" name="users_id_pk">
       <ObjectId>16410</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>users_id_pk</UnderlyingIndexName>

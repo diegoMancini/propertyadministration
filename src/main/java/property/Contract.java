@@ -1,6 +1,6 @@
 package property;
 
-import persons.Owner;
+import persons.Account;
 import persons.Tenant;
 
 
@@ -15,7 +15,7 @@ public class Contract {
     private String city; //Malvinas Argentinas
     private String town; //Grand Bourg
     private Date dateIssued; //29/09/2017
-    private Owner owner; //Gabriela Fernanda Bello
+    private Account owner; //Gabriela Fernanda Bello
     private Tenant tenant; //Mame Gor NGOM
 
 

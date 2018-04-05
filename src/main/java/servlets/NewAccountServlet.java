@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import persons.Account;
 import persons.User;
 
 import javax.servlet.ServletException;
@@ -14,17 +15,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/signup")
+@WebServlet("/signup.jsp")
 public class NewAccountServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
         String identityNumber = req.getParameter("identityNumber"); //check
+        String nationality = req.getParameter("nationality");
+        String maritalStatus = req.getParameter("maritalStatus");
+        String address = req.getParameter("address");
+        String addressCountry = req.getParameter("addressCountry");
+        String addressProvince = req.getParameter("addressProvince");
+        String addressCity = req.getParameter("addressCity");
+        String addressTown = req.getParameter("addressTown");
+        String addressZipCode = req.getParameter("addressZipCode");
         String phoneNumber = req.getParameter("phoneNumber"); //idem
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        String role = req.getParameter("role");
 
         SessionFactory sessionFactory;
         Session session;
@@ -35,9 +44,9 @@ public class NewAccountServlet extends HttpServlet {
         session = sessionFactory.openSession();
         transaction = session.beginTransaction();
 
-        User newUser = new User(name, surname,email, identityNumber, phoneNumber, role, password);
+        Account user1 = new Account(name, surname,identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phoneNumber, email, password);
 
-        session.save(newUser);
+        session.save(user1);
 
         transaction.commit();
         session.close();
@@ -47,7 +56,7 @@ public class NewAccountServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getParameter("name");
     }
 }

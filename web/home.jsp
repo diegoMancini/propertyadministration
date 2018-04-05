@@ -30,7 +30,7 @@
         </style>
     </head>
     <body>
-        <h1>HOUSE ADMIN</h1>
+        <h1>ADMIN</h1>
         <h3>This is the home page.</h3>
         <p>If you want to log out, please click <a href="<%=response.encodeURL("logout.jsp")%>">here</a></p>
     </body>

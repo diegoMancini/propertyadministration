@@ -108,6 +108,6 @@
     <h1>House Admin</h1>
     <p><a href="<%=response.encodeURL("signup.jsp")%>">Sign Up</a></p>
     <p><a href="<%=response.encodeURL("login.jsp")%>">Log In</a></p>
-    <ul><li>Florencia Vimberg</li> <li>Diego Mancini</li></ul>
+    <ul><li>Diego Mancini</li></ul>
   </body>
 </html>

@@ -14,75 +14,86 @@
                 background-color: rgb(236, 255, 253);
                 font-family: Arial, sans-serif;
                 text-align: justify-all;
+                /*border-radius: 10px;*/
+                /*margin: 20px 20px 20px 20px;*/
             }
             h3{
                 font-family: Arial, sans-serif;
                 text-align: justify-all;
                 font-size: 30px;
                 color: rgb(73, 161, 140);
+                /*border-radius: 10px;*/
+                /*margin: 20px 20px 20px 20px;*/
             }
             form{
                 width: 100%;
                 max-width: 330px;
-                padding: 15px;
-                font-size: 16px;
-                margin: 0 auto;
+                padding: 20px;
+                font-size: 20px;
                 font-family: Arial, sans-serif;
                 text-align: justify-all;
+                /*border-radius: 10px;*/
+                /*margin: 20px 20px 20px 20px;*/
 
             }
             input[type="email"] {
-                margin-top: 10px;
-                margin-bottom: 10px;
                 text-align: justify-all;
+                /*border-radius: 10px;*/
+                /*margin: 20px 20px 20px 20px;*/
             }
 
             input[type="password"] {
-                margin-top: 10px;
-                margin-bottom: 10px;
                 text-align: center;
+                /*border-radius: 10px;*/
+                /*margin: 20px 20px 20px 20px;*/
             }
 
             input[type="number"] {
-                margin-top: 10px;
-                margin-bottom: 10px;
                 text-align: justify-all;
+                /*border-radius: 10px;*/
+                /*margin: 20px 20px 20px 20px;*/
             }
 
             input[type="text"] {
-                margin-top: 10px;
-                margin-bottom: 10px;
                 text-align: justify-all;
+                /*border-radius: 10px;*/
+                /*margin: 20px 20px 20px 20px;*/
             }
 
             .inbox-style{
-                position: static;
+                position: relative;
                 box-sizing: border-box;
                 height: auto;
                 padding: 5px;
-                font-size: 16px;
+                font-size: 15px;
                 font-family: Arial, sans-serif;
-                text-align: justify-all;
+                text-align: center;
+                border-radius: 5px;
+                margin: 5px 0px 5px 0px;
             }
 
             p{
                 text-align: justify-all;
-                margin-top: 40px;
                 font-family: Arial, sans-serif;
                 font-size: 20px;
                 color: rgb(0, 0, 0);
+                /*border-radius: 10px;*/
+                /*margin: 50px 20px 20px 20px;*/
+
             }
 
             input[type="submit"]{
                 background: #000000;
                 color: white;
                 padding: 10px;
+                /*border-radius: 10px;*/
+                /*margin: 20px 20px 20px 20px;*/
             }
         </style>
     </head>
 
     <body class="text-center">
-        <form class="form-style" method="GET" action="signup">
+        <form class="form-style" method="GET" action="signup.jsp">
             <h3 class="h3 mb-3 font-weight-normal"><nobr>Crea tu propia cuenta </nobr> </h3>
 
             <label for="newAccountName">Nombre        </label>

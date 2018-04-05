@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>House Admin - Log In or Sign Up</title>
+        <title>Administracion de Bienes Reales</title>
         <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--%>
 
         <%--<%@include file="/menu.jsp"  sirve para que aparezca en todas las pags lo mismo %>--%>
@@ -95,7 +95,7 @@
 
     <body class="text-center">
         <div class="row">
-            <h1>Welcome to House Admin</h1>
+            <h1>ADMIN</h1>
         </div>
     </body>
 </html>

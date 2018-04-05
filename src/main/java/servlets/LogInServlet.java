@@ -11,7 +11,7 @@ import java.io.IOException;
 @WebServlet("/j_security_check")
 public class LogInServlet extends HttpServlet{
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.sendRedirect("/home.jsp");
 

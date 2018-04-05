@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/propertyadministration.iml" filepath="$PROJECT_DIR$/propertyadministration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/propertyadministration_main.iml" filepath="$PROJECT_DIR$/.idea/modules/propertyadministration_main.iml" group="propertyadministration" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/propertyadministration_test.iml" filepath="$PROJECT_DIR$/.idea/modules/propertyadministration_test.iml" group="propertyadministration" />
+    </modules>
+  </component>
+</project>

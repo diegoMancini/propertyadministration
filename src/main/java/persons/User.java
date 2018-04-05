@@ -2,7 +2,6 @@ package persons;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table (name = "USER")
 public class User {

@@ -1,9 +1,14 @@
 package persons;
 
 import property.Property;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table (name = "ACCOUNTS")
 public class Account {
 
     private Owner owner;

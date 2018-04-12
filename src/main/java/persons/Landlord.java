@@ -1,20 +1,19 @@
 package persons;
 
-import property.structure.Property;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table (name = "ACCOUNTS")
-public class Account {
+@Table(name = "LANDLORD")
+public class Landlord {
 
    @Column(name = "NAME")
    private String name;
    @Column(name = "SURNAME")
    private String surname;
-   @Column(name = "ID")
+   @Id @Column(name = "ID", unique = true)
    private String id;
    @Column(name = "NATIONALITY")
    private String nationality;
@@ -34,37 +33,20 @@ public class Account {
    private String addressZipCode;
    @Column(name = "PHONE")
    private String phone;
-   @Id @Column(name = "EMAIL", unique = true)
-   private String email;
-   @Column(name = "PASSWORD")
-   private String password;
-   @OneToMany
-   private List<Property> properties;
-//   @OneToMany
-//   private List<Landlord> landlords;
-   private boolean logged;
 
-    public Account(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email, String password) {
-       this.name = name;
-       this.surname = surname;
-       this.id = id;
-       this.nationality = nationality;
-       this.maritalStatus = maritalStatus;
-       this.address = address;
-       this.addressCountry = addressCountry;
-       this.addressProvince = addressProvince;
-       this.addressCity = addressCity;
-       this.addressTown = addressTown;
-       this.addressZipCode = addressZipCode;
-       this.phone = phone;
-       this.email = email;
-       this.password = password;
-       properties = new ArrayList<>();
-//       landlords = new ArrayList<>();
-       logged = true;
-    }
-
-   public Account() {
+   public Landlord(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone) {
+      this.name = name;
+      this.surname = surname;
+      this.id = id;
+      this.nationality = nationality;
+      this.maritalStatus = maritalStatus;
+      this.address = address;
+      this.addressCountry = addressCountry;
+      this.addressProvince = addressProvince;
+      this.addressCity = addressCity;
+      this.addressTown = addressTown;
+      this.addressZipCode = addressZipCode;
+      this.phone = phone;
    }
 
    public String getName() {
@@ -161,37 +143,5 @@ public class Account {
 
    public void setPhone(String phone) {
       this.phone = phone;
-   }
-
-   public String getEmail() {
-      return email;
-   }
-
-   public void setEmail(String email) {
-      this.email = email;
-   }
-
-   public String getPassword() {
-      return password;
-   }
-
-   public void setPassword(String password) {
-      this.password = password;
-   }
-
-   public List<Property> getProperties() {
-      return properties;
-   }
-
-   public void setProperties(List<Property> properties) {
-      this.properties = properties;
-   }
-
-   public boolean isLogged() {
-      return logged;
-   }
-
-   public void setLogged(boolean logged) {
-      this.logged = logged;
    }
 }

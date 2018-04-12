@@ -1,4 +1,4 @@
-package property;
+package taxes;
 
 public class Taxes {
 }

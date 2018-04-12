@@ -21,6 +21,10 @@ public class DatabaseOps {
         return INSTANCE;
     }
 
+    public void closeSession() {
+        sessionFactory.close();
+    }
+
     public Account getUser(String username) {
         Session session = openSession();
         return session.get(Account.class, username);
@@ -30,7 +34,7 @@ public class DatabaseOps {
         Account newUser = new Account(name, surname, id, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phone, email, password);
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
-        session.saveOrUpdate(newUser);
+        session.save(newUser);
         transaction.commit();
         session.close();
     }

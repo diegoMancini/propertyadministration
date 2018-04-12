@@ -50,14 +50,14 @@
     <body >
         <h1> <i><%=request.getRemoteUser()%></i> properties</h1>
         <p>Here we display your properties, once you add them</p>
-        <i><%
-            User user = (User) request.getAttribute("user");
-            List<Property> properties = user.getProperty();
-            for (int i = 0; i < properties.size(); i++) {
-                System.out.println("Property number " + i);
-                properties.get(i).toString();
-            }
-        %></i>
+        <%--<i><%--%>
+            <%--User user = (User) request.getAttribute("user");--%>
+            <%--List<Property> properties = user.getProperty();--%>
+            <%--for (int i = 0; i < properties.size(); i++) {--%>
+                <%--System.out.println("Property number " + i);--%>
+                <%--properties.get(i).toString();--%>
+            <%--}--%>
+        <%--%></i>--%>
         <form>
             <input type="button" value="Add property" onclick="window.location.href='addProperty.jsp'" />
         </form>

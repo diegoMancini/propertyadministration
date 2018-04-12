@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/propertyadministration.iml" filepath="$PROJECT_DIR$/propertyadministration.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/propertyadministration_main.iml" filepath="$PROJECT_DIR$/.idea/modules/propertyadministration_main.iml" group="propertyadministration" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/propertyadministration_test.iml" filepath="$PROJECT_DIR$/.idea/modules/propertyadministration_test.iml" group="propertyadministration" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/web/web.iml" filepath="$PROJECT_DIR$/.idea/modules/web/web.iml" group="web" />
     </modules>
   </component>
 </project>

@@ -62,8 +62,8 @@
     </role>
     <schema id="11" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-04-12.01:34:46.289</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1185330</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-04-12.13:40:27.164</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1798867</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -88,5 +88,180 @@
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
     </sequence>
+    <table id="18" parent="11" name="accounts">
+      <ObjectId>16436</ObjectId>
+      <StateNumber>1798867</StateNumber>
+    </table>
+    <table id="19" parent="11" name="accounts_property">
+      <ObjectId>16444</ObjectId>
+      <StateNumber>1798867</StateNumber>
+    </table>
+    <table id="20" parent="11" name="property">
+      <ObjectId>16447</ObjectId>
+      <StateNumber>1798866</StateNumber>
+    </table>
+    <column id="21" parent="18" name="email">
+      <Position>1</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="22" parent="18" name="address">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="23" parent="18" name="address_city">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="24" parent="18" name="address_country">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="25" parent="18" name="address_province">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="26" parent="18" name="address_town">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="27" parent="18" name="address_zipcode">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="28" parent="18" name="id">
+      <Position>8</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="29" parent="18" name="logged">
+      <Position>9</Position>
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="30" parent="18" name="marital_status">
+      <Position>10</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="31" parent="18" name="name">
+      <Position>11</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="32" parent="18" name="nationality">
+      <Position>12</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="33" parent="18" name="password">
+      <Position>13</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="34" parent="18" name="phone">
+      <Position>14</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="35" parent="18" name="surname">
+      <Position>15</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>1798861</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="36" parent="18" name="accounts_pkey">
+      <ObjectId>16442</ObjectId>
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="37" parent="18" name="accounts_pkey">
+      <ObjectId>16443</ObjectId>
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>accounts_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="38" parent="19" name="account_email">
+      <Position>1</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1798862</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="39" parent="19" name="properties_account_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1798862</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="40" parent="19" name="uk_bvixqhddcx4yhmlnt9a4rkaoy">
+      <ObjectId>16452</ObjectId>
+      <ColNames>properties_account_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="41" parent="19" name="uk_bvixqhddcx4yhmlnt9a4rkaoy">
+      <ObjectId>16453</ObjectId>
+      <ColNames>properties_account_id</ColNames>
+      <UnderlyingIndexName>uk_bvixqhddcx4yhmlnt9a4rkaoy</UnderlyingIndexName>
+    </key>
+    <foreign-key id="42" parent="19" name="fk9vsrcsfk6678s6vpvvj3ih79p">
+      <ObjectId>16459</ObjectId>
+      <ColNames>account_email</ColNames>
+      <RefTableId>16436</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>accounts</RefTableName>
+      <RefKeyName>accounts_pkey</RefKeyName>
+      <RefColNames>email</RefColNames>
+    </foreign-key>
+    <foreign-key id="43" parent="19" name="fk6ima8qlfh1r0fifj4pau4ycil">
+      <ObjectId>16454</ObjectId>
+      <ColNames>properties_account_id</ColNames>
+      <RefTableId>16447</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>property</RefTableName>
+      <RefKeyName>property_pkey</RefKeyName>
+      <RefColNames>account_id</RefColNames>
+    </foreign-key>
+    <column id="44" parent="20" name="account_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1798863</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="45" parent="20" name="property_pkey">
+      <ObjectId>16450</ObjectId>
+      <ColNames>account_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="46" parent="20" name="property_pkey">
+      <ObjectId>16451</ObjectId>
+      <ColNames>account_id</ColNames>
+      <UnderlyingIndexName>property_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

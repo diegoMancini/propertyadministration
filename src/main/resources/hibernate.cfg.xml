@@ -9,11 +9,10 @@
         <property name="connection.username">Diegonfx</property>
         <property name="connection.password">Perrito1</property>
 
+        <class-cache class="org.securityfilter.filter.SecurityFilter" usage="nonstrict-read-write"/>
+
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">2</property>
-
-        <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
@@ -26,6 +25,5 @@
 
         <mapping class="persons.Account"/>
         <mapping class="property.Property"/>
-
     </session-factory>
 </hibernate-configuration>

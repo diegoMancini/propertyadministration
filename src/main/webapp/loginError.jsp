@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  database.persons.User: Florencia
+  database.User: Florencia
   Date: 4/4/18
   Time: 11:18
   To change this template use File | Settings | File Templates.
@@ -32,6 +32,6 @@
 <body>
     <h1>Login Error</h1>
     <%--<%@include file="/menu.jsp" %>--%>
-    <p>Wrong username or password, please <a href="<%=response.encodeURL("enter.jsp")%>">retry</a>.</p>
+    <p>Wrong username or password, please <a href="<%=response.encodeURL("login.jsp")%>">retry</a>.</p>
 </body>
 </html>

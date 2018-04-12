@@ -1,6 +1,5 @@
 package persons;
 
-import property.LivingPlace;
 import property.Property;
 
 import javax.persistence.*;
@@ -11,8 +10,6 @@ import java.util.List;
 @Table (name = "ACCOUNTS")
 public class Account {
 
-   @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "ACCOUNT_ID")
-   private Integer accountID;
    @Column(name = "NAME")
    private String name;
    @Column(name = "SURNAME")
@@ -37,13 +34,13 @@ public class Account {
    private String addressZipCode;
    @Column(name = "PHONE")
    private String phone;
-    @Column(name = "EMAIL")
-    private String email;
-    @Column(name = "PASSWORD")
-    private String password;
-   @Access(AccessType.PROPERTY) @OneToMany(targetEntity = Property.class, fetch = FetchType.EAGER)
+   @Id @Column(name = "EMAIL", unique = true)
+   private String email;
+   @Column(name = "PASSWORD")
+   private String password;
+   @OneToMany
    private List<Property> properties;
-    private boolean logged;
+   private boolean logged;
 
     public Account(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email, String password) {
        this.name = name;
@@ -60,14 +57,11 @@ public class Account {
        this.phone = phone;
        this.email = email;
        this.password = password;
-       logged = false;
+       properties = new ArrayList<>();
+       logged = true;
     }
 
    public Account() {
-   }
-
-   public Integer getAccountID() {
-      return accountID;
    }
 
    public String getName() {

@@ -1,11 +1,6 @@
 package servlets;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import persons.Account;
-import persons.User;
+import database.DatabaseOps;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,12 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-@WebServlet("/signup.jsp")
+@WebServlet("/signup")
 public class NewAccountServlet extends HttpServlet {
-    @Override
 
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private DatabaseOps databaseOps = DatabaseOps.getInstance();
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
         String identityNumber = req.getParameter("identityNumber"); //check
@@ -35,28 +31,8 @@ public class NewAccountServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        SessionFactory sessionFactory;
-        Session session;
-        Transaction transaction;
-
-        Configuration configuration = new Configuration();
-        sessionFactory = configuration.configure().buildSessionFactory();
-        session = sessionFactory.openSession();
-        transaction = session.beginTransaction();
-
-        Account user1 = new Account(name, surname,identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phoneNumber, email, password);
-
-        session.save(user1);
-
-        transaction.commit();
-        session.close();
-        sessionFactory.close();
+        databaseOps.addAccountToDatabase(name, surname, identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phoneNumber, email, password);
 
         resp.sendRedirect("/home.jsp");
-    }
-
-    @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getParameter("name");
     }
 }

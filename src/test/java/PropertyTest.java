@@ -1,8 +1,7 @@
-public class UserTest {
+public class PropertyTest {
 //    private SessionFactory sessionFactory;
 //    private Session session = null;
 //    private Transaction transaction;
-//
 //    @Before
 //    public void before() {
 //        // setup the session factory
@@ -15,20 +14,24 @@ public class UserTest {
 //    @Test
 //    public void testUser() {
 //        // create the objects needed for testing
-//        Account user1 = new Account("Diego", "Mancini","38931523","Argentino","Soltero", "Saravi 104", "Argentina", "Buenos Aires" , "Pilar" , "La Lonja" , "1629", "1154645662", "diegonfx@gmail.com" , "Perrito1");
+//        Property property1 = new Property("3 de febrero", "casa flor");
+//        Property property2 = new Property("11 de septiembre", "casa diego");
 //
-//        session.save(user1);
-//        // storing the objects for the test in the database
-//        int id1 = (int) session.save(user1);
+//        int id1 = (int) session.save(property1);
+//        int id2 = (int) session.save(property2);
 //
 //        transaction.commit();
 //
-//        Account addedUser1 = session.find(Account.class, id1);
+//        Property addedProperty1 = session.find(Property.class, id1);
+//        Property addedProperty2 = session.find(Property.class, id2);
 //
-//        assert(addedUser1.getEmail().equals("diegonfx@gmail.com"));
+//        assert(addedProperty1.getAddress().equals("3 de febrero"));
+//        assert(addedProperty2.getName().equals("casa diego"));
+//
 //
 //        Transaction newTransaction = session.beginTransaction();
-//        session.delete(user1);
+//        session.delete(property1);
+//        session.delete(property2);
 //        newTransaction.commit();
 //    }
 //    @After
@@ -36,4 +39,5 @@ public class UserTest {
 //        session.close();
 //        sessionFactory.close();
 //    }
+
 }

@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  database.persons.User: Florencia
+  database.User: Florencia
   Date: 4/3/18
   Time: 16:24
   To change this template use File | Settings | File Templates.
@@ -29,21 +29,25 @@
             color: rgb(73, 161, 140);
         }
 
-        p{
-            text-align: center;
-            margin-top: 40px;
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            color: rgb(0, 0, 0);
+        input[type = button]{
+            background-color: rgb(47, 152, 182);
+            cursor: pointer;
+            margin:auto;
+            display:block;
+            border: 0;
+            padding: 5px;
+            font-size: 16px;
+            border: rgb(0,0,0);
+            color: rgb(255, 255, 255);
         }
     </style>
-
 </head>
 <body>
     <h1>Log out</h1>
-    <%--<%@include file="/menu.jsp"%> TODO later--%>
     <h3>The user <i><%=request.getRemoteUser()%></i> has logged out</h3>
     <% session.invalidate(); %>
-    <p><a href="<%=response.encodeURL("index.jsp")%>">Go home</a></p>
+    <form>
+        <input type="button" value="Go home" onclick="window.location.href='http://localhost:8080/home.jsp'" />
+    </form>
 </body>
 </html>

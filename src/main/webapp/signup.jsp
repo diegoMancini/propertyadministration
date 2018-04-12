@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  persons.User: DiegoMancini
+  User: DiegoMancini
   Date: 4/4/18
   Time: 12:07
   To change this template use File | Settings | File Templates.
@@ -13,94 +13,61 @@
             body{
                 background-color: rgb(236, 255, 253);
                 font-family: Arial, sans-serif;
-                text-align: justify-all;
-                /*border-radius: 10px;*/
-                /*margin: 20px 20px 20px 20px;*/
             }
+
             h3{
                 font-family: Arial, sans-serif;
-                text-align: justify-all;
+                text-align: center;
                 font-size: 30px;
                 color: rgb(73, 161, 140);
-                /*border-radius: 10px;*/
-                /*margin: 20px 20px 20px 20px;*/
             }
+
             form{
                 width: 100%;
                 max-width: 330px;
-                padding: 20px;
-                font-size: 20px;
+                padding: 15px;
+                font-size: 16px;
+                margin: 0 auto;
                 font-family: Arial, sans-serif;
-                text-align: justify-all;
-                /*border-radius: 10px;*/
-                /*margin: 20px 20px 20px 20px;*/
-
-            }
-            input[type="email"] {
-                text-align: justify-all;
-                /*border-radius: 10px;*/
-                /*margin: 20px 20px 20px 20px;*/
             }
 
-            input[type="password"] {
-                text-align: center;
-                /*border-radius: 10px;*/
-                /*margin: 20px 20px 20px 20px;*/
-            }
-
-            input[type="number"] {
-                text-align: justify-all;
-                /*border-radius: 10px;*/
-                /*margin: 20px 20px 20px 20px;*/
-            }
-
-            input[type="text"] {
-                text-align: justify-all;
-                /*border-radius: 10px;*/
-                /*margin: 20px 20px 20px 20px;*/
+            input[type=password], input[type=number], input[type=text], input[type=email]{
+                margin-top: 10px;
+                margin-bottom: 10px;
             }
 
             .inbox-style{
-                position: relative;
+                position: static;
                 box-sizing: border-box;
                 height: auto;
                 padding: 5px;
-                font-size: 15px;
+                font-size: 16px;
                 font-family: Arial, sans-serif;
-                text-align: center;
-                border-radius: 5px;
-                margin: 5px 0px 5px 0px;
             }
 
-            p{
-                text-align: justify-all;
-                font-family: Arial, sans-serif;
-                font-size: 20px;
-                color: rgb(0, 0, 0);
-                /*border-radius: 10px;*/
-                /*margin: 50px 20px 20px 20px;*/
-
-            }
-
-            input[type="submit"]{
-                background: #000000;
-                color: white;
-                padding: 10px;
-                /*border-radius: 10px;*/
-                /*margin: 20px 20px 20px 20px;*/
+            input[type=button], input[type=submit]{
+                background-color: rgb(47, 152, 182);
+                cursor: pointer;
+                display:block;
+                border: 0;
+                padding: 5px;
+                font-size: 16px;
+                border: rgb(0,0,0);
+                color: rgb(255, 255, 255);
+                margin: 10px 0 10px 0;
             }
         </style>
     </head>
 
     <body class="text-center">
-        <form class="form-style" method="GET" action="signup.jsp">
-            <h3 class="h3 mb-3 font-weight-normal"><nobr>Crea tu propia cuenta </nobr> </h3>
+        <form class="form-style" method="POST" action="signup">
+            <h3 class="h3 mb-3 font-weight-normal">Crea tu cuenta </h3>
 
             <label for="newAccountName">Nombre        </label>
             <input type="text" name="name" id="newAccountName" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
 
-            <label for="newAccoutSurname">Apellido       </label>
-            <input type="text" name="surname" id="newAccoutSurname" class="inbox-style" placeholder="" required><br>
+            <label for="newAccountSurname">Apellido       </label>
+            <input type="text" name="surname" id="newAccountSurname" class="inbox-style" placeholder="" required><br>
 
             <label for="newAccountIdentityNumber">D.N.I.     </label> <%--dni--%>
             <input type="number" name="identityNumber" id="newAccountIdentityNumber" class="inbox-style" placeholder="" required><br>
@@ -138,9 +105,11 @@
             <label for="newAccountPassword">Contraseña       </label>
             <input type="password" name="password" id="newAccountPassword" class="inbox-style" placeholder="" required><br>
 
-            <button type="submit">Sign in</button>
+            <input type="submit" value="Sign up">
 
-            <p><a href="<%=response.encodeURL("index.jsp")%>">Go back</a></p>
+            <form>
+                <input type="button" value="Go back" onclick="window.location.href='http://localhost:8080/index.jsp'" />
+            </form>
         </form>
     </body>
 </html>

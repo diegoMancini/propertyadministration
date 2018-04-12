@@ -37,5 +37,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bootstrap-4.0.0-dist" level="application" />
+    <orderEntry type="library" name="hibernate-release-5.2.15.Final" level="application" />
+    <orderEntry type="library" name="postgresql-42.2.2" level="application" />
+    <orderEntry type="library" name="scala-sdk-2.12.4" level="application" />
+    <orderEntry type="library" name="securityfilter-2" level="application" />
   </component>
 </module>

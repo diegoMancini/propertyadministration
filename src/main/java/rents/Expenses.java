@@ -1,15 +1,15 @@
-package taxes;
+package rents;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TAXES")
-public class Taxes {
+@Table(name = "EXPENSES")
+public class Expenses {
 
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "ID")
    private Integer id;
 
-   public Taxes() {
+   public Expenses() {
    }
 }

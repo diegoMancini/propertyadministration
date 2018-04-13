@@ -49,6 +49,9 @@ public class Landlord {
       this.phone = phone;
    }
 
+   public Landlord() {
+   }
+
    public String getName() {
       return name;
    }

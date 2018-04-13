@@ -11,9 +11,16 @@ public class DatabaseOps {
     private static DatabaseOps INSTANCE;
     private Configuration configuration = new Configuration();
     private SessionFactory sessionFactory = configuration.configure().buildSessionFactory();
+    private Session session;
+    private Transaction transaction;
 
     public Session openSession() {
-        return sessionFactory.openSession();
+        session = sessionFactory.openSession();
+        return session;
+    }
+
+    public Transaction beginTransaction(Session session) {
+        return session.beginTransaction();
     }
 
     public static DatabaseOps getInstance(){
@@ -21,7 +28,7 @@ public class DatabaseOps {
         return INSTANCE;
     }
 
-    public void closeSession() {
+    public void closeSessionFactory() {
         sessionFactory.close();
     }
 
@@ -33,12 +40,45 @@ public class DatabaseOps {
     public void addAccountToDatabase(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email, String password) {
         Account newUser = new Account(name, surname, id, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phone, email, password);
         Session session = openSession();
-        Transaction transaction = session.beginTransaction();
+        transaction = beginTransaction(session);
         session.save(newUser);
         transaction.commit();
         session.close();
     }
-//
+
+    public void addCreatedAccountToDatabase(Account account) {
+        Session session = openSession();
+        transaction = beginTransaction(session);
+        session.save(account);
+        transaction.commit();
+        session.close();
+    }
+
+    public void deleteCreatedAccountToDatabase(Account account) {
+        Session session = openSession();
+        transaction = beginTransaction(session);
+        session.delete(account);
+        transaction.commit();
+        session.close();
+    }
+
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public Transaction getTransaction() {
+        return transaction;
+    }
+
+    //
 //    public void addPropertyToDatabase(String address, String name) {
 //        Property property = new Property(address, name);
 //        Session session = openSession();

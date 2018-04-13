@@ -1,4 +1,12 @@
 package services.specifics;
 
-public class Water {
+import services.Services;
+
+import javax.persistence.*;
+
+@Entity
+public class Water extends Services {
+
+   public Water() {
+   }
 }

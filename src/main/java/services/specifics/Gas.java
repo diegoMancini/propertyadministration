@@ -1,4 +1,12 @@
 package services.specifics;
 
-public class Gas {
+import services.Services;
+
+import javax.persistence.*;
+
+@Entity
+public class Gas extends Services {
+
+   public Gas() {
+   }
 }

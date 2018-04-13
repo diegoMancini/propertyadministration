@@ -22,6 +22,26 @@
         <!-- <property name="hbm2ddl.auto">update</property> -->
 
         <mapping class="persons.Account"/>
+        <mapping class="persons.Guarantor"/>
+        <mapping class="persons.Landlord"/>
+        <mapping class="persons.Tenant"/>
+        <mapping class="property.details.Blueprint"/>
+        <mapping class="property.details.Deed"/>
+        <mapping class="property.structure.specifics.BusinessPremise"/>
+        <mapping class="property.structure.specifics.Commerce"/>
+        <mapping class="property.structure.specifics.Garage"/>
+        <mapping class="property.structure.specifics.LivingPlace"/>
+        <mapping class="property.structure.specifics.Office"/>
+        <mapping class="property.structure.FunctionalUnit"/>
         <mapping class="property.structure.Property"/>
+        <mapping class="rents.Contract"/>
+        <mapping class="rents.Expenses"/>
+        <mapping class="services.specifics.Electricity"/>
+        <mapping class="services.specifics.Gas"/>
+        <mapping class="services.specifics.Telephone"/>
+        <mapping class="services.specifics.Water"/>
+        <mapping class="services.Services"/>
+        <mapping class="taxes.Taxes"/>
+
     </session-factory>
 </hibernate-configuration>

@@ -1,10 +1,9 @@
 package persons;
 
-import property.structure.Property;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table (name = "ACCOUNTS")
@@ -38,10 +37,8 @@ public class Account {
    private String email;
    @Column(name = "PASSWORD")
    private String password;
-   @OneToMany
-   private List<Property> properties;
 //   @OneToMany
-//   private List<Landlord> landlords;
+//   private ListMultimap<String, Property> properties;
    private boolean logged;
 
     public Account(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email, String password) {
@@ -59,8 +56,7 @@ public class Account {
        this.phone = phone;
        this.email = email;
        this.password = password;
-       properties = new ArrayList<>();
-//       landlords = new ArrayList<>();
+//       properties = ArrayListMultimap.create();
        logged = true;
     }
 
@@ -179,13 +175,9 @@ public class Account {
       this.password = password;
    }
 
-   public List<Property> getProperties() {
-      return properties;
-   }
-
-   public void setProperties(List<Property> properties) {
-      this.properties = properties;
-   }
+//   public ListMultimap<String, Property> getProperties() {
+//      return properties;
+//   }
 
    public boolean isLogged() {
       return logged;

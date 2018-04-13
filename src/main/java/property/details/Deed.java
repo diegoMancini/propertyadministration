@@ -1,15 +1,18 @@
 package property.details;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "DEED")
 public class Deed {
 
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "ID")
+   private Integer id;
+
    @Column(name = "LEGAL_ADDRESS")
    private String legalAddress;
 
-
+   public Deed() {
+   }
 }

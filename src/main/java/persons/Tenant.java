@@ -36,4 +36,6 @@ public class Tenant {
     @Column(name = "EMAIL", unique = true)
     private String email;
 
+    public Tenant() {
+    }
 }

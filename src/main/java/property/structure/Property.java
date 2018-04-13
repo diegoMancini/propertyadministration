@@ -12,14 +12,17 @@ import static com.google.api.client.util.ArrayMap.create;
 
 @Entity
 @Table(name = "PROPERTY")
-public abstract class Property {
+public class Property {
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "ACCOUNT_ID")
-   @JoinColumn(name = "accountID")
-   private Integer propertyID;
+   @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "ID")
+   private Integer id;
    @Column(name = "NAME")
    private String name;
+   @Column(name = "DESCRIPTION")
+   private String description;
+   @Column(name = "ADDRESS")
+   private String address;
    @Column(name = "BLUEPRINT")
    private Blueprint blueprint;
    @Column(name = "DEED")
@@ -28,10 +31,6 @@ public abstract class Property {
    private Services services; //Luz, gas, tel
    @Column(name = "TAXES")
    private Taxes taxes;
-   @Column(name = "TYPE")
-   private String type;
-   @Column(name = "DESCRIPTION")
-   private String description;
    @OneToMany
    private ArrayListMultimap<String,Object> functionalUnits;
    @Column(name = "AMOUNT_OF_FUNCTIONAL_UNITS")
@@ -42,20 +41,20 @@ public abstract class Property {
    private Integer amountOffice = functionalUnits.get("Office").size();
    @Column(name = "AMOUNT_COMMERCE")
    private Integer amountCommerce = functionalUnits.get("Commerce").size();
-   @Column(name = "AMMOUNT_GARAGE")
+   @Column(name = "AMOUNT_GARAGE")
    private Integer amountGarage = functionalUnits.get("Garage").size();
 
    public Property() {
    }
 
-   public Property(String name, String type, String description) {
+   public Property(String name,  String description, String address) {
       this.name = name;
-      this.type = type;
       this.description = description;
       this.blueprint = null;
       this.deed = null;
       this.services = null;
       this.taxes = null;
+      this.address = address;
       functionalUnits = ArrayListMultimap.create();
       functionalUnits.put("Living Place" , null);
       functionalUnits.put("Office" , null);
@@ -64,11 +63,11 @@ public abstract class Property {
    }
 
    public Integer getPropertyID() {
-      return propertyID;
+      return id;
    }
 
    public void setPropertyID(Integer propertyID) {
-      this.propertyID = propertyID;
+      this.id = propertyID;
    }
 
    public String getName() {
@@ -77,6 +76,14 @@ public abstract class Property {
 
    public void setName(String name) {
       this.name = name;
+   }
+
+   public String getAddress() {
+      return address;
+   }
+
+   public void setAddress(String address) {
+      this.address = address;
    }
 
    public Blueprint getBlueprint() {
@@ -109,14 +116,6 @@ public abstract class Property {
 
    public void setTaxes(Taxes taxes) {
       this.taxes = taxes;
-   }
-
-   public String getType() {
-      return type;
-   }
-
-   public void setType(String type) {
-      this.type = type;
    }
 
    public String getDescription() {

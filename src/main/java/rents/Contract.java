@@ -1,11 +1,10 @@
 package rents;
 
 import persons.Account;
+import persons.Guarantor;
 import persons.Tenant;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 //Base de contrato Bello-Ngom-Depto1
@@ -13,6 +12,10 @@ import java.util.Date;
 @Entity
 @Table(name = "CONTRACT")
 public class Contract {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "ID")
+    private Integer id;
 
     @Column(name = "COUNTRY")
     private String country; //Argentina
@@ -24,11 +27,25 @@ public class Contract {
     private String town; //Grand Bourg
     @Column(name = "DATE_ISSUED")
     private Date dateIssued; //29/09/2017
-    @Column(name = "DATE_END")
-    private Date dateEnd;
-    @Column(name = "LANDLORD")
+    @Column(name = "CONTRACT_DATE_START")
+    private Date contractDateStart;
+    @Column(name = "CONTRACT_DATE_END")
+    private Date contractDateEnd;
+    @Column(name = "OWNER")
     private Account owner; //Gabriela Fernanda Bello
     @Column(name = "LANDLORD")
     private Tenant tenant; //Mame Gor NGOM
+    @Column(name = "GUARANTOR")
+    private Guarantor guarantor;
+    @Column(name = "PRICE")
+    private Integer price;
+    @Column(name = "DEPOSIT")
+    private Integer deposit;
+    @Column(name = "EXPENSES")
+    private Expenses expenses;
+    @Column(name = "DAILY_INTEREST_FOR_DELAYED_PAYMENT")
+    private Integer dailyInterestForDelayedPayment;
 
+    public Contract() {
+    }
 }

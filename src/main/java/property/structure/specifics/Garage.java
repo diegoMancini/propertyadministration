@@ -1,4 +1,12 @@
 package property.structure.specifics;
 
-public class Garage {
+import property.structure.FunctionalUnit;
+
+import javax.persistence.*;
+
+@Entity
+public class Garage extends FunctionalUnit {
+
+   public Garage() {
+   }
 }

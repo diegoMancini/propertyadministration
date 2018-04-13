@@ -1,4 +1,10 @@
 package property.structure.specifics;
 
-public class Office {
+import javax.persistence.*;
+
+@Entity
+public class Office extends Commerce {
+
+   public Office() {
+   }
 }

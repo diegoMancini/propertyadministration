@@ -1,4 +1,12 @@
 package services.specifics;
 
-public class Telephone {
+import services.Services;
+
+import javax.persistence.*;
+
+@Entity
+public class Telephone extends Services {
+
+   public Telephone() {
+   }
 }

@@ -1,5 +1,5 @@
-<%@ page import="database.User" %>
-<%@ page import="database.Property" %>
+<%@ page import="propertyAdmin.database.User" %>
+<%@ page import="propertyAdmin.database.Property" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Florencia
@@ -59,10 +59,10 @@
             <%--}--%>
         <%--%></i>--%>
         <form>
-            <input type="button" value="Add property" onclick="window.location.href='addProperty.jsp'" />
+            <input type="button" value="Add propertyAdmin.property" onclick="window.location.href='addProperty.jsp'" />
         </form>
         <form>
-            <input type="button" value="Delete property" onclick="window.location.href='http://localhost:8080/deleteProperty.jsp'" />
+            <input type="button" value="Delete propertyAdmin.property" onclick="window.location.href='http://localhost:8080/deleteProperty.jsp'" />
         </form>
         <form>
             <input type="button" value="Go back" onclick="window.location.href='http://localhost:8080/home.jsp'" />

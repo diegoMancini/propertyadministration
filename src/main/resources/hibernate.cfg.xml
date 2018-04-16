@@ -15,33 +15,33 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <!-- Drop and re-create the database schema on startup-->
+        <!-- Drop and re-create the propertyAdmin.database schema on startup-->
         <property name="hbm2ddl.auto">update</property>
 
         <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
+        <!-- <propertyAdmin.property name="hbm2ddl.auto">update</propertyAdmin.property> -->
 
-        <mapping class="persons.Account"/>
-        <mapping class="persons.Guarantor"/>
-        <mapping class="persons.Landlord"/>
-        <mapping class="persons.Tenant"/>
-        <mapping class="property.details.Blueprint"/>
-        <mapping class="property.details.Deed"/>
-        <mapping class="property.structure.specifics.BusinessPremise"/>
-        <mapping class="property.structure.specifics.Commerce"/>
-        <mapping class="property.structure.specifics.Garage"/>
-        <mapping class="property.structure.specifics.LivingPlace"/>
-        <mapping class="property.structure.specifics.Office"/>
-        <mapping class="property.structure.FunctionalUnit"/>
-        <mapping class="property.structure.Property"/>
-        <mapping class="rents.Contract"/>
-        <mapping class="rents.Expenses"/>
-        <mapping class="services.specifics.Electricity"/>
-        <mapping class="services.specifics.Gas"/>
-        <mapping class="services.specifics.Telephone"/>
-        <mapping class="services.specifics.Water"/>
-        <mapping class="services.Services"/>
-        <mapping class="taxes.Taxes"/>
+        <mapping class="propertyAdmin.persons.Account"/>
+        <mapping class="propertyAdmin.persons.Guarantor"/>
+        <mapping class="propertyAdmin.persons.Landlord"/>
+        <mapping class="propertyAdmin.persons.Tenant"/>
+        <mapping class="propertyAdmin.property.details.Blueprint"/>
+        <mapping class="propertyAdmin.property.details.Deed"/>
+        <mapping class="propertyAdmin.property.structure.specifics.BusinessPremise"/>
+        <mapping class="propertyAdmin.property.structure.specifics.Commerce"/>
+        <mapping class="propertyAdmin.property.structure.specifics.Garage"/>
+        <mapping class="propertyAdmin.property.structure.specifics.LivingPlace"/>
+        <mapping class="propertyAdmin.property.structure.specifics.Office"/>
+        <mapping class="propertyAdmin.property.structure.FunctionalUnit"/>
+        <mapping class="propertyAdmin.property.structure.Property"/>
+        <mapping class="propertyAdmin.rents.Contract"/>
+        <mapping class="propertyAdmin.rents.Expenses"/>
+        <mapping class="propertyAdmin.services.specifics.Electricity"/>
+        <mapping class="propertyAdmin.services.specifics.Gas"/>
+        <mapping class="propertyAdmin.services.specifics.Telephone"/>
+        <mapping class="propertyAdmin.services.specifics.Water"/>
+        <mapping class="propertyAdmin.services.Services"/>
+        <mapping class="propertyAdmin.taxes.Taxes"/>
 
     </session-factory>
 </hibernate-configuration>

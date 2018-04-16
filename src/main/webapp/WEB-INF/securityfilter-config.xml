@@ -36,6 +36,6 @@
         </form-login-config>
     </login-config>
 
-    <realm className="securityFilter.SecurityRealm"/>
+    <realm className="propertyAdmin.securityFilter.SecurityRealm"/>
 
 </securityfilter-config>

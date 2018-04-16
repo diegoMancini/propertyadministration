@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Add new property</title>
+        <title>Add new propertyAdmin.property</title>
         <style>
             body{
                 background-color: rgb(236, 255, 253);
@@ -75,12 +75,12 @@
         </style>
     </head>
     <body>
-        <h3>Add new property</h3>
+        <h3>Add new propertyAdmin.property</h3>
         <form class="form-style" method="POST" action="addproperty">
             <label for="newPropertyAddress">Address</label>
             <input type="text" name="address" id="newPropertyAddress" class="inbox-style" placeholder="Address" required><br>
 
-            <p>Choose a name to identify your property</p>
+            <p>Choose a name to identify your propertyAdmin.property</p>
             <label for="newPropertyName">Name</label>
             <input type="text" name="name" id="newPropertyName" class="inbox-style" placeholder="Name" required><br>
 
@@ -91,7 +91,7 @@
                 <input type="button" value="Add tenant" onclick="window.location.href='http://localhost:8080/addTenant.jsp'" /><br>
             </form>
 
-            <input type="submit" value="Add property"><br>
+            <input type="submit" value="Add propertyAdmin.property"><br>
 
             <form>
                 <input type="button" value="Cancel" onclick="window.location.href='http://localhost:8080/properties.jsp'" /><br>

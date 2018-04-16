@@ -82,19 +82,19 @@
             <input type="text" name="address" id="newAddress" class="inbox-style" placeholder="" required><br>
 
             <label for="newAddressCountry">Pais            </label>
-            <input type="text" name="addressCountry" id="newAddressCountry" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
+            <input type="text" name="addressCountry" id="newAddressCountry" class="inbox-style" placeholder="" required><br>
 
             <label for="newAddressProvince">Provincia    </label>
-            <input type="text" name="addressProvince" id="newAddressProvince" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
+            <input type="text" name="addressProvince" id="newAddressProvince" class="inbox-style" placeholder="" required><br>
 
             <label for="newAddressCity">Ciudad       </label>
-            <input type="text" name="addressCity" id="newAddressCity" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
+            <input type="text" name="addressCity" id="newAddressCity" class="inbox-style" placeholder="" required><br>
 
             <label for="newAddressTown">Localidad     </label>
-            <input type="text" name="addressTown" id="newAddressTown" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
+            <input type="text" name="addressTown" id="newAddressTown" class="inbox-style" placeholder="" required><br>
 
             <label for="newAddressZipCode">C.P.           </label>
-            <input type="text" name="addressZipCode" id="newAddressZipCode" class="inbox-style" placeholder="" required><br> <%--TODO hacerlo required--%>
+            <input type="text" name="addressZipCode" id="newAddressZipCode" class="inbox-style" placeholder="" required><br>
 
             <label for="newAccountPhoneNumber">Telefono     </label>
             <input type="number" name="phoneNumber" id="newAccountPhoneNumber" class="inbox-style" placeholder=""><br>

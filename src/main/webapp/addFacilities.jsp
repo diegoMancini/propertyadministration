@@ -63,8 +63,8 @@
     </head>
     <body>
         <form method="POST" action="addfacilities">
-            <%--display property name--%>
-            <h1>Add facilities to your property</h1>
+            <%--display propertyAdmin.property name--%>
+            <h1>Add facilities to your propertyAdmin.property</h1>
             <label for="newFacilitiesBathrooms">Amount of bathrooms</label>
             <input type="number" name="amtBathrooms" id="newFacilitiesBathrooms" class="inbox-style" placeholder="Amount of bathrooms" required><br>
 
@@ -75,7 +75,7 @@
             <input type="number" name="sqrMeter" id="newFacilitiesSqrMeter" class="inbox-style" placeholder="Square meter" required><br>
 
             <label for="newFacilitiesDetails">Details</label>
-            <textarea name="details" id="newFacilitiesDetails" cols="30" rows="10" class="inbox-style" placeholder="Write something about the property"></textarea><br>
+            <textarea name="details" id="newFacilitiesDetails" cols="30" rows="10" class="inbox-style" placeholder="Write something about the propertyAdmin.property"></textarea><br>
 
             <input type="submit" value="Add facilities">
 

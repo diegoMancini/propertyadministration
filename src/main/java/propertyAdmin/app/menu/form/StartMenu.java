@@ -2,7 +2,7 @@ package propertyAdmin.app.menu.form;
 
 import propertyAdmin.app.abc.Menu;
 import propertyAdmin.app.abc.Scanner;
-import propertyAdmin.app.logistic.Logistics;
+import propertyAdmin.app.logistic.LogisticsMenu;
 
 public class StartMenu extends Menu {
 
@@ -25,7 +25,7 @@ public class StartMenu extends Menu {
                     new LogInMenu().operate();
                     break;
                 case 3:
-                    new Logistics().operate();
+                    new LogisticsMenu().operate();
                     break;
                 case 4:
                     System.out.println("Gracias por usar House Admin");

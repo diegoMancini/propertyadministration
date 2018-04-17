@@ -12,6 +12,8 @@ import propertyAdmin.property.structure.specifics.Garage;
 import propertyAdmin.property.structure.specifics.LivingPlace;
 import propertyAdmin.property.structure.specifics.Office;
 
+import java.util.List;
+
 public class DatabaseOps {
 
     private static DatabaseOps INSTANCE;
@@ -43,9 +45,25 @@ public class DatabaseOps {
 
     public Property getProperty(String name, String username) {
         Session session = openSession();
-        for (Property property : session.load(Account.class, username).getProperties() ) {
+        for (Property property : session.get(Account.class, username).getProperties() ) {
             if (property.getName().equals(name)) {
                 return property;
+            } else {
+                System.out.println("ERROR");
+            }
+        }
+        return null;
+    }
+
+    public FunctionalUnit getFunctionalUnit(String choice, Account account, Property aProperty) {
+        Session session = openSession();
+        for (Property property : session.get(Account.class, account.getEmail()).getProperties() ) {
+            if (property.getName().equals(aProperty.getName())) {
+                for (FunctionalUnit functionalUnit : property.getFunctionalUnits()) {
+                    if (functionalUnit.getName().equals(choice)) {
+                        return functionalUnit;
+                    }
+                }
             } else {
                 System.out.println("ERROR");
             }
@@ -62,64 +80,12 @@ public class DatabaseOps {
         session.close();
     }
 
-    public void addCreatedAccountToDatabase(Account account) {
-        Session session = openSession();
-        Transaction transaction = beginTransaction(session);
-        session.save(account);
-        transaction.commit();
-        session.close();
-    }
-
-    public void deleteCreatedAccountToDatabase(Account account) {
-        Session session = openSession();
-        Transaction transaction = beginTransaction(session);
-        session.delete(account);
-        transaction.commit();
-        session.close();
-    }
-
-    public Configuration getConfiguration() {
-        return configuration;
-    }
-
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    public void addPropertyToDatabase(String name, String description, String address) {
-        Property property = new Property(name, description, address);
-        Session session = openSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(property);
-        transaction.commit();
-        session.close();
-    }
-
     public void addPropertyToDatabase(String name, String description, String address, String mail) {
         Property property = new Property(name, description, address);
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
         session.get(Account.class, mail).addProperty(property);
         session.save(property);
-        transaction.commit();
-        session.close();
-    }
-
-    public void removePropertyFromDatabase(String name) {
-        Session session = openSession();
-        Transaction transaction = session.beginTransaction();
-        Property property = session.get(Property.class, name);
-        session.delete(property);
-        transaction.commit();
-        session.close();
-    }
-
-    public void removePropertyFromDatabase(String name, String mail) {
-        Session session = openSession();
-        Transaction transaction = session.beginTransaction();
-        Property property = session.get(Account.class,mail).getSpecificProperty(name);
-        session.get(Account.class, mail).removeProperty(property);
-        session.delete(property);
         transaction.commit();
         session.close();
     }
@@ -139,12 +105,12 @@ public class DatabaseOps {
             case "Business Premise":
                 functionalUnit = new BusinessPremise(name, type, address);
                 break;
-                case "Garage":
+            case "Garage":
                 functionalUnit = new Garage(name, type, address);
                 break;
-                default:
-                    System.out.println("AZA");
-                    break;
+            default:
+                System.out.println("AZA");
+                break;
         }
         for (Property property : account.getProperties()) {
             if (property.getName().equals(aProperty.getName())) {
@@ -152,6 +118,24 @@ public class DatabaseOps {
             }
         }
         session.save(functionalUnit);
+        transaction.commit();
+        session.close();
+    }
+
+    public void removeAccountFromDatabase(String email) {
+        Session session = openSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(session.get(Account.class, email));
+        transaction.commit();
+        session.close();
+    }
+
+    public void removePropertyFromDatabase(String name, String mail) {
+        Session session = openSession();
+        Transaction transaction = session.beginTransaction();
+        Property property = session.get(Account.class,mail).getSpecificProperty(name);
+        session.get(Account.class, mail).removeProperty(property);
+        session.delete(property);
         transaction.commit();
         session.close();
     }
@@ -172,4 +156,35 @@ public class DatabaseOps {
         }
         session.close();
     }
+
+    public List<Account> getAccountsInDatabase() {
+        return null;
+    }
+
+//    public void addCreatedAccountToDatabase(Account account) {
+//        Session session = openSession();
+//        Transaction transaction = beginTransaction(session);
+//        session.save(account);
+//        transaction.commit();
+//        session.close();
+//    }
+//
+//    public void addPropertyToDatabase(String name, String description, String address) {
+//        Property property = new Property(name, description, address);
+//        Session session = openSession();
+//        Transaction transaction = session.beginTransaction();
+//        session.save(property);
+//        transaction.commit();
+//        session.close();
+//    }
+//
+//    public void removePropertyFromDatabase(String name) {
+//        Session session = openSession();
+//        Transaction transaction = session.beginTransaction();
+//        Property property = session.get(Property.class, name);
+//        session.delete(property);
+//        transaction.commit();
+//        session.close();
+//    }
+
 }

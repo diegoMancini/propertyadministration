@@ -20,7 +20,7 @@ public class SignUpMenu extends Menu {
             switch (choice) {
                 case 1:
                     askForAccountDetails();
-                    break ;
+                    break mainloop;
                 case 2:
                     break mainloop;
                     default:

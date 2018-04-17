@@ -43,8 +43,8 @@ public class PropertyMenu extends LogInMenu {
 
     private void listAllProperties(Account account) {
         try {
-            for (Property property : account.getProperties()) {
-                System.out.println(property.getName());
+            for (int i = 0; i < account.getProperties().size(); i++) {
+                System.out.println("\n" + i+1 + ") Name: " + account.getProperties().get(i).getName());
             }
         } catch (NullPointerException e) {
             System.out.println("NO HAY");

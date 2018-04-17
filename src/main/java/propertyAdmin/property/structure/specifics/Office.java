@@ -8,7 +8,7 @@ public class Office extends Commerce {
    public Office() {
    }
 
-   public Office(String name, String type) {
-      super(name, type);
+   public Office(String name, String type, String address) {
+      super(name, type, address);
    }
 }

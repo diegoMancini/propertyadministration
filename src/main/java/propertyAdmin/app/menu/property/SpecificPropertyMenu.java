@@ -2,12 +2,13 @@ package propertyAdmin.app.menu.property;
 
 import propertyAdmin.app.abc.Scanner;
 import propertyAdmin.app.menu.form.LogInMenu;
+import propertyAdmin.persons.Account;
 import propertyAdmin.property.structure.FunctionalUnit;
 import propertyAdmin.property.structure.Property;
 
 public class SpecificPropertyMenu extends LogInMenu {
 
-    public void operate(Property aProperty) {
+    public void operate(Account account, Property aProperty) {
         mainloop:
         while (true) {
             System.out.println("-----------");
@@ -24,56 +25,69 @@ public class SpecificPropertyMenu extends LogInMenu {
                     System.out.println(aProperty.toString());
                     break;
                 case 2:
-                    for (FunctionalUnit functionalUnit: aProperty.getFunctionalUnits() ) {
-                        System.out.println(functionalUnit.getName() + "////" + functionalUnit.getType());
-                    }
+                    listFunctionalUnits(account, aProperty);
                     break;
                 case 3:
-                    addFunctionalUnit();
+                    addFunctionalUnit(account, aProperty);
                     break;
                 case 4:
-                    removeFunctionalUnit();
+                    removeFunctionalUnit(account, aProperty);
                     break;
                 case 5:
-                    addDeed();
+                    addDeed(account, aProperty);
                     break;
                 case 6:
-                    addBlueprint();
+                    addBlueprint(account, aProperty);
                     break;
                 case 7:
-                    listExpensesDetails();
+                    listExpensesDetails(account, aProperty);
                     break;
                 case 8:
-                    addExpense();
+                    addExpense(account, aProperty);
                     break;
                 case 9:
                     break mainloop;
                     default:
                         System.out.println("ERROR");
+                        break;
             }
         }
     }
 
-    private void addFunctionalUnit() {
+    private void listFunctionalUnits(Account account, Property aProperty) {
+        for (Property property : account.getProperties()) {
+            if (property.getName().equals(aProperty.getName())) {
+                for (FunctionalUnit functionalUnit : property.getFunctionalUnits()) {
+                    System.out.println(functionalUnit.toString());
+                }
+            }
+        }
+    }
+
+    private void addFunctionalUnit(Account account, Property aProperty) {
+        String name = Scanner.getString("Nombre: ");
+        String type = Scanner.getString("Tipo: ");
+        String address = Scanner.getString("Direccion: ");
+        getDatabaseOps().addFunctionalUnitToDatabase(account.getEmail(), aProperty, name, type, address);
+    }
+
+    private void removeFunctionalUnit(Account account, Property aProperty) {
+        String name = Scanner.getString("Nombre: ");
+        getDatabaseOps().removeFunctionalUnitFromDatabase(account.getEmail(), aProperty, name);
+    }
+
+    private void addDeed(Account account, Property aProperty) {
 
     }
 
-    private void removeFunctionalUnit() {
+    private void addBlueprint(Account account, Property aProperty) {
+    }
+
+    private void listExpensesDetails(Account account, Property aProperty) {
 
     }
 
-    private void addDeed() {
-
-    }
-
-    private void addBlueprint() {
-    }
-
-    private void listExpensesDetails() {
-
-    }
-
-    private void addExpense() {
+    private void addExpense(Account account, Property aProperty) {
 
     }
 }

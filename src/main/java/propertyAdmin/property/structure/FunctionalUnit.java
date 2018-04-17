@@ -36,9 +36,9 @@ public abstract class FunctionalUnit {
     public FunctionalUnit(String name, String address, Integer bathroomsAmount, String phone, String type, String businessType, String kitchenFurniture, String bedroomFurniture, String bathFurniture) {
         this.name = name;
         this.address = address;
+        this.type = type;
         this.bathroomsAmount = bathroomsAmount;
         this.phone = phone;
-        this.type = type;
         this.businessType = businessType;
         this.kitchenFurniture = kitchenFurniture;
         this.bedroomFurniture = bedroomFurniture;
@@ -46,9 +46,17 @@ public abstract class FunctionalUnit {
         contract = null;
     }
 
-    public FunctionalUnit(String name, String type) {
+    public FunctionalUnit(String name, String type, String address) {
         this.name = name;
         this.type = type;
+        this.address = address;
+        this.bathroomsAmount = null;
+        this.phone = null;
+        this.businessType = null;
+        this.kitchenFurniture = null;
+        this.bedroomFurniture = null;
+        this.bathFurniture = null;
+        contract = null;
     }
 
     public String getName() {
@@ -77,5 +85,15 @@ public abstract class FunctionalUnit {
 
     public String getBusinessType() {
         return businessType;
+    }
+
+    @Override
+    public String toString() {
+        return "Unidad funcional: " +
+                "Nombre: " + name + '\'' +
+                ", Tipo: " + type + '\'' +
+                ", Direccion: " + address + '\'' +
+                ", Baños: " + bathroomsAmount +
+                ", Telefono: " + phone + '\'';
     }
 }

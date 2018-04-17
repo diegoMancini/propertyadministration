@@ -3,11 +3,9 @@ package propertyAdmin.app.menu.form;
 import propertyAdmin.app.abc.Menu;
 import propertyAdmin.app.abc.Scanner;
 import propertyAdmin.app.menu.home.HomeMenu;
+import propertyAdmin.persons.Account;
 
 public class LogInMenu extends Menu {
-
-    private String mail;
-    private String password;
 
     public void operate() {
         mainloop:
@@ -35,12 +33,14 @@ public class LogInMenu extends Menu {
     public void askForLoginInfo() {
         boolean rightLoginInfo = false;
         System.out.println("Ingrese los siguientes datos por favor \n");
-        mail = Scanner.getString("Mail: ");
-        password = Scanner.getString("Contraseña: ");
+        String mail = Scanner.getString("Mail: ");
+        String password = Scanner.getString("Contraseña: ");
         do {
-            if (getDatabaseOps().getUser(mail).getEmail().equals(password)) {
+            if (getDatabaseOps().getUser(mail).getPassword().equals(password)) {
+                Account account = getDatabaseOps().getUser(mail);
+                getDatabaseOps().getUser(mail).setLogged(true);
                 rightLoginInfo = true;
-                new HomeMenu().operate();
+                new HomeMenu().operate(account);
             } else {
                 System.out.println("Datos erroneos");
             }
@@ -48,11 +48,4 @@ public class LogInMenu extends Menu {
         while (rightLoginInfo);
     }
 
-    public String getMail() {
-        return mail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 }

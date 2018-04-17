@@ -10,7 +10,7 @@ public class StartMenu extends Menu {
         mainloop:
         while (true) {
             System.out.println("-----------");
-            System.out.println("Operaciones: \n 1 - Iniciar Sesion \n 2 - Crear Cuenta \n 3 - Logistics \n 4 - Salir");
+            System.out.println("Operaciones: \n 1 - Crear Cuenta \n 2 - Iniciar Sesion \n 3 - Logistics \n 4 - Salir");
             int choice = Scanner.getInt("Operacion: ");
 
             //Hace clear la terminal
@@ -19,19 +19,21 @@ public class StartMenu extends Menu {
             }
             switch (choice) {
                 case 1:
-                    new LogInMenu().operate();
+                    new SignUpMenu().operate();
                     break;
                 case 2:
-                    new SignUpMenu().operate();
+                    new LogInMenu().operate();
                     break;
                 case 3:
                     new Logistics().operate();
                     break;
                 case 4:
                     System.out.println("Gracias por usar House Admin");
+                    System.exit(0);
                     break mainloop;
                 default:
                     System.out.println("Ingrese operacion valida por favor");
+                    break;
             }
         }
     }

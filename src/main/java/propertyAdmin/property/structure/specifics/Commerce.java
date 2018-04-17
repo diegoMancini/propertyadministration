@@ -10,8 +10,8 @@ public abstract class Commerce extends FunctionalUnit {
    @Column(name = "CURTAIN_TYPE")
    private String curtainType;
 
-   public Commerce(String name, String type) {
-      super(name,type);
+   public Commerce(String name, String type, String address) {
+      super(name,type, address);
    }
 
    public Commerce() {}

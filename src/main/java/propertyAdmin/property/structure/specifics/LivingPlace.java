@@ -24,7 +24,7 @@ public class LivingPlace extends FunctionalUnit {
     public LivingPlace() {
     }
 
-    public LivingPlace(String name, String type) {
-        super(name, type);
+    public LivingPlace(String name, String type, String address) {
+        super(name, type, address);
     }
 }

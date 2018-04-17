@@ -10,7 +10,7 @@ public class BusinessPremise extends Commerce {
 
    public BusinessPremise() { }
 
-   public BusinessPremise(String name, String type) {
-      super(name, type);
+   public BusinessPremise(String name, String type, String address) {
+      super(name, type, address);
    }
 }

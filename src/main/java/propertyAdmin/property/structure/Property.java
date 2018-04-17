@@ -14,10 +14,7 @@ import java.util.List;
 @Table(name = "PROPERTY")
 public class Property {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "ID")
-   private Integer id;
-   @Column(name = "NAME")
+   @Id @Column(name = "NAME")
    private String name;
    @Column(name = "DESCRIPTION")
    private String description;
@@ -31,7 +28,7 @@ public class Property {
    private Services services; //Luz, gas, tel
    @OneToOne(cascade = {CascadeType.ALL})
    private Taxes taxes;
-   @OneToMany
+   @CollectionTable @OneToMany
    private List<FunctionalUnit> functionalUnits;
    @Column(name = "AMOUNT_OF_FUNCTIONAL_UNITS")
    private Integer totalAmount;
@@ -65,9 +62,6 @@ public class Property {
       amountGarage = 0;
    }
 
-   public Integer getPropertyID() {
-      return id;
-   }
 
    public String getName() {
       return name;
@@ -95,10 +89,6 @@ public class Property {
 
    public String getDescription() {
       return description;
-   }
-
-   public Integer getId() {
-      return id;
    }
 
    public List<FunctionalUnit> getFunctionalUnits() {

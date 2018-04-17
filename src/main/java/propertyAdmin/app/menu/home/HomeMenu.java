@@ -1,17 +1,18 @@
 package propertyAdmin.app.menu.home;
 
-import propertyAdmin.app.abc.Menu;
 import propertyAdmin.app.abc.Scanner;
 import propertyAdmin.app.menu.economy.EconomyMenu;
 import propertyAdmin.app.menu.form.LogInMenu;
 import propertyAdmin.app.menu.property.PropertyMenu;
+import propertyAdmin.persons.Account;
 
 public class HomeMenu extends LogInMenu {
 
-    public void operate() {
+    public void operate(Account account) {
         mainloop:
         while (true) {
-            System.out.println("-----------");
+            System.out.println("\n-----------");
+            System.out.println("Bienvenido a su HOMEPAGE \n");
             System.out.println("Operaciones: \n 1 - Propiedades \n 2 - Economia \n 3 - Salir de la sesion");
             int choice = Scanner.getInt("Operacion: ");
 
@@ -22,10 +23,10 @@ public class HomeMenu extends LogInMenu {
 
             switch (choice) {
                 case 1:
-                    new PropertyMenu().operate();
+                    new PropertyMenu().operate(account);
                     break;
                 case 2:
-                    new EconomyMenu().operate();
+                    new EconomyMenu().operate(account);
                     break;
                 case 3:
                     break mainloop;

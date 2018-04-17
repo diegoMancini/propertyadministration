@@ -2,8 +2,6 @@ package propertyAdmin.app.menu.form;
 
 import propertyAdmin.app.abc.Menu;
 import propertyAdmin.app.abc.Scanner;
-import propertyAdmin.app.exceptions.EmailAlreadyUsedException;
-import propertyAdmin.persons.Account;
 
 public class SignUpMenu extends Menu {
 
@@ -37,7 +35,7 @@ public class SignUpMenu extends Menu {
             String name = Scanner.getString("Nombre: ");
             String surname = Scanner.getString("Apellido: ");
             String id = Scanner.getString("DNI: ");
-            String nationality = Scanner.getString("Nacionalidad:" );
+            String nationality = Scanner.getString("Nacionalidad: " );
             String maritalStatus = Scanner.getString("Estado civil: ");
             String country = Scanner.getString("Pais: ");
             String province = Scanner.getString("Provincia: ");
@@ -49,7 +47,7 @@ public class SignUpMenu extends Menu {
             String email = Scanner.getString("Mail: ");
             String password = Scanner.getString("Contraseña: ");
             getDatabaseOps().addAccountToDatabase(name, surname, id, nationality, maritalStatus,address,country,province,city,town, zipCode, phone, email, password);
-        } catch (EmailAlreadyUsedException e) {
+        } catch (Exception e) {
             System.out.println("Use otro mail");
         }
     }

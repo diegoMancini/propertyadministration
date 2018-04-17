@@ -1,6 +1,5 @@
 package propertyAdmin.app.menu.property;
 
-import propertyAdmin.app.abc.Menu;
 import propertyAdmin.app.abc.Scanner;
 import propertyAdmin.app.menu.form.LogInMenu;
 import propertyAdmin.persons.Account;
@@ -8,7 +7,7 @@ import propertyAdmin.property.structure.Property;
 
 public class PropertyMenu extends LogInMenu {
 
-    public void operate() {
+    public void operate(Account account) {
         mainloop:
         while (true) {
             System.out.println("-----------");
@@ -22,16 +21,16 @@ public class PropertyMenu extends LogInMenu {
 
             switch (choice) {
                 case 1:
-                    listAllProperties();
+                    listAllProperties(account);
                     break;
                 case 2:
-                    goToProperty();
+                    goToProperty(account);
                     break;
                 case 3:
-                    addProperty();
+                    addProperty(account);
                     break;
                 case 4:
-                    removeProperty();
+                    removeProperty(account);
                     break;
                 case 5:
                     break mainloop;
@@ -42,30 +41,33 @@ public class PropertyMenu extends LogInMenu {
         }
     }
 
-    private void listAllProperties() {
-        Account account = getDatabaseOps().getSessionFactory().getCurrentSession().get(Account.class, getMail());
-        for(Property property: account.getProperties()) {
-            System.out.println(property.getName());
+    private void listAllProperties(Account account) {
+        try {
+            for (Property property : account.getProperties()) {
+                System.out.println(property.getName());
+            }
+        } catch (NullPointerException e) {
+            System.out.println("NO HAY");
         }
     }
 
-    private void goToProperty() {
-        listAllProperties();
+    private void goToProperty(Account account) {
+        listAllProperties(account);
         String choice = Scanner.getString("(NOMBRE EXACTO) --> Ir a propiedad: ");
-        Property property = getDatabaseOps().getProperty(choice, getMail());
-        new SpecificPropertyMenu().operate(property);
+        Property property = getDatabaseOps().getProperty(choice, account.getEmail());
+        new SpecificPropertyMenu().operate(account, property);
     }
 
-    private void addProperty() {
+    private void addProperty(Account account) {
         String name = Scanner.getString("Nombre: ");
         String description = Scanner.getString("Descripcion: ");
         String address = Scanner.getString("Direccion: ");
-        getDatabaseOps().addPropertyToDatabase(name, description, address, getMail());
+        getDatabaseOps().addPropertyToDatabase(name, description, address, account.getEmail());
     }
 
-    private void removeProperty() {
+    private void removeProperty(Account account) {
         String name = Scanner.getString("Nombre: ");
-        getDatabaseOps().removePropertyFromDatabase(name, getMail());
+        getDatabaseOps().removePropertyFromDatabase(name, account.getEmail());
 
     }
 }

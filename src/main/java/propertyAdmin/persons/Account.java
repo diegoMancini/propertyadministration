@@ -38,7 +38,7 @@ public class   Account {
    private String email;
    @Column(name = "PASSWORD")
    private String password;
-   @OneToMany(cascade = {CascadeType.ALL})
+   @CollectionTable @OneToMany
    private List<Property> properties;
    private boolean logged;
 
@@ -62,6 +62,10 @@ public class   Account {
     }
 
    public Account() {
+   }
+
+   public void setLogged(boolean logged) {
+      this.logged = logged;
    }
 
    public String getName() {

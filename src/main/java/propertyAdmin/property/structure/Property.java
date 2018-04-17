@@ -69,64 +69,32 @@ public class Property {
       return id;
    }
 
-   public void setPropertyID(Integer propertyID) {
-      this.id = propertyID;
-   }
-
    public String getName() {
       return name;
-   }
-
-   public void setName(String name) {
-      this.name = name;
    }
 
    public String getAddress() {
       return address;
    }
 
-   public void setAddress(String address) {
-      this.address = address;
-   }
-
    public Blueprint getBlueprint() {
       return blueprint;
-   }
-
-   public void setBlueprint(Blueprint blueprint) {
-      this.blueprint = blueprint;
    }
 
    public Deed getDeed() {
       return deed;
    }
 
-   public void setDeed(Deed deed) {
-      this.deed = deed;
-   }
-
    public Services getServices() {
       return services;
-   }
-
-   public void setServices(Services services) {
-      this.services = services;
    }
 
    public Taxes getTaxes() {
       return taxes;
    }
 
-   public void setTaxes(Taxes taxes) {
-      this.taxes = taxes;
-   }
-
    public String getDescription() {
       return description;
-   }
-
-   public void setDescription(String description) {
-      this.description = description;
    }
 
    public Integer getId() {
@@ -167,5 +135,17 @@ public class Property {
          case "Garage": amountGarage++;
          default: break;
       }
+   }
+
+
+   @Override
+   public String toString() {
+      String details = "\nNombre: " + name + "\nDireccion: "+ address + "\nDescripcion: " + description + "\nDetalles plano: " + blueprint.toString() + "" +
+              "\nDetalles escritura: " + deed.toString() + "\nServicios: " + services.toString() + "\nImpuestos: " + taxes.toString() + "\nExpensas: " + expenses.toString();
+      String functionalUnitsString = "";
+      for (int i = 0; i < functionalUnits.size(); i++) {
+         functionalUnitsString += functionalUnits.get(i).toString() + "\n";
+      }
+      return details + "\n" + functionalUnitsString;
    }
 }

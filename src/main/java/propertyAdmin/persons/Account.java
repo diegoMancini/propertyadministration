@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table (name = "ACCOUNTS")
-public class Account {
+public class   Account {
 
    @Column(name = "NAME")
    private String name;
@@ -108,6 +108,21 @@ public class Account {
    }
    public List<Property> getProperties() {
       return properties;
+   }
+   public void addProperty(Property property) {
+       properties.add(property);
+   }
+   public Property getSpecificProperty(String name) {
+       for (Property property : properties) {
+          if (property.getName().equals(name)) {
+             return property;
+          } else {
+             System.out.println("NOT FOUND");
+          }
+       } return null;
+   }
+   public void removeProperty(Property property) {
+       properties.remove(property);
    }
    public boolean isLogged() {
       return logged;

@@ -1,5 +1,6 @@
 package propertyAdmin.servlets;
 
+import propertyAdmin.app.exceptions.EmailAlreadyUsedException;
 import propertyAdmin.database.DatabaseOps;
 
 import javax.servlet.ServletException;
@@ -31,7 +32,11 @@ public class NewAccountServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        databaseOps.addAccountToDatabase(name, surname, identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phoneNumber, email, password);
+        try {
+            databaseOps.addAccountToDatabase(name, surname, identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phoneNumber, email, password);
+        } catch (EmailAlreadyUsedException e) {
+            e.printStackTrace();
+        }
 
         resp.sendRedirect("/home.jsp");
     }

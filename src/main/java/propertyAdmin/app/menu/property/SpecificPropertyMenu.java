@@ -91,6 +91,7 @@ public class SpecificPropertyMenu extends LogInMenu {
     }
 
     private void addBlueprint(Account account, Property aProperty) {
+
     }
 
     private void listExpensesDetails(Account account, Property aProperty) {

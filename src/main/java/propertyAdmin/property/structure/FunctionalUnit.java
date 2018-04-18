@@ -9,7 +9,10 @@ import javax.persistence.*;
 
 public abstract class FunctionalUnit {
 
-    @Id @Column(name = "NAME")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "ID")
+    private Integer id;
+    @Column(name = "NAME")
     private String name;
     @Column(name = "ADDRESS")
     private String address;

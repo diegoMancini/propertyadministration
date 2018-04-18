@@ -20,6 +20,8 @@ public class DatabaseOps {
     private Configuration configuration = new Configuration();
     private SessionFactory sessionFactory = configuration.configure().buildSessionFactory();
 
+    //BASIC
+
     public static DatabaseOps getInstance(){
         if (INSTANCE == null)  INSTANCE = new DatabaseOps();
         return INSTANCE;
@@ -27,7 +29,6 @@ public class DatabaseOps {
 
     public Session openSession() {
         return sessionFactory.openSession();
-
     }
 
     public Transaction beginTransaction(Session session) {
@@ -38,9 +39,62 @@ public class DatabaseOps {
         sessionFactory.close();
     }
 
+    //ACCOUNT
+
+    public void addAccountToDatabase(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email, String password)  {
+        Account newUser = new Account(name, surname, id, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phone, email, password);
+        Session session = openSession();
+        Transaction transaction = beginTransaction(session);
+        session.save(newUser);
+        transaction.commit();
+        session.close();
+    }
+
+    public void removeAccountFromDatabase(String email) {
+        Session session = openSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(session.get(Account.class, email));
+        transaction.commit();
+        session.close();
+    }
+
+    public List<Account> getAccountsInDatabase() {
+        return null;
+    }
+
+    public void addCreatedAccountToDatabase(Account account) {
+        Session session = openSession();
+        Transaction transaction = beginTransaction(session);
+        session.save(account);
+        transaction.commit();
+        session.close();
+    }
+
     public Account getUser(String username) {
         Session session = openSession();
         return session.get(Account.class, username);
+    }
+
+    //PROPERTY
+
+    public void addPropertyToDatabase(String name, String description, String address, String mail) {
+        Property property = new Property(name, description, address);
+        Session session = openSession();
+        Transaction transaction = session.beginTransaction();
+        session.get(Account.class, mail).addProperty(property);
+        session.save(property);
+        transaction.commit();
+        session.close();
+    }
+
+    public void removePropertyFromDatabase(String name, String mail) {
+        Session session = openSession();
+        Transaction transaction = session.beginTransaction();
+        Property property = session.get(Account.class,mail).getSpecificProperty(name);
+        session.get(Account.class, mail).removeProperty(property);
+        session.delete(property);
+        transaction.commit();
+        session.close();
     }
 
     public Property getProperty(String name, String username) {
@@ -55,40 +109,7 @@ public class DatabaseOps {
         return null;
     }
 
-    public FunctionalUnit getFunctionalUnit(String choice, Account account, Property aProperty) {
-        Session session = openSession();
-        for (Property property : session.get(Account.class, account.getEmail()).getProperties() ) {
-            if (property.getName().equals(aProperty.getName())) {
-                for (FunctionalUnit functionalUnit : property.getFunctionalUnits()) {
-                    if (functionalUnit.getName().equals(choice)) {
-                        return functionalUnit;
-                    }
-                }
-            } else {
-                System.out.println("ERROR");
-            }
-        }
-        return null;
-    }
-
-    public void addAccountToDatabase(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email, String password)  {
-        Account newUser = new Account(name, surname, id, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phone, email, password);
-        Session session = openSession();
-        Transaction transaction = beginTransaction(session);
-        session.save(newUser);
-        transaction.commit();
-        session.close();
-    }
-
-    public void addPropertyToDatabase(String name, String description, String address, String mail) {
-        Property property = new Property(name, description, address);
-        Session session = openSession();
-        Transaction transaction = session.beginTransaction();
-        session.get(Account.class, mail).addProperty(property);
-        session.save(property);
-        transaction.commit();
-        session.close();
-    }
+    //FUNCTIONAL UNITS
 
     public void addFunctionalUnitToDatabase(String email, Property aProperty, String name, String type, String address) {
         Session session = openSession();
@@ -122,24 +143,6 @@ public class DatabaseOps {
         session.close();
     }
 
-    public void removeAccountFromDatabase(String email) {
-        Session session = openSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(session.get(Account.class, email));
-        transaction.commit();
-        session.close();
-    }
-
-    public void removePropertyFromDatabase(String name, String mail) {
-        Session session = openSession();
-        Transaction transaction = session.beginTransaction();
-        Property property = session.get(Account.class,mail).getSpecificProperty(name);
-        session.get(Account.class, mail).removeProperty(property);
-        session.delete(property);
-        transaction.commit();
-        session.close();
-    }
-
     public void removeFunctionalUnitFromDatabase(String email, Property aProperty, String name) {
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
@@ -157,17 +160,22 @@ public class DatabaseOps {
         session.close();
     }
 
-    public List<Account> getAccountsInDatabase() {
+    public FunctionalUnit getFunctionalUnit(String choice, Account account, Property aProperty) {
+        Session session = openSession();
+        for (Property property : session.get(Account.class, account.getEmail()).getProperties() ) {
+            if (property.getName().equals(aProperty.getName())) {
+                for (FunctionalUnit functionalUnit : property.getFunctionalUnits()) {
+                    if (functionalUnit.getName().equals(choice)) {
+                        return functionalUnit;
+                    }
+                }
+            } else {
+                System.out.println("ERROR");
+            }
+        }
         return null;
     }
 
-//    public void addCreatedAccountToDatabase(Account account) {
-//        Session session = openSession();
-//        Transaction transaction = beginTransaction(session);
-//        session.save(account);
-//        transaction.commit();
-//        session.close();
-//    }
 //
 //    public void addPropertyToDatabase(String name, String description, String address) {
 //        Property property = new Property(name, description, address);

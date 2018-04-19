@@ -11,23 +11,15 @@
         <title>Add Tenant</title>
         <style>
             body{
-                background-color: rgb(236, 255, 253);
+                background-color: rgb(38, 57, 123);
                 font-family: Arial, sans-serif;
-            }
-
-            h1{
-                font-family: Arial, sans-serif;
-                text-align: center;
-                margin-top: 40px;
-                font-size: 40px;
-                color: rgb(92, 216, 190);
             }
 
             h3{
                 font-family: Arial, sans-serif;
                 text-align: center;
                 font-size: 30px;
-                color: rgb(73, 161, 140);
+                color: rgb(204, 155, 0);
                 width: 400px;
             }
 
@@ -56,7 +48,7 @@
             }
 
             input[type=button], input[type=submit]{
-                background-color: rgb(47, 152, 182);
+                background-color: rgb(255, 189, 7);
                 cursor: pointer;
                 margin: auto;
                 display:block;
@@ -72,6 +64,7 @@
                 font-family: Arial, sans-serif;
                 font-size: 20px;
                 font-style: italic;
+                color: rgb(73, 211, 255);
             }
         </style>
     </head>

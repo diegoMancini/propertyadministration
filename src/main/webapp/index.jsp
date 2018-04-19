@@ -14,27 +14,31 @@
               height: 100%;
               align-items: center;
               justify-content: center;
-              background-color: rgb(236, 255, 253);
+              background-color: rgb(38, 57, 123);
+              background-image: url("/images/houseBlueprint.jpg");
+              background-size: cover;
+              background-position: center;
+
           }
 
           h1{
               text-align: center;
-              margin-top: 40px;
+              margin-top: 100px;
               font-family: Arial, sans-serif;
               font-size: 50px;
-              color: rgb(92, 216, 190);
+              color: rgb(204, 155, 0);
+              font-weight: bold;
           }
 
           input[type = button]{
-              background-color: rgb(47, 152, 182);
+              background-color: rgb(255, 189, 7);
               cursor: pointer;
               margin:auto;
               display:block;
-              border: 0;
               padding: 5px;
               font-size: 16px;
-              border: rgb(0,0,0);
               color: rgb(255, 255, 255);
+              border: 0;
           }
 
           li {
@@ -42,11 +46,14 @@
               padding: 0 10px 0 5px;
               font-family: Arial, sans-serif;
               font-size: 20px;
-              color: rgb(73, 161, 140);
+              color: rgb(73, 211, 255);
+              font-weight: bold;
+              border: 2px;
+              border-color: white;
           }
 
           ul{
-              margin-top: 35px;
+              margin-top: 50px;
               text-align: center;
           }
       </style>
@@ -54,11 +61,11 @@
   <body>
     <h1>House Admin</h1>
     <form>
-        <input type="button" value="Sign Up" onclick="window.location.href='http://localhost:8080/signup.jsp'" />
+        <input type="button" value="Crear cuenta" onclick="window.location.href='http://localhost:8080/signup.jsp'" />
     </form>
 
     <form>
-        <input type="button" value="Log in" onclick="window.location.href='http://localhost:8080/login.jsp'" />
+        <input type="button" value="Iniciar sesion" onclick="window.location.href='http://localhost:8080/login.jsp'" />
     </form>
     <ul><li>Diego Mancini</li></ul>
   </body>

@@ -31,8 +31,14 @@ public class NewAccountServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        databaseOps.addAccountToDatabase(name, surname, identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phoneNumber, email, password);
+        String page = "";
+        if(!databaseOps.hasAccount(email)){
+            databaseOps.addAccountToDatabase(name, surname, identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phoneNumber, email, password);
+            page += "/home.jsp";
+        } else {
+            page += "/signupError.jsp";
+        }
 
-        resp.sendRedirect("/home.jsp");
+        resp.sendRedirect(page);
     }
 }

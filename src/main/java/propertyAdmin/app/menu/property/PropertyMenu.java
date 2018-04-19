@@ -43,8 +43,9 @@ public class PropertyMenu extends LogInMenu {
 
     private void listAllProperties(Account account) {
         try {
+            System.out.println("\nSus propiedades: \n");
             for (int i = 0; i < account.getProperties().size(); i++) {
-                System.out.println("\n" + i+1 + ") Name: " + account.getProperties().get(i).getName());
+                System.out.println("\n" + i+1 + ") " + account.getProperties().get(i).getName());
             }
         } catch (NullPointerException e) {
             System.out.println("NO HAY");
@@ -62,7 +63,7 @@ public class PropertyMenu extends LogInMenu {
         String name = Scanner.getString("Nombre: ");
         String description = Scanner.getString("Descripcion: ");
         String address = Scanner.getString("Direccion: ");
-        getDatabaseOps().addPropertyToDatabase(name, description, address, account.getEmail());
+        getDatabaseOps().addPropertyToDatabase(name, description,address, account.getEmail());
     }
 
     private void removeProperty(Account account) {

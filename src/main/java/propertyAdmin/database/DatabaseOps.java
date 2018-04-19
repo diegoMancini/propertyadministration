@@ -12,6 +12,7 @@ import propertyAdmin.property.structure.specifics.Garage;
 import propertyAdmin.property.structure.specifics.LivingPlace;
 import propertyAdmin.property.structure.specifics.Office;
 
+import java.io.File;
 import java.util.List;
 
 public class DatabaseOps {
@@ -70,9 +71,15 @@ public class DatabaseOps {
         session.close();
     }
 
-    public Account getUser(String username) {
+    public Account getAccount(String username) {
         Session session = openSession();
         return session.get(Account.class, username);
+    }
+
+    public boolean hasAccount(String username) {
+        Session session = openSession();
+        if (session.contains("Account", session.get(Account.class, username))) return true;
+        return false;
     }
 
     //PROPERTY
@@ -107,6 +114,25 @@ public class DatabaseOps {
             }
         }
         return null;
+    }
+
+    public List<Property> getAccountProperties(String username) {
+        Account user = getAccount(username);
+        return user.getProperties();
+    }
+
+    public void addFileToProperty(String username, String property, File file){
+        Session session = openSession();
+        Account user = session.get(Account.class, username);
+        Property result = null;
+        for (Property propertyResult : user.getProperties()) {
+            if(propertyResult.getName().toLowerCase().equals(property.toLowerCase())){
+                result = propertyResult;
+            }
+        }
+        Property propertyToAdd = session.find(Property.class, result);
+
+        propertyToAdd.setImage(file);
     }
 
     //FUNCTIONAL UNITS

@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Sign up</title>
+        <title>Crear cuenta</title>
         <style>
             body{
-                background-color: rgb(236, 255, 253);
+                background-color: rgb(38, 57, 123);
                 font-family: Arial, sans-serif;
             }
 
@@ -19,7 +19,7 @@
                 font-family: Arial, sans-serif;
                 text-align: center;
                 font-size: 30px;
-                color: rgb(73, 161, 140);
+                color: rgb(204, 155, 0);
             }
 
             form{
@@ -45,14 +45,17 @@
                 font-family: Arial, sans-serif;
             }
 
+            label{
+                color: rgb(255,255,255);
+            }
+
             input[type=button], input[type=submit]{
-                background-color: rgb(47, 152, 182);
+                background-color: rgb(255, 189, 7);
                 cursor: pointer;
                 display:block;
                 border: 0;
                 padding: 5px;
                 font-size: 16px;
-                border: rgb(0,0,0);
                 color: rgb(255, 255, 255);
                 margin: 10px 0 10px 0;
             }

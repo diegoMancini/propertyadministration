@@ -3,6 +3,7 @@ package propertyAdmin.property.structure;
 import propertyAdmin.rents.Contract;
 
 import javax.persistence.*;
+import java.io.File;
 
 @Entity
 @Table(name = "FUNCTIONAL_UNITS")
@@ -32,6 +33,8 @@ public abstract class FunctionalUnit {
     private String bedroomFurniture;
     @Column(name = "BATHROOM_FURNITURE")
     private String bathFurniture;
+    @Column(name = "IMAGE")
+    private File file;
 
     public FunctionalUnit() {
     }
@@ -47,6 +50,7 @@ public abstract class FunctionalUnit {
         this.bedroomFurniture = bedroomFurniture;
         this.bathFurniture = bathFurniture;
         contract = null;
+        file = null;
     }
 
     public FunctionalUnit(String name, String type, String address) {
@@ -89,6 +93,11 @@ public abstract class FunctionalUnit {
     public String getBusinessType() {
         return businessType;
     }
+
+    public void setImage(File image) {
+        this.file = image;
+    }
+
 
     @Override
     public String toString() {

@@ -9,8 +9,8 @@
         <property name="connection.username">Diegonfx</property>
         <property name="connection.password">Perrito1</property>
 
-        <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">2</property>
+        <!--&lt;!&ndash; JDBC connection pool (use the built-in) &ndash;&gt;-->
+        <!--<property name="connection.pool_size">2</property>-->
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>

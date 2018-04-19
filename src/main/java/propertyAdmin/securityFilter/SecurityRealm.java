@@ -10,7 +10,7 @@ public class SecurityRealm extends SimpleSecurityRealmBase {
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
     public boolean booleanAuthenticate(String username, String password) {
-        Account newUser = databaseOps.getUser(username);
+        Account newUser = databaseOps.getAccount(username);
         return newUser.getPassword().equals(password);
     }
 

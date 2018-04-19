@@ -7,6 +7,7 @@ import propertyAdmin.services.Services;
 import propertyAdmin.taxes.Taxes;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +46,8 @@ public class Property {
    private Integer amountGarage;
    @OneToMany(cascade = {CascadeType.ALL})
    private List<Expenses> expenses;
+   @Column(name = "IMAGE")
+   private File file;
 
    public Property() {
    }
@@ -63,6 +66,7 @@ public class Property {
       amountOffice = 0;
       amountBusinessPremise = 0;
       amountGarage = 0;
+      file = null;
    }
 
 
@@ -118,6 +122,11 @@ public class Property {
       return amountGarage;
    }
 
+   public void setImage(File image) {
+      this.file = image;
+   }
+
+
    public void addFunctionalUnit(FunctionalUnit functionalUnit) {
       functionalUnits.add(functionalUnit);
       totalAmount++;
@@ -129,7 +138,6 @@ public class Property {
          default: break;
       }
    }
-
 
    @Override
    public String toString() {

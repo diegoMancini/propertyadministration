@@ -11,27 +11,29 @@
     <title>Log in error</title>
     <style>
         body{
-            background-color: rgb(236, 255, 253);
+            background-color: rgb(38, 57, 123);
             font-family: Arial, sans-serif;
         }
+
         h1{
             text-align: center;
             margin-top: 40px;
             font-family: Arial, sans-serif;
             font-size: 50px;
-            color: rgb(92, 216, 190);
+            color: rgb(204, 155, 0);
         }
+
         p{
             text-align: center;
             margin-top: 30px;
             font-family: Arial, sans-serif;
             font-size: 20px;
+            color: rgb(73, 211, 255);
         }
     </style>
 </head>
 <body>
-    <h1>Login Error</h1>
-    <%--<%@include file="/menu.jsp" %>--%>
-    <p>Wrong username or password, please <a href="<%=response.encodeURL("login.jsp")%>">retry</a>.</p>
+    <h1>Error iniciando sesion</h1>
+    <p>Combinacion erronea de datos. <a href="<%=response.encodeURL("login.jsp")%>">Intente de nuevo</a>.</p>
 </body>
 </html>

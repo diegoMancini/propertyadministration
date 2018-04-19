@@ -44,7 +44,7 @@ public class SignUpMenu extends Menu {
             String zipCode = Scanner.getString("Codigo postal: ");
             String address = Scanner.getString("Direccion: ");
             String phone = Scanner.getString("Telefono: ");
-            String email = Scanner.getString("Mail: ");
+            String email = Scanner.getString("Mail: ").toLowerCase();
             String password = Scanner.getString("Contraseña: ");
             getDatabaseOps().addAccountToDatabase(name, surname, id, nationality, maritalStatus,address,country,province,city,town, zipCode, phone, email, password);
         } catch (Exception e) {

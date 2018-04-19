@@ -33,12 +33,12 @@ public class LogInMenu extends Menu {
     public void askForLoginInfo() {
         boolean rightLoginInfo = false;
         System.out.println("Ingrese los siguientes datos por favor \n");
-        String mail = Scanner.getString("Mail: ");
+        String mail = Scanner.getString("Mail: ").toLowerCase();
         String password = Scanner.getString("Contraseña: ");
         do {
-            if (getDatabaseOps().getUser(mail).getPassword().equals(password)) {
-                Account account = getDatabaseOps().getUser(mail);
-                getDatabaseOps().getUser(mail).setLogged(true);
+            if (getDatabaseOps().getAccount(mail).getPassword().equals(password)) {
+                Account account = getDatabaseOps().getAccount(mail);
+                getDatabaseOps().getAccount(mail).setLogged(true);
                 rightLoginInfo = true;
                 new HomeMenu().operate(account);
             } else {

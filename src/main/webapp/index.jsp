@@ -61,11 +61,11 @@
   <body>
     <h1>House Admin</h1>
     <form>
-        <input type="button" value="Crear cuenta" onclick="window.location.href='http://localhost:8080/signup.jsp'" />
+        <input type="button" value="Crear cuenta" onclick="window.location.href='/signup.jsp'" />
     </form>
 
     <form>
-        <input type="button" value="Iniciar sesion" onclick="window.location.href='http://localhost:8080/login.jsp'" />
+        <input type="button" value="Iniciar sesion" onclick="window.location.href='/login.jsp'" />
     </form>
     <ul><li>Diego Mancini</li></ul>
   </body>

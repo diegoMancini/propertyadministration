@@ -97,7 +97,7 @@
             <input type="submit" value="Add Property"><br>
 
             <form>
-                <input type="button" value="Cancel" onclick="window.location.href='http://localhost:8080/properties.jsp'" /><br>
+                <input type="button" value="Cancel" onclick="window.location.href='/properties.jsp'" /><br>
             </form>
 
         </form>

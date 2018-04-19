@@ -72,6 +72,7 @@
                 out.println("\nLista de propiedades: ");
                 for (int i = 0; i < properties.size(); i++) {
                     printPropery(out, properties.get(i), i+1);
+                    out.println("");
                 }
             } else {
                 out.println("Here we display your properties once you add them");
@@ -82,10 +83,13 @@
             <input type="button" value="Add Property" onclick="window.location.href='addProperty.jsp'" />
         </form>
         <form>
-            <input type="button" value="Delete Property" onclick="window.location.href='http://localhost:8080/deleteProperty.jsp'" />
+            <input type="button" value="Delete Property" onclick="window.location.href='deleteProperty.jsp'" />
         </form>
+    <form>
+        <input type="checkbox" value="Choose Property to access" onclick="window.location.href='goToProperty.jsp'"/>
+    </form>
         <form>
-            <input type="button" value="Go back" onclick="window.location.href='http://localhost:8080/home.jsp'" />
+            <input type="button" value="Go back" onclick="window.location.href='/home.jsp'" />
         </form>
     </body>
 </html>

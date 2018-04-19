@@ -39,10 +39,23 @@ public abstract class FunctionalUnit {
     public FunctionalUnit() {
     }
 
-    public FunctionalUnit(String name, String address, Integer bathroomsAmount, String phone, String type, String businessType, String kitchenFurniture, String bedroomFurniture, String bathFurniture) {
+    public FunctionalUnit(String name, String address) {
         this.name = name;
         this.address = address;
-        this.type = type;
+        this.bathroomsAmount = 0;
+        this.phone = "0800PANZON";
+        this.businessType = "ALQUILER";
+        this.kitchenFurniture = "COCINA COMEDOR";
+        this.bedroomFurniture = "CAMA";
+        this.bathFurniture = "NADA";
+        contract = null;
+        type = getType();
+    }
+
+    public FunctionalUnit(String name, String address, Integer bathroomsAmount, String phone, String businessType,
+                          String kitchenFurniture, String bedroomFurniture, String bathFurniture) {
+        this.name = name;
+        this.address = address;
         this.bathroomsAmount = bathroomsAmount;
         this.phone = phone;
         this.businessType = businessType;
@@ -50,54 +63,85 @@ public abstract class FunctionalUnit {
         this.bedroomFurniture = bedroomFurniture;
         this.bathFurniture = bathFurniture;
         contract = null;
-        file = null;
+//        file = null;
+        type = getType();
     }
 
-    public FunctionalUnit(String name, String type, String address) {
-        this.name = name;
-        this.type = type;
-        this.address = address;
-        this.bathroomsAmount = null;
-        this.phone = null;
-        this.businessType = null;
-        this.kitchenFurniture = null;
-        this.bedroomFurniture = null;
-        this.bathFurniture = null;
-        contract = null;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getAddress() {
         return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Contract getContract() {
         return contract;
     }
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
 
     public Integer getBathroomsAmount() {
         return bathroomsAmount;
+    }
+    public void setBathroomsAmount(Integer bathroomsAmount) {
+        this.bathroomsAmount = bathroomsAmount;
     }
 
     public String getPhone() {
         return phone;
     }
-
-    public String getType() {
-        return type;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getBusinessType() {
         return businessType;
     }
-
-    public void setImage(File image) {
-        this.file = image;
+    public void setBusinessType(String businessType) {
+        this.businessType = businessType;
     }
 
+    public String getKitchenFurniture() {
+        return kitchenFurniture;
+    }
+    public void setKitchenFurniture(String kitchenFurniture) {
+        this.kitchenFurniture = kitchenFurniture;
+    }
+
+    public String getBedroomFurniture() {
+        return bedroomFurniture;
+    }
+    public void setBedroomFurniture(String bedroomFurniture) {
+        this.bedroomFurniture = bedroomFurniture;
+    }
+
+    public String getBathFurniture() {
+        return bathFurniture;
+    }
+    public void setBathFurniture(String bathFurniture) {
+        this.bathFurniture = bathFurniture;
+    }
+
+    public File getFile() {
+        return file;
+    }
+    public void setFile(File file) {
+        this.file = file;
+    }
+
+    public abstract String getType();
 
     @Override
     public String toString() {

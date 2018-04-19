@@ -12,6 +12,7 @@
         <!--&lt;!&ndash; JDBC connection pool (use the built-in) &ndash;&gt;-->
         <!--<property name="connection.pool_size">2</property>-->
 
+
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
@@ -28,7 +29,6 @@
         <mapping class="propertyAdmin.property.details.Blueprint"/>
         <mapping class="propertyAdmin.property.details.Deed"/>
         <mapping class="propertyAdmin.property.structure.specifics.BusinessPremise"/>
-        <mapping class="propertyAdmin.property.structure.specifics.Commerce"/>
         <mapping class="propertyAdmin.property.structure.specifics.Garage"/>
         <mapping class="propertyAdmin.property.structure.specifics.LivingPlace"/>
         <mapping class="propertyAdmin.property.structure.specifics.Office"/>

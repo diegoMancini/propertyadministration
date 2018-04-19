@@ -1,16 +1,30 @@
 package propertyAdmin.property.structure.specifics;
 
+import propertyAdmin.property.structure.FunctionalUnit;
+
 import javax.persistence.*;
 
 @Entity
-public class BusinessPremise extends Commerce {
+public class BusinessPremise extends FunctionalUnit {
 
    @Column(name = "HAS_SHOP_WINDOW")
    private boolean hasShopWindow;
 
-   public BusinessPremise() { }
-
-   public BusinessPremise(String name, String type, String address) {
-      super(name, type, address);
+   public BusinessPremise() {
    }
+
+   public BusinessPremise(String name, String address) {
+      super(name, address);
+   }
+
+   public boolean isHasShopWindow() {
+      return hasShopWindow;
+   }
+
+   @Override
+   public String getType() {
+      return "Local comercial";
+   }
+
+
 }

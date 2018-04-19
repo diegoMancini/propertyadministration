@@ -10,7 +10,12 @@ public class Garage extends FunctionalUnit {
    public Garage() {
    }
 
-   public Garage(String name, String type, String address) {
-      super(name, type, address);
+   public Garage(String name, String address) {
+      super(name, address);
+   }
+
+   @Override
+   public String getType() {
+      return "Garage";
    }
 }

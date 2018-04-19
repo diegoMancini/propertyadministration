@@ -24,7 +24,36 @@ public class LivingPlace extends FunctionalUnit {
     public LivingPlace() {
     }
 
-    public LivingPlace(String name, String type, String address) {
-        super(name, type, address);
+    public LivingPlace(String name, String address) {
+        super(name, address);
+    }
+
+    public Integer getBedroomsAmount() {
+        return bedroomsAmount;
+    }
+
+    public String getKitchenType() {
+        return kitchenType;
+    }
+
+    public boolean isHasGrill() {
+        return hasGrill;
+    }
+
+    public boolean isHasYard() {
+        return hasYard;
+    }
+
+    public boolean isHasBalcony() {
+        return hasBalcony;
+    }
+
+    public boolean isHasGarage() {
+        return hasGarage;
+    }
+
+    @Override
+    public String getType() {
+        return "Vivienda";
     }
 }

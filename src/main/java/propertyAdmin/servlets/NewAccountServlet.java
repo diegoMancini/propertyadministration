@@ -1,6 +1,7 @@
 package propertyAdmin.servlets;
 
 import propertyAdmin.database.DatabaseOps;
+import propertyAdmin.persons.Account;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,9 +32,12 @@ public class NewAccountServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
+        Account account = new Account(name, surname, identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince,
+                addressCity, addressTown, addressZipCode, phoneNumber, email, password);
+
         String page = "";
         if(!databaseOps.hasAccount(email)){
-            databaseOps.addAccountToDatabase(name, surname, identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phoneNumber, email, password);
+            databaseOps.addAccountToDatabase(account);
             page += "/home.jsp";
         } else {
             page += "/signupError.jsp";

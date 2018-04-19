@@ -74,7 +74,7 @@
             <input type="submit" value="Log in">
 
             <form>
-                <input type="button" value="Go back" onclick="window.location.href='http://localhost:8080/index.jsp'" />
+                <input type="button" value="Go back" onclick="window.location.href='/index.jsp'" />
             </form>
         </form>
     </body>

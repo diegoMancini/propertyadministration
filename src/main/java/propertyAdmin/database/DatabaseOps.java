@@ -5,12 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import propertyAdmin.persons.Account;
+import propertyAdmin.property.details.Blueprint;
+import propertyAdmin.property.details.Deed;
 import propertyAdmin.property.structure.FunctionalUnit;
 import propertyAdmin.property.structure.Property;
-import propertyAdmin.property.structure.specifics.BusinessPremise;
-import propertyAdmin.property.structure.specifics.Garage;
-import propertyAdmin.property.structure.specifics.LivingPlace;
-import propertyAdmin.property.structure.specifics.Office;
+import propertyAdmin.rents.Contract;
 
 import java.io.File;
 import java.util.List;
@@ -36,17 +35,19 @@ public class DatabaseOps {
         return session.beginTransaction();
     }
 
+    public void closeSession(Session session) {
+        session.close();
+    }
     public void closeSessionFactory() {
         sessionFactory.close();
     }
 
     //ACCOUNT
 
-    public void addAccountToDatabase(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email, String password)  {
-        Account newUser = new Account(name, surname, id, nationality, maritalStatus, address, addressCountry, addressProvince, addressCity, addressTown, addressZipCode, phone, email, password);
+    public void addAccountToDatabase(Account account)  {
         Session session = openSession();
         Transaction transaction = beginTransaction(session);
-        session.save(newUser);
+        session.save(account);
         transaction.commit();
         session.close();
     }
@@ -63,14 +64,6 @@ public class DatabaseOps {
         return null;
     }
 
-    public void addCreatedAccountToDatabase(Account account) {
-        Session session = openSession();
-        Transaction transaction = beginTransaction(session);
-        session.save(account);
-        transaction.commit();
-        session.close();
-    }
-
     public Account getAccount(String username) {
         Session session = openSession();
         return session.get(Account.class, username);
@@ -84,8 +77,7 @@ public class DatabaseOps {
 
     //PROPERTY
 
-    public void addPropertyToDatabase(String name, String description, String address, String mail) {
-        Property property = new Property(name, description, address);
+    public void addPropertyToDatabase(String mail , Property property) {
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
         session.get(Account.class, mail).addProperty(property);
@@ -94,31 +86,55 @@ public class DatabaseOps {
         session.close();
     }
 
-    public void removePropertyFromDatabase(String name, String mail) {
+    public void addCompletePropertyToDatabase(String email, Property property, Blueprint blueprint, Deed deed) {
+        property.setBlueprint(blueprint);
+        property.setDeed(deed);
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
-        Property property = session.get(Account.class,mail).getSpecificProperty(name);
+        session.get(Account.class, email).addProperty(property);
+        session.save(property);
+        session.save(blueprint);
+        session.save(deed);
+        transaction.commit();
+        session.close();
+    }
+
+    public void removePropertyFromDatabase(int choice, String mail) {
+        Session session = openSession();
+        Transaction transaction = session.beginTransaction();
+        Property property = session.get(Account.class,mail).getSpecificPropertyByIndex(choice);
         session.get(Account.class, mail).removeProperty(property);
         session.delete(property);
         transaction.commit();
         session.close();
     }
 
-    public Property getProperty(String name, String username) {
+    public void addDeedToProperty(String mail, Property propertyName, Deed deed) {
         Session session = openSession();
-        for (Property property : session.get(Account.class, username).getProperties() ) {
-            if (property.getName().equals(name)) {
-                return property;
-            } else {
-                System.out.println("ERROR");
+        Transaction transaction = session.beginTransaction();
+        Account account1 = session.get(Account.class, mail);
+        for (Property property : account1.getProperties()) {
+            if (property.getId().equals(propertyName.getId())) {
+                property.setDeed(deed);
             }
         }
-        return null;
+        session.save(deed);
+        transaction.commit();
+        closeSession(session);
     }
 
-    public List<Property> getAccountProperties(String username) {
-        Account user = getAccount(username);
-        return user.getProperties();
+    public void addBlueprintToProperty(String mail, Property propertyName, Blueprint blueprint) {
+        Session session = openSession();
+        Transaction transaction = session.beginTransaction();
+        Account account1 = session.get(Account.class, mail);
+        for (Property property : account1.getProperties()) {
+            if (property.getId().equals(propertyName.getId())) {
+                property.setBlueprint(blueprint);
+            }
+        }
+        session.save(blueprint);
+        transaction.commit();
+        closeSession(session);
     }
 
     public void addFileToProperty(String username, String property, File file){
@@ -132,51 +148,65 @@ public class DatabaseOps {
         }
         Property propertyToAdd = session.find(Property.class, result);
 
-        propertyToAdd.setImage(file);
+        propertyToAdd.setFile(file);
     }
 
-    //FUNCTIONAL UNITS
+    public Property getProperty(int choice, String username) {
+        Session session = openSession();
+        return session.get(Account.class, username).getProperties().get(choice);
+    }
 
-    public void addFunctionalUnitToDatabase(String email, Property aProperty, String name, String type, String address) {
+    public List<Property> getAccountProperties(String username) {
+        Account user = getAccount(username);
+        return user.getProperties();
+    }
+
+
+    //FUNCTIONAL UNITS
+    public void addFunctionalUnitToDatabase(String email, Property aProperty, FunctionalUnit functionalUnit) {
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
         Account account = session.get(Account.class, email);
-        FunctionalUnit functionalUnit = null;
-        switch (type) {
-            case "Living Place":
-                functionalUnit = new LivingPlace(name, type, address);
-                break;
-            case "Office":
-                functionalUnit = new Office(name, type, address);
-                break;
-            case "Business Premise":
-                functionalUnit = new BusinessPremise(name, type, address);
-                break;
-            case "Garage":
-                functionalUnit = new Garage(name, type, address);
-                break;
-            default:
-                System.out.println("AZA");
-                break;
-        }
         for (Property property : account.getProperties()) {
-            if (property.getName().equals(aProperty.getName())) {
+            if (property.getId().equals(aProperty.getId())) {
                 property.addFunctionalUnit(functionalUnit);
             }
         }
+//        aProperty.addFunctionalUnit(functionalUnit);
         session.save(functionalUnit);
         transaction.commit();
         session.close();
     }
 
-    public void removeFunctionalUnitFromDatabase(String email, Property aProperty, String name) {
+    public void addContractToFunctionalUnitToDatabase(String email, Property property, FunctionalUnit functionalUnit, Contract contract) {
+        Session session = openSession();
+        Transaction transaction = session.beginTransaction();
+        Account account = session.get(Account.class, email);
+        for (Property aux : account.getProperties()) {
+            if (aux.getId().equals(property.getId())) {
+                for (FunctionalUnit fuAux : property.getFunctionalUnits()) {
+                    if(fuAux.getId().equals(functionalUnit.getId())) {
+                        fuAux.setContract(contract);
+                    }
+                }
+            }
+        }
+        session.save(contract);
+        session.save(contract.getOwner());
+        session.save(contract.getTenant());
+        session.save(contract.getGuarantor());
+        transaction.commit();
+        closeSession(session);
+    }
+
+    public void removeFunctionalUnitFromDatabase(String email, Property aProperty, FunctionalUnit name) {
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
         Account account = session.get(Account.class, email);
         for (int i = 0; i < account.getProperties().size(); i++) {
             if (account.getProperties().get(i).getName().equals(aProperty.getName())) {
                 for (FunctionalUnit functionalUnit1 : account.getProperties().get(i).getFunctionalUnits()) {
-                    if (functionalUnit1.getName().equals(name))
+                    if (functionalUnit1.getId().equals(name.getId()))
                         account.getProperties().get(i).getFunctionalUnits().remove(functionalUnit1);
                     session.delete(functionalUnit1);
                     transaction.commit();
@@ -186,39 +216,25 @@ public class DatabaseOps {
         session.close();
     }
 
-    public FunctionalUnit getFunctionalUnit(String choice, Account account, Property aProperty) {
+    public FunctionalUnit getFunctionalUnit(int choice, Account account, Property aProperty) {
         Session session = openSession();
+        FunctionalUnit functionalUnit = null;
         for (Property property : session.get(Account.class, account.getEmail()).getProperties() ) {
             if (property.getName().equals(aProperty.getName())) {
-                for (FunctionalUnit functionalUnit : property.getFunctionalUnits()) {
-                    if (functionalUnit.getName().equals(choice)) {
-                        return functionalUnit;
-                    }
-                }
+                functionalUnit = property.getFunctionalUnits().get(choice);
             } else {
                 System.out.println("ERROR");
             }
         }
-        return null;
+        return functionalUnit;
     }
 
-//
-//    public void addPropertyToDatabase(String name, String description, String address) {
-//        Property property = new Property(name, description, address);
-//        Session session = openSession();
-//        Transaction transaction = session.beginTransaction();
-//        session.save(property);
-//        transaction.commit();
-//        session.close();
-//    }
-//
-//    public void removePropertyFromDatabase(String name) {
-//        Session session = openSession();
-//        Transaction transaction = session.beginTransaction();
-//        Property property = session.get(Property.class, name);
-//        session.delete(property);
-//        transaction.commit();
-//        session.close();
-//    }
-
+    public Account doLogin(String mail, String password) {
+        Account account = getAccount(mail);
+        if (account.getPassword().equals(password)) {
+            return account;
+        } else {
+            return null;
+        }
+    }
 }

@@ -2,6 +2,7 @@ package propertyAdmin.app.menu.form;
 
 import propertyAdmin.app.abc.Menu;
 import propertyAdmin.app.abc.Scanner;
+import propertyAdmin.persons.Account;
 
 public class SignUpMenu extends Menu {
 
@@ -46,7 +47,8 @@ public class SignUpMenu extends Menu {
             String phone = Scanner.getString("Telefono: ");
             String email = Scanner.getString("Mail: ").toLowerCase();
             String password = Scanner.getString("Contraseña: ");
-            getDatabaseOps().addAccountToDatabase(name, surname, id, nationality, maritalStatus,address,country,province,city,town, zipCode, phone, email, password);
+            Account account = new Account(name, surname, id, nationality, maritalStatus, address, country, province, city, town, zipCode, phone, email, password);
+            getDatabaseOps().addAccountToDatabase(account);
         } catch (Exception e) {
             System.out.println("Use otro mail");
         }

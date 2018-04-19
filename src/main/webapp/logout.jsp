@@ -47,7 +47,7 @@
     <h3>El usuario <i><%=request.getRemoteUser()%></i> ha cerrado su sesion.</h3>
     <% session.invalidate(); %>
     <form>
-        <input type="button" value="Go home" onclick="window.location.href='http://localhost:8080/home.jsp'" />
+        <input type="button" value="Go home" onclick="window.location.href='/home.jsp'" />
     </form>
 </body>
 </html>

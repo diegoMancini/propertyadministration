@@ -116,7 +116,7 @@ public class   Account {
    public void addProperty(Property property) {
        properties.add(property);
    }
-   public Property getSpecificProperty(String name) {
+   public Property getSpecificPropertyByName(String name) {
        for (Property property : properties) {
           if (property.getName().equals(name)) {
              return property;
@@ -124,6 +124,9 @@ public class   Account {
              System.out.println("NOT FOUND");
           }
        } return null;
+   }
+   public Property getSpecificPropertyByIndex(int index) {
+       return properties.get(index);
    }
    public void removeProperty(Property property) {
        properties.remove(property);

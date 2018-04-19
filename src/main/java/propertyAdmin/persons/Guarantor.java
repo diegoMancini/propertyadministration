@@ -55,4 +55,81 @@ public class Guarantor {
       this.phone = phone;
       this.email = email;
    }
+
+   public Guarantor(String name, String surname, String id) {
+      this.name = name;
+      this.surname = surname;
+      this.id = id;
+   }
+
+   public String getName() {
+      return name;
+   }
+
+   public String getSurname() {
+      return surname;
+   }
+
+   public String getId() {
+      return id;
+   }
+
+   public String getNationality() {
+      return nationality;
+   }
+
+   public String getMaritalStatus() {
+      return maritalStatus;
+   }
+
+   public String getAddress() {
+      return address;
+   }
+
+   public String getAddressCountry() {
+      return addressCountry;
+   }
+
+   public String getAddressProvince() {
+      return addressProvince;
+   }
+
+   public String getAddressCity() {
+      return addressCity;
+   }
+
+   public String getAddressTown() {
+      return addressTown;
+   }
+
+   public String getAddressZipCode() {
+      return addressZipCode;
+   }
+
+   public String getPhone() {
+      return phone;
+   }
+
+   public String getEmail() {
+      return email;
+   }
+
+   @Override
+   public String toString() {
+      return "Guarantor{" +
+              "name='" + name + '\'' +
+              ", surname='" + surname + '\'' +
+              ", id='" + id + '\'' +
+              ", nationality='" + nationality + '\'' +
+              ", maritalStatus='" + maritalStatus + '\'' +
+              ", address='" + address + '\'' +
+              ", addressCountry='" + addressCountry + '\'' +
+              ", addressProvince='" + addressProvince + '\'' +
+              ", addressCity='" + addressCity + '\'' +
+              ", addressTown='" + addressTown + '\'' +
+              ", addressZipCode='" + addressZipCode + '\'' +
+              ", phone='" + phone + '\'' +
+              ", email='" + email + '\'' +
+              '}';
+   }
 }

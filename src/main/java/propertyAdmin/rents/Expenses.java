@@ -24,4 +24,20 @@ public class Expenses {
       this.description = description;
       this.amount = amount;
    }
+
+   public Integer getId() {
+      return id;
+   }
+
+   public String getType() {
+      return type;
+   }
+
+   public String getDescription() {
+      return description;
+   }
+
+   public Integer getAmount() {
+      return amount;
+   }
 }

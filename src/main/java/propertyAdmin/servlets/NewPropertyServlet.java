@@ -1,6 +1,7 @@
 package propertyAdmin.servlets;
 
 import propertyAdmin.database.DatabaseOps;
+import propertyAdmin.property.structure.Property;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +20,9 @@ public class NewPropertyServlet extends HttpServlet {
         String address = req.getParameter("address");
         String name = req.getParameter("name");
         String details = req.getParameter("details");
+        Property property = new Property(name, details, address);
 
-        databaseOps.addPropertyToDatabase(name, details, address, req.getRemoteUser());
+        databaseOps.addPropertyToDatabase(req.getRemoteUser(), property);
 
         resp.sendRedirect("/properties.jsp");
     }

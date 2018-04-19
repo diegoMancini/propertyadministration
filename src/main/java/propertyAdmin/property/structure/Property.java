@@ -28,22 +28,14 @@ public class Property {
    private Blueprint blueprint;
    @OneToOne(cascade = {CascadeType.ALL})
    private Deed deed; //Escritura
-   @OneToOne(cascade = {CascadeType.ALL})
-   private Services services; //Luz, gas, tel
-   @OneToOne(cascade = {CascadeType.ALL})
-   private Taxes taxes;
+   @OneToMany(cascade = {CascadeType.ALL})
+   private List<Services> services; //Luz, gas, tel
+   @OneToMany(cascade = {CascadeType.ALL})
+   private List<Taxes> taxes;
    @CollectionTable @OneToMany
    private List<FunctionalUnit> functionalUnits;
    @Column(name = "AMOUNT_OF_FUNCTIONAL_UNITS")
    private Integer totalAmount;
-   @Column(name = "AMOUNT_LIVING_PLACE")
-   private Integer amountLivingPlace;
-   @Column(name = "AMOUNT_OFFICE")
-   private Integer amountOffice;
-   @Column(name = "AMOUNT_BUSINESS_PREMISE")
-   private Integer amountBusinessPremise;
-   @Column(name = "AMOUNT_GARAGE")
-   private Integer amountGarage;
    @OneToMany(cascade = {CascadeType.ALL})
    private List<Expenses> expenses;
    @Column(name = "IMAGE")
@@ -62,91 +54,126 @@ public class Property {
       this.address = address;
       functionalUnits = new ArrayList<>();
       totalAmount = 0;
-      amountLivingPlace =0;
-      amountOffice = 0;
-      amountBusinessPremise = 0;
-      amountGarage = 0;
-      file = null;
+      blueprint = null;
+      taxes = new ArrayList<>();
+      services = new ArrayList<>();
+//      file = null;
    }
 
+   public Integer getId() {
+      return id;
+   }
 
    public String getName() {
       return name;
    }
 
-   public String getAddress() {
-      return address;
-   }
-
-   public Blueprint getBlueprint() {
-      return blueprint;
-   }
-
-   public Deed getDeed() {
-      return deed;
-   }
-
-   public Services getServices() {
-      return services;
-   }
-
-   public Taxes getTaxes() {
-      return taxes;
+   public void setName(String name) {
+      this.name = name;
    }
 
    public String getDescription() {
       return description;
    }
 
+   public void setDescription(String description) {
+      this.description = description;
+   }
+
+   public String getAddress() {
+      return address;
+   }
+
+   public void setAddress(String address) {
+      this.address = address;
+   }
+
+   public Blueprint getBlueprint() {
+      return blueprint;
+   }
+
+   public void setBlueprint(Blueprint blueprint) {
+      this.blueprint = blueprint;
+   }
+
+   public Deed getDeed() {
+      return deed;
+   }
+
+   public void setDeed(Deed deed) {
+      this.deed = deed;
+   }
+
+   public List<Services> getServices() {
+      return services;
+   }
+
+   public void setServices(List<Services> services) {
+      this.services = services;
+   }
+
+   public List<Taxes> getTaxes() {
+      return taxes;
+   }
+
+   public void setTaxes(List<Taxes> taxes) {
+      this.taxes = taxes;
+   }
+
    public List<FunctionalUnit> getFunctionalUnits() {
       return functionalUnits;
+   }
+
+   public void setFunctionalUnits(List<FunctionalUnit> functionalUnits) {
+      this.functionalUnits = functionalUnits;
    }
 
    public Integer getTotalAmount() {
       return totalAmount;
    }
 
-   public Integer getAmountLivingPlace() {
-      return amountLivingPlace;
+   public void setTotalAmount(Integer totalAmount) {
+      this.totalAmount = totalAmount;
    }
 
-   public Integer getAmountOffice() {
-      return amountOffice;
+   public List<Expenses> getExpenses() {
+      return expenses;
    }
 
-   public Integer getAmountBusinessPremise() {
-      return amountBusinessPremise;
+   public void setExpenses(List<Expenses> expenses) {
+      this.expenses = expenses;
    }
 
-   public Integer getAmountGarage() {
-      return amountGarage;
+   public File getFile() {
+      return file;
    }
 
-   public void setImage(File image) {
-      this.file = image;
+   public void setFile(File file) {
+      this.file = file;
    }
 
-
+   public Integer getTotalExpenses() {
+      int result = 0;
+      for(Expenses expense : expenses) {
+         result += expense.getAmount();
+      }
+      return result;
+   }
    public void addFunctionalUnit(FunctionalUnit functionalUnit) {
       functionalUnits.add(functionalUnit);
       totalAmount++;
-      switch (functionalUnit.getType()) {
-         case "Living Place" : amountLivingPlace++;
-         case "Office": amountOffice++;
-         case "Business Premise": amountBusinessPremise++;
-         case "Garage": amountGarage++;
-         default: break;
-      }
    }
 
    @Override
    public String toString() {
       String details = "\nNombre: " + name + "\nDireccion: "+ address + "\nDescripcion: " + description + "\nDetalles plano: " + blueprint.toString() + "" +
-              "\nDetalles escritura: " + deed.toString() + "\nServicios: " + services.toString() + "\nImpuestos: " + taxes.toString() + "\nExpensas: " + expenses.toString();
+              "\nDetalles escritura: " + deed.toString();
+//      + "\nServicios: " + servicesString + "\nImpuestos: " + taxes.toString() + "\nExpensas: " + expenses.toString();
       String functionalUnitsString = "";
       for (int i = 0; i < functionalUnits.size(); i++) {
          functionalUnitsString += functionalUnits.get(i).toString() + "\n";
       }
       return details + "\n" + functionalUnitsString;
    }
+
 }

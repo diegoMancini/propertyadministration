@@ -48,10 +48,13 @@
         <h1>HOUSE ADMIN</h1>
         <h3>Bienvenido/a <i><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getName() + " " + DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getSurname()%></i> !</h3>
         <form>
-            <input type="button" value="Acceder al menu propiedades" onclick="window.location.href='http://localhost:8080/properties.jsp'" />
+            <input type="button" value="Acceder al menu propiedades" onclick="window.location.href='/properties.jsp'" />
         </form>
         <form>
-            <input type="button" value="Cerrar sesion" onclick="window.location.href='http://localhost:8080/logout.jsp'" />
+            <input type="button" value="Acceder al menu economia" onclick="window.location.href='/economy.jsp'" />
+        </form>
+        <form>
+            <input type="button" value="Cerrar sesion" onclick="window.location.href='/logout.jsp'" />
         </form>
     </body>
 </html>

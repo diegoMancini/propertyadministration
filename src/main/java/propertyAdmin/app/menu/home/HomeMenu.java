@@ -12,7 +12,7 @@ public class HomeMenu extends LogInMenu {
         mainloop:
         while (true) {
             System.out.println("\n-----------");
-            System.out.println("Bienvenido a su HOMEPAGE \n");
+            System.out.println("Bienvenido a su HOMEPAGE " + account.getName() + " " + account.getSurname() + "\n");
             System.out.println("Operaciones: \n 1 - Propiedades \n 2 - Economia \n 3 - Salir de la sesion");
             int choice = Scanner.getInt("Operacion: ");
 

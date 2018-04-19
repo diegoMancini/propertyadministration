@@ -9,6 +9,7 @@ public class StartMenu extends Menu {
     public void operate() {
         mainloop:
         while (true) {
+            System.out.println("\n\n\n                    ————House Admin———\n" + "\n" + "Bienvenido a House-Admin, un sistema de gestión de propiedades.\n");
             System.out.println("-----------");
             System.out.println("Operaciones: \n 1 - Crear Cuenta \n 2 - Iniciar Sesion \n 3 - Logistics \n 4 - Salir");
             int choice = Scanner.getInt("Operacion: ");

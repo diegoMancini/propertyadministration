@@ -47,20 +47,31 @@ public class Property {
    public Property(String name, String description, String address) {
       this.name = name;
       this.description = description;
+      this.address = address;
       this.blueprint = null;
       this.deed = null;
-      this.services = null;
-      this.taxes = null;
-      this.address = address;
+      services = new ArrayList<>();
+      taxes = new ArrayList<>();
       functionalUnits = new ArrayList<>();
       totalAmount = 0;
-      blueprint = null;
-      taxes = new ArrayList<>();
-      services = new ArrayList<>();
-//      file = null;
+      file = null;
    }
 
-   public Integer getId() {
+
+    public Property(String name, String description, String address, Blueprint blueprint, Deed deed) {
+        this.name = name;
+        this.description = description;
+        this.address = address;
+        this.blueprint = blueprint;
+        this.deed = deed;
+        services = new ArrayList<>();
+        taxes = new ArrayList<>();
+        functionalUnits = new ArrayList<>();
+        totalAmount = 0;
+        file = null;
+    }
+
+    public Integer getId() {
       return id;
    }
 

@@ -55,9 +55,9 @@ public class SpecificFunctionalUnitMenu extends SpecificPropertyMenu {
       String dateIssued= Scanner.getString("Dia realizacion contrato: ");
       String dateStart = Scanner.getString("Dia comienzo contrato: ");
       String dateEnd= Scanner.getString("Dia finalizacion contrato: ");
-      Integer price = Scanner.getInt("Precio total: ");
-      Integer deposit = Scanner.getInt("Valor deposito");
-      Float dailyInterest = Scanner.getFloat("Interes por demora pago diario:");
+      Double price = Scanner.getDouble("Precio total: ");
+      Double deposit = Scanner.getDouble("Valor deposito");
+      Double dailyInterest = Scanner.getDouble("Interes por demora pago diario:");
       System.out.println("\nDATOS INQUILINO");
       String tenantName = Scanner.getString("Nombre inquilino: ");
       String tenantSurname = Scanner.getString("Apellido inquilino: ");

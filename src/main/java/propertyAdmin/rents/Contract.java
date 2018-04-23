@@ -44,18 +44,18 @@ public class Contract {
     @OneToOne(cascade = {CascadeType.ALL})
     private Guarantor guarantor;
     @Column(name = "PRICE")
-    private Integer price;
+    private Double price;
     @Column(name = "DEPOSIT")
-    private Integer deposit;
+    private Double deposit;
     @Column(name = "DAILY_INTEREST_FOR_DELAYED_PAYMENT")
-    private Float dailyInterestForDelayedPayment;
+    private Double dailyInterestForDelayedPayment;
 
     public Contract() {
     }
 
     public Contract(String name, String country, String province, String city, String town,
                     String dateIssued, String contractDateStart, String contractDateEnd, Account owner,
-                    Tenant tenant, Guarantor guarantor, Integer price, Integer deposit, Float dailyInterestForDelayedPayment) {
+                    Tenant tenant, Guarantor guarantor, Double price, Double deposit, Double dailyInterestForDelayedPayment) {
         this.name = name;
         this.country = country;
         this.province = province;
@@ -132,15 +132,15 @@ public class Contract {
         return guarantor;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public Integer getDeposit() {
+    public Double getDeposit() {
         return deposit;
     }
 
-    public Float getDailyInterestForDelayedPayment() {
+    public Double getDailyInterestForDelayedPayment() {
         return dailyInterestForDelayedPayment;
     }
 }

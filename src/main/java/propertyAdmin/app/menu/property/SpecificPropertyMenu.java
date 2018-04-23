@@ -107,10 +107,6 @@ public class SpecificPropertyMenu extends PropertyMenu {
         getDatabaseOps().addFunctionalUnitToDatabase(account.getEmail(), aProperty, functionalUnit);
     }
 
-//    public void addCompleteFunctionalUnit(Account account, Property property) {
-//
-//    }
-
     private void removeFunctionalUnit(Account account, Property aProperty) {
         listFunctionalUnits(account, aProperty);
         int choice = Scanner.getInt("\nEliminar unidad funcional: ");

@@ -4,12 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import propertyAdmin.persons.Account;
-import propertyAdmin.property.details.Blueprint;
-import propertyAdmin.property.details.Deed;
-import propertyAdmin.property.structure.FunctionalUnit;
-import propertyAdmin.property.structure.Property;
-import propertyAdmin.rents.Contract;
+import propertyAdmin.web.persons.Account;
+import propertyAdmin.web.property.details.Blueprint;
+import propertyAdmin.web.property.details.Deed;
+import propertyAdmin.web.property.structure.FunctionalUnit;
+import propertyAdmin.web.property.structure.Property;
+import propertyAdmin.web.rents.Contract;
 
 import java.io.File;
 import java.util.List;
@@ -172,7 +172,6 @@ public class DatabaseOps {
                 property.addFunctionalUnit(functionalUnit);
             }
         }
-//        aProperty.addFunctionalUnit(functionalUnit);
         session.save(functionalUnit);
         transaction.commit();
         session.close();
@@ -182,19 +181,12 @@ public class DatabaseOps {
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
         Account account = session.get(Account.class, email);
-        for (Property aux : account.getProperties()) {
-            if (aux.getId().equals(property.getId())) {
-                for (FunctionalUnit fuAux : property.getFunctionalUnits()) {
-                    if(fuAux.getId().equals(functionalUnit.getId())) {
-                        fuAux.setContract(contract);
-                    }
-                }
-            }
-        }
-        session.save(contract);
-        session.save(contract.getOwner());
-        session.save(contract.getTenant());
-        session.save(contract.getGuarantor());
+        FunctionalUnit functionalUnit1 = account.getSpecificPropertyById(property.getId()).getSpecificFunctionalUnitById(functionalUnit.getId());
+        functionalUnit1.setContract(contract);
+        session.saveOrUpdate(contract);
+        session.saveOrUpdate(contract.getLandlord());
+        session.saveOrUpdate(contract.getTenant());
+        session.saveOrUpdate(contract.getGuarantor());
         transaction.commit();
         closeSession(session);
     }

@@ -1,5 +1,5 @@
 <%@ page import="propertyAdmin.database.DatabaseOps" %>
-<%@ page import="propertyAdmin.property.structure.Property" %>
+<%@ page import="propertyAdmin.web.property.structure.Property" %>
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Add new propertyAdmin.property</title>
+        <title>Add new propertyAdmin.web.property</title>
         <style>
             body{
                 background-color: rgb(38, 57, 123);

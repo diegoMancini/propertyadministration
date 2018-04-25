@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import propertyAdmin.persons.Account;
+import propertyAdmin.web.persons.Account;
 
 public class AccountTest {
 

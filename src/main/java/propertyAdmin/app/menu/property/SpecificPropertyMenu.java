@@ -1,15 +1,15 @@
 package propertyAdmin.app.menu.property;
 
 import propertyAdmin.app.abc.Scanner;
-import propertyAdmin.persons.Account;
-import propertyAdmin.property.details.Blueprint;
-import propertyAdmin.property.details.Deed;
-import propertyAdmin.property.structure.FunctionalUnit;
-import propertyAdmin.property.structure.Property;
-import propertyAdmin.property.structure.specifics.BusinessPremise;
-import propertyAdmin.property.structure.specifics.Garage;
-import propertyAdmin.property.structure.specifics.LivingPlace;
-import propertyAdmin.property.structure.specifics.Office;
+import propertyAdmin.web.persons.Account;
+import propertyAdmin.web.property.details.Blueprint;
+import propertyAdmin.web.property.details.Deed;
+import propertyAdmin.web.property.structure.FunctionalUnit;
+import propertyAdmin.web.property.structure.Property;
+import propertyAdmin.web.property.structure.specifics.BusinessPremise;
+import propertyAdmin.web.property.structure.specifics.Garage;
+import propertyAdmin.web.property.structure.specifics.LivingPlace;
+import propertyAdmin.web.property.structure.specifics.Office;
 
 public class SpecificPropertyMenu extends PropertyMenu {
 

@@ -1,12 +1,20 @@
 package propertyAdmin.app.menu.property;
 
+import org.joda.time.DateTime;
+import org.joda.time.JodaTimePermission;
 import propertyAdmin.app.abc.Scanner;
-import propertyAdmin.persons.Account;
-import propertyAdmin.persons.Guarantor;
-import propertyAdmin.persons.Tenant;
-import propertyAdmin.property.structure.FunctionalUnit;
-import propertyAdmin.property.structure.Property;
-import propertyAdmin.rents.Contract;
+import propertyAdmin.web.persons.Account;
+import propertyAdmin.web.persons.Guarantor;
+import propertyAdmin.web.persons.Landlord;
+import propertyAdmin.web.persons.Tenant;
+import propertyAdmin.web.property.structure.FunctionalUnit;
+import propertyAdmin.web.property.structure.Property;
+import propertyAdmin.web.rents.Contract;
+
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 public class SpecificFunctionalUnitMenu extends SpecificPropertyMenu {
 
@@ -52,9 +60,30 @@ public class SpecificFunctionalUnitMenu extends SpecificPropertyMenu {
       String province= Scanner.getString("Provincia: ");
       String city= Scanner.getString("Ciudad: ");
       String town= Scanner.getString("Localidad: ");
-      String dateIssued= Scanner.getString("Dia realizacion contrato: ");
-      String dateStart = Scanner.getString("Dia comienzo contrato: ");
-      String dateEnd= Scanner.getString("Dia finalizacion contrato: ");
+      int dateIssuedYear = Scanner.getInt("Ano realizacion contrato: ");
+      int dateIssuedMonth = Scanner.getInt("Mes realizacion contrato: ");
+      int dateIssuedDay = Scanner.getInt("Dia realizacion contrato: ");
+      Calendar cal1 = Calendar.getInstance();
+      cal1.set(Calendar.YEAR, dateIssuedYear);
+      cal1.set(Calendar.MONTH, dateIssuedMonth);
+      cal1.set(Calendar.DAY_OF_MONTH, dateIssuedDay);
+      Date dateIssued = cal1.getTime();
+      int dateContractStartsYear = Scanner.getInt("Ano inicio contrato: ");
+      int dateContractStartsMonth = Scanner.getInt("Mes inicio contrato: ");
+      int dateContractStartsDay = Scanner.getInt("Dia inicio contrato: ");
+      Calendar cal2 = Calendar.getInstance();
+      cal1.set(Calendar.YEAR, dateContractStartsYear);
+      cal1.set(Calendar.MONTH, dateContractStartsMonth);
+      cal1.set(Calendar.DAY_OF_MONTH, dateContractStartsDay);
+      Date dateStart = cal2.getTime();
+      int dateContractEndsYear = Scanner.getInt("Ano inicio contrato: ");
+      int dateContractEndsMonth = Scanner.getInt("Mes inicio contrato: ");
+      int dateContractEndsDay = Scanner.getInt("Dia inicio contrato: ");
+      Calendar cal3 = Calendar.getInstance();
+      cal1.set(Calendar.YEAR, dateContractEndsYear);
+      cal1.set(Calendar.MONTH, dateContractEndsMonth);
+      cal1.set(Calendar.DAY_OF_MONTH, dateContractEndsDay);
+      Date dateEnd = cal3.getTime();
       Double price = Scanner.getDouble("Precio total: ");
       Double deposit = Scanner.getDouble("Valor deposito");
       Double dailyInterest = Scanner.getDouble("Interes por demora pago diario:");
@@ -66,9 +95,10 @@ public class SpecificFunctionalUnitMenu extends SpecificPropertyMenu {
       String guarantorName = Scanner.getString("Nombre garante: ");
       String guarantorSurname = Scanner.getString("Apellido garante: ");
       String guarantorID = Scanner.getString("DNI garante: ");
+      Landlord landlord = new Landlord(account.getName(), account.getSurname(), account.getId());
       Tenant tenant = new Tenant(tenantName, tenantSurname, tenantID);
       Guarantor guarantor = new Guarantor(guarantorName, guarantorSurname, guarantorID);
-      Contract contract = new Contract(name, country, province, city, town, dateIssued, dateStart, dateEnd,account, tenant, guarantor, price, deposit, dailyInterest);
+      Contract contract = new Contract(name, country, province, city, town, dateIssued, dateStart, dateEnd,landlord, tenant, guarantor, price, deposit, dailyInterest);
       getDatabaseOps().addContractToFunctionalUnitToDatabase(account.getEmail(), aProperty, functionalUnit, contract);
    }
 

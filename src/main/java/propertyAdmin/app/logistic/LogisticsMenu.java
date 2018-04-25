@@ -2,9 +2,7 @@ package propertyAdmin.app.logistic;
 
 import propertyAdmin.app.abc.Menu;
 import propertyAdmin.app.abc.Scanner;
-import propertyAdmin.persons.Account;
-
-import java.util.List;
+import propertyAdmin.web.persons.Account;
 
 public class LogisticsMenu extends Menu {
 
@@ -22,26 +20,33 @@ public class LogisticsMenu extends Menu {
             switch (choice) {
                 case 1:
                     listAccountsInDatabase();
+                    break;
                 case 2:
+                    listPropertiesInDatabase();
+                    break;
                 case 3:
+                    listFunctionalUnitsInDatabase();
+                    break;
                 case 4:
-                case 5:
-                    String email = Scanner.getString("Email: ");
-                    getDatabaseOps().removeAccountFromDatabase(email);
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                    default:
 
+                    break;
+                default:
+                    System.out.println("FIN");
+                    break mainloop;
             }
         }
     }
 
     private void listAccountsInDatabase() {
-        List<Account> accounts = getDatabaseOps().getAccountsInDatabase();
-        for (Account account : accounts) System.out.println(account.toString());
+        for (Account account : getDatabaseOps().getAccountsInDatabase()) System.out.println(account.toString());
+    }
+
+    private void listPropertiesInDatabase() {
+
+    }
+
+    private void listFunctionalUnitsInDatabase() {
+
     }
 
 }

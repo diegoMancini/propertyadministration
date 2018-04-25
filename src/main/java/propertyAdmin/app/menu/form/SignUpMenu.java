@@ -2,7 +2,7 @@ package propertyAdmin.app.menu.form;
 
 import propertyAdmin.app.abc.Menu;
 import propertyAdmin.app.abc.Scanner;
-import propertyAdmin.persons.Account;
+import propertyAdmin.web.persons.Account;
 
 public class SignUpMenu extends Menu {
 

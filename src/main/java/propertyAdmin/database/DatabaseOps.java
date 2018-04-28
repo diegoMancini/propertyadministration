@@ -4,12 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import propertyAdmin.web.persons.Account;
-import propertyAdmin.web.property.details.Blueprint;
-import propertyAdmin.web.property.details.Deed;
-import propertyAdmin.web.property.structure.FunctionalUnit;
-import propertyAdmin.web.property.structure.Property;
-import propertyAdmin.web.rents.Contract;
+import propertyAdmin.structure.persons.Account;
+import propertyAdmin.structure.property.details.Blueprint;
+import propertyAdmin.structure.property.details.Deed;
+import propertyAdmin.structure.property.structure.FunctionalUnit;
+import propertyAdmin.structure.property.structure.Property;
+import propertyAdmin.structure.rents.Contract;
 
 import java.io.File;
 import java.util.List;
@@ -229,4 +229,32 @@ public class DatabaseOps {
             return null;
         }
     }
+
+    public void removeContractFromFunctionalUnit(String email, Property aProperty, FunctionalUnit functionalUnit) {
+        Session session = openSession();
+        Transaction transaction = session.beginTransaction();
+        Account account = getAccount(email);
+        Property property = account.getSpecificPropertyById(aProperty.getId());
+        FunctionalUnit functionalUnit1 = property.getSpecificFunctionalUnitById(functionalUnit.getId());
+        functionalUnit1.setContract(null);
+        session.update(functionalUnit1);
+        transaction.commit();
+        closeSession(session);
+    }
+
+    public String displayContractDetailsDatabase(String email, Property aProperty, FunctionalUnit functionalUnit) {
+        Session session = openSession();
+        Account account = getAccount(email);
+        Property property = account.getSpecificPropertyById(aProperty.getId());
+        FunctionalUnit functionalUnit1 = property.getSpecificFunctionalUnitById(functionalUnit.getId());
+        String result = "";
+        if (!functionalUnit1.getContract().equals(null)) {
+            result += functionalUnit.getContract().toString();
+        } else {
+            result += "No tiene";
+        }
+        closeSession(session);
+        return result;
+    }
+
 }

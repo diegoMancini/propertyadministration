@@ -2,7 +2,7 @@ package propertyAdmin.app.logistic;
 
 import propertyAdmin.app.abc.Menu;
 import propertyAdmin.app.abc.Scanner;
-import propertyAdmin.web.persons.Account;
+import propertyAdmin.structure.persons.Account;
 
 public class LogisticsMenu extends Menu {
 

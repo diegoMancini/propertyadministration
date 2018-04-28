@@ -1,18 +1,14 @@
 package propertyAdmin.app.menu.property;
 
-import org.joda.time.DateTime;
-import org.joda.time.JodaTimePermission;
 import propertyAdmin.app.abc.Scanner;
-import propertyAdmin.web.persons.Account;
-import propertyAdmin.web.persons.Guarantor;
-import propertyAdmin.web.persons.Landlord;
-import propertyAdmin.web.persons.Tenant;
-import propertyAdmin.web.property.structure.FunctionalUnit;
-import propertyAdmin.web.property.structure.Property;
-import propertyAdmin.web.rents.Contract;
+import propertyAdmin.structure.persons.Account;
+import propertyAdmin.structure.persons.Guarantor;
+import propertyAdmin.structure.persons.Landlord;
+import propertyAdmin.structure.persons.Tenant;
+import propertyAdmin.structure.property.structure.FunctionalUnit;
+import propertyAdmin.structure.property.structure.Property;
+import propertyAdmin.structure.rents.Contract;
 
-import java.text.DateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -102,12 +98,12 @@ public class SpecificFunctionalUnitMenu extends SpecificPropertyMenu {
       getDatabaseOps().addContractToFunctionalUnitToDatabase(account.getEmail(), aProperty, functionalUnit, contract);
    }
 
-   private void displayContractDetails(Account account, Property aProperty, FunctionalUnit functionalUnit) {
-
+   private String displayContractDetails(Account account, Property aProperty, FunctionalUnit functionalUnit) {
+        return getDatabaseOps().displayContractDetailsDatabase(account.getEmail(), aProperty, functionalUnit);
    }
 
    private void removeContract(Account account, Property aProperty, FunctionalUnit functionalUnit) {
-
+        getDatabaseOps().removeContractFromFunctionalUnit(account.getEmail(), aProperty, functionalUnit);
    }
 
 }

@@ -56,12 +56,12 @@
     </session-config>
 
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>/index.html</welcome-file>
     </welcome-file-list>
 
     <!-- SecurityFilter works with custom error pages -->
     <error-page>
         <error-code>403</error-code>
-        <location>/error/403.jsp</location>
+        <location>/pages-error-400.html</location>
     </error-page>
 </web-app>

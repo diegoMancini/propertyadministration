@@ -1,7 +1,7 @@
 package propertyAdmin.web.servlets;
 
 import propertyAdmin.database.DatabaseOps;
-import propertyAdmin.web.property.structure.Property;
+import propertyAdmin.structure.property.structure.Property;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

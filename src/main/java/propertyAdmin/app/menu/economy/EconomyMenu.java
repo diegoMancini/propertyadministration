@@ -1,7 +1,7 @@
 package propertyAdmin.app.menu.economy;
 
 import propertyAdmin.app.menu.form.LogInMenu;
-import propertyAdmin.web.persons.Account;
+import propertyAdmin.structure.persons.Account;
 
 public class EconomyMenu extends LogInMenu {
 

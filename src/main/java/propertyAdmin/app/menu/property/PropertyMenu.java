@@ -2,10 +2,10 @@ package propertyAdmin.app.menu.property;
 
 import propertyAdmin.app.abc.Scanner;
 import propertyAdmin.app.menu.form.LogInMenu;
-import propertyAdmin.web.persons.Account;
-import propertyAdmin.web.property.details.Blueprint;
-import propertyAdmin.web.property.details.Deed;
-import propertyAdmin.web.property.structure.Property;
+import propertyAdmin.structure.persons.Account;
+import propertyAdmin.structure.property.details.Blueprint;
+import propertyAdmin.structure.property.details.Deed;
+import propertyAdmin.structure.property.structure.Property;
 
 public class PropertyMenu extends LogInMenu {
 

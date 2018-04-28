@@ -42,7 +42,7 @@ public class AddTenantServlet extends HttpServlet{
 //
 //        Tenant tenant = session.find(Tenant.class, tenantId);
 //        Contract contract = new Contract(contractName, new File("/fakefile"), startDate, endDate);
-//        Property findProperty = (Property) req.getAttribute("propertyAdmin.web.property");
+//        Property findProperty = (Property) req.getAttribute("propertyAdmin.structure.property");
 //
 //        findProperty.setTenant(tenant);
 //        findProperty.setContract(contract);

@@ -3,7 +3,7 @@ package propertyAdmin.app.menu.form;
 import propertyAdmin.app.abc.Menu;
 import propertyAdmin.app.abc.Scanner;
 import propertyAdmin.app.menu.home.HomeMenu;
-import propertyAdmin.web.persons.Account;
+import propertyAdmin.structure.persons.Account;
 
 public class LogInMenu extends Menu {
 

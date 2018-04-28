@@ -1,23 +1,21 @@
 package propertyAdmin.app.abc;
 
-import org.joda.time.DateTime;
 import propertyAdmin.app.menu.form.StartMenu;
 import propertyAdmin.database.DatabaseOps;
-import propertyAdmin.web.persons.Account;
-import propertyAdmin.web.persons.Guarantor;
-import propertyAdmin.web.persons.Landlord;
-import propertyAdmin.web.persons.Tenant;
-import propertyAdmin.web.property.details.Blueprint;
-import propertyAdmin.web.property.details.Deed;
-import propertyAdmin.web.property.structure.FunctionalUnit;
-import propertyAdmin.web.property.structure.Property;
-import propertyAdmin.web.property.structure.specifics.BusinessPremise;
-import propertyAdmin.web.property.structure.specifics.Garage;
-import propertyAdmin.web.property.structure.specifics.LivingPlace;
-import propertyAdmin.web.property.structure.specifics.Office;
-import propertyAdmin.web.rents.Contract;
+import propertyAdmin.structure.persons.Account;
+import propertyAdmin.structure.persons.Guarantor;
+import propertyAdmin.structure.persons.Landlord;
+import propertyAdmin.structure.persons.Tenant;
+import propertyAdmin.structure.property.details.Blueprint;
+import propertyAdmin.structure.property.details.Deed;
+import propertyAdmin.structure.property.structure.FunctionalUnit;
+import propertyAdmin.structure.property.structure.Property;
+import propertyAdmin.structure.property.structure.specifics.BusinessPremise;
+import propertyAdmin.structure.property.structure.specifics.Garage;
+import propertyAdmin.structure.property.structure.specifics.LivingPlace;
+import propertyAdmin.structure.property.structure.specifics.Office;
+import propertyAdmin.structure.rents.Contract;
 
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -48,21 +46,15 @@ public class Main {
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit4);
 
         Calendar cal1 = Calendar.getInstance();
-        cal1.set(Calendar.YEAR, 2017);
-        cal1.set(Calendar.MONTH, 5);
-        cal1.set(Calendar.DAY_OF_MONTH, 31);
+        cal1.set(2017, 4, 31);
         Date dateIssued = cal1.getTime();
 
         Calendar cal2 = Calendar.getInstance();
-        cal1.set(Calendar.YEAR, 2017);
-        cal1.set(Calendar.MONTH, 6);
-        cal1.set(Calendar.DAY_OF_MONTH, 1);
+        cal2.set(2017, 5, 1);
         Date dateStart = cal2.getTime();
 
         Calendar cal3 = Calendar.getInstance();
-        cal1.set(Calendar.YEAR, 2018);
-        cal1.set(Calendar.MONTH, 5);
-        cal1.set(Calendar.DAY_OF_MONTH, 31);
+        cal3.set(2018, 4, 31);
         Date dateEnd = cal3.getTime();
 
         Contract testerContract1 = new Contract("Contrato casa 1", "Arg", "Bs As", "Pilar", "La Lonja",
@@ -76,6 +68,10 @@ public class Main {
 
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit, testerContract1);
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit4, testerContract2);
+
+        System.out.println(dateIssued.toString());
+        System.out.println(dateStart.toString());
+        System.out.println(dateEnd.toString());
 
         new StartMenu().operate();
     }

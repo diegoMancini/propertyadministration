@@ -1,15 +1,15 @@
 package propertyAdmin.app.menu.property;
 
 import propertyAdmin.app.abc.Scanner;
-import propertyAdmin.web.persons.Account;
-import propertyAdmin.web.property.details.Blueprint;
-import propertyAdmin.web.property.details.Deed;
-import propertyAdmin.web.property.structure.FunctionalUnit;
-import propertyAdmin.web.property.structure.Property;
-import propertyAdmin.web.property.structure.specifics.BusinessPremise;
-import propertyAdmin.web.property.structure.specifics.Garage;
-import propertyAdmin.web.property.structure.specifics.LivingPlace;
-import propertyAdmin.web.property.structure.specifics.Office;
+import propertyAdmin.structure.persons.Account;
+import propertyAdmin.structure.property.details.Blueprint;
+import propertyAdmin.structure.property.details.Deed;
+import propertyAdmin.structure.property.structure.FunctionalUnit;
+import propertyAdmin.structure.property.structure.Property;
+import propertyAdmin.structure.property.structure.specifics.BusinessPremise;
+import propertyAdmin.structure.property.structure.specifics.Garage;
+import propertyAdmin.structure.property.structure.specifics.LivingPlace;
+import propertyAdmin.structure.property.structure.specifics.Office;
 
 public class SpecificPropertyMenu extends PropertyMenu {
 
@@ -128,7 +128,7 @@ public class SpecificPropertyMenu extends PropertyMenu {
     }
 
     private void addExpense(Account account, Property aProperty) {
-
+        
     }
 
     private void listExpensesDetails(Account account, Property aProperty) {

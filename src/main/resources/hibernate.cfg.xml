@@ -22,28 +22,28 @@
         <property name="dateTime">org.joda.time.contrib.hibernate.PersistentDateTime</property>
 
         <!-- DB schema will be updated if needed -->
-        <!-- <propertyAdmin.web.property name="hbm2ddl.auto">update</propertyAdmin.web.property> -->
+        <!-- <propertyAdmin.structure.property name="hbm2ddl.auto">update</propertyAdmin.structure.property> -->
 
-        <mapping class="propertyAdmin.web.persons.Account"/>
-        <mapping class="propertyAdmin.web.persons.Guarantor"/>
-        <mapping class="propertyAdmin.web.persons.Landlord"/>
-        <mapping class="propertyAdmin.web.persons.Tenant"/>
-        <mapping class="propertyAdmin.web.property.details.Blueprint"/>
-        <mapping class="propertyAdmin.web.property.details.Deed"/>
-        <mapping class="propertyAdmin.web.property.structure.specifics.BusinessPremise"/>
-        <mapping class="propertyAdmin.web.property.structure.specifics.Garage"/>
-        <mapping class="propertyAdmin.web.property.structure.specifics.LivingPlace"/>
-        <mapping class="propertyAdmin.web.property.structure.specifics.Office"/>
-        <mapping class="propertyAdmin.web.property.structure.FunctionalUnit"/>
-        <mapping class="propertyAdmin.web.property.structure.Property"/>
-        <mapping class="propertyAdmin.web.rents.Contract"/>
-        <mapping class="propertyAdmin.web.rents.Expenses"/>
-        <mapping class="propertyAdmin.web.services.specifics.Electricity"/>
-        <mapping class="propertyAdmin.web.services.specifics.Gas"/>
-        <mapping class="propertyAdmin.web.services.specifics.Telephone"/>
-        <mapping class="propertyAdmin.web.services.specifics.Water"/>
-        <mapping class="propertyAdmin.web.services.Services"/>
-        <mapping class="propertyAdmin.web.taxes.Taxes"/>
+        <mapping class="propertyAdmin.structure.persons.Account"/>
+        <mapping class="propertyAdmin.structure.persons.Guarantor"/>
+        <mapping class="propertyAdmin.structure.persons.Landlord"/>
+        <mapping class="propertyAdmin.structure.persons.Tenant"/>
+        <mapping class="propertyAdmin.structure.property.details.Blueprint"/>
+        <mapping class="propertyAdmin.structure.property.details.Deed"/>
+        <mapping class="propertyAdmin.structure.property.structure.specifics.BusinessPremise"/>
+        <mapping class="propertyAdmin.structure.property.structure.specifics.Garage"/>
+        <mapping class="propertyAdmin.structure.property.structure.specifics.LivingPlace"/>
+        <mapping class="propertyAdmin.structure.property.structure.specifics.Office"/>
+        <mapping class="propertyAdmin.structure.property.structure.FunctionalUnit"/>
+        <mapping class="propertyAdmin.structure.property.structure.Property"/>
+        <mapping class="propertyAdmin.structure.rents.Contract"/>
+        <mapping class="propertyAdmin.structure.rents.Expenses"/>
+        <mapping class="propertyAdmin.structure.services.specifics.Electricity"/>
+        <mapping class="propertyAdmin.structure.services.specifics.Gas"/>
+        <mapping class="propertyAdmin.structure.services.specifics.Telephone"/>
+        <mapping class="propertyAdmin.structure.services.specifics.Water"/>
+        <mapping class="propertyAdmin.structure.services.Services"/>
+        <mapping class="propertyAdmin.structure.taxes.Taxes"/>
 
     </session-factory>
 </hibernate-configuration>

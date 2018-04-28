@@ -2,7 +2,7 @@ package propertyAdmin.web.securityFilter;
 
 import propertyAdmin.database.DatabaseOps;
 import org.securityfilter.realm.SimpleSecurityRealmBase;
-import propertyAdmin.web.persons.Account;
+import propertyAdmin.structure.persons.Account;
 
 
 public class SecurityRealm extends SimpleSecurityRealmBase {

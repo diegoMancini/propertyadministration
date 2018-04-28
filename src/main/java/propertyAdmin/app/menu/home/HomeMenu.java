@@ -4,7 +4,7 @@ import propertyAdmin.app.abc.Scanner;
 import propertyAdmin.app.menu.economy.EconomyMenu;
 import propertyAdmin.app.menu.form.LogInMenu;
 import propertyAdmin.app.menu.property.PropertyMenu;
-import propertyAdmin.web.persons.Account;
+import propertyAdmin.structure.persons.Account;
 
 public class HomeMenu extends LogInMenu {
 

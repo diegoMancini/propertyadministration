@@ -21,10 +21,11 @@
           <element id="library" level="project" name="Gradle: org.postgresql:postgresql:42.2.2" />
           <element id="library" level="project" name="Gradle: org.hibernate:hibernate-core:5.2.15.Final" />
           <element id="library" level="project" name="Gradle: com.google.cloud:google-cloud-bigquery:1.24.1" />
-          <element id="library" level="project" name="Gradle: commons-digester:commons-digester:1.6" />
-          <element id="library" level="project" name="Gradle: commons-beanutils:commons-beanutils:1.6" />
           <element id="library" level="project" name="Gradle: com.google.cloud:google-cloud-core-http:1.24.1" />
           <element id="library" level="project" name="Gradle: com.google.cloud:google-cloud-core:1.24.1" />
+          <element id="library" level="project" name="Gradle: joda-time:joda-time:2.9.2" />
+          <element id="library" level="project" name="Gradle: commons-digester:commons-digester:1.6" />
+          <element id="library" level="project" name="Gradle: commons-beanutils:commons-beanutils:1.6" />
           <element id="library" level="project" name="Gradle: com.google.api:gax-httpjson:0.40.0" />
           <element id="library" level="project" name="Gradle: com.google.api:gax:1.23.0" />
           <element id="library" level="project" name="Gradle: com.google.auth:google-auth-library-oauth2-http:0.9.0" />
@@ -57,7 +58,6 @@
           <element id="library" level="project" name="Gradle: io.opencensus:opencensus-contrib-http-util:0.11.1" />
           <element id="library" level="project" name="Gradle: io.opencensus:opencensus-api:0.11.1" />
           <element id="library" level="project" name="Gradle: com.google.guava:guava:20.0" />
-          <element id="library" level="project" name="Gradle: joda-time:joda-time:2.9.2" />
           <element id="library" level="project" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" />
           <element id="library" level="project" name="Gradle: com.google.api.grpc:proto-google-common-protos:1.7.0" />
           <element id="library" level="project" name="Gradle: com.google.auth:google-auth-library-credentials:0.9.0" />

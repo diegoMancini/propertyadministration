@@ -14,6 +14,8 @@ public class   Account {
    private String name;
    @Column(name = "SURNAME")
    private String surname;
+   @Column(name = "USERNAME")
+   private String username;
    @Column(name = "ID")
    private String id;
    @Column(name = "NATIONALITY")
@@ -43,7 +45,9 @@ public class   Account {
    @Column(name = "IS_LOGGED")
    private boolean logged;
 
-    public Account(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email, String password) {
+    public Account(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry,
+                   String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone,
+                   String email, String password, String username) {
        this.name = name;
        this.surname = surname;
        this.id = id;
@@ -58,6 +62,7 @@ public class   Account {
        this.phone = phone;
        this.email = email;
        this.password = password;
+       this.username = username;
        properties = new ArrayList<>();
        logged = true;
     }
@@ -138,11 +143,30 @@ public class   Account {
       return logged;
    }
 
-   @Override
-   public String toString() {
-      return "Name: " + name + "\n" + "Surname: " + surname + "\n" + "ID: " + id + "\n" + "Nationality: " + nationality + "\n" +
-              "" + "Marital Status: " + maritalStatus + "\n" + "Country: "+ addressCountry + "\n" + "Province: " + addressProvince + "\n" +
-              "" + "City: " +addressCity + "\n" + "Town: "+ addressTown+"\n" + "Address: " +address+ "\n" + "Zip Code: " + addressZipCode+ "\n" +
-              "" + "Phone: "+ phone+ "\n" + "Mail: " + email+"\n" + "Password: " +password +"\n";
-   }
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", username='" + username + '\'' +
+                ", id='" + id + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", maritalStatus='" + maritalStatus + '\'' +
+                ", address='" + address + '\'' +
+                ", addressCountry='" + addressCountry + '\'' +
+                ", addressProvince='" + addressProvince + '\'' +
+                ", addressCity='" + addressCity + '\'' +
+                ", addressTown='" + addressTown + '\'' +
+                ", addressZipCode='" + addressZipCode + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", properties=" + properties +
+                ", logged=" + logged +
+                '}';
+    }
 }

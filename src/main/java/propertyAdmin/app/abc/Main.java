@@ -27,7 +27,7 @@ public class Main {
         Account testerAccount = new Account("Diego", "Mancini", "38931523", "Argentina",
                 "Soltero", "Saravi 104 Barrio La Tranquera", "Argentina",
                 "Buenos Aires" , "Pilar", "La Lonja", "1629",
-                "5491154645662", "dm", "pass");
+                "5491154645662", "dm", "pass", "username");
         databaseOps.addAccountToDatabase(testerAccount);
 
         Property testerProperty = new Property("Casa La Tranquera", "LOTE 50", "Saravi 104 Barrio La Tranquera",

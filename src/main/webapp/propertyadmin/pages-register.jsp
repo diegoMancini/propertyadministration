@@ -33,7 +33,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Elite admin</p>
+            <p class="loader__label">Property-Admin</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -43,16 +43,26 @@
         <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="index.jsp">
+                    <form class="form-horizontal form-material" id="loginform" action="signup">
                         <h3 class="box-title m-b-20">Sign Up</h3>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Name">
+                                <input class="form-control" type="text" name="name"  required="" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="surname" required="" placeholder="Surname">
                             </div>
                         </div>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Email">
+                                <input class="form-control" type="text" name="identityNumber" required="" placeholder="ID">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="identityNumber" required="" placeholder="ID">
                             </div>
                         </div>
                         <div class="form-group ">

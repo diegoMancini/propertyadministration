@@ -20,27 +20,28 @@ public class NewAccountServlet extends HttpServlet {
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
         String identityNumber = req.getParameter("identityNumber"); //check
+        String phoneNumber = req.getParameter("phoneNumber"); //idem
         String nationality = req.getParameter("nationality");
         String maritalStatus = req.getParameter("maritalStatus");
-        String address = req.getParameter("address");
         String addressCountry = req.getParameter("addressCountry");
         String addressProvince = req.getParameter("addressProvince");
         String addressCity = req.getParameter("addressCity");
         String addressTown = req.getParameter("addressTown");
+        String address = req.getParameter("address");
         String addressZipCode = req.getParameter("addressZipCode");
-        String phoneNumber = req.getParameter("phoneNumber"); //idem
+        String username = req.getParameter("username");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
         Account account = new Account(name, surname, identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince,
-                addressCity, addressTown, addressZipCode, phoneNumber, email, password);
+                addressCity, addressTown, addressZipCode, phoneNumber, email, password, username);
 
         String page = "";
         if(!databaseOps.hasAccount(email)){
             databaseOps.addAccountToDatabase(account);
-            page += "/home.jsp";
+            page += "/propertyadmin/pages-profile.jsp";
         } else {
-            page += "/signupError.jsp";
+            page += "/propertyadmin/pages-register.jsp";
         }
 
         resp.sendRedirect(page);

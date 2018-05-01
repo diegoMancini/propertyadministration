@@ -1,4 +1,4 @@
-package propertyAdmin.database;
+package propertyAdmin.operations;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

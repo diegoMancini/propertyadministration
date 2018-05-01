@@ -1,3 +1,4 @@
+<%@ page import="propertyAdmin.operations.DatabaseOps" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,12 +11,14 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+    <title>P.A. - Pagina principal</title>
     <!-- This page CSS -->
     <!-- chartist CSS -->
     <link href="../assets/node_modules/morrisjs/morris.css" rel="stylesheet">
     <!--Toaster Popup message CSS -->
     <link href="../assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <!-- Calendar CSS -->
+    <link href="../assets/node_modules/calendar/dist/fullcalendar.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="dist/css/style.min.css" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
@@ -35,7 +38,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Elite admin</p>
+            <p class="loader__label">Property-Admin</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -51,7 +54,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp">
+                    <a class="navbar-brand" href="home.jsp">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
@@ -79,7 +82,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item">
                             <form class="app-search d-none d-md-block d-lg-block">
-                                <input type="text" class="form-control" placeholder="Search & enter">
+                                <input type="text" class="form-control" placeholder="Buscar...">
                             </form>
                         </li>
                     </ul>
@@ -97,7 +100,7 @@
                             <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
                                 <ul>
                                     <li>
-                                        <div class="drop-title">Notifications</div>
+                                        <div class="drop-title">Notificaciones</div>
                                     </li>
                                     <li>
                                         <div class="message-center">
@@ -186,121 +189,23 @@
                         <!-- End Messages -->
                         <!-- ============================================================== -->
                         <!-- ============================================================== -->
-                        <!-- mega menu -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown mega-dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ti-layout-width-default"></i></a>
-                            <div class="dropdown-menu animated bounceInDown">
-                                <ul class="mega-dropdown-menu row">
-                                    <li class="col-lg-3 col-xlg-2 m-b-30">
-                                        <h4 class="m-b-20">CAROUSEL</h4>
-                                        <!-- CAROUSEL -->
-                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                            <div class="carousel-inner" role="listbox">
-                                                <div class="carousel-item active">
-                                                    <div class="container"> <img class="d-block img-fluid" src="../assets/images/big/img1.jpg" alt="First slide"></div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <div class="container"><img class="d-block img-fluid" src="../assets/images/big/img2.jpg" alt="Second slide"></div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <div class="container"><img class="d-block img-fluid" src="../assets/images/big/img3.jpg" alt="Third slide"></div>
-                                                </div>
-                                            </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
-                                        </div>
-                                        <!-- End CAROUSEL -->
-                                    </li>
-                                    <li class="col-lg-3 m-b-30">
-                                        <h4 class="m-b-20">ACCORDION</h4>
-                                        <!-- Accordian -->
-                                        <div id="accordion" class="nav-accordion" role="tablist" aria-multiselectable="true">
-                                            <div class="card">
-                                                <div class="card-header" role="tab" id="headingOne">
-                                                    <h5 class="mb-0">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                  Collapsible Group Item #1
-                                                </a>
-                                              </h5> </div>
-                                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high. </div>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header" role="tab" id="headingTwo">
-                                                    <h5 class="mb-0">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                  Collapsible Group Item #2
-                                                </a>
-                                              </h5> </div>
-                                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header" role="tab" id="headingThree">
-                                                    <h5 class="mb-0">
-                                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                  Collapsible Group Item #3
-                                                </a>
-                                              </h5> </div>
-                                                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                    <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="col-lg-3  m-b-30">
-                                        <h4 class="m-b-20">CONTACT US</h4>
-                                        <!-- Contact -->
-                                        <form>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Name"> </div>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Enter email"> </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Message"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-info">Submit</button>
-                                        </form>
-                                    </li>
-                                    <li class="col-lg-3 col-xlg-4 m-b-30">
-                                        <h4 class="m-b-20">List style</h4>
-                                        <!-- List style -->
-                                        <ul class="list-style-none">
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> You can give link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Give link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another Give link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Forth link</a></li>
-                                            <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Another fifth link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- End mega menu -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
                         <!-- User Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown u-pro">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class=""> <span class="hidden-md-down">Mark &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getUsername()%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <!-- text-->
-                                <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                                <a href="/propertyadmin/profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
                                 <!-- text-->
-                                <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
-                                <!-- text-->
-                                <a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
                                 <!-- text-->
                                 <div class="dropdown-divider"></div>
                                 <!-- text-->
-                                <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Ajustes</a>
                                 <!-- text-->
                                 <div class="dropdown-divider"></div>
                                 <!-- text-->
-                                <a href="pages-login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                                <a href="/propertyadmin/landingpage.jsp" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
                                 <!-- text-->
                             </div>
                         </li>
@@ -324,216 +229,17 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="user-pro"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"><span class="hide-menu">Mark Jeckson</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
-                                <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a></li>
-                            </ul>
+                        <%--has-arrow va antes de waves-effect --%>
+                        <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="../assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getName() + " " + DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getSurname() %></span></a>
                         </li>
-                        <li class="nav-small-cap">--- PERSONAL</li>
-                        <li> <a class="waves-effect waves-dark" href="index.jsp"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span></a>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Apps</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="app-calendar.jsp">Calendar</a></li>
-                                <li><a href="app-chat.jsp">Chat app</a></li>
-                                <li><a href="app-ticket.jsp">Support Ticket</a></li>
-                                <li><a href="app-contact.jsp">Contact / Employee</a></li>
-                                <li><a href="app-contact2.jsp">Contact Grid</a></li>
-                                <li><a href="app-contact-detail.jsp">Contact Detail</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-email"></i><span class="hide-menu">Inbox</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="app-email.jsp">Mailbox</a></li>
-                                <li><a href="app-email-detail.jsp">Mailbox Detail</a></li>
-                                <li><a href="app-compose.jsp">Compose Mail</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-palette"></i><span class="hide-menu">Ui Elements <span class="badge badge-pill badge-primary text-white ml-auto">25</span></span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="ui-cards.html">Cards</a></li>
-                                <li><a href="ui-user-card.html">User Cards</a></li>
-                                <li><a href="ui-buttons.html">Buttons</a></li>
-                                <li><a href="ui-modals.html">Modals</a></li>
-                                <li><a href="ui-tab.html">Tab</a></li>
-                                <li><a href="ui-tooltip-popover.html">Tooltip &amp; Popover</a></li>
-                                <li><a href="ui-tooltip-stylish.html">Tooltip stylish</a></li>
-                                <li><a href="ui-sweetalert.html">Sweet Alert</a></li>
-                                <li><a href="ui-notification.html">Notification</a></li>
-                                <li><a href="ui-progressbar.html">Progressbar</a></li>
-                                <li><a href="ui-nestable.html">Nestable</a></li>
-                                <li><a href="ui-range-slider.html">Range slider</a></li>
-                                <li><a href="ui-timeline.html">Timeline</a></li>
-                                <li><a href="ui-typography.html">Typography</a></li>
-                                <li><a href="ui-horizontal-timeline.html">Horizontal Timeline</a></li>
-                                <li><a href="ui-session-timeout.html">Session Timeout</a></li>
-                                <li><a href="ui-session-ideal-timeout.html">Session Ideal Timeout</a></li>
-                                <li><a href="ui-bootstrap.html">Bootstrap Ui</a></li>
-                                <li><a href="ui-breadcrumb.html">Breadcrumb</a></li>
-                                <li><a href="ui-bootstrap-switch.html">Bootstrap Switch</a></li>
-                                <li><a href="ui-list-media.html">List Media</a></li>
-                                <li><a href="ui-ribbons.html">Ribbons</a></li>
-                                <li><a href="ui-grid.html">Grid</a></li>
-                                <li><a href="ui-carousel.html">Carousel</a></li>
-                                <li><a href="ui-date-paginator.html">Date-paginator</a></li>
-                                <li><a href="ui-dragable-portlet.html">Dragable Portlet</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-small-cap">--- PROFESSIONAL</li>
-                        <li> <a class="waves-effect waves-dark" href="realestate-property-list.jsp"><i class="ti-home"></i><span class="hide-menu">Property List</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="realestate-property-3-column.html"><i class="ti-menu-alt"></i><span class="hide-menu">Property 3 Column</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="realestate-property-4-column.jsp"><i class="ti-layout"></i><span class="hide-menu">Property 4 Column</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="realestate-property-detail.jsp"><i class="ti-check-box"></i><span class="hide-menu">Property Detail</span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="realestate-add-property.jsp"><i class="ti-support"></i><span class="hide-menu">Add Property</span></a>
-                        </li>
-                        <li class="nav-small-cap">--- FORMS, TABLE &amp; WIDGETS</li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-media-right-alt"></i><span class="hide-menu">Forms</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="form-basic.html">Basic Forms</a></li>
-                                <li><a href="form-layout.html">Form Layouts</a></li>
-                                <li><a href="form-addons.html">Form Addons</a></li>
-                                <li><a href="form-material.html">Form Material</a></li>
-                                <li><a href="form-float-input.html">Floating Lable</a></li>
-                                <li><a href="form-pickers.html">Form Pickers</a></li>
-                                <li><a href="form-upload.html">File Upload</a></li>
-                                <li><a href="form-mask.html">Form Mask</a></li>
-                                <li><a href="form-validation.html">Form Validation</a></li>
-                                <li><a href="form-dropzone.html">File Dropzone</a></li>
-                                <li><a href="form-icheck.html">Icheck control</a></li>
-                                <li><a href="form-img-cropper.html">Image Cropper</a></li>
-                                <li><a href="form-bootstrapwysihtml5.html">HTML5 Editor</a></li>
-                                <li><a href="form-typehead.html">Form Typehead</a></li>
-                                <li><a href="form-wizard.html">Form Wizard</a></li>
-                                <li><a href="form-xeditable.html">Xeditable Editor</a></li>
-                                <li><a href="form-summernote.html">Summernote Editor</a></li>
-                                <li><a href="form-tinymce.html">Tinymce Editor</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-accordion-merged"></i><span class="hide-menu">Tables</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="table-basic.html">Basic Tables</a></li>
-                                <li><a href="table-layout.html">Table Layouts</a></li>
-                                <li><a href="table-data-table.html">Data Tables</a></li>
-                                <li><a href="table-footable.html">Footable</a></li>
-                                <li><a href="table-jsgrid.html">Js Grid Table</a></li>
-                                <li><a href="table-responsive.html">Responsive Table</a></li>
-                                <li><a href="table-bootstrap.html">Bootstrap Tables</a></li>
-                                <li><a href="table-editable-table.html">Editable Table</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Widgets</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="widget-data.html">Data Widgets</a></li>
-                                <li><a href="widget-apps.html">Apps Widgets</a></li>
-                                <li><a href="widget-charts.html">Charts Widgets</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-small-cap">--- EXTRA COMPONENTS</li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-gallery"></i><span class="hide-menu">Page Layout</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="layout-single-column.html">1 Column</a></li>
-                                <li><a href="layout-fix-header.html">Fix header</a></li>
-                                <li><a href="layout-fix-sidebar.html">Fix sidebar</a></li>
-                                <li><a href="layout-fix-header-sidebar.html">Fixe header &amp; Sidebar</a></li>
-                                <li><a href="layout-boxed.html">Boxed Layout</a></li>
-                                <li><a href="layout-logo-center.html">Logo in Center</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">Sample Pages <span class="badge badge-pill badge-info">25</span></span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="starter-kit.html">Starter Kit</a></li>
-                                <li><a href="pages-blank.html">Blank page</a></li>
-                                <li><a href="javascript:void(0)" class="has-arrow">Authentication <span class="badge badge-pill badge-success pull-right">6</span></a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="pages-login.jsp">Login 1</a></li>
-                                        <li><a href="pages-login-2.html">Login 2</a></li>
-                                        <li><a href="pages-register.jsp">Register</a></li>
-                                        <li><a href="pages-register2.html">Register 2</a></li>
-                                        <li><a href="pages-register3.html">Register 3</a></li>
-                                        <li><a href="pages-lockscreen.html">Lockscreen</a></li>
-                                        <li><a href="pages-recover-password.html">Recover password</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="pages-profile.jsp">Profile page</a></li>
-                                <li><a href="pages-animation.html">Animation</a></li>
-                                <li><a href="pages-fix-innersidebar.html">Sticky Left sidebar</a></li>
-                                <li><a href="pages-fix-inner-right-sidebar.html">Sticky Right sidebar</a></li>
-                                <li><a href="pages-invoice.html">Invoice</a></li>
-                                <li><a href="pages-treeview.html">Treeview</a></li>
-                                <li><a href="pages-utility-classes.html">Helper Classes</a></li>
-                                <li><a href="pages-search-result.html">Search result</a></li>
-                                <li><a href="pages-scroll.html">Scrollbar</a></li>
-                                <li><a href="pages-pricing.html">Pricing</a></li>
-                                <li><a href="pages-lightbox-popup.html">Lighbox popup</a></li>
-                                <li><a href="pages-gallery.html">Gallery</a></li>
-                                <li><a href="pages-faq.html">Faqs</a></li>
-                                <li><a href="javascript:void(0)" class="has-arrow">Error Pages</a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="pages-error-400.html">400</a></li>
-                                        <li><a href="pages-error-403.html">403</a></li>
-                                        <li><a href="pages-error-404.html">404</a></li>
-                                        <li><a href="pages-error-500.html">500</a></li>
-                                        <li><a href="pages-error-503.html">503</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-pie-chart"></i><span class="hide-menu">Charts</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="chart-morris.html">Morris Chart</a></li>
-                                <li><a href="chart-chartist.html">Chartis Chart</a></li>
-                                <li><a href="chart-echart.html">Echarts</a></li>
-                                <li><a href="chart-flot.html">Flot Chart</a></li>
-                                <li><a href="chart-knob.html">Knob Chart</a></li>
-                                <li><a href="chart-chart-js.jsp">Chartjs</a></li>
-                                <li><a href="chart-sparkline.html">Sparkline Chart</a></li>
-                                <li><a href="chart-extra-chart.html">Extra chart</a></li>
-                                <li><a href="chart-peity.html">Peity Charts</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-light-bulb"></i><span class="hide-menu">Icons</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="icon-material.html">Material Icons</a></li>
-                                <li><a href="icon-fontawesome.html">Fontawesome Icons</a></li>
-                                <li><a href="icon-themify.html">Themify Icons</a></li>
-                                <li><a href="icon-weather.html">Weather Icons</a></li>
-                                <li><a href="icon-simple-lineicon.html">Simple Line icons</a></li>
-                                <li><a href="icon-flag.html">Flag Icons</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-location-pin"></i><span class="hide-menu">Maps</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="map-google.html">Google Maps</a></li>
-                                <li><a href="map-vector.html">Vector Maps</a></li>
-                            </ul>
-                        </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-align-left"></i><span class="hide-menu">Multi level dd</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="javascript:void(0)">item 1.1</a></li>
-                                <li><a href="javascript:void(0)">item 1.2</a></li>
-                                <li> <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">Menu 1.3</a>
-                                    <ul aria-expanded="false" class="collapse">
-                                        <li><a href="javascript:void(0)">item 1.3.1</a></li>
-                                        <li><a href="javascript:void(0)">item 1.3.2</a></li>
-                                        <li><a href="javascript:void(0)">item 1.3.3</a></li>
-                                        <li><a href="javascript:void(0)">item 1.3.4</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="javascript:void(0)">item 1.4</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-small-cap">--- SUPPORT</li>
-                        <li> <a class="waves-effect waves-dark" href="../documentation/documentation.html" aria-expanded="false"><i class="fa fa-circle-o text-danger"></i><span class="hide-menu">Documentation</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-login.jsp" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Log Out</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-faq.html" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">FAQs</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu">Inicio</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="realestate-property-list.jsp"><i class="ti-home"></i><span class="hide-menu">Propiedades</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="realestate-property-4-column.jsp"><i class="ti-layout"></i><span class="hide-menu">U. Funcionales</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="../documentation/documentation.html"><i class="ti-user"></i><span class="hide-menu">Clientes</span></a></li>
+                            <li><a class="waves-effect waves-dark" href="#"><i class="ti-wallet"></i> <span class="hide-menu">Mi balance</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="profile.jsp"><i class="ti-user"></i><span class="hide-menu">Mi perfil</span></a> </li>
+                        <li> <a class="waves-effect waves-dark" href="pages-faq.html" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">Preguntas</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="pages-login.jsp" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Cerrar sesion</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -579,11 +285,11 @@
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title text-uppercase">All Properties</h5>
+                                <h5 class="card-title text-uppercase"> PROPIEDADES </h5>
                                 <div class="d-flex align-items-center no-block m-t-20 m-b-10">
                                     <h1><i class="ti-home text-info"></i></h1>
                                     <div class="ml-auto">
-                                        <h1 class="text-muted">480</h1>
+                                        <h1 class="text-muted"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfProperties()%></h1>
                                     </div>
                                 </div>
                             </div>
@@ -592,11 +298,11 @@
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title text-uppercase">Properties for Sale</h5>
+                                <h5 class="card-title text-uppercase"> UNIDADES FUNCIONALES</h5>
                                 <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                                    <h1><i class="icon-tag text-purple"></i></h1>
+                                    <h1><i class="ti-layout text-purple"></i></h1>
                                     <div class="ml-auto">
-                                        <h1 class="text-muted">169</h1>
+                                        <h1 class="text-muted"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfFunctionalUnits()%></h1>
                                     </div>
                                 </div>
                             </div>
@@ -605,11 +311,11 @@
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title text-uppercase">Properties for Rent</h5>
+                                <h5 class="card-title text-uppercase"> UNIDADES FUNCIONALES OCUPADAS </h5>
                                 <div class="d-flex align-items-center no-block m-t-20 m-b-10">
-                                    <h1><i class="icon-basket text-danger"></i></h1>
+                                    <h1><i class="ti-user text-danger"></i></h1>
                                     <div class="ml-auto">
-                                        <h1 class="text-muted">311</h1>
+                                        <h1 class="text-muted"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfOccupiedFunctionalUnits()%></h1>
                                     </div>
                                 </div>
                             </div>
@@ -618,11 +324,11 @@
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title text-uppercase">Total Ernings</h5>
+                                <h5 class="card-title text-uppercase">GANANCIAS </h5>
                                 <div class="d-flex align-items-center no-block m-t-20 m-b-10">
                                     <h1><i class="ti-wallet text-success"></i></h1>
                                     <div class="ml-auto">
-                                        <h1 class="text-muted">$8170</h1>
+                                        <h1 class="text-muted">$0</h1>
                                     </div>
                                 </div>
                             </div>
@@ -642,7 +348,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex m-b-40 align-items-center">
-                                    <h5 class="card-title">PROPERTIES STATS</h5>
+                                    <h5 class="card-title"> ESTADISTICAS </h5>
                                     <div class="ml-auto">
                                         <ul class="list-inline font-12">
                                             <li><i class="fa fa-circle text-cyan"></i> For Sale</li>
@@ -770,93 +476,77 @@
                 <!-- Over Visitor, Our income , slaes different and  sales prediction -->
                 <!-- ============================================================== -->
                 <!-- .row  -->
+                <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="card bg-light">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-md-6">
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <a href="javascript:void(0)"><img alt="img" class="thumb-lg img-circle" src="../assets/images/users/agent.jpg"></a>
-                                            <h4 class="card-title m-t-10">Jon Doe</h4>
-                                            <h6 class="text-muted">Agent of Property</h6>
-                                            <div class="p-20">
-                                                <i class="fa fa-phone text-danger p-r-10" aria-hidden="true"></i> 800-1800-24657
-                                                <br> <i class="fa fa-envelope-o text-danger p-r-10 m-t-10" aria-hidden="true"></i> jon@realestate.com
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card-body bg-white">
-                                        <h5 class="card-title">REQUEST INQUIRY</h5>
-                                        <form class="m-t-30">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Name">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Phone">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="E-Mail">
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" rows="3" placeholder="Message"></textarea>
-                                            </div>
-                                            <div class="form-group text-right">
-                                                <button type="submit" class="btn btn-primary btn-rounded">Submit Request</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-md-12">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">RECENT PROPERTIES</h5>
-                                <div class="d-flex no-block m-b-20 m-t-30">
-                                    <div class="p-r-15">
-                                        <a href="javascript:void(0)"><img src="../assets/images/property/prop1.jpeg" alt="property" width="100"></a>
-                                    </div>
-                                    <div>
-                                        <h5 class="card-title m-b-5"><a href="javascript:void(0)" class="link">4 BHK Avenue Street, Mountain View</a></h5>
-                                        <span class="text-muted">Oct 07, 2015 | Jon Doe</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex no-block m-b-20">
-                                    <div class="p-r-15">
-                                        <a href="javascript:void(0)"><img src="../assets/images/property/prop2.jpeg" alt="property" width="100"></a>
-                                    </div>
-                                    <div>
-                                        <h5 class="card-title m-b-5"><a href="javascript:void(0)" class="link">2 BHK Masto Street, Mountain View</a></h5>
-                                        <span class="text-muted">Oct 07, 2015 | Jon Doe</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex no-block m-b-20">
-                                    <div class="p-r-15">
-                                        <a href="javascript:void(0)"><img src="../assets/images/property/prop3.jpeg" alt="property" width="100"></a>
-                                    </div>
-                                    <div>
-                                        <h5 class="card-title m-b-5"><a href="javascript:void(0)" class="link">5 BHK Kalash Street, Mountain View</a></h5>
-                                        <span class="text-muted">Oct 07, 2015 | Jon Doe</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex no-block m-b-20">
-                                    <div class="p-r-15">
-                                        <a href="javascript:void(0)"><img src="../assets/images/property/prop4.jpeg" alt="property" width="100"></a>
-                                    </div>
-                                    <div>
-                                        <h5 class="card-title m-b-5"><a href="javascript:void(0)" class="link">1 BHK Amidhar Street, Mountain View</a></h5>
-                                        <span class="text-muted">Oct 07, 2015 | Jon Doe</span>
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card-body b-l calender-sidebar">
+                                            <div id="calendar"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.row  -->
+                <%--<!-- BEGIN MODAL -->--%>
+                <%--<div class="modal none-border" id="my-event">--%>
+                    <%--<div class="modal-dialog">--%>
+                        <%--<div class="modal-content">--%>
+                            <%--<div class="modal-header">--%>
+                                <%--<h4 class="modal-title"><strong>Add Event</strong></h4>--%>
+                                <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
+                            <%--</div>--%>
+                            <%--<div class="modal-body"></div>--%>
+                            <%--<div class="modal-footer">--%>
+                                <%--<button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>--%>
+                                <%--<button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>--%>
+                                <%--<button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<!-- Modal Add Category -->--%>
+                <%--<div class="modal fade none-border" id="add-new-event">--%>
+                    <%--<div class="modal-dialog">--%>
+                        <%--<div class="modal-content">--%>
+                            <%--<div class="modal-header">--%>
+                                <%--<h4 class="modal-title"><strong>Add</strong> a category</h4>--%>
+                                <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
+                            <%--</div>--%>
+                            <%--<div class="modal-body">--%>
+                                <%--<form role="form">--%>
+                                    <%--<div class="row">--%>
+                                        <%--<div class="col-md-6">--%>
+                                            <%--<label class="control-label">Category Name</label>--%>
+                                            <%--<input class="form-control form-white" placeholder="Enter name" type="text" name="category-name" />--%>
+                                        <%--</div>--%>
+                                        <%--<div class="col-md-6">--%>
+                                            <%--<label class="control-label">Choose Category Color</label>--%>
+                                            <%--<select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">--%>
+                                                <%--<option value="success">Success</option>--%>
+                                                <%--<option value="danger">Danger</option>--%>
+                                                <%--<option value="info">Info</option>--%>
+                                                <%--<option value="primary">Primary</option>--%>
+                                                <%--<option value="warning">Warning</option>--%>
+                                                <%--<option value="inverse">Inverse</option>--%>
+                                            <%--</select>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</form>--%>
+                            <%--</div>--%>
+                            <%--<div class="modal-footer">--%>
+                                <%--<button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">Save</button>--%>
+                                <%--<button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<!-- END MODAL -->--%>
+                <%--<!-- ============================================================== -->--%>
                 <!-- ============================================================== -->
                 <!-- End Page Content -->
                 <!-- ============================================================== -->
@@ -953,6 +643,14 @@
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
+    <!--stickey kit -->
+    <script src="../assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="../assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
+    <!-- Calendar JavaScript -->
+    <script src="../assets/node_modules/calendar/jquery-ui.min.js"></script>
+    <script src="../assets/node_modules/moment/moment.js"></script>
+    <script src='../assets/node_modules/calendar/dist/fullcalendar.min.js'></script>
+    <script src="../assets/node_modules/calendar/dist/cal-init.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->

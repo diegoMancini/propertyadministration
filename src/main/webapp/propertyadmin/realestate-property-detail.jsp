@@ -44,7 +44,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.jsp">
+                    <a class="navbar-brand" href="home.jsp">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
@@ -327,7 +327,7 @@
                             </ul>
                         </li>
                         <li class="nav-small-cap">--- PERSONAL</li>
-                        <li> <a class="waves-effect waves-dark" href="index.jsp"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span></a>
+                        <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Apps</span></a>
                             <ul aria-expanded="false" class="collapse">
@@ -455,7 +455,7 @@
                                         <li><a href="pages-recover-password.html">Recover password</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="pages-profile.jsp">Profile page</a></li>
+                                <li><a href="profile.jsp">Profile page</a></li>
                                 <li><a href="pages-animation.html">Animation</a></li>
                                 <li><a href="pages-fix-innersidebar.html">Sticky Left sidebar</a></li>
                                 <li><a href="pages-fix-inner-right-sidebar.html">Sticky Right sidebar</a></li>

@@ -37,26 +37,13 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!--
-       <servlet>
-          <servlet-name>NoResponseServlet</servlet-name>
-          <description>For Orion only</description>
-          <servlet-class>org.securityfilter.servlet.NoResponseServlet</servlet-class>
-       </servlet>
-
-       <servlet-mapping>
-          <servlet-name>NoResponseServlet</servlet-name>
-          <url-pattern>/logMeIn</url-pattern>
-       </servlet-mapping>
-    -->
-
     <!-- make the session time-out after one minute -->
     <session-config>
         <session-timeout>1000</session-timeout>
     </session-config>
 
     <welcome-file-list>
-        <welcome-file>/propertyadmin/index.jsp</welcome-file>
+        <welcome-file>/propertyadmin/landingpage.jsp</welcome-file>
     </welcome-file-list>
 
     <!-- SecurityFilter works with custom error pages -->

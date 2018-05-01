@@ -1,5 +1,6 @@
 package propertyAdmin.structure.persons;
 
+import propertyAdmin.structure.property.structure.FunctionalUnit;
 import propertyAdmin.structure.property.structure.Property;
 
 import javax.persistence.*;
@@ -122,6 +123,7 @@ public class   Account {
    public void addProperty(Property property) {
        properties.add(property);
    }
+
    public Property getSpecificPropertyById(Integer id) {
        for (Property property : properties) {
           if (property.getId().equals(id)) {
@@ -130,6 +132,28 @@ public class   Account {
              System.out.println("NOT FOUND");
           }
        } return null;
+   }
+
+   public Integer getAmountOfProperties() {
+      return getProperties().size();
+   }
+   public Integer getAmountOfFunctionalUnits() {
+      Integer res = 0;
+      for (Property property:getProperties()) {
+         res += property.getFunctionalUnits().size();
+      }
+      return res;
+   }
+   public Integer getAmountOfOccupiedFunctionalUnits() {
+      Integer res = getAmountOfFunctionalUnits();
+      for (Property property:getProperties()) {
+         for (FunctionalUnit functionalUnit: property.getFunctionalUnits()) {
+            if (!functionalUnit.hasContract()) {
+               res--;
+            }
+         }
+      }
+      return res;
    }
 
    public void removeProperty(Property property) {

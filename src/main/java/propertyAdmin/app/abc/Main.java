@@ -1,7 +1,7 @@
 package propertyAdmin.app.abc;
 
 import propertyAdmin.app.menu.form.StartMenu;
-import propertyAdmin.database.DatabaseOps;
+import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.persons.Account;
 import propertyAdmin.structure.persons.Guarantor;
 import propertyAdmin.structure.persons.Landlord;
@@ -27,7 +27,7 @@ public class Main {
         Account testerAccount = new Account("Diego", "Mancini", "38931523", "Argentina",
                 "Soltero", "Saravi 104 Barrio La Tranquera", "Argentina",
                 "Buenos Aires" , "Pilar", "La Lonja", "1629",
-                "5491154645662", "dm", "pass", "username");
+                "5491154645662", "diegonfx@gmail.com", "Perrito1", "Diegonfx");
         databaseOps.addAccountToDatabase(testerAccount);
 
         Property testerProperty = new Property("Casa La Tranquera", "LOTE 50", "Saravi 104 Barrio La Tranquera",

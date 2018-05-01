@@ -1,6 +1,6 @@
 package propertyAdmin.app.abc;
 
-import propertyAdmin.database.DatabaseOps;
+import propertyAdmin.operations.DatabaseOps;
 
 public abstract class Menu {
 

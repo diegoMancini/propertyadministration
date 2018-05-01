@@ -173,6 +173,7 @@ public class Property {
       }
       return result;
    }
+
    public void addFunctionalUnit(FunctionalUnit functionalUnit) {
       functionalUnits.add(functionalUnit);
       totalAmount++;

@@ -1,6 +1,6 @@
 package propertyAdmin.web.securityFilter;
 
-import propertyAdmin.database.DatabaseOps;
+import propertyAdmin.operations.DatabaseOps;
 import org.securityfilter.realm.SimpleSecurityRealmBase;
 import propertyAdmin.structure.persons.Account;
 

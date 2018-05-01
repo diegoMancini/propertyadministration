@@ -1,6 +1,6 @@
 package propertyAdmin.web.servlets;
 
-import propertyAdmin.database.DatabaseOps;
+import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.property.structure.Property;
 
 import javax.servlet.ServletException;

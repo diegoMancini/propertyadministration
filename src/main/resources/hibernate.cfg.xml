@@ -16,7 +16,7 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <!-- Drop and re-create the propertyAdmin.database schema on startup-->
+        <!-- Drop and re-create the propertyAdmin.operationsns schema on startup-->
         <property name="hbm2ddl.auto">update</property>
 
         <property name="dateTime">org.joda.time.contrib.hibernate.PersistentDateTime</property>

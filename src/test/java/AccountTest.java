@@ -1,4 +1,4 @@
-import propertyAdmin.database.DatabaseOps;
+import propertyAdmin.operations.DatabaseOps;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

@@ -55,14 +55,14 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" name="j_password" type="password" required="" placeholder="Contrasena"> </div>
+                            <input class="form-control" name="j_password" type="password" required="" placeholder="Contraseña"> </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Recordarme</label>
-                                <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Olvido su contrasena?</a>
+                                <input type="checkbox" name="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label"  for="customCheck1">Recordarme</label>
+                                <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Recuperar contraseña </a>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                 </form>
-                <form class="form-horizontal" id="recoverform" action="index.jsp">
+                <form class="form-horizontal" id="recoverform" action="home.jsp">
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <h3>Recuperar Contrasena</h3>

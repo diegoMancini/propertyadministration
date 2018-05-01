@@ -1,6 +1,6 @@
 package propertyAdmin.web.servlets;
 
-import propertyAdmin.database.DatabaseOps;
+import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.persons.Account;
 
 import javax.servlet.ServletException;
@@ -39,7 +39,7 @@ public class NewAccountServlet extends HttpServlet {
         String page = "";
         if(!databaseOps.hasAccount(email)){
             databaseOps.addAccountToDatabase(account);
-            page += "/propertyadmin/pages-profile.jsp";
+            page += "/propertyadmin/profile.jsp";
         } else {
             page += "/propertyadmin/pages-register.jsp";
         }

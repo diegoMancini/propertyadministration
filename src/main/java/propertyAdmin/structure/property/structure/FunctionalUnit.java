@@ -146,6 +146,13 @@ public abstract class FunctionalUnit {
 
     public abstract String getType();
 
+    public boolean hasContract() {
+        if (contract == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
     public void setDeleted(boolean b) {
         deleted = b;
     }

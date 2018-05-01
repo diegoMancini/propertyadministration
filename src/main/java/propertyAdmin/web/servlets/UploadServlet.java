@@ -1,6 +1,6 @@
 package propertyAdmin.web.servlets;
 
-import propertyAdmin.database.DatabaseOps;
+import propertyAdmin.operations.DatabaseOps;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;

@@ -337,19 +337,19 @@
                     </li>
                     <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Apps</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="app-calendar.jsp">Calendar</a></li>
-                            <li><a href="app-chat.jsp">Chat app</a></li>
-                            <li><a href="app-ticket.jsp">Support Ticket</a></li>
-                            <li><a href="app-contact.jsp">Contact / Employee</a></li>
-                            <li><a href="app-contact2.jsp">Contact Grid</a></li>
-                            <li><a href="app-contact-detail.jsp">Contact Detail</a></li>
+                            <li><a href="help/app-calendar.jsp">Calendar</a></li>
+                            <li><a href="help/app-chat.jsp">Chat app</a></li>
+                            <li><a href="help/app-ticket.jsp">Support Ticket</a></li>
+                            <li><a href="help/app-contact.jsp">Contact / Employee</a></li>
+                            <li><a href="help/app-contact2.jsp">Contact Grid</a></li>
+                            <li><a href="help/app-contact-detail.jsp">Contact Detail</a></li>
                         </ul>
                     </li>
                     <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-email"></i><span class="hide-menu">Inbox</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="app-email.jsp">Mailbox</a></li>
-                            <li><a href="app-email-detail.jsp">Mailbox Detail</a></li>
-                            <li><a href="app-compose.jsp">Compose Mail</a></li>
+                            <li><a href="help/app-email.jsp">Mailbox</a></li>
+                            <li><a href="help/app-email-detail.jsp">Mailbox Detail</a></li>
+                            <li><a href="help/app-compose.jsp">Compose Mail</a></li>
                         </ul>
                     </li>
                     <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-palette"></i><span class="hide-menu">Ui Elements <span class="badge badge-pill badge-primary text-white ml-auto">25</span></span></a>
@@ -492,7 +492,7 @@
                             <li><a href="chart-echart.html">Echarts</a></li>
                             <li><a href="chart-flot.html">Flot Chart</a></li>
                             <li><a href="chart-knob.html">Knob Chart</a></li>
-                            <li><a href="chart-chart-js.jsp">Chartjs</a></li>
+                            <li><a href="help/chart-chart-js.jsp">Chartjs</a></li>
                             <li><a href="chart-sparkline.html">Sparkline Chart</a></li>
                             <li><a href="chart-extra-chart.html">Extra chart</a></li>
                             <li><a href="chart-peity.html">Peity Charts</a></li>

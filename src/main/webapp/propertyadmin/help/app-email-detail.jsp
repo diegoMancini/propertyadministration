@@ -9,12 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
-    <!-- Calendar CSS -->
-    <link href="../assets/node_modules/calendar/dist/fullcalendar.css" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="../dist/css/style.min.css" rel="stylesheet">
+    <!-- page css -->
+    <link href="../dist/css/pages/inbox.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,13 +46,13 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="home.jsp">
+                    <a class="navbar-brand" href="../home.jsp">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="../../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <span class="hidden-xs"><span class="font-bold">elite</span>realestate</span>
@@ -147,25 +147,25 @@
                                         <div class="message-center">
                                             <!-- Message -->
                                             <a href="javascript:void(0)">
-                                                <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                                <div class="user-img"> <img src="../../assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="javascript:void(0)">
-                                                <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                                <div class="user-img"> <img src="../../assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="javascript:void(0)">
-                                                <div class="user-img"> <img src="../assets/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                                <div class="user-img"> <img src="../../assets/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
                                             </a>
                                             <!-- Message -->
                                             <a href="javascript:void(0)">
-                                                <div class="user-img"> <img src="../assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                                <div class="user-img"> <img src="../../assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                                                 <div class="mail-contnet">
                                                     <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
                                             </a>
@@ -192,13 +192,13 @@
                                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                             <div class="carousel-inner" role="listbox">
                                                 <div class="carousel-item active">
-                                                    <div class="container"> <img class="d-block img-fluid" src="../assets/images/big/img1.jpg" alt="First slide"></div>
+                                                    <div class="container"> <img class="d-block img-fluid" src="../../assets/images/big/img1.jpg" alt="First slide"></div>
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <div class="container"><img class="d-block img-fluid" src="../assets/images/big/img2.jpg" alt="Second slide"></div>
+                                                    <div class="container"><img class="d-block img-fluid" src="../../assets/images/big/img2.jpg" alt="Second slide"></div>
                                                 </div>
                                                 <div class="carousel-item">
-                                                    <div class="container"><img class="d-block img-fluid" src="../assets/images/big/img3.jpg" alt="Third slide"></div>
+                                                    <div class="container"><img class="d-block img-fluid" src="../../assets/images/big/img3.jpg" alt="Third slide"></div>
                                                 </div>
                                             </div>
                                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
@@ -280,7 +280,7 @@
                         <!-- User Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown u-pro">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class=""> <span class="hidden-md-down">Mark &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/images/users/1.jpg" alt="user" class=""> <span class="hidden-md-down">Mark &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <!-- text-->
                                 <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
@@ -319,7 +319,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="user-pro"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"><span class="hide-menu">Mark Jeckson</span></a>
+                        <li class="user-pro"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="../../assets/images/users/1.jpg" alt="user-img" class="img-circle"><span class="hide-menu">Mark Jeckson</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
@@ -329,7 +329,7 @@
                             </ul>
                         </li>
                         <li class="nav-small-cap">--- PERSONAL</li>
-                        <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../home.jsp"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Apps</span></a>
                             <ul aria-expanded="false" class="collapse">
@@ -350,164 +350,164 @@
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-palette"></i><span class="hide-menu">Ui Elements <span class="badge badge-pill badge-primary text-white ml-auto">25</span></span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="ui-cards.html">Cards</a></li>
-                                <li><a href="ui-user-card.html">User Cards</a></li>
-                                <li><a href="ui-buttons.html">Buttons</a></li>
-                                <li><a href="ui-modals.html">Modals</a></li>
-                                <li><a href="ui-tab.html">Tab</a></li>
-                                <li><a href="ui-tooltip-popover.html">Tooltip &amp; Popover</a></li>
-                                <li><a href="ui-tooltip-stylish.html">Tooltip stylish</a></li>
-                                <li><a href="ui-sweetalert.html">Sweet Alert</a></li>
-                                <li><a href="ui-notification.html">Notification</a></li>
-                                <li><a href="ui-progressbar.html">Progressbar</a></li>
-                                <li><a href="ui-nestable.html">Nestable</a></li>
-                                <li><a href="ui-range-slider.html">Range slider</a></li>
-                                <li><a href="ui-timeline.html">Timeline</a></li>
-                                <li><a href="ui-typography.html">Typography</a></li>
-                                <li><a href="ui-horizontal-timeline.html">Horizontal Timeline</a></li>
-                                <li><a href="ui-session-timeout.html">Session Timeout</a></li>
-                                <li><a href="ui-session-ideal-timeout.html">Session Ideal Timeout</a></li>
-                                <li><a href="ui-bootstrap.html">Bootstrap Ui</a></li>
-                                <li><a href="ui-breadcrumb.html">Breadcrumb</a></li>
-                                <li><a href="ui-bootstrap-switch.html">Bootstrap Switch</a></li>
-                                <li><a href="ui-list-media.html">List Media</a></li>
-                                <li><a href="ui-ribbons.html">Ribbons</a></li>
-                                <li><a href="ui-grid.html">Grid</a></li>
-                                <li><a href="ui-carousel.html">Carousel</a></li>
-                                <li><a href="ui-date-paginator.html">Date-paginator</a></li>
-                                <li><a href="ui-dragable-portlet.html">Dragable Portlet</a></li>
+                                <li><a href="../ui-cards.html">Cards</a></li>
+                                <li><a href="../ui-user-card.html">User Cards</a></li>
+                                <li><a href="../ui-buttons.html">Buttons</a></li>
+                                <li><a href="../ui-modals.html">Modals</a></li>
+                                <li><a href="../ui-tab.html">Tab</a></li>
+                                <li><a href="../ui-tooltip-popover.html">Tooltip &amp; Popover</a></li>
+                                <li><a href="../ui-tooltip-stylish.html">Tooltip stylish</a></li>
+                                <li><a href="../ui-sweetalert.html">Sweet Alert</a></li>
+                                <li><a href="../ui-notification.html">Notification</a></li>
+                                <li><a href="../ui-progressbar.html">Progressbar</a></li>
+                                <li><a href="../ui-nestable.html">Nestable</a></li>
+                                <li><a href="../ui-range-slider.html">Range slider</a></li>
+                                <li><a href="../ui-timeline.html">Timeline</a></li>
+                                <li><a href="../ui-typography.html">Typography</a></li>
+                                <li><a href="../ui-horizontal-timeline.html">Horizontal Timeline</a></li>
+                                <li><a href="../ui-session-timeout.html">Session Timeout</a></li>
+                                <li><a href="../ui-session-ideal-timeout.html">Session Ideal Timeout</a></li>
+                                <li><a href="../ui-bootstrap.html">Bootstrap Ui</a></li>
+                                <li><a href="../ui-breadcrumb.html">Breadcrumb</a></li>
+                                <li><a href="../ui-bootstrap-switch.html">Bootstrap Switch</a></li>
+                                <li><a href="../ui-list-media.html">List Media</a></li>
+                                <li><a href="../ui-ribbons.html">Ribbons</a></li>
+                                <li><a href="../ui-grid.html">Grid</a></li>
+                                <li><a href="../ui-carousel.html">Carousel</a></li>
+                                <li><a href="../ui-date-paginator.html">Date-paginator</a></li>
+                                <li><a href="../ui-dragable-portlet.html">Dragable Portlet</a></li>
                             </ul>
                         </li>
                         <li class="nav-small-cap">--- PROFESSIONAL</li>
-                        <li> <a class="waves-effect waves-dark" href="realestate-property-list.jsp"><i class="ti-home"></i><span class="hide-menu">Property List</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../realestate-property-list.jsp"><i class="ti-home"></i><span class="hide-menu">Property List</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="realestate-property-3-column.html"><i class="ti-menu-alt"></i><span class="hide-menu">Property 3 Column</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../realestate-property-3-column.html"><i class="ti-menu-alt"></i><span class="hide-menu">Property 3 Column</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="realestate-property-4-column.jsp"><i class="ti-layout"></i><span class="hide-menu">Property 4 Column</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../realestate-property-4-column.jsp"><i class="ti-layout"></i><span class="hide-menu">Property 4 Column</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="realestate-property-detail.jsp"><i class="ti-check-box"></i><span class="hide-menu">Property Detail</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../realestate-property-detail.jsp"><i class="ti-check-box"></i><span class="hide-menu">Property Detail</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="realestate-add-property.jsp"><i class="ti-support"></i><span class="hide-menu">Add Property</span></a>
+                        <li> <a class="waves-effect waves-dark" href="../realestate-add-property.jsp"><i class="ti-support"></i><span class="hide-menu">Add Property</span></a>
                         </li>
                         <li class="nav-small-cap">--- FORMS, TABLE &amp; WIDGETS</li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-media-right-alt"></i><span class="hide-menu">Forms</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="form-basic.html">Basic Forms</a></li>
-                                <li><a href="form-layout.html">Form Layouts</a></li>
-                                <li><a href="form-addons.html">Form Addons</a></li>
-                                <li><a href="form-material.html">Form Material</a></li>
-                                <li><a href="form-float-input.html">Floating Lable</a></li>
-                                <li><a href="form-pickers.html">Form Pickers</a></li>
-                                <li><a href="form-upload.html">File Upload</a></li>
-                                <li><a href="form-mask.html">Form Mask</a></li>
-                                <li><a href="form-validation.html">Form Validation</a></li>
-                                <li><a href="form-dropzone.html">File Dropzone</a></li>
-                                <li><a href="form-icheck.html">Icheck control</a></li>
-                                <li><a href="form-img-cropper.html">Image Cropper</a></li>
-                                <li><a href="form-bootstrapwysihtml5.html">HTML5 Editor</a></li>
-                                <li><a href="form-typehead.html">Form Typehead</a></li>
-                                <li><a href="form-wizard.html">Form Wizard</a></li>
-                                <li><a href="form-xeditable.html">Xeditable Editor</a></li>
-                                <li><a href="form-summernote.html">Summernote Editor</a></li>
-                                <li><a href="form-tinymce.html">Tinymce Editor</a></li>
+                                <li><a href="../form-basic.html">Basic Forms</a></li>
+                                <li><a href="../form-layout.html">Form Layouts</a></li>
+                                <li><a href="../form-addons.html">Form Addons</a></li>
+                                <li><a href="../form-material.html">Form Material</a></li>
+                                <li><a href="../form-float-input.html">Floating Lable</a></li>
+                                <li><a href="../form-pickers.html">Form Pickers</a></li>
+                                <li><a href="../form-upload.html">File Upload</a></li>
+                                <li><a href="../form-mask.html">Form Mask</a></li>
+                                <li><a href="../form-validation.html">Form Validation</a></li>
+                                <li><a href="../form-dropzone.html">File Dropzone</a></li>
+                                <li><a href="../form-icheck.html">Icheck control</a></li>
+                                <li><a href="../form-img-cropper.html">Image Cropper</a></li>
+                                <li><a href="../form-bootstrapwysihtml5.html">HTML5 Editor</a></li>
+                                <li><a href="../form-typehead.html">Form Typehead</a></li>
+                                <li><a href="../form-wizard.html">Form Wizard</a></li>
+                                <li><a href="../form-xeditable.html">Xeditable Editor</a></li>
+                                <li><a href="../form-summernote.html">Summernote Editor</a></li>
+                                <li><a href="../form-tinymce.html">Tinymce Editor</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-accordion-merged"></i><span class="hide-menu">Tables</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="table-basic.html">Basic Tables</a></li>
-                                <li><a href="table-layout.html">Table Layouts</a></li>
-                                <li><a href="table-data-table.html">Data Tables</a></li>
-                                <li><a href="table-footable.html">Footable</a></li>
-                                <li><a href="table-jsgrid.html">Js Grid Table</a></li>
-                                <li><a href="table-responsive.html">Responsive Table</a></li>
-                                <li><a href="table-bootstrap.html">Bootstrap Tables</a></li>
-                                <li><a href="table-editable-table.html">Editable Table</a></li>
+                                <li><a href="../table-basic.html">Basic Tables</a></li>
+                                <li><a href="../table-layout.html">Table Layouts</a></li>
+                                <li><a href="../table-data-table.html">Data Tables</a></li>
+                                <li><a href="../table-footable.html">Footable</a></li>
+                                <li><a href="../table-jsgrid.html">Js Grid Table</a></li>
+                                <li><a href="../table-responsive.html">Responsive Table</a></li>
+                                <li><a href="../table-bootstrap.html">Bootstrap Tables</a></li>
+                                <li><a href="../table-editable-table.html">Editable Table</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Widgets</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="widget-data.html">Data Widgets</a></li>
-                                <li><a href="widget-apps.html">Apps Widgets</a></li>
-                                <li><a href="widget-charts.html">Charts Widgets</a></li>
+                                <li><a href="../widget-data.html">Data Widgets</a></li>
+                                <li><a href="../widget-apps.html">Apps Widgets</a></li>
+                                <li><a href="../widget-charts.html">Charts Widgets</a></li>
                             </ul>
                         </li>
                         <li class="nav-small-cap">--- EXTRA COMPONENTS</li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-gallery"></i><span class="hide-menu">Page Layout</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="layout-single-column.html">1 Column</a></li>
-                                <li><a href="layout-fix-header.html">Fix header</a></li>
-                                <li><a href="layout-fix-sidebar.html">Fix sidebar</a></li>
-                                <li><a href="layout-fix-header-sidebar.html">Fixe header &amp; Sidebar</a></li>
-                                <li><a href="layout-boxed.html">Boxed Layout</a></li>
-                                <li><a href="layout-logo-center.html">Logo in Center</a></li>
+                                <li><a href="../layout-single-column.html">1 Column</a></li>
+                                <li><a href="../layout-fix-header.html">Fix header</a></li>
+                                <li><a href="../layout-fix-sidebar.html">Fix sidebar</a></li>
+                                <li><a href="../layout-fix-header-sidebar.html">Fixe header &amp; Sidebar</a></li>
+                                <li><a href="../layout-boxed.html">Boxed Layout</a></li>
+                                <li><a href="../layout-logo-center.html">Logo in Center</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">Sample Pages <span class="badge badge-pill badge-info">25</span></span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="starter-kit.html">Starter Kit</a></li>
-                                <li><a href="pages-blank.html">Blank page</a></li>
+                                <li><a href="../starter-kit.html">Starter Kit</a></li>
+                                <li><a href="../pages-blank.html">Blank page</a></li>
                                 <li><a href="javascript:void(0)" class="has-arrow">Authentication <span class="badge badge-pill badge-success pull-right">6</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="pages-login.jsp">Login 1</a></li>
-                                        <li><a href="pages-login-2.html">Login 2</a></li>
-                                        <li><a href="pages-register.jsp">Register</a></li>
-                                        <li><a href="pages-register2.html">Register 2</a></li>
-                                        <li><a href="pages-register3.html">Register 3</a></li>
-                                        <li><a href="pages-lockscreen.html">Lockscreen</a></li>
-                                        <li><a href="pages-recover-password.html">Recover password</a></li>
+                                        <li><a href="../pages-login.jsp">Login 1</a></li>
+                                        <li><a href="../pages-login-2.html">Login 2</a></li>
+                                        <li><a href="../pages-register.jsp">Register</a></li>
+                                        <li><a href="../pages-register2.html">Register 2</a></li>
+                                        <li><a href="../pages-register3.html">Register 3</a></li>
+                                        <li><a href="../pages-lockscreen.html">Lockscreen</a></li>
+                                        <li><a href="../pages-recover-password.html">Recover password</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="profile.jsp">Profile page</a></li>
-                                <li><a href="pages-animation.html">Animation</a></li>
-                                <li><a href="pages-fix-innersidebar.html">Sticky Left sidebar</a></li>
-                                <li><a href="pages-fix-inner-right-sidebar.html">Sticky Right sidebar</a></li>
-                                <li><a href="pages-invoice.html">Invoice</a></li>
-                                <li><a href="pages-treeview.html">Treeview</a></li>
-                                <li><a href="pages-utility-classes.html">Helper Classes</a></li>
-                                <li><a href="pages-search-result.html">Search result</a></li>
-                                <li><a href="pages-scroll.html">Scrollbar</a></li>
-                                <li><a href="pages-pricing.html">Pricing</a></li>
-                                <li><a href="pages-lightbox-popup.html">Lighbox popup</a></li>
-                                <li><a href="pages-gallery.html">Gallery</a></li>
-                                <li><a href="pages-faq.html">Faqs</a></li>
+                                <li><a href="../profile.jsp">Profile page</a></li>
+                                <li><a href="../pages-animation.html">Animation</a></li>
+                                <li><a href="../pages-fix-innersidebar.html">Sticky Left sidebar</a></li>
+                                <li><a href="../pages-fix-inner-right-sidebar.html">Sticky Right sidebar</a></li>
+                                <li><a href="../pages-invoice.html">Invoice</a></li>
+                                <li><a href="../pages-treeview.html">Treeview</a></li>
+                                <li><a href="../pages-utility-classes.html">Helper Classes</a></li>
+                                <li><a href="../pages-search-result.html">Search result</a></li>
+                                <li><a href="../pages-scroll.html">Scrollbar</a></li>
+                                <li><a href="../pages-pricing.html">Pricing</a></li>
+                                <li><a href="../pages-lightbox-popup.html">Lighbox popup</a></li>
+                                <li><a href="../pages-gallery.html">Gallery</a></li>
+                                <li><a href="../pages-faq.html">Faqs</a></li>
                                 <li><a href="javascript:void(0)" class="has-arrow">Error Pages</a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="pages-error-400.html">400</a></li>
-                                        <li><a href="pages-error-403.html">403</a></li>
-                                        <li><a href="pages-error-404.html">404</a></li>
-                                        <li><a href="pages-error-500.html">500</a></li>
-                                        <li><a href="pages-error-503.html">503</a></li>
+                                        <li><a href="../pages-error-400.html">400</a></li>
+                                        <li><a href="../pages-error-403.html">403</a></li>
+                                        <li><a href="../pages-error-404.html">404</a></li>
+                                        <li><a href="../pages-error-500.html">500</a></li>
+                                        <li><a href="../pages-error-503.html">503</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-pie-chart"></i><span class="hide-menu">Charts</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="chart-morris.html">Morris Chart</a></li>
-                                <li><a href="chart-chartist.html">Chartis Chart</a></li>
-                                <li><a href="chart-echart.html">Echarts</a></li>
-                                <li><a href="chart-flot.html">Flot Chart</a></li>
-                                <li><a href="chart-knob.html">Knob Chart</a></li>
+                                <li><a href="../chart-morris.html">Morris Chart</a></li>
+                                <li><a href="../chart-chartist.html">Chartis Chart</a></li>
+                                <li><a href="../chart-echart.html">Echarts</a></li>
+                                <li><a href="../chart-flot.html">Flot Chart</a></li>
+                                <li><a href="../chart-knob.html">Knob Chart</a></li>
                                 <li><a href="chart-chart-js.jsp">Chartjs</a></li>
-                                <li><a href="chart-sparkline.html">Sparkline Chart</a></li>
-                                <li><a href="chart-extra-chart.html">Extra chart</a></li>
-                                <li><a href="chart-peity.html">Peity Charts</a></li>
+                                <li><a href="../chart-sparkline.html">Sparkline Chart</a></li>
+                                <li><a href="../chart-extra-chart.html">Extra chart</a></li>
+                                <li><a href="../chart-peity.html">Peity Charts</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-light-bulb"></i><span class="hide-menu">Icons</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="icon-material.html">Material Icons</a></li>
-                                <li><a href="icon-fontawesome.html">Fontawesome Icons</a></li>
-                                <li><a href="icon-themify.html">Themify Icons</a></li>
-                                <li><a href="icon-weather.html">Weather Icons</a></li>
-                                <li><a href="icon-simple-lineicon.html">Simple Line icons</a></li>
-                                <li><a href="icon-flag.html">Flag Icons</a></li>
+                                <li><a href="../icon-material.html">Material Icons</a></li>
+                                <li><a href="../icon-fontawesome.html">Fontawesome Icons</a></li>
+                                <li><a href="../icon-themify.html">Themify Icons</a></li>
+                                <li><a href="../icon-weather.html">Weather Icons</a></li>
+                                <li><a href="../icon-simple-lineicon.html">Simple Line icons</a></li>
+                                <li><a href="../icon-flag.html">Flag Icons</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-location-pin"></i><span class="hide-menu">Maps</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="map-google.html">Google Maps</a></li>
-                                <li><a href="map-vector.html">Vector Maps</a></li>
+                                <li><a href="../map-google.html">Google Maps</a></li>
+                                <li><a href="../map-vector.html">Vector Maps</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-align-left"></i><span class="hide-menu">Multi level dd</span></a>
@@ -527,8 +527,8 @@
                         </li>
                         <li class="nav-small-cap">--- SUPPORT</li>
                         <li> <a class="waves-effect waves-dark" href="../documentation/documentation.html" aria-expanded="false"><i class="fa fa-circle-o text-danger"></i><span class="hide-menu">Documentation</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-login.jsp" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Log Out</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-faq.html" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">FAQs</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="../pages-login.jsp" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Log Out</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="../pages-faq.html" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">FAQs</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -551,13 +551,13 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">Calendar</h4>
+                        <h4 class="text-themecolor">Email Details</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                                <li class="breadcrumb-item active">Calendar</li>
+                                <li class="breadcrumb-item active">Email Details</li>
                             </ol>
                             <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
                         </div>
@@ -570,38 +570,94 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12">
                         <div class="card">
-                            <div class="">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="card-body">
-                                            <h4 class="card-title m-t-10">Drag & Drop Event</h4>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div id="calendar-events" class="">
-                                                        <div class="calendar-events" data-class="bg-info"><i class="fa fa-circle text-info"></i> My Event One</div>
-                                                        <div class="calendar-events" data-class="bg-success"><i class="fa fa-circle text-success"></i> My Event Two</div>
-                                                        <div class="calendar-events" data-class="bg-danger"><i class="fa fa-circle text-danger"></i> My Event Three</div>
-                                                        <div class="calendar-events" data-class="bg-warning"><i class="fa fa-circle text-warning"></i> My Event Four</div>
-                                                    </div>
-                                                    <!-- checkbox -->
-                                                    <div class="checkbox m-t-20">
-                                                        <input id="drop-remove" type="checkbox">
-                                                        <label for="drop-remove">
-                                                            Remove after drop
-                                                        </label>
-                                                    </div>
-                                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#add-new-event" class="btn m-t-10 btn-info btn-block waves-effect waves-light">
-                                                            <i class="ti-plus"></i> Add New Event
-                                                        </a>
-                                                </div>
+                            <div class="row">
+                                <div class="col-xlg-2 col-lg-3 col-md-4">
+                                    <div class="card-body inbox-panel"><a href="app-compose.jsp" class="btn btn-danger m-b-20 p-10 btn-block waves-effect waves-light">Compose</a>
+                                        <ul class="list-group list-group-full">
+                                            <li class="list-group-item active"> <a href="javascript:void(0)"><i class="mdi mdi-gmail"></i> Inbox </a><span class="badge badge-success ml-auto">6</span></li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0)"> <i class="mdi mdi-star"></i> Starred </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0)"> <i class="mdi mdi-send"></i> Draft </a><span class="badge badge-danger ml-auto">3</span></li>
+                                            <li class="list-group-item ">
+                                                <a href="javascript:void(0)"> <i class="mdi mdi-file-document-box"></i> Sent Mail </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="javascript:void(0)"> <i class="mdi mdi-delete"></i> Trash </a>
+                                            </li>
+                                        </ul>
+                                        <h3 class="card-title m-t-40">Labels</h3>
+                                        <div class="list-group b-0 mail-list"> <a href="javascript:void(0)" class="list-group-item"><span class="fa fa-circle text-info m-r-10"></span>Work</a> <a href="javascript:void(0)" class="list-group-item"><span class="fa fa-circle text-warning m-r-10"></span>Family</a> <a href="javascript:void(0)" class="list-group-item"><span class="fa fa-circle text-purple m-r-10"></span>Private</a> <a href="javascript:void(0)" class="list-group-item"><span class="fa fa-circle text-danger m-r-10"></span>Friends</a> <a href="javascript:void(0)" class="list-group-item"><span class="fa fa-circle text-success m-r-10"></span>Corporate</a> </div>
+                                    </div>
+                                </div>
+                                <div class="col-xlg-10 col-lg-9 col-md-8 bg-light border-left">
+                                    <div class="card-body">
+                                        <div class="btn-group m-b-10 m-r-10" role="group" aria-label="Button group with nested dropdown">
+                                            <button type="button" class="btn btn-secondary font-18"><i class="mdi mdi-inbox-arrow-down"></i></button>
+                                            <button type="button" class="btn btn-secondary font-18"><i class="mdi mdi-alert-octagon"></i></button>
+                                            <button type="button" class="btn btn-secondary font-18"><i class="mdi mdi-delete"></i></button>
+                                        </div>
+                                        <div class="btn-group m-b-10 m-r-10" role="group" aria-label="Button group with nested dropdown">
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-folder font-18 "></i> </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="javascript:void(0)">Dropdown link</a> <a class="dropdown-item" href="javascript:void(0)">Dropdown link</a> </div>
+                                            </div>
+                                            <div class="btn-group" role="group">
+                                                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-label font-18"></i> </button>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="javascript:void(0)">Dropdown link</a> <a class="dropdown-item" href="javascript:void(0)">Dropdown link</a> </div>
                                             </div>
                                         </div>
+                                        <button type="button " class="btn btn-secondary m-r-10 m-b-10"><i class="mdi mdi-reload font-18"></i></button>
+                                        <div class="btn-group" role="group">
+                                            <button id="btnGroupDrop1" type="button" class="btn m-b-10 btn-secondary font-18 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> More </button>
+                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="javascript:void(0)">Mark as all read</a> <a class="dropdown-item" href="javascript:void(0)">Dropdown link</a> </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-9">
-                                        <div class="card-body b-l calender-sidebar">
-                                            <div id="calendar"></div>
+                                    <div class="card-body p-t-0">
+                                        <div class="card b-all shadow-none">
+                                            <div class="card-body">
+                                                <h3 class="card-title m-b-0">Your message title goes here</h3>
+                                            </div>
+                                            <div>
+                                                <hr class="m-t-0">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="d-flex m-b-40">
+                                                    <div>
+                                                        <a href="javascript:void(0)"><img src="../../assets/images/users/1.jpg" alt="user" width="40" class="img-circle" /></a>
+                                                    </div>
+                                                    <div class="p-l-10">
+                                                        <h4 class="m-b-0">Pavan kumar</h4>
+                                                        <small class="text-muted">From: jonathan@domain.com</small>
+                                                    </div>
+                                                </div>
+                                                <p><b>Dear USer</b></p>
+                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
+                                                <p>enean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,</p>
+                                            </div>
+                                            <div>
+                                                <hr class="m-t-0">
+                                            </div>
+                                            <div class="card-body">
+                                                <h4><i class="fa fa-paperclip m-r-10 m-b-10"></i> Attachments <span>(3)</span></h4>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <a href="javascript:void(0)"> <img class="img-thumbnail img-responsive" alt="attachment" src="../../assets/images/big/img1.jpg"> </a>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <a href="javascript:void(0)"> <img class="img-thumbnail img-responsive" alt="attachment" src="../../assets/images/big/img2.jpg"> </a>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <a href="javascript:void(0)"> <img class="img-thumbnail img-responsive" alt="attachment" src="../../assets/images/big/img3.jpg"> </a>
+                                                    </div>
+                                                </div>
+                                                <div class="b-all m-t-20 p-20">
+                                                    <p class="p-b-20">click here to <a href="javascript:void(0)">Reply</a> or <a href="javascript:void(0)">Forward</a></p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -609,62 +665,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- BEGIN MODAL -->
-                <div class="modal none-border" id="my-event">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"><strong>Add Event</strong></h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="modal-body"></div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>
-                                <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Add Category -->
-                <div class="modal fade none-border" id="add-new-event">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"><strong>Add</strong> a category</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <form role="form">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label class="control-label">Category Name</label>
-                                            <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="control-label">Choose Category Color</label>
-                                            <select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
-                                                <option value="success">Success</option>
-                                                <option value="danger">Danger</option>
-                                                <option value="info">Info</option>
-                                                <option value="primary">Primary</option>
-                                                <option value="warning">Warning</option>
-                                                <option value="inverse">Inverse</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">Save</button>
-                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END MODAL -->
                 <!-- ============================================================== -->
-                <!-- End PAge Content -->
+                <!-- End Page Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
                 <!-- Right sidebar -->
@@ -693,28 +695,28 @@
                             <ul class="m-t-20 chatonline">
                                 <li><b>Chat option</b></li>
                                 <li>
-                                    <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                    <a href="javascript:void(0)"><img src="../../assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                    <a href="javascript:void(0)"><img src="../../assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                    <a href="javascript:void(0)"><img src="../../assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                    <a href="javascript:void(0)"><img src="../../assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                    <a href="javascript:void(0)"><img src="../../assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                    <a href="javascript:void(0)"><img src="../../assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                    <a href="javascript:void(0)"><img src="../../assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                    <a href="javascript:void(0)"><img src="../../assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
                                 </li>
                             </ul>
                         </div>
@@ -747,26 +749,21 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
+    <script src="../../assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/node_modules/popper/popper.min.js"></script>
-    <script src="../assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/node_modules/popper/popper.min.js"></script>
+    <script src="../../assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="dist/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../dist/js/perfect-scrollbar.jquery.min.js"></script>
     <!--Wave Effects -->
-    <script src="dist/js/waves.js"></script>
+    <script src="../dist/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="dist/js/sidebarmenu.js"></script>
+    <script src="../dist/js/sidebarmenu.js"></script>
     <!--stickey kit -->
-    <script src="../assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <script src="../assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
+    <script src="../../assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="../../assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
     <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js"></script>
-    <!-- Calendar JavaScript -->
-    <script src="../assets/node_modules/calendar/jquery-ui.min.js"></script>
-    <script src="../assets/node_modules/moment/moment.js"></script>
-    <script src='../assets/node_modules/calendar/dist/fullcalendar.min.js'></script>
-    <script src="../assets/node_modules/calendar/dist/cal-init.js"></script>
+    <script src="../dist/js/custom.min.js"></script>
 </body>
 
 </html>

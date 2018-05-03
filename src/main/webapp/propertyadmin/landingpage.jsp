@@ -112,7 +112,7 @@
                 <div class="col-12">
                     <!-- Section Heading Area -->
                     <div class="section-heading text-center">
-                        <h2> Que Lo Hace Especial </h2>
+                        <h2> Caracteristicas Principales </h2>
                         <div class="line-shape"></div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 package propertyAdmin.web.servlets;
 
 import propertyAdmin.operations.DatabaseOps;
+import propertyAdmin.structure.persons.Account;
 import propertyAdmin.structure.property.structure.Property;
 
 import javax.servlet.ServletException;
@@ -18,8 +19,9 @@ public class HomeServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Property> properties = databaseOps.getAccountProperties(req.getRemoteUser());
-        req.setAttribute("username", databaseOps.getAccount(req.getRemoteUser()).getName() + databaseOps.getAccount(req.getRemoteUser()).getSurname());
+        Account account = DatabaseOps.getInstance().getAccount(req.getRemoteUser());
+        List<Property> properties = databaseOps.getAccountProperties(account.getUsername());
+        req.setAttribute("username", account.getName() + account.getSurname());
         req.setAttribute("properties", properties);
 
         resp.sendRedirect("/properties.jsp");

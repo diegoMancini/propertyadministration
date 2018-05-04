@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
-  User: DiegoMancini
-  Date: 4/4/18
-  Time: 12:07
+  User: Florencia
+  Date: 4/30/18
+  Time: 23:31
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Sign up</title>
+        <title>Add employee</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -70,32 +70,32 @@
     </head>
 
     <body class="text-center">
-        <form class="form-style" method="POST" action="signup">
-            <h3>Not a member? Create an account </h3>
+    <form class="form-style" method="POST" action="addEmployee">
+        <h3>Type employee details </h3>
 
-            <label for="newAccountName">Name</label>
-            <input type="text" name="name" id="newAccountName" class="form-control" placeholder="Name" required><br>
+        <label for="newEmployeeName">Name</label>
+        <input type="text" name="name" id="newEmployeeName" class="form-control" placeholder="Name" required><br>
 
-            <label for="newAccountSurname">Surname</label>
-            <input type="text" name="surname" id="newAccountSurname" class="form-control" placeholder="Surname" required><br>
+        <label for="newEmployeeSurname">Surname</label>
+        <input type="text" name="surname" id="newEmployeeSurname" class="form-control" placeholder="Surname" required><br>
 
-            <label for="newAccountIdentityNumber">Identity number</label> <%--dni--%>
-            <input type="number" name="identityNumber" id="newAccountIdentityNumber" class="form-control" placeholder="Identity number" required><br>
+        <label for="newEmployeeIdentityNumber">Identity number</label> <%--dni--%>
+        <input type="number" name="identityNumber" id="newEmployeeIdentityNumber" class="form-control" placeholder="Identity number" required><br>
 
-            <label for="newAccountPhoneNumber">Phone number</label>
-            <input type="number" name="phoneNumber" id="newAccountPhoneNumber" class="form-control" placeholder="Phone number"><br>
+        <label for="newEmployeePhoneNumber">Phone number</label>
+        <input type="number" name="phoneNumber" id="newEmployeePhoneNumber" class="form-control" placeholder="Phone number"><br>
 
-            <label for="newUsername">Email address</label>
-            <input type="email" name="username" id="newUsername" class="form-control" placeholder="Email address" required><br>
+        <label for="newEmployee">Email address</label>
+        <input type="email" name="username" id="newEmployee" class="form-control" placeholder="Email address" required><br>
 
-            <label for="newAccountPassword">Password</label>
-            <input type="password" name="password" id="newAccountPassword" class="form-control" placeholder="Password" required><br>
+        <label for="newEmployeePassword">Password</label>
+        <input type="password" name="password" id="newEmployeePassword" class="form-control" placeholder="Password" required><br>
 
-            <input type="submit" class="btn btn-warning" value="Sign up">
+        <input type="submit" class="btn btn-warning" value="Create employee">
 
-            <form>
-                <input type="button" class="btn btn-warning" value="Go back" onclick="window.location.href='http://localhost:8080/index.jsp'" />
-            </form>
+        <form>
+            <input type="button" class="btn btn-warning" value="Go back" onclick="window.location.href='http://localhost:8080/home.jsp'" />
         </form>
+    </form>
     </body>
 </html>

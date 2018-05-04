@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
-  User: DiegoMancini
-  Date: 4/4/18
-  Time: 12:07
+  User: Florencia
+  Date: 5/2/18
+  Time: 11:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Sign up</title>
+        <title>Add contact</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -70,32 +70,27 @@
     </head>
 
     <body class="text-center">
-        <form class="form-style" method="POST" action="signup">
-            <h3>Not a member? Create an account </h3>
+    <form class="form-style" method="POST" action="addContact">
+        <h3>Type contact details </h3>
+        <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
 
-            <label for="newAccountName">Name</label>
-            <input type="text" name="name" id="newAccountName" class="form-control" placeholder="Name" required><br>
+        <label for="newContactOccupation">Occupation</label>
+        <input type="text" name="occupation" id="newContactOccupation" class="form-control" placeholder="Occupation" required><br>
 
-            <label for="newAccountSurname">Surname</label>
-            <input type="text" name="surname" id="newAccountSurname" class="form-control" placeholder="Surname" required><br>
+        <label for="newContactName">Name</label>
+        <input type="text" name="name" id="newContactName" class="form-control" placeholder="Name" required><br>
 
-            <label for="newAccountIdentityNumber">Identity number</label> <%--dni--%>
-            <input type="number" name="identityNumber" id="newAccountIdentityNumber" class="form-control" placeholder="Identity number" required><br>
+        <label for="newContactSurname">Surname</label>
+        <input type="text" name="surname" id="newContactSurname" class="form-control" placeholder="Surname" required><br>
 
-            <label for="newAccountPhoneNumber">Phone number</label>
-            <input type="number" name="phoneNumber" id="newAccountPhoneNumber" class="form-control" placeholder="Phone number"><br>
+        <label for="newContactPhoneNumber">Phone number</label>
+        <input type="number" name="phoneNumber" id="newContactPhoneNumber" class="form-control" placeholder="Phone number"><br>
 
-            <label for="newUsername">Email address</label>
-            <input type="email" name="username" id="newUsername" class="form-control" placeholder="Email address" required><br>
+        <input type="submit" class="btn btn-warning" value="Add contact">
 
-            <label for="newAccountPassword">Password</label>
-            <input type="password" name="password" id="newAccountPassword" class="form-control" placeholder="Password" required><br>
-
-            <input type="submit" class="btn btn-warning" value="Sign up">
-
-            <form>
-                <input type="button" class="btn btn-warning" value="Go back" onclick="window.location.href='http://localhost:8080/index.jsp'" />
-            </form>
+        <form>
+            <input type="button" class="btn btn-warning" value="Go back" onclick="window.location.href='http://localhost:8080/properties.jsp'" />
         </form>
+    </form>
     </body>
 </html>

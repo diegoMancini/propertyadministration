@@ -1,18 +1,17 @@
-<%@ page import="database.Property" %>
-<%@ page import="java.util.List" %>
+<%@ page import="database.User" %>
 <%@ page import="database.DatabaseOps" %>
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="database.Employee" %><%--
   Created by IntelliJ IDEA.
   User: Florencia
-  Date: 4/9/18
-  Time: 20:44
+  Date: 5/1/18
+  Time: 00:27
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Property manager</title>
-
+        <title>Employee manager</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -87,36 +86,37 @@
         </style>
     </head>
     <body>
-        <h3>Manage properties</h3>
-        <form action="deleteProperty" method="POST">
-            <% List<Property> properties = DatabaseOps.getInstance().getUser(request.getRemoteUser()).getAvailableProperties(); %>
-            <%if (properties.size() > 0){ %>
-            <p><u>Choose a property to delete</u></p>
+        <h3>Manage employees</h3>
+        <form action="deleteEmployee" method="POST">
+            <% List<Employee> employees = DatabaseOps.getInstance().getUser(request.getRemoteUser()).getAvailableEmployees(); %>
+            <%if (employees.size() > 0){ %>
+            <p><u>Choose a employee to delete</u></p>
                 <table>
                     <tr>
                         <th><b>Number</b></th>
-                        <th><b>Address</b></th>
-                        <th></th>
+                        <th><b>Name</b></th>
+                        <th><b>Username</b></th>
                     </tr>
 
-                    <%for(int i=0; i< properties.size();i++) { %>
+                    <%for(int i = 0; i< employees.size(); i++) { %>
                         <tr>
                             <td><%=i+1%></td>
-                            <td><%= (properties.get(i)).getName()%></td>
+                            <td><%= (employees.get(i)).getName()%></td>
+                            <td><%= (employees.get(i)).getUsername()%></td>
                             <td>
-                                <button type="submit" name="propertyToDelete" id="propertyToDelete" value="<%=i%>" class="btn btn-default btn-sm">
+                                <button type="submit" name="employeeToDelete" id="employeeToDelete" value="<%=i%>" class="btn btn-default btn-sm">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </button>
                             </td>
                         </tr>
                     <%}%>
-                <%} else { %>
-                    <p>You have no properties added.</p>
-                <%}%>
-            </table>
+            <%} else { %>
+                <p>You have no employees added.</p>
+            <%}%>
+                </table>
         </form>
         <form>
-            <input type="button" class="btn btn-warning" value="Cancel" onclick="window.location.href='http://localhost:8080/properties.jsp'" /><br>
+            <input type="button" class="btn btn-warning" value="Cancel" onclick="window.location.href='http://localhost:8080/home.jsp'" /><br>
         </form>
-    </body>
+        </body>
 </html>

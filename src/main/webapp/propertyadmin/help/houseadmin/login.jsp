@@ -9,17 +9,24 @@
 <html>
     <head>
         <title>Log In</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
         <style>
             body{
                 background-color: rgb(38, 57, 123);
-                font-family: Arial, sans-serif;
+                font-family: 'Tajawal', sans-serif;
             }
 
             h3{
-                font-family: Arial, sans-serif;
+                margin: 40px 0 0 0;
+                font-family: 'Tajawal', sans-serif;
                 text-align: center;
-                font-size: 35px;
-                color: rgb(204, 155, 0);
+                font-size: 25px;
+                color: rgb(73, 211, 255);
+                font-weight: 700;
             }
 
             form{
@@ -28,21 +35,12 @@
                 padding: 15px;
                 font-size: 16px;
                 margin: 0 auto;
-                font-family: Arial, sans-serif;
+                font-family: 'Tajawal', sans-serif;
             }
 
-            input[type="email"], input[type="password"] {
+            input[type=email], input[type=password] {
                 margin-top: 30px;
                 margin-bottom: 10px;
-            }
-
-            .inbox-style{
-                position: relative;
-                box-sizing: border-box;
-                height: auto;
-                padding: 5px;
-                font-size: 16px;
-                font-family: Arial, sans-serif;
             }
 
             label{
@@ -62,18 +60,18 @@
     </head>
     <body class="text-center">
         <form id="loginForm" action="<%=response.encodeURL("j_security_check")%>" method="POST">
-            <h3 class="h3 mb-3 font-weight-normal"><nobr>Already a member? Log in</nobr></h3>
+            <h3><nobr>Already a member? Log in</nobr></h3>
 
             <label for="inputUsername">Email address</label>
-            <input type="email" name="j_username" id="inputUsername" class="inbox-style" placeholder="Email address" required><br>
+            <input type="email" name="j_username" id="inputUsername" class="form-control" placeholder="Email address" required><br>
 
             <label for="inputPassword" >Password</label>
-            <input type="password" name="j_password" id="inputPassword" class="inbox-style" placeholder="Password" required><br>
+            <input type="password" name="j_password" id="inputPassword" class="form-control" placeholder="Password" required><br>
 
-            <input type="submit" value="Log in">
+            <input type="submit" class="btn btn-warning" value="Log in">
 
             <form>
-                <input type="button" value="Go back" onclick="window.location.href='http://localhost:8080/index.jsp'" />
+                <input type="button" class="btn btn-warning" value="Go back" onclick="window.location.href='http://localhost:8080/index.jsp'" />
             </form>
         </form>
     </body>

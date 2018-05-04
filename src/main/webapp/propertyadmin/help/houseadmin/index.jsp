@@ -9,6 +9,11 @@
 <html>
     <head>
         <title>Welcome to Houseadmin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
         <style>
             body{
                 height: 100%;
@@ -24,10 +29,10 @@
             h1{
                 text-align: center;
                 margin-top: 100px;
-                font-family: Arial, sans-serif;
+                font-family: 'Tajawal', sans-serif;
                 font-size: 50px;
                 color: rgb(204, 155, 0);
-                font-weight: bold;
+                font-weight: 700;
             }
 
             input[type = button]{
@@ -44,7 +49,7 @@
             li {
                 display: inline;
                 padding: 0 10px 0 5px;
-                font-family: Arial, sans-serif;
+                font-family: 'Tajawal', sans-serif;
                 font-size: 20px;
                 color: rgb(73, 211, 255);
                 font-weight: bold;
@@ -61,12 +66,12 @@
     <body>
         <h1>House Admin</h1>
         <form>
-            <input type="button" value="Log in" onclick="window.location.href='http://localhost:8080/login.jsp'" />
+            <input type="button" class="btn btn-warning" value="Log in" onclick="window.location.href='http://localhost:8080/login.jsp'" />
         </form>
 
         <form>
-            <input type="button" value="Sign up" onclick="window.location.href='http://localhost:8080/signup.jsp'" />
+            <input type="button" class="btn btn-warning" value="Sign up" onclick="window.location.href='http://localhost:8080/signup.jsp'" />
         </form>
-        <ul><li>Diego Mancini</li> <li>Florencia Vimberg</li></ul>
+        <ul><li><b>Diego Mancini</b></li> <li><b>Florencia Vimberg</b></li></ul>
     </body>
 </html>

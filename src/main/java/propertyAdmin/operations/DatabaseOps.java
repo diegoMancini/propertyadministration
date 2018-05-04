@@ -257,4 +257,15 @@ public class DatabaseOps {
         return result;
     }
 
+    public void deleteProperty(String remoteUser, Integer propertyCode) {
+
+    }
+
+    public List<Property> getSearchResult(String remoteUser, String searchInput) {
+        return null;
+    }
+
+    public void addContactToDatabase(String occupation, String name, String surname, Integer phoneNumber, Integer chosenProperty, String remoteUser) {
+
+    }
 }

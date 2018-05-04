@@ -32,18 +32,25 @@ public class Main {
 
         Property testerProperty = new Property("Casa La Tranquera", "LOTE 50", "Saravi 104 Barrio La Tranquera",
                 new Blueprint("Plano UF50"), new Deed("Escritura UF50", "Direccion UF50"));
+        Property testerProperty2 = new Property("Casa Caamaño", "LOTE 93", "Caamaño 633",
+                new Blueprint("Plano UF93"), new Deed("Escritura UF93", "Direccion UF93"));
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty);
+        databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty2);
 
         FunctionalUnit testerFunctionalUnit = new LivingPlace("Casa 1", "Saravi 104");
         FunctionalUnit testerFunctionalUnit1 = new LivingPlace("Casa 2", "Caamano 546");
-        FunctionalUnit testerFunctionalUnit2 = new Garage("Garage1", "dir2");
         FunctionalUnit testerFunctionalUnit3 = new Office("Oficina 1", "dir3");
+        FunctionalUnit testerFunctionalUnit2 = new Garage("Garage1", "dir2");
         FunctionalUnit testerFunctionalUnit4 = new BusinessPremise("Local 1", "dir4");
+        FunctionalUnit testerFunctionalUnit5 = new LivingPlace("Casa 3", "Chacabuco 1183");
+        FunctionalUnit testerFunctionalUnit6 = new Office("Oficina 2", "dir6");
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit);
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit1);
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit2);
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit3);
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit4);
+        databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty2, testerFunctionalUnit5);
+        databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty2, testerFunctionalUnit6);
 
         Calendar cal1 = Calendar.getInstance();
         cal1.set(2017, 4, 31);
@@ -65,9 +72,14 @@ public class Main {
                 dateIssued, dateStart, dateEnd, new Landlord(testerAccount.getName(), testerAccount.getSurname(), testerAccount.getId()),
                 new Tenant("Jose", "Mancini", "16529611"), new Guarantor("Gabriela", "Bello", "20761874"),
                 50000.0, 5000.0, 5.0);
+        Contract testerContract3 = new Contract("Contrato local 2", "Arg", "Bs As", "Pilar", "La Lonja",
+                dateIssued, dateStart, dateEnd, new Landlord(testerAccount.getName(), testerAccount.getSurname(), testerAccount.getId()),
+                new Tenant("Jose", "Mancini", "16529611"), new Guarantor("Gabriela", "Bello", "20761874"),
+                50000.0, 5000.0, 5.0);
 
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit, testerContract1);
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit4, testerContract2);
+        databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty2, testerFunctionalUnit6, testerContract3);
 
         System.out.println(dateIssued.toString());
         System.out.println(dateStart.toString());

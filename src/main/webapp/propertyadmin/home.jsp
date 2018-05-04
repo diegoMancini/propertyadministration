@@ -233,13 +233,13 @@
                         <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="../assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getName() + " " + DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getSurname() %></span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu">Inicio</span></a></li>
-                            <li> <a class="waves-effect waves-dark" href="realestate-property-list.jsp"><i class="ti-home"></i><span class="hide-menu">Propiedades</span></a></li>
-                            <li> <a class="waves-effect waves-dark" href="realestate-property-4-column.jsp"><i class="ti-layout"></i><span class="hide-menu">U. Funcionales</span></a></li>
-                            <li> <a class="waves-effect waves-dark" href="../documentation/documentation.html"><i class="ti-user"></i><span class="hide-menu">Clientes</span></a></li>
-                            <li><a class="waves-effect waves-dark" href="#"><i class="ti-wallet"></i> <span class="hide-menu">Mi balance</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="properties.jsp"><i class="ti-home"></i><span class="hide-menu">Propiedades</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="functionalUnits.jsp"><i class="ti-layout"></i><span class="hide-menu">U. Funcionales</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="clients.jsp"><i class="ti-user"></i><span class="hide-menu">Clientes</span></a></li>
+                            <li><a class="waves-effect waves-dark" href="balance.jsp"><i class="ti-wallet"></i> <span class="hide-menu">Mi balance</span></a></li>
                             <li> <a class="waves-effect waves-dark" href="profile.jsp"><i class="ti-user"></i><span class="hide-menu">Mi perfil</span></a> </li>
-                        <li> <a class="waves-effect waves-dark" href="pages-faq.html" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">Preguntas</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-login.jsp" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Cerrar sesion</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="faqs.jsp" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">Preguntas</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="landingpage.jsp" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Cerrar sesion</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

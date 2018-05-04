@@ -1,18 +1,16 @@
 <%@ page import="database.Property" %>
 <%@ page import="java.util.List" %>
-<%@ page import="database.DatabaseOps" %>
-<%--
+<%@ page import="database.DatabaseOps" %><%--
   Created by IntelliJ IDEA.
   User: Florencia
-  Date: 4/9/18
-  Time: 20:44
+  Date: 5/1/18
+  Time: 14:04
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Property manager</title>
-
+        <title>Add property to employee</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -87,36 +85,31 @@
         </style>
     </head>
     <body>
-        <h3>Manage properties</h3>
-        <form action="deleteProperty" method="POST">
+    <h3>Manage properties</h3>
+    <p><u>Choose a property to add to <%request.getAttribute("chosenEmployee");%></u></p>
+    <form action="addPropertyToEmployee" method="POST">
+        <input type="hidden" name="employee" value="<%=request.getAttribute("chosenEmployee")%>">
+        <table>
+            <tr>
+                <th><b>Number</b></th>
+                <th><b>Address</b></th>
+                <th></th>
+            </tr>
             <% List<Property> properties = DatabaseOps.getInstance().getUser(request.getRemoteUser()).getAvailableProperties(); %>
-            <%if (properties.size() > 0){ %>
-            <p><u>Choose a property to delete</u></p>
-                <table>
-                    <tr>
-                        <th><b>Number</b></th>
-                        <th><b>Address</b></th>
-                        <th></th>
-                    </tr>
-
-                    <%for(int i=0; i< properties.size();i++) { %>
-                        <tr>
-                            <td><%=i+1%></td>
-                            <td><%= (properties.get(i)).getName()%></td>
-                            <td>
-                                <button type="submit" name="propertyToDelete" id="propertyToDelete" value="<%=i%>" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    <%}%>
-                <%} else { %>
-                    <p>You have no properties added.</p>
-                <%}%>
-            </table>
-        </form>
-        <form>
-            <input type="button" class="btn btn-warning" value="Cancel" onclick="window.location.href='http://localhost:8080/properties.jsp'" /><br>
-        </form>
+            <%for(int i=0; i< properties.size();i++) { %>
+                <tr>
+                    <td><%=i+1%></td>
+                    <td><%= (properties.get(i)).getName()%></td>
+                    <td>
+                    <td>
+                        <button type="submit" name="chosenProperty" id="addedProperty" value="<%=i%>" class="btn btn-warning">Add this property</button>
+                    </td>
+                </tr>
+            <%}%>
+        </table>
+    </form>
+    <form>
+        <input type="button" class="btn btn-warning" value="Cancel" onclick="window.location.href='http://localhost:8080/home.jsp'" /><br>
+    </form>
     </body>
 </html>

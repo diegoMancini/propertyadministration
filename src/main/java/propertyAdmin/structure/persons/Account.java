@@ -193,4 +193,16 @@ public class   Account {
                 ", logged=" + logged +
                 '}';
     }
+
+   public Property getSpecificProperty(Integer chosenProperty) {
+      return null;
+   }
+
+   public String getFullName() {
+      return name + " " + surname;
+   }
+
+   public String getFullAddress() {
+      return address + ", " + addressTown + ", " + addressCity + ", " + addressProvince + ", " +addressCountry;
+   }
 }

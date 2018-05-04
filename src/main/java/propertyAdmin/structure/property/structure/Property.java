@@ -35,7 +35,9 @@ public class Property {
    @CollectionTable @OneToMany
    private List<FunctionalUnit> functionalUnits;
    @Column(name = "AMOUNT_OF_FUNCTIONAL_UNITS")
-   private Integer totalAmount;
+   private Integer amountFunctionalUnits;
+   @Column(name = "AMOUNT_OF_OCCUPIED_FUNCTIONAL_UNITS")
+   private Integer amountOccupied;
    @OneToMany(cascade = {CascadeType.ALL})
    private List<Expenses> expenses;
    @Column(name = "IMAGE")
@@ -55,13 +57,23 @@ public class Property {
       services = new ArrayList<>();
       taxes = new ArrayList<>();
       functionalUnits = new ArrayList<>();
-      totalAmount = 0;
+      amountFunctionalUnits = 0;
       file = null;
       isDeleted = false;
+      amountOccupied = 0;
    }
 
+   public Integer getAmountOccupied() {
+      amountOccupied = functionalUnits.size();
+      for (FunctionalUnit functionalUnit : functionalUnits) {
+         if (!functionalUnit.hasContract()) {
+            amountOccupied--;
+         }
+      }
+      return amountOccupied;
+   }
 
-    public Property(String name, String description, String address, Blueprint blueprint, Deed deed) {
+   public Property(String name, String description, String address, Blueprint blueprint, Deed deed) {
         this.name = name;
         this.description = description;
         this.address = address;
@@ -70,7 +82,7 @@ public class Property {
         services = new ArrayList<>();
         taxes = new ArrayList<>();
         functionalUnits = new ArrayList<>();
-        totalAmount = 0;
+        amountFunctionalUnits = 0;
         file = null;
     }
 
@@ -142,12 +154,12 @@ public class Property {
       this.functionalUnits = functionalUnits;
    }
 
-   public Integer getTotalAmount() {
-      return totalAmount;
+   public Integer getAmountFunctionalUnits() {
+      return amountFunctionalUnits;
    }
 
-   public void setTotalAmount(Integer totalAmount) {
-      this.totalAmount = totalAmount;
+   public void setAmountFunctionalUnits(Integer totalAmount) {
+      this.amountFunctionalUnits = totalAmount;
    }
 
    public List<Expenses> getExpenses() {
@@ -176,7 +188,7 @@ public class Property {
 
    public void addFunctionalUnit(FunctionalUnit functionalUnit) {
       functionalUnits.add(functionalUnit);
-      totalAmount++;
+      amountFunctionalUnits++;
    }
 
     public FunctionalUnit getSpecificFunctionalUnitById(Integer id) {

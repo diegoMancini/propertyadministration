@@ -9,14 +9,15 @@
 <html>
     <head>
         <title>Add Tenant</title>
+        <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
         <style>
             body{
                 background-color: rgb(38, 57, 123);
-                font-family: Arial, sans-serif;
+                font-family: 'Tajawal', sans-serif;
             }
 
             h3{
-                font-family: Arial, sans-serif;
+                font-family: 'Tajawal', sans-serif;
                 text-align: center;
                 font-size: 30px;
                 color: rgb(204, 155, 0);
@@ -29,7 +30,7 @@
                 padding: 15px;
                 font-size: 16px;
                 margin: 0 auto;
-                font-family: Arial, sans-serif;
+                font-family: 'Tajawal', sans-serif;
             }
 
             input[type=text], input[type=number], input[type=email], input[type=date]{
@@ -44,7 +45,7 @@
                 height: auto;
                 padding: 5px;
                 font-size: 16px;
-                font-family: Arial, sans-serif;
+                font-family: 'Tajawal', sans-serif;
             }
 
             input[type=button], input[type=submit]{
@@ -61,7 +62,7 @@
             p{
                 text-align: center;
                 margin-top: 10px;
-                font-family: Arial, sans-serif;
+                font-family: 'Tajawal', sans-serif;
                 font-size: 20px;
                 font-style: italic;
                 color: rgb(73, 211, 255);
@@ -74,7 +75,7 @@
         <form method="POST" action="checktenant">
             <h3>Is this user already added? Write its identity number</h3><br>
             <label for="searchTenantById">Tenant id</label>
-            <input type="number" name="tenantId" id="searchTenantById" class="inbox-style" placeholder="Tenant identity number"><br>
+            <input type="number" name="tenantId" id="searchTenantById" class="btn btn-warning" placeholder="Tenant identity number"><br>
             <form>
                 <input type="button" value="Check for tenant" onclick="window.location.href='http://localhost:8080/createTenant.jsp'" />
             </form>
@@ -119,7 +120,7 @@
             <input type="submit" value="Add tenant and contract">
 
             <form>
-                <input type="button" value="Cancel" onclick="window.location.href='http://localhost:8080/addProperty.jsp'" /><br>
+                <input type="button"  value="Cancel" onclick="window.location.href='http://localhost:8080/addProperty.jsp'" /><br>
             </form>
         </form>
     </body>

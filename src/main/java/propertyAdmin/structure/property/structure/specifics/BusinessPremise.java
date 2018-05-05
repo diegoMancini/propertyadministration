@@ -13,8 +13,8 @@ public class BusinessPremise extends FunctionalUnit {
    public BusinessPremise() {
    }
 
-   public BusinessPremise(String name, String address) {
-      super(name, address);
+   public BusinessPremise(String name, String country, String province, String city, String town, String address) {
+      super(name, country, province, city, town,address);
    }
 
    public boolean isHasShopWindow() {
@@ -23,7 +23,7 @@ public class BusinessPremise extends FunctionalUnit {
 
    @Override
    public String getType() {
-      return "Local comercial";
+      return "Local";
    }
 
 

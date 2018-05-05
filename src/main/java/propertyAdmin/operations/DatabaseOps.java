@@ -12,6 +12,7 @@ import propertyAdmin.structure.property.structure.Property;
 import propertyAdmin.structure.rents.Contract;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseOps {
@@ -162,7 +163,16 @@ public class DatabaseOps {
     }
 
 
+    public List<FunctionalUnit> getAccountFunctionalUnits(String remoteUser) {
+        List<FunctionalUnit> res = new ArrayList<>();
+        Account account = getAccount(remoteUser);
+        for(Property property: account.getProperties()) {
+            res.addAll(property.getFunctionalUnits());
+        }
+        return res;
+    }
     //FUNCTIONAL UNITS
+
     public void addFunctionalUnitToDatabase(String email, Property aProperty, FunctionalUnit functionalUnit) {
         Session session = openSession();
         Transaction transaction = session.beginTransaction();

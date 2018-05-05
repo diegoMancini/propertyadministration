@@ -17,33 +17,43 @@ public abstract class FunctionalUnit {
     private String name;
     @Column(name = "ADDRESS")
     private String address;
+    @Column(name = "COUNTRY")
+    private String country; //Argentina
+    @Column(name = "PROVINCE")
+    private String province; //Buenos Aires
+    @Column(name = "CITY")
+    private String city; //Malvinas Argentinas
+    @Column(name = "TOWN")
+    private String town; //Grand Bourg
     @OneToOne(cascade = {CascadeType.ALL})
     private Contract contract;
-    @Column(name = "BATH_AMOUNT")
-    private Integer bathroomsAmount;
     @Column(name = "PHONE")
     private String phone;
     @Column(name = "TYPE")
     private String type;
     @Column(name = "BUSINESS_TYPE") //Vivienda, heladeria, consultorio odontologico, etc
     private String businessType;
+    @Column(name = "BATH_AMOUNT")
+    private Integer bathroomsAmount;
     @Column(name = "KITCHEN_FURNITURE")
     private String kitchenFurniture;
     @Column(name = "BEDROOM_FURNITURE")
     private String bedroomFurniture;
     @Column(name = "BATHROOM_FURNITURE")
     private String bathFurniture;
-    @Column(name = "IMAGE")
-    private File file;
     @Column(name = "IS_DELETED")
     private boolean deleted;
 
     public FunctionalUnit() {
     }
 
-    public FunctionalUnit(String name, String address) {
+    public FunctionalUnit(String name,String country, String province, String city, String town, String address) {
         this.name = name;
         this.address = address;
+        this.country = country;
+        this.province = province;
+        this.city = city;
+        this.town = town;
         this.bathroomsAmount = 0;
         this.phone = "0800PANZON";
         this.businessType = "ALQUILER";
@@ -55,10 +65,14 @@ public abstract class FunctionalUnit {
         deleted = false;
     }
 
-    public FunctionalUnit(String name, String address, Integer bathroomsAmount, String phone, String businessType,
+    public FunctionalUnit(String name, String country, String province, String city, String town, String address, Integer bathroomsAmount, String phone, String businessType,
                           String kitchenFurniture, String bedroomFurniture, String bathFurniture) {
         this.name = name;
         this.address = address;
+        this.country = country;
+        this.province = province;
+        this.city = city;
+        this.town = town;
         this.bathroomsAmount = bathroomsAmount;
         this.phone = phone;
         this.businessType = businessType;
@@ -66,7 +80,6 @@ public abstract class FunctionalUnit {
         this.bedroomFurniture = bedroomFurniture;
         this.bathFurniture = bathFurniture;
         contract = null;
-//        file = null;
         type = getType();
     }
 
@@ -137,11 +150,20 @@ public abstract class FunctionalUnit {
         this.bathFurniture = bathFurniture;
     }
 
-    public File getFile() {
-        return file;
+    public String getCountry() {
+        return country;
     }
-    public void setFile(File file) {
-        this.file = file;
+
+    public String getProvince() {
+        return province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getTown() {
+        return town;
     }
 
     public abstract String getType();
@@ -169,5 +191,22 @@ public abstract class FunctionalUnit {
                 ", Direccion: " + address + '\'' +
                 ", Baños: " + bathroomsAmount +
                 ", Telefono: " + phone + '\'';
+    }
+
+    public String getState() {
+        String state = "";
+        if (hasContract()) {
+            state += "Ocupado";
+        } else {
+            state += "Libre";
+        } return state;
+    }
+
+    public String getFullAddress() {
+        return address + ", " + town + ", " + city + ", " + country;
+    }
+
+    public String getCommercialAddress() {
+        return address + ", " + town ;
     }
 }

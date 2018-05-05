@@ -18,14 +18,6 @@ public class Contract {
     private Integer id;
     @Column(name = "NAME")
     private String name;
-    @Column(name = "COUNTRY")
-    private String country; //Argentina
-    @Column(name = "PROVINCE")
-    private String province; //Buenos Aires
-    @Column(name = "CITY")
-    private String city; //Malvinas Argentinas
-    @Column(name = "TOWN")
-    private String town; //Grand Bourg
     @Temporal(TemporalType.DATE)
     private Date dateIssued; //29/09/2017
     @Temporal(TemporalType.DATE)
@@ -48,14 +40,10 @@ public class Contract {
     public Contract() {
     }
 
-    public Contract(String name, String country, String province, String city, String town,
+    public Contract(String name,
                     Date dateIssued, Date contractDateStart, Date contractDateEnd, Landlord owner,
                     Tenant tenant, Guarantor guarantor, Double price, Double deposit, Double dailyInterestForDelayedPayment) {
         this.name = name;
-        this.country = country;
-        this.province = province;
-        this.city = city;
-        this.town = town;
         this.dateIssued = dateIssued;
         this.contractDateStart = contractDateStart;
         this.contractDateEnd = contractDateEnd;
@@ -73,22 +61,6 @@ public class Contract {
 
     public Integer getId() {
         return id;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getTown() {
-        return town;
     }
 
     public Date getDateIssued() {

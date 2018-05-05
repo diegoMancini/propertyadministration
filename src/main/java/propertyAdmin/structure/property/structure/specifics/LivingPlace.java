@@ -24,8 +24,8 @@ public class LivingPlace extends FunctionalUnit {
     public LivingPlace() {
     }
 
-    public LivingPlace(String name, String address) {
-        super(name, address);
+    public LivingPlace(String name, String country, String province, String city, String town, String address) {
+        super(name,country,province,city,town, address);
     }
 
     public Integer getBedroomsAmount() {

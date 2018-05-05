@@ -52,10 +52,6 @@ public class SpecificFunctionalUnitMenu extends SpecificPropertyMenu {
    private void addContract(Account account, Property aProperty, FunctionalUnit functionalUnit) {
       System.out.println("\nDATOS CONTRATO: ");
       String name = Scanner.getString("Nombre: ");
-      String country = Scanner.getString("Pais: ");
-      String province= Scanner.getString("Provincia: ");
-      String city= Scanner.getString("Ciudad: ");
-      String town= Scanner.getString("Localidad: ");
       int dateIssuedYear = Scanner.getInt("Ano realizacion contrato: ");
       int dateIssuedMonth = Scanner.getInt("Mes realizacion contrato: ");
       int dateIssuedDay = Scanner.getInt("Dia realizacion contrato: ");
@@ -94,7 +90,7 @@ public class SpecificFunctionalUnitMenu extends SpecificPropertyMenu {
       Landlord landlord = new Landlord(account.getName(), account.getSurname(), account.getId());
       Tenant tenant = new Tenant(tenantName, tenantSurname, tenantID);
       Guarantor guarantor = new Guarantor(guarantorName, guarantorSurname, guarantorID);
-      Contract contract = new Contract(name, country, province, city, town, dateIssued, dateStart, dateEnd,landlord, tenant, guarantor, price, deposit, dailyInterest);
+      Contract contract = new Contract(name, dateIssued, dateStart, dateEnd,landlord, tenant, guarantor, price, deposit, dailyInterest);
       getDatabaseOps().addContractToFunctionalUnitToDatabase(account.getEmail(), aProperty, functionalUnit, contract);
    }
 

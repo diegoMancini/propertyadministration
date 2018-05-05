@@ -51,7 +51,7 @@
     <body>
         <h1>Log out</h1>
         <h3>The user <i><%=request.getRemoteUser()%></i> has logged out</h3>
-        <% session.invalidate(); %>
+        <% session.invalidate();%>
         <form>
             <input type="button" class="btn btn-warning" value="Go back" onclick="window.location.href='http://localhost:8080/index.jsp'" />
         </form>

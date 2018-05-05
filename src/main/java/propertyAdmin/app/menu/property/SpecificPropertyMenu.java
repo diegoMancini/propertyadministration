@@ -86,19 +86,24 @@ public class SpecificPropertyMenu extends PropertyMenu {
         String type = Scanner.getString("Tipo: ");
         type = type.toLowerCase();
         String address = Scanner.getString("Direccion: ");
+        String country = Scanner.getString("Pais: ");
+        String province = Scanner.getString("Provincia: ");
+        String city = Scanner.getString("Ciudad: ");
+        String town = Scanner.getString("Localidad: ");
+
         FunctionalUnit functionalUnit = null;
         switch (type) {
             case "vivienda":
-                functionalUnit = new LivingPlace(name, address);
+                functionalUnit = new LivingPlace(name, country, province, city, town, address);
                 break;
             case "oficina":
-                functionalUnit = new Office(name, address);
+                functionalUnit = new Office(name, country, province, city, town, address);
                 break;
             case "local comercial":
-                functionalUnit = new BusinessPremise(name, address);
+                functionalUnit = new BusinessPremise(name, country, province, city, town, address);
                 break;
             case "garage":
-                functionalUnit = new Garage(name, address);
+                functionalUnit = new Garage(name, country, province, city, town, address);
                 break;
             default:
                 System.out.println("AZA");

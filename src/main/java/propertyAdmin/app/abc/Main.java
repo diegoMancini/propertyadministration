@@ -37,13 +37,13 @@ public class Main {
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty);
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty2);
 
-        FunctionalUnit testerFunctionalUnit = new LivingPlace("Casa 1", "Saravi 104");
-        FunctionalUnit testerFunctionalUnit1 = new LivingPlace("Casa 2", "Caamano 546");
-        FunctionalUnit testerFunctionalUnit3 = new Office("Oficina 1", "dir3");
-        FunctionalUnit testerFunctionalUnit2 = new Garage("Garage1", "dir2");
-        FunctionalUnit testerFunctionalUnit4 = new BusinessPremise("Local 1", "dir4");
-        FunctionalUnit testerFunctionalUnit5 = new LivingPlace("Casa 3", "Chacabuco 1183");
-        FunctionalUnit testerFunctionalUnit6 = new Office("Oficina 2", "dir6");
+        FunctionalUnit testerFunctionalUnit = new LivingPlace("Casa 1", "Arg", "Bs As", "Pilar", "La Lonja", "Saravi 104");
+        FunctionalUnit testerFunctionalUnit1 = new LivingPlace("Casa 2", "Arg", "Bs As", "Pilar", "La Lonja", "Caamano 546");
+        FunctionalUnit testerFunctionalUnit3 = new Office("Oficina 1", "Arg", "Bs As", "Pilar", "La Lonja", "dir3");
+        FunctionalUnit testerFunctionalUnit2 = new Garage("Garage1", "Arg", "Bs As", "Pilar", "La Lonja", "dir2");
+        FunctionalUnit testerFunctionalUnit4 = new BusinessPremise("Local 1", "Arg", "Bs As", "Pilar", "La Lonja", "dir4");
+        FunctionalUnit testerFunctionalUnit5 = new LivingPlace("Casa 3", "Arg", "Bs As", "Pilar", "La Lonja", "Chacabuco 1183");
+        FunctionalUnit testerFunctionalUnit6 = new Office("Oficina 2", "Arg", "Bs As", "Pilar", "La Lonja", "dir6");
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit);
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit1);
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit2);
@@ -64,15 +64,15 @@ public class Main {
         cal3.set(2018, 4, 31);
         Date dateEnd = cal3.getTime();
 
-        Contract testerContract1 = new Contract("Contrato casa 1", "Arg", "Bs As", "Pilar", "La Lonja",
+        Contract testerContract1 = new Contract("Contrato casa 1",
                 dateIssued, dateStart, dateEnd, new Landlord(testerAccount.getName(), testerAccount.getSurname(), testerAccount.getId()),
                 new Tenant("Jose", "Mancini", "16529611"), new Guarantor("Gabriela", "Bello", "20761874"),
                 25000.0, 2500.0, 5.0);
-        Contract testerContract2 = new Contract("Contrato local 1", "Arg", "Bs As", "Pilar", "La Lonja",
+        Contract testerContract2 = new Contract("Contrato local 1",
                 dateIssued, dateStart, dateEnd, new Landlord(testerAccount.getName(), testerAccount.getSurname(), testerAccount.getId()),
                 new Tenant("Jose", "Mancini", "16529611"), new Guarantor("Gabriela", "Bello", "20761874"),
                 50000.0, 5000.0, 5.0);
-        Contract testerContract3 = new Contract("Contrato local 2", "Arg", "Bs As", "Pilar", "La Lonja",
+        Contract testerContract3 = new Contract("Contrato local 2",
                 dateIssued, dateStart, dateEnd, new Landlord(testerAccount.getName(), testerAccount.getSurname(), testerAccount.getId()),
                 new Tenant("Jose", "Mancini", "16529611"), new Guarantor("Gabriela", "Bello", "20761874"),
                 50000.0, 5000.0, 5.0);

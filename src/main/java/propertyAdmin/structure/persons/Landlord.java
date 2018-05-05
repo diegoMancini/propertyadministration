@@ -157,4 +157,8 @@ public class    Landlord {
    public void setPhone(String phone) {
       this.phone = phone;
    }
+
+    public String getFullName() {
+        return name + " " + surname;
+    }
 }

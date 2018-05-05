@@ -138,4 +138,8 @@ public class Tenant {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    public String getFullName() {
+        return name + " " + surname;
+    }
 }

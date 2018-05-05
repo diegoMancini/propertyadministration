@@ -35,6 +35,7 @@ public class Tenant {
     private String phone;
     @Column(name = "EMAIL", unique = true)
     private String email;
+    @C
 
     public Tenant() {
     }

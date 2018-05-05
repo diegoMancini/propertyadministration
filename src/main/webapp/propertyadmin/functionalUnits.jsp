@@ -19,7 +19,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+    <title>P.A. - Unidades Funcionales</title>
     <!-- Footable CSS -->
     <link href="../assets/node_modules/footable/css/footable.core.css" rel="stylesheet">
     <link href="../assets/node_modules/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
@@ -29,6 +29,9 @@
     <link href="dist/css/pages/footable-page.css" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
     <link href="dist/css/pages/dashboard1.css" rel="stylesheet">
+    <!-- Editable CSS -->
+    <link type="text/css" rel="stylesheet" href="../assets/node_modules/jsgrid/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="../assets/node_modules/jsgrid/jsgrid-theme.min.css" />
     <!--Toaster Popup message CSS -->
     <link href="../assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -190,46 +193,12 @@
             <!-- ============================================================== -->
             <!-- row -->
             <div class="row">
-                <%--<div class="col-12">--%>
-                    <%--<div class="card">--%>
-                        <%--<div class="card-body">--%>
-                            <%--<h5 class="card-title">Filtrar</h5>--%>
-                            <%--<form role="form" class="row">--%>
-                                <%--<div class="col-sm-6 col-md-3">--%>
-                                    <%--<div class="form-group has-info">--%>
-                                        <%--<select class="form-control custom-select">--%>
-                                            <%--<option value="" disabled selected>Estado</option>--%>
-                                            <%--<option value="1">Disponible</option>--%>
-                                            <%--<option value="2">No disponible</option>--%>
-                                        <%--</select>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-sm-6 col-md-3">--%>
-                                    <%--<div class="form-group has-info">--%>
-                                        <%--<select class="form-control custom-select">--%>
-                                            <%--<option value="" disabled selected>Tipo de Unidad funcional</option>--%>
-                                            <%--<option value="1">Vivienda</option>--%>
-                                            <%--<option value="2">Local</option>--%>
-                                            <%--<option value="3">Oficina</option>--%>
-                                            <%--<option value="4">Garage</option>--%>
-                                        <%--</select>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                                <%--<div class="col-sm-6 col-md-1">--%>
-                                    <%--<button type="submit" class="btn btn-dark btn-block form-control"><i class="fa fa-search text-white"></i></button>--%>
-                                <%--</div>--%>
-                            <%--</form>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-                <%--</div>--%>
-                <!-- column -->
                 <div class="col-12">
                     <div class="card">
                         <%List<FunctionalUnit> functionalUnitList = DatabaseOps.getInstance().getAccountFunctionalUnits(request.getRemoteUser());%>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
+                            <div class="table-responsive m-t-40">
+                                <table id="myTable" class="table table-bordered table-striped" data-page-size="10">
                                     <thead>
                                     <tr>
                                         <th>Nº</th>
@@ -292,54 +261,54 @@
                                         <%}%>
                                         <%}%>
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        <h4 class="modal-title" id="myModalLabel">Agregar U.F.</h4> </div>
-                                                    <div class="modal-body">
-                                                        <form action="addFunctionalUnit" method="post" class="form-horizontal form-material" >
-                                                            <div class="form-group">
-                                                                <div class="col-md-12 m-b-20">
-                                                                    <input type="text" class="form-control" placeholder="Nombre"> </div>
-                                                                <div class="col-md-12 m-b-20">
-                                                                    <input type="text" class="form-control" placeholder="Pais"> </div>
-                                                                <div class="col-md-12 m-b-20">
-                                                                    <input type="text" class="form-control" placeholder="Provincia"> </div>
-                                                                <div class="col-md-12 m-b-20">
-                                                                    <input type="text" class="form-control" placeholder="Ciudad"> </div>
-                                                                <div class="col-md-12 m-b-20">
-                                                                    <input type="text" class="form-control" placeholder="Localidad"> </div>
-                                                                <div class="col-md-12 m-b-20">
-                                                                    <input type="text" class="form-control" placeholder="Direccion"> </div>
-                                                                <div class="col-md-12 m-b-20">
-                                                                    <input type="text" class="form-control" placeholder="Tipo"> </div>
-                                                                <div class="col-md-12 m-b-20">
-                                                                    <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Subir contrato</span>
-                                                                        <input type="file" class="upload"> </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Listo</button>
-                                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>
-                                                    </div>
-                                                </div>
-                                                <!-- /.modal-content -->
-                                            </div>
-                                            <!-- /.modal-dialog -->
-                                        </div>
-                                        <td colspan="10">
-                                            <div class="text-right">
-                                                <ul class="pagination"> </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tfoot>
+                                    <%--<tfoot>--%>
+                                    <%--<tr>--%>
+                                        <%--<div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--%>
+                                            <%--<div class="modal-dialog">--%>
+                                                <%--<div class="modal-content">--%>
+                                                    <%--<div class="modal-header">--%>
+                                                        <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--%>
+                                                        <%--<h4 class="modal-title" id="myModalLabel">Agregar U.F.</h4> </div>--%>
+                                                    <%--<div class="modal-body">--%>
+                                                        <%--<form action="addFunctionalUnit" method="post" class="form-horizontal form-material" >--%>
+                                                            <%--<div class="form-group">--%>
+                                                                <%--<div class="col-md-12 m-b-20">--%>
+                                                                    <%--<input type="text" class="form-control" placeholder="Nombre"> </div>--%>
+                                                                <%--<div class="col-md-12 m-b-20">--%>
+                                                                    <%--<input type="text" class="form-control" placeholder="Pais"> </div>--%>
+                                                                <%--<div class="col-md-12 m-b-20">--%>
+                                                                    <%--<input type="text" class="form-control" placeholder="Provincia"> </div>--%>
+                                                                <%--<div class="col-md-12 m-b-20">--%>
+                                                                    <%--<input type="text" class="form-control" placeholder="Ciudad"> </div>--%>
+                                                                <%--<div class="col-md-12 m-b-20">--%>
+                                                                    <%--<input type="text" class="form-control" placeholder="Localidad"> </div>--%>
+                                                                <%--<div class="col-md-12 m-b-20">--%>
+                                                                    <%--<input type="text" class="form-control" placeholder="Direccion"> </div>--%>
+                                                                <%--<div class="col-md-12 m-b-20">--%>
+                                                                    <%--<input type="text" class="form-control" placeholder="Tipo"> </div>--%>
+                                                                <%--<div class="col-md-12 m-b-20">--%>
+                                                                    <%--<div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Subir contrato</span>--%>
+                                                                        <%--<input type="file" class="upload"> </div>--%>
+                                                                <%--</div>--%>
+                                                            <%--</div>--%>
+                                                        <%--</form>--%>
+                                                    <%--</div>--%>
+                                                    <%--<div class="modal-footer">--%>
+                                                        <%--<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Listo</button>--%>
+                                                        <%--<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>--%>
+                                                    <%--</div>--%>
+                                                <%--</div>--%>
+                                                <%--<!-- /.modal-content -->--%>
+                                            <%--</div>--%>
+                                            <%--<!-- /.modal-dialog -->--%>
+                                        <%--</div>--%>
+                                        <%--<td colspan="10">--%>
+                                            <%--<div class="text-right">--%>
+                                                <%--<ul class="pagination"> </ul>--%>
+                                            <%--</div>--%>
+                                        <%--</td>--%>
+                                    <%--</tr>--%>
+                                    <%--</tfoot>--%>
                                 </table>
                             </div>
                         </div>
@@ -448,5 +417,135 @@
 <script src="../assets/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
 <!-- Popup message jquery -->
 <script src="../assets/node_modules/toast-master/js/jquery.toast.js"></script>
+<!-- This is data table -->
+<script src="../assets/node_modules/datatables/jquery.dataTables.min.js"></script>
+<!-- start - This is for export functionality only -->
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+<!-- end - This is for export functionality only -->
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function(settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function(group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+            // Order by the grouping
+            $('#example tbody').on('click', 'tr.group', function() {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                    table.order([2, 'desc']).draw();
+                } else {
+                    table.order([2, 'asc']).draw();
+                }
+            });
+        });
+    });
+    $('#example23').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+</script>
 </body>
 </html>
+<%--<div class="jsgrid-grid-header">--%>
+    <%--<table class="jsgrid-table table table-striped table-hover">--%>
+        <%--<tr class="jsgrid-header-row">--%>
+            <%--<th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 150px;">Nombre</th>--%>
+            <%--<th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 200px;">Direccion</th>--%>
+            <%--<th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 150px;">Cliente</th>--%>
+            <%--<th class="jsgrid-header-cell jsgrid-align-center" style="width: 100px;">Pago</th>--%>
+            <%--<th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">--%>
+                <%--<button class="jsgrid-button jsgrid-mode-button jsgrid-search-mode-button jsgrid-mode-on-button" type="button" title=""></button>--%>
+            <%--</th>--%>
+        <%--</tr>--%>
+        <%--<tr class="jsgrid-filter-row">--%>
+            <%--<td class="jsgrid-cell" style="width: 150px;">--%>
+                <%--<input type="text" class="form-control input-sm">--%>
+            <%--</td>--%>
+            <%--<td class="jsgrid-cell jsgrid-align-right" style="width: 70px;">--%>
+                <%--<input type="number" class="form-control input-sm">--%>
+            <%--</td>--%>
+            <%--<td class="jsgrid-cell" style="width: 200px;">--%>
+                <%--<input type="text" class="form-control input-sm">--%>
+            <%--</td>--%>
+            <%--<td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">--%>
+                <%--<select class="form-control input-sm">--%>
+                    <%--<option value="0"></option>--%>
+                    <%--<option value="1">United States</option>--%>
+                    <%--<option value="2">Canada</option>--%>
+                    <%--<option value="3">United Kingdom</option>--%>
+                    <%--<option value="4">France</option>--%>
+                    <%--<option value="5">Brazil</option>--%>
+                    <%--<option value="6">China</option>--%>
+                    <%--<option value="7">Russia</option>--%>
+                <%--</select>--%>
+            <%--</td>--%>
+            <%--<td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">--%>
+                <%--<input type="checkbox" readonly="">--%>
+            <%--</td>--%>
+            <%--<td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">--%>
+                <%--<button class="jsgrid-button jsgrid-search-button" type="button" title="Search"></button>--%>
+                <%--<button class="jsgrid-button jsgrid-clear-filter-button" type="button" title="Clear filter"></button>--%>
+            <%--</td>--%>
+        <%--</tr>--%>
+        <%--<tr class="jsgrid-insert-row" style="display: none;">--%>
+            <%--<td class="jsgrid-cell" style="width: 150px;">--%>
+                <%--<input type="text" class="form-control input-sm">--%>
+            <%--</td>--%>
+            <%--<td class="jsgrid-cell jsgrid-align-right" style="width: 70px;">--%>
+                <%--<input type="number" class="form-control input-sm">--%>
+            <%--</td>--%>
+            <%--<td class="jsgrid-cell" style="width: 200px;">--%>
+                <%--<input type="text" class="form-control input-sm">--%>
+            <%--</td>--%>
+            <%--<td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">--%>
+                <%--<select class="form-control input-sm">--%>
+                    <%--<option value="0"></option>--%>
+                    <%--<option value="1">United States</option>--%>
+                    <%--<option value="2">Canada</option>--%>
+                    <%--<option value="3">United Kingdom</option>--%>
+                    <%--<option value="4">France</option>--%>
+                    <%--<option value="5">Brazil</option>--%>
+                    <%--<option value="6">China</option>--%>
+                    <%--<option value="7">Russia</option>--%>
+                <%--</select>--%>
+            <%--</td>--%>
+            <%--<td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">--%>
+                <%--<input type="checkbox">--%>
+            <%--</td>--%>
+            <%--<td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">--%>
+                <%--<button class="jsgrid-button jsgrid-insert-button" type="button" title="Insert"></button>--%>
+            <%--</td>--%>
+        <%--</tr>--%>
+    <%--</table>--%>
+<%--</div>--%>

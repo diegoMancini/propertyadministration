@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import propertyAdmin.structure.persons.Account;
+import propertyAdmin.structure.persons.Tenant;
 import propertyAdmin.structure.property.details.Blueprint;
 import propertyAdmin.structure.property.details.Deed;
 import propertyAdmin.structure.property.structure.FunctionalUnit;
@@ -171,6 +172,18 @@ public class DatabaseOps {
         }
         return res;
     }
+    public List<Tenant> getAccountClients(String remoteUser) {
+        List<Tenant> tenantList = new ArrayList<>();
+        Account account = getAccount(remoteUser);
+        for (int i = 0; i < account.getProperties().size(); i++) {
+            for (int j = 0; j < account.getProperties().get(i).getFunctionalUnits().size(); j++) {
+                if (account.getProperties().get(i).getFunctionalUnits().get(j).hasContract()) {
+                    tenantList.add(account.getProperties().get(i).getFunctionalUnits().get(j).getContract().getTenant());
+                }
+            }
+        } return tenantList;
+    }
+
     //FUNCTIONAL UNITS
 
     public void addFunctionalUnitToDatabase(String email, Property aProperty, FunctionalUnit functionalUnit) {

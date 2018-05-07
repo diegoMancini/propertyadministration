@@ -44,11 +44,13 @@ public class Property {
    private File file;
    @Column(name = "IS_DELETED")
    private boolean isDeleted;
+   @Column(name = "VALUE")
+   private Double value;
 
    public Property() {
    }
 
-   public Property(String name, String description, String address) {
+   public Property(String name, String description, String address, Double value) {
       this.name = name;
       this.description = description;
       this.address = address;
@@ -61,6 +63,7 @@ public class Property {
       file = null;
       isDeleted = false;
       amountOccupied = 0;
+      this.value = value;
    }
 
    public Integer getAmountOccupied() {
@@ -73,7 +76,7 @@ public class Property {
       return amountOccupied;
    }
 
-   public Property(String name, String description, String address, Blueprint blueprint, Deed deed) {
+   public Property(String name, String description, String address, Blueprint blueprint, Deed deed, Double value) {
         this.name = name;
         this.description = description;
         this.address = address;
@@ -84,6 +87,7 @@ public class Property {
         functionalUnits = new ArrayList<>();
         amountFunctionalUnits = 0;
         file = null;
+        this.value = value;
     }
 
     public Integer getId() {
@@ -224,4 +228,8 @@ public class Property {
       }
       return details + "\n" + functionalUnitsString;
    }
+
+    public double getValue() {
+        return value;
+    }
 }

@@ -190,9 +190,9 @@
 						Account account = DatabaseOps.getInstance().getAccount(request.getRemoteUser());
 					%>
 						<%if (propertyList.size() > 0) {%>
-						<%for (Property property: propertyList) {%>
-							<%String name = property.getName();
-							Integer fu = property.getFunctionalUnits().size();
+						<%for (int i = 0;i < propertyList.size(); i++) {%>
+							<%String name = propertyList.get(i).getName();
+							Integer fu = propertyList.get(i).getFunctionalUnits().size();
 							String nameAcc = account.getFullName();
 							String addressAcc = account.getFullAddress();
 							%>
@@ -209,8 +209,10 @@
 											<!-- column -->
 											<div class="col-md-6 border-right border-bottom">
 												<div class="p-20">
-													<h5 class="card-title" type="butt"><%=name%></h5>
-													<h5 class="text-success">&#36; 0</h5>
+                                                    <form action="/goToProperty" method="post">
+                                                    <button type="submit" class="btn btn-info d-none d-lg-block" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
+                                                    </form>
+													<h5 class="text-success">   &#36;<%=propertyList.get(i).getValue()%></h5>
 												</div>
 											</div>
 											<!-- column -->
@@ -218,13 +220,13 @@
 												<div class="p-20">
 													<div class="d-flex no-block align-items-center">
 														<span><img src="../assets/images/property/pro-garage.png"></span>
-														<span class="p-10 text-muted">Unidades funcionales</span>
+														<span class="p-10 text-muted"> Unidades funcionales</span>
 														<span class="badge badge-pill badge-secondary ml-auto"><%=fu%></span>
 													</div>
 													<div class="d-flex no-block align-items-center">
 														<span><img src="../assets/images/property/pro-garage.png"></span>
-														<span class="p-10 text-muted">Unidades funcionales ocupadas</span>
-														<span class="badge badge-pill badge-secondary ml-auto"><%=property.getAmountOccupied()%></span>
+														<span class="p-10 text-muted"> Unidades funcionales ocupadas</span>
+														<span class="badge badge-pill badge-secondary ml-auto"><%=propertyList.get(i).getAmountOccupied()%></span>
 													</div>
 												</div>
 											</div>

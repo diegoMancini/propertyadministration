@@ -88,30 +88,25 @@
     </head>
     <body>
         <h3>Manage properties</h3>
+        <p><u>Choose a property to delete</u></p>
         <form action="deleteProperty" method="POST">
-            <% List<Property> properties = DatabaseOps.getInstance().getUser(request.getRemoteUser()).getAvailableProperties(); %>
-            <%if (properties.size() > 0){ %>
-            <p><u>Choose a property to delete</u></p>
-                <table>
+            <table>
+                <tr>
+                    <th><b>Number</b></th>
+                    <th><b>Address</b></th>
+                    <th></th>
+                </tr>
+                <% List<Property> properties = DatabaseOps.getInstance().getUser(request.getRemoteUser()).getAvailableProperties(); %>
+                <%for(int i=0; i< properties.size();i++) { %>
                     <tr>
-                        <th><b>Number</b></th>
-                        <th><b>Address</b></th>
-                        <th></th>
+                        <td><%=i+1%></td>
+                        <td><%= (properties.get(i)).getName()%></td>
+                        <td>
+                            <button type="submit" name="propertyToDelete" id="propertyToDelete" value="<%=i%>" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </td>
                     </tr>
-
-                    <%for(int i=0; i< properties.size();i++) { %>
-                        <tr>
-                            <td><%=i+1%></td>
-                            <td><%= (properties.get(i)).getName()%></td>
-                            <td>
-                                <button type="submit" name="propertyToDelete" id="propertyToDelete" value="<%=i%>" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    <%}%>
-                <%} else { %>
-                    <p>You have no properties added.</p>
                 <%}%>
             </table>
         </form>

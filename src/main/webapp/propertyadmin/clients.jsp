@@ -219,19 +219,19 @@
                                         String id = tenantList.get(i).getDni();
                                         String phone = tenantList.get(i).getPhone();
                                         String mail = tenantList.get(i).getEmail();
-                                        String contract = tenantList.get(i).getContract().getName();
-                                        String uf = tenantList.get(i).getUF().getName();
+                                        String contract = tenantList.get(i).getFunctionalUnit().getContract().getName();
+                                        String uf = tenantList.get(i).getFunctionalUnit().getName();
                                     %>
                                     <tr>
                                         <td><%=i+1%></td>
                                         <td>
-                                            <a href="specificFunctionalUnit.jsp"> <%=name%></a>
+                                            <a href="specificClient.jsp.jsp"> <%=name%></a>
                                         </td>
                                         <td><%=id%></td>
                                         <td><%=phone%></td>
                                         <td><span class="label label-danger"><%=mail%></span> </td>
                                         <td><a href=""> <%=contract%></a></td>
-                                        <td><a href="javascript:void(0)"> <%=uf%></a></td>
+                                        <td><a href="specificFunctionalUnit.jsp"> <%=uf%></a></td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago"><i class="ti-close" aria-hidden="true"></i></button>
                                         </td>
@@ -239,54 +239,7 @@
                                     <%}%>
                                     <%}%>
                                     </tbody>
-                                    <%--<tfoot>--%>
-                                    <%--<tr>--%>
-                                    <%--<div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--%>
-                                    <%--<div class="modal-dialog">--%>
-                                    <%--<div class="modal-content">--%>
-                                    <%--<div class="modal-header">--%>
-                                    <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--%>
-                                    <%--<h4 class="modal-title" id="myModalLabel">Agregar U.F.</h4> </div>--%>
-                                    <%--<div class="modal-body">--%>
-                                    <%--<form action="addFunctionalUnit" method="post" class="form-horizontal form-material" >--%>
-                                    <%--<div class="form-group">--%>
-                                    <%--<div class="col-md-12 m-b-20">--%>
-                                    <%--<input type="text" class="form-control" placeholder="Nombre"> </div>--%>
-                                    <%--<div class="col-md-12 m-b-20">--%>
-                                    <%--<input type="text" class="form-control" placeholder="Pais"> </div>--%>
-                                    <%--<div class="col-md-12 m-b-20">--%>
-                                    <%--<input type="text" class="form-control" placeholder="Provincia"> </div>--%>
-                                    <%--<div class="col-md-12 m-b-20">--%>
-                                    <%--<input type="text" class="form-control" placeholder="Ciudad"> </div>--%>
-                                    <%--<div class="col-md-12 m-b-20">--%>
-                                    <%--<input type="text" class="form-control" placeholder="Localidad"> </div>--%>
-                                    <%--<div class="col-md-12 m-b-20">--%>
-                                    <%--<input type="text" class="form-control" placeholder="Direccion"> </div>--%>
-                                    <%--<div class="col-md-12 m-b-20">--%>
-                                    <%--<input type="text" class="form-control" placeholder="Tipo"> </div>--%>
-                                    <%--<div class="col-md-12 m-b-20">--%>
-                                    <%--<div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Subir contrato</span>--%>
-                                    <%--<input type="file" class="upload"> </div>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
-                                    <%--</form>--%>
-                                    <%--</div>--%>
-                                    <%--<div class="modal-footer">--%>
-                                    <%--<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Listo</button>--%>
-                                    <%--<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
-                                    <%--<!-- /.modal-content -->--%>
-                                    <%--</div>--%>
-                                    <%--<!-- /.modal-dialog -->--%>
-                                    <%--</div>--%>
-                                    <%--<td colspan="10">--%>
-                                    <%--<div class="text-right">--%>
-                                    <%--<ul class="pagination"> </ul>--%>
-                                    <%--</div>--%>
-                                    <%--</td>--%>
-                                    <%--</tr>--%>
-                                    <%--</tfoot>--%>
+
                                 </table>
                             </div>
                         </div>

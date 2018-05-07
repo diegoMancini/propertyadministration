@@ -61,8 +61,8 @@ public abstract class FunctionalUnit {
         this.bedroomFurniture = "CAMA";
         this.bathFurniture = "NADA";
         contract = null;
-        type = getType();
         deleted = false;
+        type = getType();
     }
 
     public FunctionalUnit(String name, String country, String province, String city, String town, String address, Integer bathroomsAmount, String phone, String businessType,
@@ -106,6 +106,7 @@ public abstract class FunctionalUnit {
     }
     public void setContract(Contract contract) {
         this.contract = contract;
+        addFunctionalUnitToTenant();
     }
 
     public Integer getBathroomsAmount() {
@@ -204,6 +205,10 @@ public abstract class FunctionalUnit {
 
     public String getFullAddress() {
         return address + ", " + town + ", " + city + ", " + country;
+    }
+
+    private void addFunctionalUnitToTenant() {
+        contract.getTenant().setFunctionalUnit(this);
     }
 
     public String getCommercialAddress() {

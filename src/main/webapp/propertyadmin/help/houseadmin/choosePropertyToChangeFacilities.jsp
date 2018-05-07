@@ -99,9 +99,7 @@
                 <td><%=i+1%></td>
                 <td><%= (properties.get(i)).getName()%></td>
                 <td>
-                    <button type="submit" name="chosenProperty" id="chosenProperty" value="<%=i%>" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </button>
+                    <button type="submit" name="chosenProperty" id="chosenProperty" value="<%=i%>" class="btn btn-warning">Change facilities</button>
                 </td>
             </tr>
             <%}%>

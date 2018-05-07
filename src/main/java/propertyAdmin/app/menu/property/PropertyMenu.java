@@ -69,7 +69,8 @@ public class PropertyMenu extends LogInMenu {
         String name = Scanner.getString("Nombre: ");
         String description = Scanner.getString("Descripcion: ");
         String address = Scanner.getString("Direccion: ");
-        Property property = new Property(name, description, address);
+        Double value = Scanner.getDouble("Valor: ");
+        Property property = new Property(name, description, address, value);
         getDatabaseOps().addPropertyToDatabase(account.getEmail(), property);
     }
 
@@ -78,7 +79,8 @@ public class PropertyMenu extends LogInMenu {
         String name = Scanner.getString("Nombre: ");
         String description = Scanner.getString("Descripcion: ");
         String address = Scanner.getString("Direccion: ");
-        Property property = new Property(name, description, address);
+        Double value = Scanner.getDouble("Valor: ");
+        Property property = new Property(name, description, address, value);
         System.out.println("\nDATOS PLANOS");
         String blueprintName = Scanner.getString("Nombre planos: ");
         Blueprint blueprint = new Blueprint(blueprintName);

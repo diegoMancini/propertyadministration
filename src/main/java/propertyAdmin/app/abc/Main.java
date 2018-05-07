@@ -31,9 +31,9 @@ public class Main {
         databaseOps.addAccountToDatabase(testerAccount);
 
         Property testerProperty = new Property("Casa La Tranquera", "LOTE 50", "Saravi 104 Barrio La Tranquera",
-                new Blueprint("Plano UF50"), new Deed("Escritura UF50", "Direccion UF50"));
+                new Blueprint("Plano UF50"), new Deed("Escritura UF50", "Direccion UF50"), 500000.0);
         Property testerProperty2 = new Property("Casa Caamaño", "LOTE 93", "Caamaño 633",
-                new Blueprint("Plano UF93"), new Deed("Escritura UF93", "Direccion UF93"));
+                new Blueprint("Plano UF93"), new Deed("Escritura UF93", "Direccion UF93"), 385000.0);
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty);
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty2);
 
@@ -80,12 +80,12 @@ public class Main {
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit, testerContract1);
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit4, testerContract2);
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty2, testerFunctionalUnit6, testerContract3);
+//
+//        System.out.println(dateIssued.toString());
+//        System.out.println(dateStart.toString());
+//        System.out.println(dateEnd.toString());
 
-        System.out.println(dateIssued.toString());
-        System.out.println(dateStart.toString());
-        System.out.println(dateEnd.toString());
-
-        new StartMenu().operate();
+//        new StartMenu().operate();
     }
 
 }

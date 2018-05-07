@@ -86,37 +86,32 @@
         </style>
     </head>
     <body>
-        <h3>Manage employees</h3>
+        <h3>Manage properties</h3>
+        <p><u>Choose a property to delete</u></p>
         <form action="deleteEmployee" method="POST">
-            <% List<Employee> employees = DatabaseOps.getInstance().getUser(request.getRemoteUser()).getAvailableEmployees(); %>
-            <%if (employees.size() > 0){ %>
-            <p><u>Choose a employee to delete</u></p>
-                <table>
+            <table>
+                <tr>
+                    <th><b>Number</b></th>
+                    <th><b>Name</b></th>
+                    <th><b>Username</b></th>
+                </tr>
+                <% List<Employee> employees = DatabaseOps.getInstance().getUser(request.getRemoteUser()).getAvailableEmployees(); %>
+                <%for(int i = 0; i< employees.size(); i++) { %>
                     <tr>
-                        <th><b>Number</b></th>
-                        <th><b>Name</b></th>
-                        <th><b>Username</b></th>
+                        <td><%=i+1%></td>
+                        <td><%= (employees.get(i)).getName()%></td>
+                        <td><%= (employees.get(i)).getUsername()%></td>
+                        <td>
+                            <button type="submit" name="employeeToDelete" id="employeeToDelete" value="<%=i%>" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </td>
                     </tr>
-
-                    <%for(int i = 0; i< employees.size(); i++) { %>
-                        <tr>
-                            <td><%=i+1%></td>
-                            <td><%= (employees.get(i)).getName()%></td>
-                            <td><%= (employees.get(i)).getUsername()%></td>
-                            <td>
-                                <button type="submit" name="employeeToDelete" id="employeeToDelete" value="<%=i%>" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    <%}%>
-            <%} else { %>
-                <p>You have no employees added.</p>
-            <%}%>
-                </table>
+                <%}%>
+            </table>
         </form>
         <form>
-            <input type="button" class="btn btn-warning" value="Cancel" onclick="window.location.href='http://localhost:8080/home.jsp'" /><br>
+            <input type="button" class="btn btn-warning" value="Cancel" onclick="window.location.href='http://localhost:8080/properties.jsp'" /><br>
         </form>
         </body>
 </html>

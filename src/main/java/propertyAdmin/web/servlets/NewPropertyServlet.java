@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/addproperty")
+@WebServlet("/addProperty")
 public class NewPropertyServlet extends HttpServlet {
 
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
@@ -20,7 +20,8 @@ public class NewPropertyServlet extends HttpServlet {
         String address = req.getParameter("address");
         String name = req.getParameter("name");
         String details = req.getParameter("details");
-        Property property = new Property(name, details, address);
+        Double value = Double.parseDouble(req.getParameter("value"));
+        Property property = new Property(name, details, address, value);
 
         databaseOps.addPropertyToDatabase(req.getRemoteUser(), property);
 

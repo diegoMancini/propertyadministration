@@ -84,7 +84,7 @@
     <p> <u>Phone number: </u> <%=employee.getPhoneNumber()%> </p>  <br>
 
     <table>
-        <% List<Property> properties = employee.getAvailableProperties(); %>
+        <% List<Property> properties = employee.getProperties(); %>
         <%if (properties.size() > 0){%>
         <p> <u><%=employee.getName()%> allowed properties to manage:</u></p>
             <tr>

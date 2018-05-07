@@ -94,7 +94,7 @@
         <input type="submit" class="btn btn-warning" value="Create employee">
 
         <form>
-            <input type="button" class="btn btn-warning" value="Go back" onclick="window.location.href='http://localhost:8080/home.jsp'" />
+            <input type="button" class="btn btn-warning" value="Go back" onclick="window.location.href='http://localhost:8080/properties.jsp'" />
         </form>
     </form>
     </body>

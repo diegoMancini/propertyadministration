@@ -208,8 +208,6 @@
                                         <th>Estado</th>
                                         <th>Precio</th>
                                         <th>Contrato</th>
-                                        <%--<th>Inicio</th>--%>
-                                        <%--<th>Final</th>--%>
                                         <th>Cliente</th>
                                         <th>Pago</th>
                                     </tr>
@@ -221,19 +219,13 @@
                                                 String state = functionalUnitList.get(i).getState();
                                                 String client = "";
                                                 Double price = 0.0;
-                                                String dateStart = "";
-                                                String dateEnd = "";
                                                 String contractName = "";
                                                 if(state.equals("Ocupado")) {
                                                     client += functionalUnitList.get(i).getContract().getTenant().getFullName();
                                                     price += functionalUnitList.get(i).getContract().getPrice();
-                                                    dateStart += functionalUnitList.get(i).getContract().getContractDateStart().toString();
-                                                    dateEnd += functionalUnitList.get(i).getContract().getContractDateEnd().toString();
                                                     contractName += functionalUnitList.get(i).getContract().getName();
                                                 } else {
                                                     client += "------";
-                                                    dateStart += "------";
-                                                    dateEnd += "------";
                                                     contractName += "------";
                                                 }
                                             %>
@@ -253,7 +245,7 @@
                                             <td><a href="javascript:void(0)"> <%=contractName%></a></td>
                                             <%--<td><%=dateStart%></td>--%>
                                             <%--<td><%=dateEnd%></td>--%>
-                                            <td><%=client%></td>
+                                            <td><a href="specificClient.jsp"><%=client%></a></td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago"><i class="ti-close" aria-hidden="true"></i></button>
                                             </td>
@@ -261,54 +253,6 @@
                                         <%}%>
                                         <%}%>
                                     </tbody>
-                                    <%--<tfoot>--%>
-                                    <%--<tr>--%>
-                                        <%--<div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--%>
-                                            <%--<div class="modal-dialog">--%>
-                                                <%--<div class="modal-content">--%>
-                                                    <%--<div class="modal-header">--%>
-                                                        <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>--%>
-                                                        <%--<h4 class="modal-title" id="myModalLabel">Agregar U.F.</h4> </div>--%>
-                                                    <%--<div class="modal-body">--%>
-                                                        <%--<form action="addFunctionalUnit" method="post" class="form-horizontal form-material" >--%>
-                                                            <%--<div class="form-group">--%>
-                                                                <%--<div class="col-md-12 m-b-20">--%>
-                                                                    <%--<input type="text" class="form-control" placeholder="Nombre"> </div>--%>
-                                                                <%--<div class="col-md-12 m-b-20">--%>
-                                                                    <%--<input type="text" class="form-control" placeholder="Pais"> </div>--%>
-                                                                <%--<div class="col-md-12 m-b-20">--%>
-                                                                    <%--<input type="text" class="form-control" placeholder="Provincia"> </div>--%>
-                                                                <%--<div class="col-md-12 m-b-20">--%>
-                                                                    <%--<input type="text" class="form-control" placeholder="Ciudad"> </div>--%>
-                                                                <%--<div class="col-md-12 m-b-20">--%>
-                                                                    <%--<input type="text" class="form-control" placeholder="Localidad"> </div>--%>
-                                                                <%--<div class="col-md-12 m-b-20">--%>
-                                                                    <%--<input type="text" class="form-control" placeholder="Direccion"> </div>--%>
-                                                                <%--<div class="col-md-12 m-b-20">--%>
-                                                                    <%--<input type="text" class="form-control" placeholder="Tipo"> </div>--%>
-                                                                <%--<div class="col-md-12 m-b-20">--%>
-                                                                    <%--<div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Subir contrato</span>--%>
-                                                                        <%--<input type="file" class="upload"> </div>--%>
-                                                                <%--</div>--%>
-                                                            <%--</div>--%>
-                                                        <%--</form>--%>
-                                                    <%--</div>--%>
-                                                    <%--<div class="modal-footer">--%>
-                                                        <%--<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Listo</button>--%>
-                                                        <%--<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>--%>
-                                                    <%--</div>--%>
-                                                <%--</div>--%>
-                                                <%--<!-- /.modal-content -->--%>
-                                            <%--</div>--%>
-                                            <%--<!-- /.modal-dialog -->--%>
-                                        <%--</div>--%>
-                                        <%--<td colspan="10">--%>
-                                            <%--<div class="text-right">--%>
-                                                <%--<ul class="pagination"> </ul>--%>
-                                            <%--</div>--%>
-                                        <%--</td>--%>
-                                    <%--</tr>--%>
-                                    <%--</tfoot>--%>
                                 </table>
                             </div>
                         </div>
@@ -477,75 +421,3 @@
 </script>
 </body>
 </html>
-<%--<div class="jsgrid-grid-header">--%>
-    <%--<table class="jsgrid-table table table-striped table-hover">--%>
-        <%--<tr class="jsgrid-header-row">--%>
-            <%--<th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 150px;">Nombre</th>--%>
-            <%--<th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 200px;">Direccion</th>--%>
-            <%--<th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 150px;">Cliente</th>--%>
-            <%--<th class="jsgrid-header-cell jsgrid-align-center" style="width: 100px;">Pago</th>--%>
-            <%--<th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">--%>
-                <%--<button class="jsgrid-button jsgrid-mode-button jsgrid-search-mode-button jsgrid-mode-on-button" type="button" title=""></button>--%>
-            <%--</th>--%>
-        <%--</tr>--%>
-        <%--<tr class="jsgrid-filter-row">--%>
-            <%--<td class="jsgrid-cell" style="width: 150px;">--%>
-                <%--<input type="text" class="form-control input-sm">--%>
-            <%--</td>--%>
-            <%--<td class="jsgrid-cell jsgrid-align-right" style="width: 70px;">--%>
-                <%--<input type="number" class="form-control input-sm">--%>
-            <%--</td>--%>
-            <%--<td class="jsgrid-cell" style="width: 200px;">--%>
-                <%--<input type="text" class="form-control input-sm">--%>
-            <%--</td>--%>
-            <%--<td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">--%>
-                <%--<select class="form-control input-sm">--%>
-                    <%--<option value="0"></option>--%>
-                    <%--<option value="1">United States</option>--%>
-                    <%--<option value="2">Canada</option>--%>
-                    <%--<option value="3">United Kingdom</option>--%>
-                    <%--<option value="4">France</option>--%>
-                    <%--<option value="5">Brazil</option>--%>
-                    <%--<option value="6">China</option>--%>
-                    <%--<option value="7">Russia</option>--%>
-                <%--</select>--%>
-            <%--</td>--%>
-            <%--<td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">--%>
-                <%--<input type="checkbox" readonly="">--%>
-            <%--</td>--%>
-            <%--<td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">--%>
-                <%--<button class="jsgrid-button jsgrid-search-button" type="button" title="Search"></button>--%>
-                <%--<button class="jsgrid-button jsgrid-clear-filter-button" type="button" title="Clear filter"></button>--%>
-            <%--</td>--%>
-        <%--</tr>--%>
-        <%--<tr class="jsgrid-insert-row" style="display: none;">--%>
-            <%--<td class="jsgrid-cell" style="width: 150px;">--%>
-                <%--<input type="text" class="form-control input-sm">--%>
-            <%--</td>--%>
-            <%--<td class="jsgrid-cell jsgrid-align-right" style="width: 70px;">--%>
-                <%--<input type="number" class="form-control input-sm">--%>
-            <%--</td>--%>
-            <%--<td class="jsgrid-cell" style="width: 200px;">--%>
-                <%--<input type="text" class="form-control input-sm">--%>
-            <%--</td>--%>
-            <%--<td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">--%>
-                <%--<select class="form-control input-sm">--%>
-                    <%--<option value="0"></option>--%>
-                    <%--<option value="1">United States</option>--%>
-                    <%--<option value="2">Canada</option>--%>
-                    <%--<option value="3">United Kingdom</option>--%>
-                    <%--<option value="4">France</option>--%>
-                    <%--<option value="5">Brazil</option>--%>
-                    <%--<option value="6">China</option>--%>
-                    <%--<option value="7">Russia</option>--%>
-                <%--</select>--%>
-            <%--</td>--%>
-            <%--<td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">--%>
-                <%--<input type="checkbox">--%>
-            <%--</td>--%>
-            <%--<td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">--%>
-                <%--<button class="jsgrid-button jsgrid-insert-button" type="button" title="Insert"></button>--%>
-            <%--</td>--%>
-        <%--</tr>--%>
-    <%--</table>--%>
-<%--</div>--%>

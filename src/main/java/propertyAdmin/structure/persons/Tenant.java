@@ -1,5 +1,8 @@
 package propertyAdmin.structure.persons;
 
+import propertyAdmin.structure.property.structure.FunctionalUnit;
+import propertyAdmin.structure.rents.Contract;
+
 import javax.persistence.*;
 
 @Entity
@@ -35,10 +38,8 @@ public class Tenant {
     private String phone;
     @Column(name = "EMAIL", unique = true)
     private String email;
-    @C
-
-    public Tenant() {
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    private FunctionalUnit functionalUnit;
 
     public Tenant(String name, String surname, String dni, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email) {
         this.name = name;
@@ -54,12 +55,18 @@ public class Tenant {
         this.addressZipCode = addressZipCode;
         this.phone = phone;
         this.email = email;
+        this.functionalUnit = getFunctionalUnit();
     }
 
     public Tenant(String name, String surname, String dni) {
         this.name = name;
         this.surname = surname;
         this.dni = dni;
+        this.functionalUnit = getFunctionalUnit();
+
+    }
+
+    public Tenant() {
     }
 
     public Integer getId() {
@@ -76,6 +83,14 @@ public class Tenant {
 
     public String getDni() {
         return dni;
+    }
+
+    public void setFunctionalUnit(FunctionalUnit newFunctionalUnit) {
+        this.functionalUnit = newFunctionalUnit;
+    }
+
+    public FunctionalUnit getFunctionalUnit() {
+        return functionalUnit;
     }
 
     public void setDni(String dni) {
@@ -143,4 +158,5 @@ public class Tenant {
     public String getFullName() {
         return name + " " + surname;
     }
+
 }

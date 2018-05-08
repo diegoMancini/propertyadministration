@@ -6,13 +6,10 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import propertyAdmin.structure.persons.Account;
 import propertyAdmin.structure.persons.Tenant;
-import propertyAdmin.structure.property.details.Blueprint;
-import propertyAdmin.structure.property.details.Deed;
-import propertyAdmin.structure.property.structure.FunctionalUnit;
-import propertyAdmin.structure.property.structure.Property;
-import propertyAdmin.structure.rents.Contract;
+import propertyAdmin.structure.property.Contract;
+import propertyAdmin.structure.property.FunctionalUnit;
+import propertyAdmin.structure.property.Property;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,19 +85,6 @@ public class DatabaseOps {
         session.close();
     }
 
-    public void addCompletePropertyToDatabase(String email, Property property, Blueprint blueprint, Deed deed) {
-        property.setBlueprint(blueprint);
-        property.setDeed(deed);
-        Session session = openSession();
-        Transaction transaction = session.beginTransaction();
-        session.get(Account.class, email).addProperty(property);
-        session.save(property);
-        session.save(blueprint);
-        session.save(deed);
-        transaction.commit();
-        session.close();
-    }
-
     public void removePropertyFromDatabase(int choice, String mail) {
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
@@ -111,47 +95,6 @@ public class DatabaseOps {
         session.close();
     }
 
-    public void addDeedToProperty(String mail, Property propertyName, Deed deed) {
-        Session session = openSession();
-        Transaction transaction = session.beginTransaction();
-        Account account1 = session.get(Account.class, mail);
-        for (Property property : account1.getProperties()) {
-            if (property.getId().equals(propertyName.getId())) {
-                property.setDeed(deed);
-            }
-        }
-        session.save(deed);
-        transaction.commit();
-        closeSession(session);
-    }
-
-    public void addBlueprintToProperty(String mail, Property propertyName, Blueprint blueprint) {
-        Session session = openSession();
-        Transaction transaction = session.beginTransaction();
-        Account account1 = session.get(Account.class, mail);
-        for (Property property : account1.getProperties()) {
-            if (property.getId().equals(propertyName.getId())) {
-                property.setBlueprint(blueprint);
-            }
-        }
-        session.save(blueprint);
-        transaction.commit();
-        closeSession(session);
-    }
-
-    public void addFileToProperty(String username, String property, File file){
-        Session session = openSession();
-        Account user = session.get(Account.class, username);
-        Property result = null;
-        for (Property propertyResult : user.getProperties()) {
-            if(propertyResult.getName().toLowerCase().equals(property.toLowerCase())){
-                result = propertyResult;
-            }
-        }
-        Property propertyToAdd = session.find(Property.class, result);
-
-        propertyToAdd.setFile(file);
-    }
 
     public Property getProperty(int choice, String username) {
         Session session = openSession();
@@ -163,7 +106,6 @@ public class DatabaseOps {
         return user.getProperties();
     }
 
-
     public List<FunctionalUnit> getAccountFunctionalUnits(String remoteUser) {
         List<FunctionalUnit> res = new ArrayList<>();
         Account account = getAccount(remoteUser);
@@ -172,6 +114,7 @@ public class DatabaseOps {
         }
         return res;
     }
+
     public List<Tenant> getAccountClients(String remoteUser) {
         List<Tenant> tenantList = new ArrayList<>();
         Account account = getAccount(remoteUser);
@@ -291,4 +234,5 @@ public class DatabaseOps {
     public void addContactToDatabase(String occupation, String name, String surname, Integer phoneNumber, Integer chosenProperty, String remoteUser) {
 
     }
+
 }

@@ -1,7 +1,6 @@
 package propertyAdmin.structure.persons;
 
-import propertyAdmin.structure.property.structure.FunctionalUnit;
-import propertyAdmin.structure.rents.Contract;
+import propertyAdmin.structure.property.FunctionalUnit;
 
 import javax.persistence.*;
 

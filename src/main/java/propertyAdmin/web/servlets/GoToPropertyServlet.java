@@ -1,7 +1,7 @@
 package propertyAdmin.web.servlets;
 
 import propertyAdmin.operations.DatabaseOps;
-import propertyAdmin.structure.property.structure.Property;
+import propertyAdmin.structure.property.Property;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +19,14 @@ public class GoToPropertyServlet extends HttpServlet {
         Property property = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
         req.setAttribute("chosenProperty", chosenProperty);
         req.setAttribute("property", property);
-        req.getRequestDispatcher("/propertyadmin/specificProperty.jsp").forward(req,resp);
+        String path = "";
+        if (property.getFunctionalUnits().size() == 0) {
+            path += "/propertyadmin/addFunctionalUnit.jsp";
+        } else if (property.getFunctionalUnits().size() == 1) {
+            path += "/propertyadmin/singleFunctionalUnit.jsp";
+        } else {
+            path += "/propertyadmin/specificProperty.jsp";
+        }
+        req.getRequestDispatcher(path).forward(req, resp);
     }
 }

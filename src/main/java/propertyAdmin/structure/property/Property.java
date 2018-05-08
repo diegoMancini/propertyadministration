@@ -1,13 +1,12 @@
-package propertyAdmin.structure.property.structure;
+package propertyAdmin.structure.property;
 
-import propertyAdmin.structure.property.details.Blueprint;
-import propertyAdmin.structure.property.details.Deed;
 import propertyAdmin.structure.rents.Expenses;
 import propertyAdmin.structure.services.Services;
 import propertyAdmin.structure.taxes.Taxes;
 
 import javax.persistence.*;
-import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,48 +21,69 @@ public class Property {
    private String name;
    @Column(name = "DESCRIPTION")
    private String description;
-   @Column(name = "ADDRESS")
-   private String address;
-   @OneToOne(cascade = {CascadeType.ALL})
-   private Blueprint blueprint;
-   @OneToOne(cascade = {CascadeType.ALL})
-   private Deed deed; //Escritura
+   @Lob
+   private byte[] blueprint;
+   @Column(name = "BLUEPRINT_PATH")
+   private String blueprintPath;
+   @Lob
+   private byte[] deed; //Escritura
+   @Column(name = "DEED_PATH")
+   private String deedPath;
+   @Lob
+   private byte[] image;
+   @Column(name = "IMAGE_PATH")
+   private String imagePath;
    @OneToMany(cascade = {CascadeType.ALL})
    private List<Services> services; //Luz, gas, tel
    @OneToMany(cascade = {CascadeType.ALL})
    private List<Taxes> taxes;
    @CollectionTable @OneToMany
    private List<FunctionalUnit> functionalUnits;
+   @OneToMany(cascade = {CascadeType.ALL})
+   private List<Expenses> expenses;
+   @Column(name = "ADDRESS")
+   private String address;
+   @Column(name = "VALUE")
+   private Double value;
+   @Column(name = "IS_DELETED")
+   private boolean isDeleted;
    @Column(name = "AMOUNT_OF_FUNCTIONAL_UNITS")
    private Integer amountFunctionalUnits;
    @Column(name = "AMOUNT_OF_OCCUPIED_FUNCTIONAL_UNITS")
    private Integer amountOccupied;
-   @OneToMany(cascade = {CascadeType.ALL})
-   private List<Expenses> expenses;
-   @Column(name = "IMAGE")
-   private File file;
-   @Column(name = "IS_DELETED")
-   private boolean isDeleted;
-   @Column(name = "VALUE")
-   private Double value;
 
    public Property() {
    }
 
-   public Property(String name, String description, String address, Double value) {
+   public Property(String name, String description,  String address,Double value) {
       this.name = name;
       this.description = description;
       this.address = address;
+      this.value = value;
+      functionalUnits = new ArrayList<>();
+      image = null;
       this.blueprint = null;
       this.deed = null;
       services = new ArrayList<>();
       taxes = new ArrayList<>();
-      functionalUnits = new ArrayList<>();
-      amountFunctionalUnits = 0;
-      file = null;
       isDeleted = false;
       amountOccupied = 0;
-      this.value = value;
+      amountFunctionalUnits = 0;
+      imagePath = "";
+      deedPath = "";
+      blueprintPath = "";
+   }
+
+   public String getBlueprintPath() {
+      return blueprintPath;
+   }
+
+   public String getDeedPath() {
+      return deedPath;
+   }
+
+   public String getImagePath() {
+      return imagePath;
    }
 
    public Integer getAmountOccupied() {
@@ -75,20 +95,6 @@ public class Property {
       }
       return amountOccupied;
    }
-
-   public Property(String name, String description, String address, Blueprint blueprint, Deed deed, Double value) {
-        this.name = name;
-        this.description = description;
-        this.address = address;
-        this.blueprint = blueprint;
-        this.deed = deed;
-        services = new ArrayList<>();
-        taxes = new ArrayList<>();
-        functionalUnits = new ArrayList<>();
-        amountFunctionalUnits = 0;
-        file = null;
-        this.value = value;
-    }
 
     public Integer getId() {
       return id;
@@ -118,19 +124,19 @@ public class Property {
       this.address = address;
    }
 
-   public Blueprint getBlueprint() {
+   public byte[]  getBlueprint() {
       return blueprint;
    }
 
-   public void setBlueprint(Blueprint blueprint) {
+   public void setBlueprint(byte[]  blueprint) {
       this.blueprint = blueprint;
    }
 
-   public Deed getDeed() {
+   public byte[]  getDeed() {
       return deed;
    }
 
-   public void setDeed(Deed deed) {
+   public void setDeed(byte[] deed) {
       this.deed = deed;
    }
 
@@ -174,12 +180,20 @@ public class Property {
       this.expenses = expenses;
    }
 
-   public File getFile() {
-      return file;
+   public byte[] getImage() {
+      return image;
    }
 
-   public void setFile(File file) {
-      this.file = file;
+   public void setImage(byte[] file, String path) {
+      this.image = file;
+//      this.imagePath += path;
+   }
+
+   public void writeImage(int index) throws IOException {
+      imagePath += "C:\\PropertyAdmin\\propertyImage"+index+".jpg";
+      FileOutputStream fileOutputStream = new FileOutputStream(imagePath);
+      fileOutputStream.write(image);
+      fileOutputStream.close();
    }
 
    public Integer getTotalExpenses() {
@@ -232,4 +246,5 @@ public class Property {
     public double getValue() {
         return value;
     }
+
 }

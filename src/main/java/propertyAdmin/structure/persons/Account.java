@@ -1,7 +1,7 @@
 package propertyAdmin.structure.persons;
 
-import propertyAdmin.structure.property.structure.FunctionalUnit;
-import propertyAdmin.structure.property.structure.Property;
+import propertyAdmin.structure.property.FunctionalUnit;
+import propertyAdmin.structure.property.Property;
 
 import javax.persistence.*;
 import java.util.ArrayList;

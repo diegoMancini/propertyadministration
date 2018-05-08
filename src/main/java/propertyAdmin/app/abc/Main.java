@@ -1,21 +1,22 @@
 package propertyAdmin.app.abc;
 
-import propertyAdmin.app.menu.form.StartMenu;
 import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.persons.Account;
 import propertyAdmin.structure.persons.Guarantor;
 import propertyAdmin.structure.persons.Landlord;
 import propertyAdmin.structure.persons.Tenant;
-import propertyAdmin.structure.property.details.Blueprint;
-import propertyAdmin.structure.property.details.Deed;
-import propertyAdmin.structure.property.structure.FunctionalUnit;
-import propertyAdmin.structure.property.structure.Property;
-import propertyAdmin.structure.property.structure.specifics.BusinessPremise;
-import propertyAdmin.structure.property.structure.specifics.Garage;
-import propertyAdmin.structure.property.structure.specifics.LivingPlace;
-import propertyAdmin.structure.property.structure.specifics.Office;
-import propertyAdmin.structure.rents.Contract;
+import propertyAdmin.structure.property.Contract;
+import propertyAdmin.structure.property.FunctionalUnit;
+import propertyAdmin.structure.property.Property;
+import propertyAdmin.structure.property.specifics.BusinessPremise;
+import propertyAdmin.structure.property.specifics.Garage;
+import propertyAdmin.structure.property.specifics.LivingPlace;
+import propertyAdmin.structure.property.specifics.Office;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -23,19 +24,37 @@ public class Main {
 
     private static DatabaseOps databaseOps = DatabaseOps.getInstance();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, SQLException {
         Account testerAccount = new Account("Diego", "Mancini", "38931523", "Argentina",
                 "Soltero", "Saravi 104 Barrio La Tranquera", "Argentina",
                 "Buenos Aires" , "Pilar", "La Lonja", "1629",
                 "5491154645662", "diegonfx@gmail.com", "Perrito1", "Diegonfx");
         databaseOps.addAccountToDatabase(testerAccount);
 
-        Property testerProperty = new Property("Casa La Tranquera", "LOTE 50", "Saravi 104 Barrio La Tranquera",
-                new Blueprint("Plano UF50"), new Deed("Escritura UF50", "Direccion UF50"), 500000.0);
-        Property testerProperty2 = new Property("Casa Caamaño", "LOTE 93", "Caamaño 633",
-                new Blueprint("Plano UF93"), new Deed("Escritura UF93", "Direccion UF93"), 385000.0);
+        Property testerProperty = new Property("Casa La Tranquera", "LOTE 50", "Saravi 104 Barrio La Tranquera", 500000.0);
+        Property testerProperty2 = new Property("Casa Caamaño", "LOTE 93", "Caamaño 633", 385000.0);
+//        File image1File = new File("C:\\Users\\diego\\Desktop\\photo1.jpeg");
+//        File image2File = new File("C:\\Users\\diego\\Desktop\\photo2.jpg");
+        File imageFile1 = new File("C:\\Users\\diego\\Desktop\\photo1.jpeg");
+        byte[] image1 = new byte[(int) imageFile1.length()];
+        File imageFile2 =new File("C:\\Users\\diego\\Desktop\\photo2.jpg");
+        byte[] image2 = new byte[(int) imageFile2.length()];
+        try {
+            FileInputStream fileInputStream = new FileInputStream(imageFile1);
+            fileInputStream.read(image1);
+            fileInputStream.close();
+            FileInputStream fileInputStream2 = new FileInputStream(imageFile2);
+            fileInputStream2.read(image2);
+            fileInputStream2.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        testerProperty.setImage(image1,"C:\\Users\\diego\\Desktop\\photo1.jpg");
+        testerProperty2.setImage(image2, "C:\\Users\\diego\\Desktop\\photo2.jpg");
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty);
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty2);
+        testerProperty.writeImage(0);
+        testerProperty2.writeImage(1);
 
         FunctionalUnit testerFunctionalUnit = new LivingPlace("Casa 1", "Arg", "Bs As", "Pilar", "La Lonja", "Saravi 104");
         FunctionalUnit testerFunctionalUnit1 = new LivingPlace("Casa 2", "Arg", "Bs As", "Pilar", "La Lonja", "Caamano 546");
@@ -51,6 +70,7 @@ public class Main {
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit4);
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty2, testerFunctionalUnit5);
         databaseOps.addFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty2, testerFunctionalUnit6);
+
 
         Calendar cal1 = Calendar.getInstance();
         cal1.set(2017, 4, 31);
@@ -80,6 +100,8 @@ public class Main {
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit, testerContract1);
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty, testerFunctionalUnit4, testerContract2);
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty2, testerFunctionalUnit6, testerContract3);
+
+        System.out.println("\n\n\n\n\nFINISHED");
 //
 //        System.out.println(dateIssued.toString());
 //        System.out.println(dateStart.toString());

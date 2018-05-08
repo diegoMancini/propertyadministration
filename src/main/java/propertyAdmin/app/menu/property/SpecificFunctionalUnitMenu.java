@@ -5,9 +5,9 @@ import propertyAdmin.structure.persons.Account;
 import propertyAdmin.structure.persons.Guarantor;
 import propertyAdmin.structure.persons.Landlord;
 import propertyAdmin.structure.persons.Tenant;
-import propertyAdmin.structure.property.structure.FunctionalUnit;
-import propertyAdmin.structure.property.structure.Property;
-import propertyAdmin.structure.rents.Contract;
+import propertyAdmin.structure.property.FunctionalUnit;
+import propertyAdmin.structure.property.Property;
+import propertyAdmin.structure.property.Contract;
 
 import java.util.Calendar;
 import java.util.Date;

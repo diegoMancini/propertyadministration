@@ -1,5 +1,5 @@
 <%@ page import="propertyAdmin.operations.DatabaseOps" %>
-<%@ page import="propertyAdmin.structure.property.structure.FunctionalUnit" %>
+<%@ page import="propertyAdmin.structure.property.FunctionalUnit" %>
 <%@ page import="java.util.List" %>
 <%@ page import="propertyAdmin.structure.persons.Account" %><%--
   Created by IntelliJ IDEA.

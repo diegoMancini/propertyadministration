@@ -1,6 +1,6 @@
-package propertyAdmin.structure.property.structure.specifics;
+package propertyAdmin.structure.property.specifics;
 
-import propertyAdmin.structure.property.structure.FunctionalUnit;
+import propertyAdmin.structure.property.FunctionalUnit;
 
 import javax.persistence.*;
 

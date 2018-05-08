@@ -2,14 +2,12 @@ package propertyAdmin.app.menu.property;
 
 import propertyAdmin.app.abc.Scanner;
 import propertyAdmin.structure.persons.Account;
-import propertyAdmin.structure.property.details.Blueprint;
-import propertyAdmin.structure.property.details.Deed;
-import propertyAdmin.structure.property.structure.FunctionalUnit;
-import propertyAdmin.structure.property.structure.Property;
-import propertyAdmin.structure.property.structure.specifics.BusinessPremise;
-import propertyAdmin.structure.property.structure.specifics.Garage;
-import propertyAdmin.structure.property.structure.specifics.LivingPlace;
-import propertyAdmin.structure.property.structure.specifics.Office;
+import propertyAdmin.structure.property.FunctionalUnit;
+import propertyAdmin.structure.property.Property;
+import propertyAdmin.structure.property.specifics.BusinessPremise;
+import propertyAdmin.structure.property.specifics.Garage;
+import propertyAdmin.structure.property.specifics.LivingPlace;
+import propertyAdmin.structure.property.specifics.Office;
 
 public class SpecificPropertyMenu extends PropertyMenu {
 
@@ -42,10 +40,10 @@ public class SpecificPropertyMenu extends PropertyMenu {
                     removeFunctionalUnit(account, aProperty);
                     break;
                 case 6:
-                    addDeed(account, aProperty);
+//                    addDeed(account, aProperty);
                     break;
                 case 7:
-                    addBlueprint(account, aProperty);
+//                    addBlueprint(account, aProperty);
                     break;
                 case 8:
                     addExpense(account, aProperty);
@@ -119,18 +117,18 @@ public class SpecificPropertyMenu extends PropertyMenu {
         getDatabaseOps().removeFunctionalUnitFromDatabase(account.getEmail(), aProperty, functionalUnit);
     }
 
-    private void addDeed(Account account, Property aProperty) {
-        String name = Scanner.getString("\nNombre: ");
-        String legalAddress = Scanner.getString("Direccion legal: ");
-        Deed deed = new Deed(name, legalAddress);
-        getDatabaseOps().addDeedToProperty(account.getEmail(), aProperty, deed);
-    }
-
-    private void addBlueprint(Account account, Property aProperty) {
-        String name = Scanner.getString("\nNombre: ");
-        Blueprint blueprint = new Blueprint(name);
-        getDatabaseOps().addBlueprintToProperty(account.getEmail(), aProperty, blueprint);
-    }
+//    private void addDeed(Account account, Property aProperty) {
+//        String name = Scanner.getString("\nNombre: ");
+//        String legalAddress = Scanner.getString("Direccion legal: ");
+//        Deed deed = new Deed(name, legalAddress);
+//        getDatabaseOps().addDeedToProperty(account.getEmail(), aProperty, deed);
+//    }
+//
+//    private void addBlueprint(Account account, Property aProperty) {
+//        String name = Scanner.getString("\nNombre: ");
+//        Blueprint blueprint = new Blueprint(name);
+//        getDatabaseOps().addBlueprintToProperty(account.getEmail(), aProperty, blueprint);
+//    }
 
     private void addExpense(Account account, Property aProperty) {
         

@@ -1,9 +1,6 @@
-package propertyAdmin.structure.property.structure;
-
-import propertyAdmin.structure.rents.Contract;
+package propertyAdmin.structure.property;
 
 import javax.persistence.*;
-import java.io.File;
 
 @Entity
 @Table(name = "FUNCTIONAL_UNITS")

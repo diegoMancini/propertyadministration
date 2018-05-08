@@ -105,5 +105,7 @@
     <orderEntry type="library" name="vfs_fonts" level="application" />
     <orderEntry type="library" name="buttons.html5" level="application" />
     <orderEntry type="library" name="buttons.print" level="application" />
+    <orderEntry type="library" name="html5shiv" level="application" />
+    <orderEntry type="library" name="respond" level="application" />
   </component>
 </module>

@@ -1,4 +1,4 @@
-package propertyAdmin.structure.rents;
+package propertyAdmin.structure.property;
 
 import propertyAdmin.structure.persons.Guarantor;
 import propertyAdmin.structure.persons.Landlord;

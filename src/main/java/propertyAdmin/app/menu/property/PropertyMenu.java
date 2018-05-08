@@ -3,9 +3,7 @@ package propertyAdmin.app.menu.property;
 import propertyAdmin.app.abc.Scanner;
 import propertyAdmin.app.menu.form.LogInMenu;
 import propertyAdmin.structure.persons.Account;
-import propertyAdmin.structure.property.details.Blueprint;
-import propertyAdmin.structure.property.details.Deed;
-import propertyAdmin.structure.property.structure.Property;
+import propertyAdmin.structure.property.Property;
 
 public class PropertyMenu extends LogInMenu {
 
@@ -32,7 +30,6 @@ public class PropertyMenu extends LogInMenu {
                     addProperty(account);
                     break;
                 case 4:
-                    addCompleteProperty(account);
                     break;
                 case 5:
                     removeProperty(account);
@@ -72,23 +69,6 @@ public class PropertyMenu extends LogInMenu {
         Double value = Scanner.getDouble("Valor: ");
         Property property = new Property(name, description, address, value);
         getDatabaseOps().addPropertyToDatabase(account.getEmail(), property);
-    }
-
-    private void addCompleteProperty(Account account) {
-        System.out.println("\nDATOS PROPIEDAD");
-        String name = Scanner.getString("Nombre: ");
-        String description = Scanner.getString("Descripcion: ");
-        String address = Scanner.getString("Direccion: ");
-        Double value = Scanner.getDouble("Valor: ");
-        Property property = new Property(name, description, address, value);
-        System.out.println("\nDATOS PLANOS");
-        String blueprintName = Scanner.getString("Nombre planos: ");
-        Blueprint blueprint = new Blueprint(blueprintName);
-        System.out.println("\nDATOS ESCRITURA");
-        String deedName = Scanner.getString("Nombre escritura: ");
-        String legalAddressDeed = Scanner.getString("Direccion legal escritura: ");
-        Deed deed = new Deed(deedName, legalAddressDeed);
-        getDatabaseOps().addCompletePropertyToDatabase(account.getEmail(), property, blueprint, deed);
     }
 
     private void removeProperty(Account account) {

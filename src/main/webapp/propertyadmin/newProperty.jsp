@@ -93,7 +93,7 @@
 						<a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getUsername()%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
 						<div class="dropdown-menu dropdown-menu-right animated flipInY">
 							<!-- text-->
-							<a href="/propertyadmin/profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
+							<a href="profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
 							<!-- text-->
 							<a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
 							<!-- text-->
@@ -166,7 +166,8 @@
 					<div class="d-flex justify-content-end align-items-center">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="home.jsp">Inicio</a></li>
-							<li class="breadcrumb-item active">Nueva Propiedad</li>
+                            <li class="breadcrumb-item"><a href="properties.jsp">Propiedades</a></li>
+                            <li class="breadcrumb-item active">Nueva Propiedad</li>
 						</ol>
 					</div>
 				</div>
@@ -180,209 +181,33 @@
 			<!-- .row -->
 			<div class="row">
 				<div class="col-md-12">
-					<div class="card">
-						<div class="card-body">
-							<form class="pro-add-form" action="/addProperty" method="post">
-								<div class="form-group">
-									<label for="propertyName">Nombre de la propiedad</label>
-									<input type="text" class="form-control" name="propertyName" id="propertyName" placeholder="Nombre"> </div>
-								<div class="form-group">
-									<label for="propertyDescription">Property Description</label>
-									<textarea class="form-control" rows="5" id="propertyDescription" name="propertyDescription" placeholder="Enter Description"></textarea>
-								</div>
-								<div class="form-group">
-									<label for="plocation">Property Location</label>
-									<input type="email" class="form-control" id="plocation" placeholder="Enter Location"> </div>
-								<div class="form-group">
-									<label class="control-label">Property For</label>
-									<div class="col-md-9">
-										<div class="row">
-											<div class="custom-control custom-radio">
-												<input type="radio" id="customRadio3" name="member" class="custom-control-input">
-												<label class="custom-control-label" for="customRadio3">For Rent</label>
-											</div>
-											<div class="custom-control custom-radio m-l-15">
-												<input type="radio" id="customRadio4" name="member" class="custom-control-input">
-												<label class="custom-control-label" for="customRadio4">For Sale</label>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="plocation">Price / Rent</label>
-									<input type="email" class="form-control" id="plocation" placeholder="Enter Number"> </div>
-								<div class="form-group">
-									<label for="paddress">Property Address</label>
-									<textarea class="form-control" rows="3" id="paddress"></textarea>
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-4">
-											<label for="tch1">Bedrooms</label>
-											<input id="tch1" type="text" value="" name="tch1" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline">
-										</div>
-										<div class="col-sm-4">
-											<label for="tch2">Garages</label>
-											<input id="tch2" type="text" value="" name="tch2" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline"> </div>
-										<div class="col-sm-4">
-											<label for="tch3">Bathrooms</label>
-											<input id="tch3" type="text" value="" name="tch3" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline"> </div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-4">
-											<label for="tch4">Full Bath</label>
-											<input id="tch4" type="text" value="" name="tch4" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline">
-										</div>
-										<div class="col-sm-4">
-											<label for="tch5">Half Bath</label>
-											<input id="tch5" type="text" value="" name="tch5" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline"> </div>
-										<div class="col-sm-4">
-											<label for="psqft">Square Ft</label>
-											<input type="text" class="form-control" id="psqft"> </div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-4">
-											<label for="pyear">Year Built</label>
-											<select class="form-control custom-select" id="pyear">
-												<option value="0" disabled selected>Year</option>
-												<option value="1">2015</option>
-												<option value="2">2017</option>
-											</select>
-										</div>
-										<div class="col-sm-4">
-											<label for="style">Style</label>
-											<select class="form-control custom-select" id="style">
-												<option value="0" disabled selected>Style</option>
-												<option value="1">Bi-level</option>
-												<option value="2">Tri-level</option>
-											</select>
-										</div>
-										<div class="col-sm-4">
-											<label for="status">Status</label>
-											<select class="form-control custom-select" id="status">
-												<option value="0" disabled selected>Status</option>
-												<option value="1">Active</option>
-												<option value="2">Inactive</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-4">
-											<label for="type">Type</label>
-											<select class="form-control custom-select" id="type">
-												<option value="0" disabled selected>Type</option>
-												<option value="1">Single</option>
-												<option value="2">Double</option>
-											</select>
-										</div>
-										<div class="col-sm-4">
-											<label for="subdiv">Subdivision</label>
-											<select class="form-control custom-select" id="subdiv">
-												<option value="0" disabled selected>Subdivision</option>
-												<option value="1">Matindale</option>
-												<option value="2">citadel</option>
-											</select>
-										</div>
-										<div class="col-sm-4">
-											<label for="city">City</label>
-											<select class="form-control custom-select" id="city">
-												<option value="0" disabled selected>City</option>
-												<option value="1">Ahmedabad</option>
-												<option value="2">Mountain View</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label>Amenities</label>
-									<div class="row">
-										<div class="col-sm-4">
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheck1">
-												<label class="custom-control-label" for="customCheck1"> Private Space </label>
-											</div>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheck2">
-												<label class="custom-control-label" for="customCheck2"> Wifi</label>
-											</div>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheck3">
-												<label class="custom-control-label" for="customCheck3"> Basketball Court</label>
-											</div>
-										</div>
-										<div class="col-sm-4">
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheck4">
-												<label class="custom-control-label" for="customCheck4"> Fireplace </label>
-											</div>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheck5">
-												<label class="custom-control-label" for="customCheck5"> Doorman</label>
-											</div>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheck6">
-												<label class="custom-control-label" for="customCheck6"> Swimming Pool</label>
-											</div>
-										</div>
-										<div class="col-sm-4">
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheck7">
-												<label class="custom-control-label" for="customCheck7"> Gym </label>
-											</div>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheck8">
-												<label class="custom-control-label" for="customCheck8"> Parking</label>
-											</div>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheck9">
-												<label class="custom-control-label" for="customCheck9"> laundry</label>
-											</div>
-										</div>
-									</div>
-								</div>
-								<h5 class="card-title">Dimensions</h5>
-								<hr>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-4">
-											<label for="diningroom">Dining Room</label>
-											<input type="text" class="form-control" id="diningroom" data-mask="99x99"> </div>
-										<div class="col-sm-4">
-											<label for="kitchen">Kitchen</label>
-											<input type="text" class="form-control" id="kitchen" data-mask="99x99"> </div>
-										<div class="col-sm-4">
-											<label for="livingroom">Living Room</label>
-											<input type="text" class="form-control" id="livingroom" data-mask="99x99"> </div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-4">
-											<label for="mbedroom">Master Bedroom</label>
-											<input type="text" class="form-control" id="mbedroom" data-mask="99x99"> </div>
-										<div class="col-sm-4">
-											<label for="bed2">Bedroom 2</label>
-											<input type="text" class="form-control" id="bed2" data-mask="99x99"> </div>
-										<div class="col-sm-4">
-											<label for="otherroom">Other Room</label>
-											<input type="text" class="form-control" id="otherroom" data-mask="99x99"> </div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="input-file-now">Upload Files</label>
-									<input type="file" id="input-file-now" class="dropify" />
-								</div>
-								<button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Add Property</button>
-								<button type="submit" class="btn btn-dark waves-effect waves-light">Cancel</button>
-							</form>
-						</div>
-					</div>
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="/newProperty" method="POST" class="form-material m-t-40" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Nombre de la propiedad<span class="help"></span></label>
+                                    <input type="text" name="propertyName" id="propertyName" class="form-control form-control-line" value=""> </div>
+                                <div class="form-group">
+                                    <label>Direccion<span class="help"></span></label>
+                                    <input type="text" id="propertyAddress" name="propertyAddress" class="form-control" placeholder=""> </div>
+                                <div class="form-group">
+                                    <label>Valor (U$D)<span class="help"></span></label>
+                                    <input type="text" id="propertyValue" name="propertyValue" class="form-control" placeholder=""> </div>
+                                <div class="form-group">
+                                    <label>Descripcion</label>
+                                    <textarea name="propertyDescription" id="propertyDescription" class="form-control" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Imagen</label>
+                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                        <input type="file" name="propertyImage" id="propertyImage" accept=".pdf, .jpg, .png, .jpeg">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-info d-none d-lg-block m-l-15" ><i class="fa fa-plus-circle"></i>Agregar</button>
+
+                            </form>
+                        </div>
+                    </div>
 				</div>
 			</div>
 			<!-- .row -->

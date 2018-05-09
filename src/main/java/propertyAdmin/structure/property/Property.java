@@ -21,18 +21,8 @@ public class Property {
    private String name;
    @Column(name = "DESCRIPTION")
    private String description;
-   @Lob
-   private byte[] blueprint;
-   @Column(name = "BLUEPRINT_PATH")
-   private String blueprintPath;
-   @Lob
-   private byte[] deed; //Escritura
-   @Column(name = "DEED_PATH")
-   private String deedPath;
-   @Lob
-   private byte[] image;
-   @Column(name = "IMAGE_PATH")
-   private String imagePath;
+   @Column(name = "IMAGE_LINK")
+   private String imageLink;
    @OneToMany(cascade = {CascadeType.ALL})
    private List<Services> services; //Luz, gas, tel
    @OneToMany(cascade = {CascadeType.ALL})
@@ -44,7 +34,7 @@ public class Property {
    @Column(name = "ADDRESS")
    private String address;
    @Column(name = "VALUE")
-   private Double value;
+   private String value;
    @Column(name = "IS_DELETED")
    private boolean isDeleted;
    @Column(name = "AMOUNT_OF_FUNCTIONAL_UNITS")
@@ -55,35 +45,18 @@ public class Property {
    public Property() {
    }
 
-   public Property(String name, String description,  String address,Double value) {
+   public Property(String name, String description, String address, String value) {
       this.name = name;
       this.description = description;
       this.address = address;
       this.value = value;
       functionalUnits = new ArrayList<>();
-      image = null;
-      this.blueprint = null;
-      this.deed = null;
       services = new ArrayList<>();
       taxes = new ArrayList<>();
       isDeleted = false;
       amountOccupied = 0;
       amountFunctionalUnits = 0;
-      imagePath = "";
-      deedPath = "";
-      blueprintPath = "";
-   }
-
-   public String getBlueprintPath() {
-      return blueprintPath;
-   }
-
-   public String getDeedPath() {
-      return deedPath;
-   }
-
-   public String getImagePath() {
-      return imagePath;
+      imageLink = "";
    }
 
    public Integer getAmountOccupied() {
@@ -122,22 +95,6 @@ public class Property {
 
    public void setAddress(String address) {
       this.address = address;
-   }
-
-   public byte[]  getBlueprint() {
-      return blueprint;
-   }
-
-   public void setBlueprint(byte[]  blueprint) {
-      this.blueprint = blueprint;
-   }
-
-   public byte[]  getDeed() {
-      return deed;
-   }
-
-   public void setDeed(byte[] deed) {
-      this.deed = deed;
    }
 
    public List<Services> getServices() {
@@ -180,22 +137,6 @@ public class Property {
       this.expenses = expenses;
    }
 
-   public byte[] getImage() {
-      return image;
-   }
-
-   public void setImage(byte[] file, String path) {
-      this.image = file;
-//      this.imagePath += path;
-   }
-
-   public void writeImage(int index) throws IOException {
-      imagePath += "C:\\PropertyAdmin\\propertyImage"+index+".jpg";
-      FileOutputStream fileOutputStream = new FileOutputStream(imagePath);
-      fileOutputStream.write(image);
-      fileOutputStream.close();
-   }
-
    public Integer getTotalExpenses() {
       int result = 0;
       for(Expenses expense : expenses) {
@@ -219,6 +160,18 @@ public class Property {
         } return null;
     }
 
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     public boolean isDeleted() {
         return isDeleted;
     }
@@ -233,8 +186,7 @@ public class Property {
 
    @Override
    public String toString() {
-      String details = "\nNombre: " + name + "\nDireccion: "+ address + "\nDescripcion: " + description + "\nDetalles plano: " + blueprint.toString() + "" +
-              "\nDetalles escritura: " + deed.toString();
+      String details = "\nNombre: " + name + "\nDireccion: "+ address + "\nDescripcion: " + description;
 //      + "\nServicios: " + servicesString + "\nImpuestos: " + taxes.toString() + "\nExpensas: " + expenses.toString();
       String functionalUnitsString = "";
       for (int i = 0; i < functionalUnits.size(); i++) {
@@ -243,7 +195,7 @@ public class Property {
       return details + "\n" + functionalUnitsString;
    }
 
-    public double getValue() {
+    public String getValue() {
         return value;
     }
 

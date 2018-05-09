@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
 
-@WebServlet("/addProperty")
+@WebServlet("/newProperty")
 @MultipartConfig
 public class NewPropertyServlet extends HttpServlet {
 
@@ -23,20 +23,22 @@ public class NewPropertyServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("properrtName");
+        String name = req.getParameter("propertyName");
         String address = req.getParameter("propertyAddress");
         String description = req.getParameter("propertyDescription");
-        Double value = Double.parseDouble(req.getParameter("value"));
-        Part filePart = req.getPart("propertyImage");
+        String value = req.getParameter("propertyValue");
+        Part file = req.getPart("propertyImage");
+        file.
         Property property = new Property(name, description, address, value);
-        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-        InputStream fileContent = filePart.getInputStream();
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        byte[] buffer = new byte[10240];
-        for (int length = 0 ; (length = fileContent.read(buffer)) > 0;) output.write(buffer, 0, length);
-        property.setImage(output.toByteArray(), fileName);
-        DatabaseOps.getInstance().addPropertyToDatabase(req.getRemoteUser(), property);
-        resp.sendRedirect("/propertyadmin/properties.jsp");
 
+//        Part filePart = req.getPart("propertyImage");
+//        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+//        InputStream fileContent = filePart.getInputStream();
+//        ByteArrayOutputStream output = new ByteArrayOutputStream();
+//        byte[] buffer = new byte[10240];
+//        for (int length = 0 ; (length = fileContent.read(buffer)) > 0;) output.write(buffer, 0, length);
+//        property.setImage(output.toByteArray());
+//        databaseOps.addPropertyToDatabase(req.getRemoteUser(), property);
+//        resp.sendRedirect("/propertyadmin/properties.jsp");
     }
 }

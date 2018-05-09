@@ -1,5 +1,7 @@
 package propertyAdmin.app.abc;
 
+import com.google.api.services.drive.Drive;
+import org.hibernate.engine.jdbc.BlobProxy;
 import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.persons.Account;
 import propertyAdmin.structure.persons.Guarantor;
@@ -16,6 +18,7 @@ import propertyAdmin.structure.property.specifics.Office;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,30 +34,18 @@ public class Main {
                 "5491154645662", "diegonfx@gmail.com", "Perrito1", "Diegonfx");
         databaseOps.addAccountToDatabase(testerAccount);
 
-        Property testerProperty = new Property("Casa La Tranquera", "LOTE 50", "Saravi 104 Barrio La Tranquera", 500000.0);
-        Property testerProperty2 = new Property("Casa Caamaño", "LOTE 93", "Caamaño 633", 385000.0);
+        Property testerProperty = new Property("Casa La Tranquera", "LOTE 50", "Saravi 104 Barrio La Tranquera", "500000");
+        Property testerProperty2 = new Property("Casa Caamaño", "LOTE 93", "Caamaño 633", "385000");
 //        File image1File = new File("C:\\Users\\diego\\Desktop\\photo1.jpeg");
 //        File image2File = new File("C:\\Users\\diego\\Desktop\\photo2.jpg");
-        File imageFile1 = new File("C:\\Users\\diego\\Desktop\\photo1.jpeg");
-        byte[] image1 = new byte[(int) imageFile1.length()];
-        File imageFile2 =new File("C:\\Users\\diego\\Desktop\\photo2.jpg");
-        byte[] image2 = new byte[(int) imageFile2.length()];
-        try {
-            FileInputStream fileInputStream = new FileInputStream(imageFile1);
-            fileInputStream.read(image1);
-            fileInputStream.close();
-            FileInputStream fileInputStream2 = new FileInputStream(imageFile2);
-            fileInputStream2.read(image2);
-            fileInputStream2.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        testerProperty.setImage(image1,"C:\\Users\\diego\\Desktop\\photo1.jpg");
-        testerProperty2.setImage(image2, "C:\\Users\\diego\\Desktop\\photo2.jpg");
+//        File imageFile1 = new File("/Users/DiegoMancini/Downloads/IMG_2078.JPG");
+//        byte[] image1 = Files.readAllBytes(imageFile1.toPath());
+//        File imageFile2 = new File("/Users/DiegoMancini/Downloads/IMG_2078.JPG");
+//        byte[] image2 = Files.readAllBytes(imageFile2.toPath());
+        testerProperty.setImageLink("1MIIChtQKItrxSQ1IOu6zO1ygWxpKPdgx");
+        testerProperty2.setImageLink("1mQWLCGrEVhBBtZM8MZg9ANrzY9BijWdB");
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty);
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty2);
-        testerProperty.writeImage(0);
-        testerProperty2.writeImage(1);
 
         FunctionalUnit testerFunctionalUnit = new LivingPlace("Casa 1", "Arg", "Bs As", "Pilar", "La Lonja", "Saravi 104");
         FunctionalUnit testerFunctionalUnit1 = new LivingPlace("Casa 2", "Arg", "Bs As", "Pilar", "La Lonja", "Caamano 546");
@@ -102,6 +93,7 @@ public class Main {
         databaseOps.addContractToFunctionalUnitToDatabase(testerAccount.getEmail(), testerProperty2, testerFunctionalUnit6, testerContract3);
 
         System.out.println("\n\n\n\n\nFINISHED");
+        System.exit(0);
 //
 //        System.out.println(dateIssued.toString());
 //        System.out.println(dateStart.toString());

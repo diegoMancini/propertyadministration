@@ -39,7 +39,7 @@ public class NewAccountServlet extends HttpServlet {
         String page = "";
         if(!databaseOps.hasAccount(email)){
             databaseOps.addAccountToDatabase(account);
-            page += "/propertyadmin/profile.jsp";
+            page += "/propertyadmin/home.jsp";
         } else {
             page += "/propertyadmin/pages-register.jsp";
         }

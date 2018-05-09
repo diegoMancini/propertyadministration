@@ -181,7 +181,7 @@
                             <li class="breadcrumb-item"><a href="home.jsp">Inicio</a></li>
                             <li class="breadcrumb-item active">Clientes</li>
                         </ol>
-                        <%--<button type="button" class="btn btn-info d-none d-lg-block m-l-15" href="addProperty.jsp"><i class="fa fa-plus-circle"></i> Nueva U.F. </button>--%>
+                        <%--<button type="button" class="btn btn-info d-none d-lg-block m-l-15" href="newProperty.jsp"><i class="fa fa-plus-circle"></i> Nueva U.F. </button>--%>
                     </div>
                 </div>
             </div>

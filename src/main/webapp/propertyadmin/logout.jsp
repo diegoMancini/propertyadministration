@@ -40,23 +40,8 @@
         <p class="loader__label">Property-Admin</p>
     </div>
 </div>
-<section class="our-monthly-membership section_padding_50 clearfix">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-8">
-                <div class="membership-description">
-                    <h2>Gracias por usar Property Admin.</h2>
-                    <p>Vuelva pronto.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="get-started-button wow bounceInDown" data-wow-delay="0.5s">
-                    <%session.invalidate();%>
-                    <a href="landingpage.jsp">Finalizar sesion</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                    <form action="logoutAccount" method="post">
+                    <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><a href="landingpage.jsp">Salir</a></button>
+                    </form>
 </body>
 </html>

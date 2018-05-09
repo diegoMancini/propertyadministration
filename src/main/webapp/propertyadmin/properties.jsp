@@ -10,7 +10,8 @@
 <%@ page import="java.awt.image.BufferedImage" %>
 <%@ page import="javax.imageio.ImageIO" %>
 <%@ page import="java.io.ByteArrayInputStream" %>
-<%@ page import="java.util.Base64" %><%--
+<%@ page import="java.util.Base64" %>
+<%@ page import="com.google.api.services.drive.Drive" %><%--
   Created by IntelliJ IDEA.
   User: diego
   Date: 4/5/2018
@@ -48,7 +49,7 @@
 <div class="preloader">
 	<div class="loader">
 		<div class="loader__figure"></div>
-		<p class="loader__label">Elite admin</p>
+		<p class="loader__label">Property-Admin</p>
 	</div>
 </div>
 <!-- ============================================================== -->
@@ -181,41 +182,7 @@
 							<li class="breadcrumb-item"><a href="home.jsp">Inicio</a></li>
 							<li class="breadcrumb-item active">Propiedades</li>
 						</ol>
-						<button type="button" class="btn btn-info d-none d-lg-block m-l-15" data-toggle="modal" data-target="#add-property"><i class="fa fa-plus-circle"></i> Nueva Propiedad</button>
-						<div id="add-property" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-										<%--<h4 class="modal-title" id="myModalLabel">Add New Contact</h4> </div>--%>
-									<div class="modal-body">
-										<form class="form-horizontal form-material" action="/addProperty" method="post" enctype="multipart/form-data">
-											<div class="form-group">
-												<div class="col-md-12 m-b-20">
-													<input type="text" name="propertyName" id="propertyName" class="form-control" placeholder="Nombre de la propiedad"> </div>
-												<div class="col-md-12 m-b-20">
-													<textarea name="propertyDescription" id="propertyDescription" class="form-control" placeholder="Descripcion" rows="3"></textarea>
-												</div>
-												<div class="col-md-12 m-b-20">
-													<div class="fileupload btn btn-info btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Imagen</span>
-														<input type="file" name="propertyImage" id="propertyImage" class="upload"> </div>
-												</div>
-												<%--<div class="col-md-12 m-b-20">--%>
-													<%--<div class="fileupload btn btn-info btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Planos</span>--%>
-														<%--<input type="file" class="upload"> </div>--%>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Save</button>
-										<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-									</div>
-								</div>
-								<!-- /.modal-content -->
-							</div>
-							<!-- /.modal-dialog -->
-						</div>
-					</div>
+                        <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="newProperty.jsp"> Nueva Propiedad</a></button>
 				</div>
 			</div>
 			</div>
@@ -238,22 +205,23 @@
 							Integer fu = propertyList.get(i).getFunctionalUnits().size();
 							String nameAcc = account.getFullName();
 							String addressAcc = account.getFullAddress();
+							request.setAttribute("Property", propertyList.get(i));
 							%>
 							<!-- Property Items -->
 							<div class="card">
-								<!-- row -->
+								<%--<!-- row -->https://drive.google.com/open?export=view&id=<%=propertyList.get(i).getImageLink()%>--%>
 								<div class="row no-gutters">
-									<div class="col-md-4">
-									<img src="<%=propertyList.get(i).getImagePath()%>" style="min-height:250px;" alt="NOTHING TO SHOW">
-									</div>
-									<!-- column -->
+                                    <div class="col-md-4" style="background: center center / cover no-repeat; min-height:250px; max-width: 500px; max-height: 300px;">
+                                        <img src="https://drive.google.com/uc?export=view&id=<%=propertyList.get(i).getImageLink()%>" width="400" height="250">
+                                    </div>
+                                    <!-- column -->
 									<div class="col-md-8">
 										<!-- Row -->
 										<div class="row no-gutters">
 											<!-- column -->
 											<div class="col-md-6 border-right border-bottom">
 												<div class="p-20">
-                                                    <form action="/goToProperty" method="post">
+                                                    <form action="/goToProperty" method="POST">
                                                     <button type="submit" class="btn btn-info d-none d-lg-block" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
                                                     </form>
 													<h5 class="text-success"> &#36;<%=propertyList.get(i).getValue()%></h5>

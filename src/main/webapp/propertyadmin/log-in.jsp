@@ -81,7 +81,7 @@
                     </div>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            No tienes una cuenta? <a href="/propertyadmin/pages-register.jsp" class="text-info m-l-5"><b>Registrarse</b></a>
+                            No tienes una cuenta? <a href="sign-up.jsp" class="text-info m-l-5"><b>Registrarse</b></a>
                         </div>
                     </div>
                 </form>

@@ -9,7 +9,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Home Page</web-resource-name>
-            <url-pattern>/propertyadmin/home.jsp</url-pattern>
+            <url-pattern>/home.jsp</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>inthisrole</role-name>
@@ -30,9 +30,9 @@
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
-            <form-login-page>/propertyadmin/log-in.jsp</form-login-page>
-            <form-error-page>/propertyadmin/pages-error-400.html</form-error-page>
-            <form-default-page>/propertyadmin/home.jsp</form-default-page>
+            <form-login-page>/log-in.jsp</form-login-page>
+            <form-error-page>/pages-error-400.html</form-error-page>
+            <form-default-page>/home.jsp</form-default-page>
         </form-login-config>
     </login-config>
 

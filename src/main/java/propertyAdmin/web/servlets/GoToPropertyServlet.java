@@ -21,11 +21,11 @@ public class GoToPropertyServlet extends HttpServlet {
         req.setAttribute("property", property);
         String path = "";
         if (property.getFunctionalUnits().size() == 0) {
-            path += "/propertyadmin/addFunctionalUnit.jsp";
+            path += "/addFunctionalUnit.jsp";
         } else if (property.getFunctionalUnits().size() == 1) {
-            path += "/propertyadmin/singleFunctionalUnit.jsp";
+            path += "/singleFunctionalUnit.jsp";
         } else {
-            path += "/propertyadmin/specificProperty.jsp";
+            path += "/specificProperty.jsp";
         }
         req.getRequestDispatcher(path).forward(req, resp);
     }

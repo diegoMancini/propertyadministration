@@ -1,7 +1,5 @@
 package propertyAdmin.app.abc;
 
-import com.google.api.services.drive.Drive;
-import org.hibernate.engine.jdbc.BlobProxy;
 import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.persons.Account;
 import propertyAdmin.structure.persons.Guarantor;
@@ -15,10 +13,7 @@ import propertyAdmin.structure.property.specifics.Garage;
 import propertyAdmin.structure.property.specifics.LivingPlace;
 import propertyAdmin.structure.property.specifics.Office;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,17 +31,10 @@ public class Main {
 
         Property testerProperty = new Property("Casa La Tranquera", "LOTE 50", "Saravi 104 Barrio La Tranquera", "500000");
         Property testerProperty2 = new Property("Casa Caamaño", "LOTE 93", "Caamaño 633", "385000");
-//        File image1File = new File("C:\\Users\\diego\\Desktop\\photo1.jpeg");
-//        File image2File = new File("C:\\Users\\diego\\Desktop\\photo2.jpg");
-//        File imageFile1 = new File("/Users/DiegoMancini/Downloads/IMG_2078.JPG");
-//        byte[] image1 = Files.readAllBytes(imageFile1.toPath());
-//        File imageFile2 = new File("/Users/DiegoMancini/Downloads/IMG_2078.JPG");
-//        byte[] image2 = Files.readAllBytes(imageFile2.toPath());
-        testerProperty.setImageLink("1MIIChtQKItrxSQ1IOu6zO1ygWxpKPdgx");
-        testerProperty2.setImageLink("1mQWLCGrEVhBBtZM8MZg9ANrzY9BijWdB");
+        testerProperty.setImageLink("");
+        testerProperty2.setImageLink("");
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty);
         databaseOps.addPropertyToDatabase(testerAccount.getEmail(), testerProperty2);
-
         FunctionalUnit testerFunctionalUnit = new LivingPlace("Casa 1", "Arg", "Bs As", "Pilar", "La Lonja", "Saravi 104");
         FunctionalUnit testerFunctionalUnit1 = new LivingPlace("Casa 2", "Arg", "Bs As", "Pilar", "La Lonja", "Caamano 546");
         FunctionalUnit testerFunctionalUnit3 = new Office("Oficina 1", "Arg", "Bs As", "Pilar", "La Lonja", "dir3");

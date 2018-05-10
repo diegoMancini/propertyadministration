@@ -22,7 +22,6 @@ public class NewAccountServlet extends HttpServlet {
         String identityNumber = req.getParameter("identityNumber"); //check
         String phoneNumber = req.getParameter("phoneNumber"); //idem
         String nationality = req.getParameter("nationality");
-        String maritalStatus = req.getParameter("maritalStatus");
         String addressCountry = req.getParameter("addressCountry");
         String addressProvince = req.getParameter("addressProvince");
         String addressCity = req.getParameter("addressCity");
@@ -30,10 +29,10 @@ public class NewAccountServlet extends HttpServlet {
         String address = req.getParameter("address");
         String addressZipCode = req.getParameter("addressZipCode");
         String username = req.getParameter("username");
-        String email = req.getParameter("email");
+        String email = req.getParameter("email").toLowerCase();
         String password = req.getParameter("password");
 
-        Account account = new Account(name, surname, identityNumber, nationality, maritalStatus, address, addressCountry, addressProvince,
+        Account account = new Account(name, surname, identityNumber, nationality, address, addressCountry, addressProvince,
                 addressCity, addressTown, addressZipCode, phoneNumber, email, password, username);
 
         String page = "";
@@ -41,7 +40,7 @@ public class NewAccountServlet extends HttpServlet {
             databaseOps.addAccountToDatabase(account);
             page += "/home.jsp";
         } else {
-            page += "/pages-register.jsp";
+            page += "/signup.jsp";
         }
 
         resp.sendRedirect(page);

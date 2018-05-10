@@ -21,8 +21,6 @@ public class   Account {
    private String id;
    @Column(name = "NATIONALITY")
    private String nationality;
-   @Column(name = "MARITAL_STATUS")
-   private String maritalStatus;
    @Column(name = "ADDRESS")
    private String address;
    @Column(name = "ADDRESS_COUNTRY")
@@ -41,19 +39,20 @@ public class   Account {
    private String email;
    @Column(name = "PASSWORD")
    private String password;
+   @Column(name = "IMAGE_LINK")
+   private String imageLink;
    @CollectionTable @OneToMany
    private List<Property> properties;
    @Column(name = "IS_LOGGED")
    private boolean logged;
 
-    public Account(String name, String surname, String id, String nationality, String maritalStatus, String address, String addressCountry,
+    public Account(String name, String surname, String id, String nationality, String address, String addressCountry,
                    String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone,
                    String email, String password, String username) {
        this.name = name;
        this.surname = surname;
        this.id = id;
        this.nationality = nationality;
-       this.maritalStatus = maritalStatus;
        this.address = address;
        this.addressCountry = addressCountry;
        this.addressProvince = addressProvince;
@@ -66,6 +65,7 @@ public class   Account {
        this.username = username;
        properties = new ArrayList<>();
        logged = true;
+       imageLink = "";
     }
 
    public Account() {
@@ -86,9 +86,6 @@ public class   Account {
    }
    public String getNationality() {
       return nationality;
-   }
-   public String getMaritalStatus() {
-      return maritalStatus;
    }
    public String getAddress() {
       return address;
@@ -179,7 +176,6 @@ public class   Account {
                 ", username='" + username + '\'' +
                 ", id='" + id + '\'' +
                 ", nationality='" + nationality + '\'' +
-                ", maritalStatus='" + maritalStatus + '\'' +
                 ", address='" + address + '\'' +
                 ", addressCountry='" + addressCountry + '\'' +
                 ", addressProvince='" + addressProvince + '\'' +

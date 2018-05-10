@@ -59,7 +59,7 @@ public class Property {
       imageLink = "";
    }
 
-   public Integer getAmountOccupied() {
+   public Integer getOccupiedFunctionalUnits() {
       amountOccupied = functionalUnits.size();
       for (FunctionalUnit functionalUnit : functionalUnits) {
          if (!functionalUnit.hasContract()) {
@@ -121,7 +121,7 @@ public class Property {
       this.functionalUnits = functionalUnits;
    }
 
-   public Integer getAmountFunctionalUnits() {
+   public Integer getAvailableFunctionalUnits() {
       return amountFunctionalUnits;
    }
 

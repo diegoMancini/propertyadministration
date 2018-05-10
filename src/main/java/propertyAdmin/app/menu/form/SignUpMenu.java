@@ -37,7 +37,6 @@ public class SignUpMenu extends Menu {
             String surname = Scanner.getString("Apellido: ");
             String id = Scanner.getString("DNI: ");
             String nationality = Scanner.getString("Nacionalidad: " );
-            String maritalStatus = Scanner.getString("Estado civil: ");
             String country = Scanner.getString("Pais: ");
             String province = Scanner.getString("Provincia: ");
             String city = Scanner.getString("Ciudad: ");
@@ -48,7 +47,7 @@ public class SignUpMenu extends Menu {
             String email = Scanner.getString("Mail: ").toLowerCase();
             String password = Scanner.getString("Contraseña: ");
             String username = Scanner.getString("Nombre de Usuario: ");
-            Account account = new Account(name, surname, id, nationality, maritalStatus, address, country, province, city, town, zipCode, phone, email, password, username);
+            Account account = new Account(name, surname, id, nationality, address, country, province, city, town, zipCode, phone, email, password, username);
             getDatabaseOps().addAccountToDatabase(account);
         } catch (Exception e) {
             System.out.println("Use otro mail");

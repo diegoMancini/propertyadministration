@@ -156,6 +156,12 @@ public class DatabaseOps {
         return session.get(Account.class, username).getProperties().get(choice);
     }
 
+    public Property getPropertyByID(int id, String username) {
+        Session session = openSession();
+        return session.get(Account.class, username).getSpecificPropertyById(id);
+    }
+
+
     public List<Property> getAccountProperties(String username) {
         Account user = getAccount(username);
         return user.getProperties();

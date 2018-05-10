@@ -24,7 +24,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException, SQLException {
         Account testerAccount = new Account("Diego", "Mancini", "38931523", "Argentina",
-                "Soltero", "Saravi 104 Barrio La Tranquera", "Argentina",
+                 "Saravi 104 Barrio La Tranquera", "Argentina",
                 "Buenos Aires" , "Pilar", "La Lonja", "1629",
                 "5491154645662", "diegonfx@gmail.com", "Perrito1", "Diegonfx");
         databaseOps.addAccountToDatabase(testerAccount);

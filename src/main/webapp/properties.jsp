@@ -161,7 +161,6 @@
 	<!-- ============================================================== -->
 	<!-- End Left Sidebar - style you can find in sidebar.scss  -->
 	<!-- ============================================================== -->
-	!-- ============================================================== -->
 	<!-- Page wrapper  -->
 	<!-- ============================================================== -->
 	<div class="page-wrapper">
@@ -173,18 +172,18 @@
 			<!-- Bread crumb and right sidebar toggle -->
 			<!-- ============================================================== -->
 			<div class="row page-titles">
-				<div class="col-md-5 align-self-center">
-					<h4 class="text-themecolor">Propiedades</h4>
+					<div class="col-md-5 align-self-center">
+						<h4 class="text-themecolor">Propiedades</h4>
+					</div>
+					<div class="col-md-7 align-self-center text-right">
+						<div class="d-flex justify-content-end align-items-center">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="home.jsp">Inicio</a></li>
+								<li class="breadcrumb-item active">Propiedades</li>
+							</ol>
+	                        <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="newProperty.jsp"> Nueva Propiedad</a></button>
+					</div>
 				</div>
-				<div class="col-md-7 align-self-center text-right">
-					<div class="d-flex justify-content-end align-items-center">
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="home.jsp">Inicio</a></li>
-							<li class="breadcrumb-item active">Propiedades</li>
-						</ol>
-                        <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="newProperty.jsp"> Nueva Propiedad</a></button>
-				</div>
-			</div>
 			</div>
 			<!-- ============================================================== -->
 			<!-- End Bread crumb and right sidebar toggle -->
@@ -222,7 +221,7 @@
 											<div class="col-md-6 border-right border-bottom">
 												<div class="p-20">
                                                     <form action="/goToProperty" method="POST">
-                                                    <button type="submit" class="btn btn-info d-none d-lg-block" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
+                                                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
                                                     </form>
 													<h5 class="text-success"> &#36;<%=propertyList.get(i).getValue()%></h5>
 												</div>
@@ -238,7 +237,7 @@
 													<div class="d-flex no-block align-items-center">
 														<span><img src="assets/images/property/pro-garage.png"></span>
 														<span class="p-10 text-muted"> Unidades funcionales ocupadas</span>
-														<span class="badge badge-pill badge-secondary ml-auto"><%=propertyList.get(i).getAmountOccupied()%></span>
+														<span class="badge badge-pill badge-secondary ml-auto"><%=propertyList.get(i).getOccupiedFunctionalUnits()%></span>
 													</div>
 												</div>
 											</div>
@@ -365,6 +364,10 @@
 <script src="assets/node_modules/sparkline/jquery.sparkline.min.js "></script>
 <!--Custom JavaScript -->
 <script src="propertyadmin/dist/js/custom.min.js "></script>
+<!-- Footable -->
+<script src="assets/node_modules/footable/js/footable.all.min.js"></script>
+<!--FooTable init-->
+<script src="propertyadmin/dist/js/pages/footable-init.js"></script>
 <!--morris JavaScript -->
 <script src="assets/node_modules/raphael/raphael-min.js"></script>
 <script src="assets/node_modules/morrisjs/morris.min.js"></script>

@@ -107,8 +107,8 @@ s_a[66]="Annobon|Bioko Norte|Bioko Sur|Centro Sur|Kie-Ntem|Litoral|Wele-Nzas";
 s_a[67]="Akale Guzay|Barka|Denkel|Hamasen|Sahil|Semhar|Senhit|Seraye";
 s_a[68]="Harjumaa (Tallinn)|Hiiumaa (Kardla)|Ida-Virumaa (Johvi)|Jarvamaa (Paide)|Jogevamaa (Jogeva)|Laane-Virumaa (Rakvere)|Laanemaa (Haapsalu)|Parnumaa (Parnu)|Polvamaa (Polva)|Raplamaa (Rapla)|Saaremaa (Kuessaare)|Tartumaa (Tartu)|Valgamaa (Valga)|Viljandimaa (Viljandi)|Vorumaa (Voru)"
 s_a[69]="Adis Abeba (Addis Ababa)|Afar|Amara|Dire Dawa|Gambela Hizboch|Hareri Hizb|Oromiya|Sumale|Tigray|YeDebub Biheroch Bihereseboch na Hizboch";
-s_a[70]="Europa Island";
-s_a[71]="Falkland Islands (Islas Malvinas)"
+s_a[70]="Europa Island"
+s_a[71]="Falkland Islands (Islas Malvinas)";
 s_a[72]="Bordoy|Eysturoy|Mykines|Sandoy|Skuvoy|Streymoy|Suduroy|Tvoroyri|Vagar";
 s_a[73]="Central|Eastern|Northern|Rotuma|Western";
 s_a[74]="Aland|Etela-Suomen Laani|Ita-Suomen Laani|Lansi-Suomen Laani|Lappi|Oulun Laani";
@@ -318,9 +318,7 @@ function populateCountries(countryElementId, stateElementId){
     for (var i=0; i<country_arr.length; i++) {
         countryElement.options[countryElement.length] = new Option(country_arr[i],country_arr[i]);
     }
-
     // Assigned all countries. Now assign event listener for the states.
-
     if( stateElementId ){
         countryElement.onchange = function(){
             populateStates( countryElementId, stateElementId );

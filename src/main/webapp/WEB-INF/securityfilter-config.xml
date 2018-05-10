@@ -30,7 +30,7 @@
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
-            <form-login-page>/log-in.jsp</form-login-page>
+            <form-login-page>/login.jsp</form-login-page>
             <form-error-page>/pages-error-400.html</form-error-page>
             <form-default-page>/home.jsp</form-default-page>
         </form-login-config>

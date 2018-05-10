@@ -19,14 +19,13 @@ public class GoToPropertyServlet extends HttpServlet {
         Property property = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
         req.setAttribute("chosenProperty", chosenProperty);
         req.setAttribute("property", property);
-        String path = "";
-        if (property.getFunctionalUnits().size() == 0) {
-            path += "/addFunctionalUnit.jsp";
-        } else if (property.getFunctionalUnits().size() == 1) {
-            path += "/singleFunctionalUnit.jsp";
-        } else {
-            path += "/specificProperty.jsp";
-        }
+        req.setAttribute("propertyName", property.getName());
+        String path = "/specificProperty.jsp";
         req.getRequestDispatcher(path).forward(req, resp);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
     }
 }

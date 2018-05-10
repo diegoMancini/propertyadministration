@@ -58,10 +58,10 @@
                                     <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
                                 </ul>
                                 <%--<div class="login-button d-lg-inline">--%>
-                                    <%--<a href="/propertyadmin/log-in.jsp">Iniciar sesion</a>--%>
+                                    <%--<a href="/propertyadmin/login.jsp">Iniciar sesion</a>--%>
                                 <%--</div>--%>
                                 <div class="sing-up-button d-lg-none">
-                                    <a href="/log-in.jsp">Iniciar sesion</a>
+                                    <a href="/login.jsp">Iniciar sesion</a>
                                 </div>
                             </div>
                         </nav>
@@ -70,7 +70,7 @@
                 <!-- Signup btn -->
                 <div class="col-12 col-lg-2">
                     <div class="sing-up-button d-none d-lg-block">
-                        <a href="/log-in.jsp">Iniciar sesion</a>
+                        <a href="/login.jsp">Iniciar sesion</a>
                     </div>
                 </div>
             </div>

@@ -40,8 +40,6 @@
         <p class="loader__label">Property-Admin</p>
     </div>
 </div>
-                    <form action="logoutAccount" method="post">
-                    <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><a href="landingpage.jsp">Salir</a></button>
-                    </form>
+    <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><a href="landingpage.jsp">Salir</a></button>
 </body>
 </html>

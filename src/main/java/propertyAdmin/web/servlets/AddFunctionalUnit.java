@@ -2,7 +2,6 @@ package propertyAdmin.web.servlets;
 
 import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.property.FunctionalUnit;
-import propertyAdmin.structure.property.Property;
 import propertyAdmin.structure.property.specifics.BusinessPremise;
 import propertyAdmin.structure.property.specifics.Garage;
 import propertyAdmin.structure.property.specifics.LivingPlace;
@@ -19,7 +18,8 @@ import java.io.IOException;
 public class AddFunctionalUnit extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      Property property = (Property) req.getAttribute("chosenProperty");
+      Integer chosenProperty = Integer.valueOf(req.getParameter("chosenProperty"));
+
       String name = req.getParameter("fuName");
       String address = req.getParameter("fuAddress");
       String addressTown = req.getParameter("fuAddressTown");
@@ -45,7 +45,7 @@ public class AddFunctionalUnit extends HttpServlet {
          default:
             break;
       }
-      DatabaseOps.getInstance().addFunctionalUnitToDatabase(req.getRemoteUser(), property, functionalUnit);
+      DatabaseOps.getInstance().addFunctionalUnitToDatabase(req.getRemoteUser(), DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser()) , functionalUnit);
       resp.sendRedirect("specificProperty.jsp");
    }
 

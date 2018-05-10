@@ -221,6 +221,7 @@
 											<div class="col-md-6 border-right border-bottom">
 												<div class="p-20">
                                                     <form action="/goToProperty" method="POST">
+	                                                    <input type="hidden" name="theProperty" value="<%=propertyList.get(i)%>">
                                                     <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
                                                     </form>
 													<h5 class="text-success"> &#36;<%=propertyList.get(i).getValue()%></h5>

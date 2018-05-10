@@ -170,7 +170,6 @@
 							<li class="breadcrumb-item active"><%=request.getAttribute("propertyName")%></li>
 						</ol>
 						<%Property property = (Property) request.getAttribute("property");%>
-							<%request.setAttribute("specificProperty", property);%>
 						</div>
 				</div>
 			</div>
@@ -210,6 +209,8 @@
 											</div>
 											<div class="d-flex no-block align-items-center">
 												<form action="/newFunctionalUnit" method="post">
+													<input type="hidden" name="theProperty" id="theProperty" value="<%=request.getAttribute("property")%>">
+													<input type="hidden" name="propertyIndex" value="<%=request.getAttribute("chosenProperty")%>">
 													<button type="submit" class="btn btn-info d-none d-lg-block m-l-6" name="specificProperty" id="specificProperty" value="<%=property.getId()%>"><i class="fa fa-plus-circle"></i> Nueva U.F.</button>
 												</form>
 											</div>

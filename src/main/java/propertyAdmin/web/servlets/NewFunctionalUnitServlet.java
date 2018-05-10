@@ -15,10 +15,15 @@ public class NewFunctionalUnitServlet extends HttpServlet {
 
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      int propertyID = Integer.parseInt(req.getParameter("specificProperty"));
+      Integer propertyID = Integer.parseInt(req.getParameter("specificProperty"));
+      Integer propertyIndex = Integer.parseInt(req.getParameter("propertyIndex"));
       Property property = DatabaseOps.getInstance().getPropertyByID(propertyID, req.getRemoteUser());
+      Property property1 = DatabaseOps.getInstance().getProperty(propertyIndex, req.getRemoteUser());
       req.setAttribute("propertyId", propertyID);
-      req.setAttribute("chosenProperty", property);
-      req.getRequestDispatcher("/newFunctionalUnit.jsp").forward(req,resp);
+      req.setAttribute("propertyIndex", propertyIndex);
+      req.setAttribute("propertyObject", property);
+      req.setAttribute("propertyObject1", property1);
+      req.getRequestDispatcher("/newFunctionalUnit.jsp").include(req,resp);
    }
+
 }

@@ -5,13 +5,38 @@ $(window).on('load', function() {
 	// -----------------------------------------------------------------
 	$('#demo-foo-row-toggler').footable();
 
-	// Accordion
+    // $('#fu-toggler-table').footable();
+    // $('#fuTable').footable();
+    // $('#fuTableLabel').footable();
+
+    // $('#clients-toggler-table').footable();
+    // $('#clientsTable').footable();
+    // $('#clientsTableLabel').footable();
+
+    // $('#contracts-toggler-table').footable();
+    // $('#contractsTable').footable();
+    // $('#contractsTableLabel').footable();
+
+    // Accordion
 	// -----------------------------------------------------------------
 	$('#demo-foo-accordion').footable().on('footable_row_expanded', function(e) {
 		$('#demo-foo-accordion tbody tr.footable-detail-show').not(e.row).each(function() {
 			$('#demo-foo-accordion').data('footable').toggleDetail(this);
 		});
 	});
+    // $('#fu-toggler-table').footable().on('footable_row_expanded', function(e) {
+    //     $('#fu-toggler-table tbody tr.footable-detail-show').not(e.row).each(function() {
+    //         $('#fu-toggler-table').data('footable').toggleDetail(this);
+    //     });
+    // });$('#clients-toggler-table').footable().on('footable_row_expanded', function(e) {
+    //     $('#clients-toggler-table tbody tr.footable-detail-show').not(e.row).each(function() {
+    //         $('#clients-toggler-table').data('footable').toggleDetail(this);
+    //     });
+    // });$('#contracts-toggler-table').footable().on('footable_row_expanded', function(e) {
+    //     $('#contracts-toggler-table tbody tr.footable-detail-show').not(e.row).each(function() {
+    //         $('#contracts-toggler-table').data('footable').toggleDetail(this);
+    //     });
+    // });
 
 	// Pagination
 	// -----------------------------------------------------------------

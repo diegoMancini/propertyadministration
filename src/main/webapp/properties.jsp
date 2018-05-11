@@ -313,15 +313,13 @@
                                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <form method="post" action="/goToFunctionalUnit">
                                                                             <div class="card">
                                                                                 <div class="card-body">
                                                                                     <h4 class="card-title">Lista de Unidades Funcionales</h4>
-                                                                                    <table id="fu-toggler-table" class="table toggle-circle table-hover default breakpoint footable-loaded footable">
+                                                                                    <table id="fu-toggler-table" class="table toggle-circle table-hover footable">
                                                                                         <thead>
                                                                                         <tr>
-                                                                                            <th class="footable-visible footable-first-column" data-toggle="true">Nº</th>
-                                                                                            <th class="footable-visible footable-sortable">Nombre <span class="footable-sort-indicator"></span></th>
+                                                                                            <th data-toggle="true">Nombre</th>
                                                                                             <th>Direccion</th>
                                                                                             <th>Tipo</th>
                                                                                             <th>Estado</th>
@@ -349,7 +347,6 @@
                                                                                             }
                                                                                         %>
                                                                                         <tr>
-                                                                                            <td><%=j+1%></td>
                                                                                             <td><%=functionalUnitList.get(i).getName()%></td>
                                                                                             <td><%=functionalUnitList.get(j).getCommercialAddress()%></td>
                                                                                             <td><%=functionalUnitList.get(j).getType()%></td>
@@ -385,7 +382,6 @@
                                                                                     </table>
                                                                                 </div>
                                                                             </div>
-                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -411,7 +407,6 @@
                                                                                     <table id="contracts-toggler-table" class="table toggle-circle table-hover">
                                                                                         <thead>
                                                                                         <tr>
-                                                                                            <th data-toggle="true">Nº</th>
                                                                                             <th data-toggle="true">Nombre</th>
                                                                                             <th>Fecha inicio</th>
                                                                                             <th>Fecha fin</th>
@@ -431,7 +426,6 @@
                                                                                             Double price = propertyList.get(i).getOccupiedFUList().get(k).getContract().getPrice();
                                                                                         %>
                                                                                         <tr>
-                                                                                            <td><%=k+1%></td>
                                                                                             <td><%=contractName%></td>
                                                                                             <td><%=startDate%></td>
                                                                                             <td><%=endDate%></td>
@@ -676,5 +670,16 @@
 <script src="assets/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
 <!-- Popup message jquery -->
 <script src="assets/node_modules/toast-master/js/jquery.toast.js"></script>
+<script>
+    jQuery(function($){
+    $("#fu-toggler-table").footable();
+    });
+    jQuery(function($){
+    $("#contracts-toggler-table").footable();
+    });
+    jQuery(function($){
+    $("#clients-toggler-table").footable();
+    });
+</script>
 </body>
 </html>

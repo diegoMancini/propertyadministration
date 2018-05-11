@@ -1,17 +1,9 @@
 <%@ page import="propertyAdmin.operations.DatabaseOps" %>
 <%@ page import="propertyAdmin.structure.persons.Account" %>
 <%@ page import="propertyAdmin.structure.property.Property" %>
-<%@ page import="java.sql.Blob" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="java.io.OutputStream" %>
-<%@ page import="java.awt.*" %>
-<%@ page import="java.awt.image.BufferedImage" %>
-<%@ page import="javax.imageio.ImageIO" %>
-<%@ page import="java.io.ByteArrayInputStream" %>
-<%@ page import="java.util.Base64" %>
-<%@ page import="com.google.api.services.drive.Drive" %><%--
+<%@ page import="propertyAdmin.structure.property.FunctionalUnit" %>
+<%@ page import="propertyAdmin.structure.persons.Tenant" %><%--
   Created by IntelliJ IDEA.
   User: diego
   Date: 4/5/2018
@@ -210,6 +202,7 @@
 							String nameAcc = account.getFullName();
 							String addressAcc = account.getFullAddress();
 							request.setAttribute("Property", propertyList.get(i));
+							List<FunctionalUnit> functionalUnitList = propertyList.get(i).getFunctionalUnits();
 							%>
 							<!-- Property Items -->
 							<div class="card">
@@ -218,28 +211,42 @@
                                     <div class="col-md-3" style="background: url(<%=propertyList.get(i).getImageLink()%>)center center / cover no-repeat; min-height:250px;">
                                     </div>
                                     <!-- column -->
-									<div class="col-md-6">
+									<div class="col-md-8">
 										<!-- Row -->
 										<div class="row no-gutters">
 											<!-- column -->
-											<div class="col-md-4 border-right border-bottom">
-												<div class="p-25">
+											<div class="col-md-3 border-right border-bottom">
+												<div class="p-40">
                                                     <form action="/goToProperty" method="POST">
 	                                                    <input type="hidden" name="theProperty" value="<%=propertyList.get(i)%>">
-                                                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
+                                                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
                                                     </form>
 													<h5 class="text-success"> &#36;<%=propertyList.get(i).getValue()%></h5>
 												</div>
 											</div>
 											<!-- column -->
 											<div class="col-md-6 border-bottom">
-												<div class="p-20">
+												<div class="p-40">
+													<div class="d-flex no-block align-items-center">
+														<span><img src="assets/images/property/pro-garage.png"></span>
+														<span class="p-10"> Unidades funcionales</span>
+														<span class="badge badge-pill badge-secondary ml-auto"><%=fu%></span>
+													</div>
+													<div class="d-flex no-block align-items-center">
+														<span><img src="assets/images/property/pro-garage.png"></span>
+														<span class="p-10"> Unidades funcionales ocupadas</span>
+														<span class="badge badge-pill badge-secondary ml-auto"><%=propertyList.get(i).getOccupiedFunctionalUnits()%></span>
+													</div>
+												</div>
+											</div>
+                                            <div class="col-md-3 border-left border-bottom">
+                                                <div class="p-40">
                                                     <div class="d-flex no-block align-items-center">
                                                         <div class="button-box">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10 text-muted"> Nueva U.F.</span></button>
+                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10 text-muted"> Nueva U.F.</span></button>
                                                         </div>
                                                         <div class="modal fade" id="newFU" tabindex="-1" role="dialog" aria-labelledby="newFULabel">
-                                                            <div class="modal-dialog" role="document">
+                                                            <div class="modal-dialog " role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h4 class="modal-title" id="newFULabel">Nueva U.F.</h4>
@@ -247,6 +254,7 @@
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <form method="post" action="/addFunctionalUnit">
+                                                                            <input type="hidden" name="propertyIndex" value="<%=i%>">
                                                                             <div class="form-group">
                                                                                 <label for="fuName" class="control-label">Nombre:</label>
                                                                                 <input type="text" class="form-control" id="fuName" name="fuName">
@@ -293,19 +301,9 @@
                                                         </div>
                                                         <!-- /.modal -->
                                                     </div>
-													<div class="d-flex no-block align-items-center">
-														<span><img src="assets/images/property/pro-garage.png"></span>
-														<span class="p-10 text-muted"> Unidades funcionales</span>
-														<span class="badge badge-pill badge-secondary ml-auto"><%=fu%></span>
-													</div>
-													<div class="d-flex no-block align-items-center">
-														<span><img src="assets/images/property/pro-garage.png"></span>
-														<span class="p-10 text-muted"> Unidades funcionales ocupadas</span>
-														<span class="badge badge-pill badge-secondary ml-auto"><%=propertyList.get(i).getOccupiedFunctionalUnits()%></span>
-													</div>
                                                     <div class="d-flex no-block align-items-center">
                                                         <div class="button-box">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fuTable" data-whatever="@fuTable"><span class="p-10 text-muted"> Lista U.F.</span></button>
+                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#fuTable" data-whatever="@fuTable"><span class="p-10 text-muted"> Lista U.F.</span></button>
                                                         </div>
                                                         <div class="modal fade" id="fuTable" tabindex="-1" role="dialog" aria-labelledby="fuTableLabel">
                                                             <div class="modal-dialog" role="document">
@@ -318,25 +316,62 @@
                                                                         <form method="post" action="/goToFunctionalUnit">
                                                                             <div class="card">
                                                                                 <div class="card-body">
-                                                                                    <h4 class="card-title">Lista de Unidades Funcionales de la propiedad: "<%=propertyList.get(i).getName()%>"</h4>
-                                                                                    <table id="demo-foo-row-toggler" class="table toggle-circle table-hover">
+                                                                                    <h4 class="card-title">Lista de Unidades Funcionales</h4>
+                                                                                    <table id="fu-toggler-table" class="table toggle-circle table-hover default breakpoint footable-loaded footable">
                                                                                         <thead>
                                                                                         <tr>
-                                                                                            <th data-toggle="true"> First Name </th>
-                                                                                            <th> Last Name </th>
-                                                                                            <th > Job Title </th>
-                                                                                            <th > DOB </th>
-                                                                                            <th > Status </th>
+                                                                                            <th class="footable-visible footable-first-column" data-toggle="true">Nº</th>
+                                                                                            <th class="footable-visible footable-sortable">Nombre <span class="footable-sort-indicator"></span></th>
+                                                                                            <th>Direccion</th>
+                                                                                            <th>Tipo</th>
+                                                                                            <th>Estado</th>
+                                                                                            <th>Precio</th>
+                                                                                            <th data-hide="all">Contrato</th>
+                                                                                            <th data-hide="all">Cliente</th>
+                                                                                            <th>Cuenta Corriente</th>
                                                                                         </tr>
                                                                                         </thead>
                                                                                         <tbody>
+                                                                                        <%if (functionalUnitList.size() > 0) {%>
+                                                                                        <%for (int j = 0; j < functionalUnitList.size();j++) {%>
+                                                                                        <%
+                                                                                            String state = functionalUnitList.get(j).getState();
+                                                                                            String client = "";
+                                                                                            Double price = 0.0;
+                                                                                            String contractName = "";
+                                                                                            if(state.equals("Ocupado")) {
+                                                                                                client += functionalUnitList.get(j).getContract().getTenant().getFullName();
+                                                                                                price += functionalUnitList.get(j).getContract().getPrice();
+                                                                                                contractName += functionalUnitList.get(j).getContract().getName();
+                                                                                            } else {
+                                                                                                client += "------";
+                                                                                                contractName += "------";
+                                                                                            }
+                                                                                        %>
                                                                                         <tr>
-                                                                                            <td>Isidra</td>
-                                                                                            <td>Boudreaux</td>
-                                                                                            <td>Traffic Court Referee</td>
-                                                                                            <td>22 Jun 1972</td>
-                                                                                            <td><span class="label label-table label-success">Active</span></td>
+                                                                                            <td><%=j+1%></td>
+                                                                                            <td><%=functionalUnitList.get(i).getName()%></td>
+                                                                                            <td><%=functionalUnitList.get(j).getCommercialAddress()%></td>
+                                                                                            <td><%=functionalUnitList.get(j).getType()%></td>
+                                                                                            <%if (state.equals("Ocupado")){%>
+                                                                                            <td><span class="label label-danger"><%=state%></span> </td>
+                                                                                            <%} else {%>
+                                                                                            <td><span class="label label-success"><%=state%></span> </td>
+                                                                                            <%}%>
+                                                                                            <td>$<%=price%></td>
+                                                                                            <% if (functionalUnitList.get(j).hasContract()) {%>
+                                                                                            <td><%=contractName%></td>
+                                                                                            <td><%=client%></td>
+                                                                                            <%} else {%>
+                                                                                            <td> ADD CONTRACT </td>
+                                                                                            <td> -----------</td>
+                                                                                            <%}%>
+                                                                                            <td>
+                                                                                                <button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago"><i class="ti-close" aria-hidden="true"></i></button>
+                                                                                            </td>
                                                                                         </tr>
+                                                                                        <%}%>
+                                                                                        <%}%>
                                                                                         </tbody>
                                                                                         <tfoot>
                                                                                         <tr>
@@ -357,8 +392,157 @@
                                                         </div>
                                                         <!-- /.modal -->
                                                     </div>
-												</div>
-											</div>
+                                                    <div class="d-flex no-block align-items-center">
+                                                        <div class="button-box">
+                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#contractsTable" data-whatever="@contractsTable"><span class="p-10 text-muted"> Lista de Contratos</span></button>
+                                                        </div>
+                                                        <div class="modal fade" id="contractsTable" tabindex="-1" role="dialog" aria-labelledby="contractsTableLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title" id="contractsTableLabel">Lista de Contratos</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form method="post" action="">
+                                                                            <div class="card">
+                                                                                <div class="card-body">
+                                                                                    <h4 class="card-title">Lista de Contratos</h4>
+                                                                                    <table id="contracts-toggler-table" class="table toggle-circle table-hover">
+                                                                                        <thead>
+                                                                                        <tr>
+                                                                                            <th data-toggle="true">Nº</th>
+                                                                                            <th data-toggle="true">Nombre</th>
+                                                                                            <th>Fecha inicio</th>
+                                                                                            <th>Fecha fin</th>
+                                                                                            <th>Precio</th>
+                                                                                            <th data-hide="all">Cliente</th>
+                                                                                        </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+
+                                                                                        <%if (propertyList.get(i).getOccupiedFunctionalUnits()> 0) {%>
+                                                                                        <%for (int k = 0; k < propertyList.get(i).getOccupiedFUList().size();k++) {%>
+                                                                                        <%
+                                                                                            String contractName = propertyList.get(i).getOccupiedFUList().get(k).getContract().getName();
+                                                                                            String startDate = propertyList.get(i).getOccupiedFUList().get(k).getContract().getContractDateStart().toString();
+                                                                                            String endDate = propertyList.get(i).getOccupiedFUList().get(k).getContract().getContractDateEnd().toString();
+                                                                                            Tenant tenant = propertyList.get(i).getOccupiedFUList().get(k).getContract().getTenant();
+                                                                                            Double price = propertyList.get(i).getOccupiedFUList().get(k).getContract().getPrice();
+                                                                                        %>
+                                                                                        <tr>
+                                                                                            <td><%=k+1%></td>
+                                                                                            <td><%=contractName%></td>
+                                                                                            <td><%=startDate%></td>
+                                                                                            <td><%=endDate%></td>
+                                                                                            <td>$<%=price%></td>
+                                                                                            <td><%=tenant.getName()%></td>
+                                                                                        </tr>
+                                                                                        <%}%>
+                                                                                        <%}%>
+                                                                                        </tbody>
+                                                                                        <tfoot>
+                                                                                        <tr>
+                                                                                            <td colspan="5">
+                                                                                                <div class="text-right">
+                                                                                                    <ul class="pagination pagination-split m-t-30"> </ul>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </tfoot>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal -->
+                                                    </div>
+                                                    <div class="d-flex no-block align-items-center">
+                                                        <div class="button-box">
+                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#clientsTable" data-whatever="@clientsTable"><span class="p-10 text-muted"> Lista de Clientes</span></button>
+                                                        </div>
+                                                        <div class="modal fade" id="clientsTable" tabindex="-1" role="dialog" aria-labelledby="clientsTableLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title" id="clientsTableLabel">Lista de Clientes</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form method="post" action="">
+                                                                            <div class="card">
+                                                                                <div class="card-body">
+                                                                                    <h4 class="card-title">Lista de Clientes</h4>
+                                                                                    <table id="clients-toggler-table" class="table toggle-circle table-hover">
+                                                                                        <thead>
+                                                                                        <tr>
+                                                                                            <th>Nº</th>
+                                                                                            <th data-toggle="true">Nombre</th>
+                                                                                            <th>DNI</th>
+                                                                                            <th>Telefono</th>
+                                                                                            <th>Email</th>
+                                                                                            <th>Cuenta Corriente</th>
+                                                                                            <th data-hide="all">Nacionalidad</th>
+                                                                                            <th data-hide="all">Direccion</th>
+                                                                                            <th data-hide="all">Localidad</th>
+                                                                                            <th data-hide="all">Ciudad</th>
+                                                                                            <th data-hide="all">Provincia</th>
+                                                                                            <th data-hide="all">Pais</th>
+                                                                                            <th data-hide="all">Codigo Postal</th>
+                                                                                        </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                        <%if (propertyList.get(i).getOccupiedFunctionalUnits() > 0) {%>
+                                                                                        <%for (int l = 0; l < propertyList.get(i).getTenantList().size();l++) {%>
+                                                                                        <%
+                                                                                            String tenantName = propertyList.get(i).getTenantList().get(l).getFullName();
+                                                                                            String tenantID = propertyList.get(i).getTenantList().get(l).getDni();
+                                                                                            String phone = propertyList.get(i).getTenantList().get(l).getPhone();
+                                                                                            String email = propertyList.get(i).getTenantList().get(l).getEmail();
+                                                                                            String tenantNationality = propertyList.get(i).getTenantList().get(l).getNationality();
+                                                                                            String[] addressList = {propertyList.get(i).getTenantList().get(l).getAddress(), propertyList.get(i).getTenantList().get(l).getAddressTown(), propertyList.get(i).getTenantList().get(l).getAddressCity(), propertyList.get(i).getTenantList().get(l).getAddressProvince(), propertyList.get(i).getTenantList().get(l).getAddressCountry(),propertyList.get(i).getTenantList().get(l).getAddressZipCode()};
+                                                                                        %>
+                                                                                        <tr>
+                                                                                            <td><%=l+1%></td>
+                                                                                            <td><%=tenantName%></td>
+                                                                                            <td><%=tenantID%></td>
+                                                                                            <td><%=phone%></td>
+                                                                                            <td><%=email%></td>
+                                                                                            <td><%=tenantNationality%></td>
+                                                                                            <td><%=addressList[0]%></td>
+                                                                                            <td><%=addressList[1]%></td>
+                                                                                            <td><%=addressList[2]%></td>
+                                                                                            <td><%=addressList[3]%></td>
+                                                                                            <td><%=addressList[4]%></td>
+                                                                                            <td><%=addressList[5]%></td>
+                                                                                        </tr>
+                                                                                        <%}%>
+                                                                                        <%}%>
+                                                                                        </tbody>
+                                                                                        <tfoot>
+                                                                                        <tr>
+                                                                                            <td colspan="5">
+                                                                                                <div class="text-right">
+                                                                                                    <ul class="pagination pagination-split m-t-30"> </ul>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </tfoot>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal -->
+                                                    </div>
+                                                </div>
+                                            </div>
 											<!-- column -->
 											<div class="col-md-12">
 												<div class="p-20">

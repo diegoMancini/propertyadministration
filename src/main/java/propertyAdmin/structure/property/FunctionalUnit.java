@@ -1,6 +1,9 @@
 package propertyAdmin.structure.property;
 
+import propertyAdmin.structure.persons.Tenant;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "FUNCTIONAL_UNITS")
@@ -211,4 +214,5 @@ public abstract class FunctionalUnit {
     public String getCommercialAddress() {
         return address + ", " + town ;
     }
+
 }

@@ -1,5 +1,6 @@
 package propertyAdmin.structure.property;
 
+import propertyAdmin.structure.persons.Tenant;
 import propertyAdmin.structure.rents.Expenses;
 import propertyAdmin.structure.services.Services;
 import propertyAdmin.structure.taxes.Taxes;
@@ -160,6 +161,30 @@ public class Property {
         } return null;
     }
 
+    public List<FunctionalUnit> getOccupiedFUList() {
+       List<FunctionalUnit> result = null;
+       for (FunctionalUnit functionalUnit:functionalUnits) {
+           if (functionalUnit.hasContract()) {
+               result.add(functionalUnit);
+           }
+       }
+       if (result != null) {
+        return result;
+       } else {
+           return functionalUnits;
+       }
+    }
+
+    public List<FunctionalUnit> getAvailableFUList() {
+        List<FunctionalUnit> result = null;
+        for (FunctionalUnit functionalUnit:functionalUnits) {
+            if (!functionalUnit.hasContract()) {
+                result.add(functionalUnit);
+            }
+        }
+        return result;
+    }
+
     public String getImageLink() {
         return imageLink;
     }
@@ -182,6 +207,30 @@ public class Property {
 
     public void deleteFunctionalUnit(FunctionalUnit functionalUnit) {
        functionalUnit.setDeleted(true);
+    }
+
+    public List<Tenant> getTenantList() {
+        List<Tenant> result = null;
+        if (getOccupiedFUList().size() == 0) {
+            System.out.println("EMPTY");
+        } else {
+            for (FunctionalUnit functionalUnit:getOccupiedFUList()) {
+                result.add(functionalUnit.getContract().getTenant());
+            }
+        }
+        return result;
+    }
+
+    public List<Contract> getContractList() {
+        List<Contract> result = null;
+        if (getOccupiedFUList().size() == 0) {
+            System.out.println("EMPTY");
+        } else {
+            for (FunctionalUnit functionalUnit:getOccupiedFUList()) {
+                result.add(functionalUnit.getContract());
+            }
+        }
+        return result;
     }
 
    @Override

@@ -19,7 +19,7 @@ import java.io.IOException;
 public class AddFunctionalUnit extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
+       Integer chosenProperty = Integer.parseInt(req.getParameter("propertyIndex"));
        String name = req.getParameter("fuName");
       String address = req.getParameter("fuAddress");
       String addressTown = req.getParameter("fuAddressTown");

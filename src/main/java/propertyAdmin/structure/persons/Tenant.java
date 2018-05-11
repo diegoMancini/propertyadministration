@@ -19,8 +19,6 @@ public class Tenant {
     private String dni;
     @Column (name = "NATIONALITY")
     private String nationality;
-    @Column (name = "MARITAL_STATUS")
-    private String maritalStatus;
     @Column (name = "ADDRESS")
     private String address;
     @Column (name = "ADDRESS_COUNTRY")
@@ -40,12 +38,11 @@ public class Tenant {
     @OneToOne(cascade = CascadeType.ALL)
     private FunctionalUnit functionalUnit;
 
-    public Tenant(String name, String surname, String dni, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email) {
+    public Tenant(String name, String surname, String dni, String nationality, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email) {
         this.name = name;
         this.surname = surname;
         this.dni = dni;
         this.nationality = nationality;
-        this.maritalStatus = maritalStatus;
         this.address = address;
         this.addressCountry = addressCountry;
         this.addressProvince = addressProvince;
@@ -99,10 +96,6 @@ public class Tenant {
         return nationality;
     }
 
-    public String getMaritalStatus() {
-        return maritalStatus;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -142,7 +135,6 @@ public class Tenant {
                 ", surname='" + surname + '\'' +
                 ", id='" + id + '\'' +
                 ", nationality='" + nationality + '\'' +
-                ", maritalStatus='" + maritalStatus + '\'' +
                 ", address='" + address + '\'' +
                 ", addressCountry='" + addressCountry + '\'' +
                 ", addressProvince='" + addressProvince + '\'' +

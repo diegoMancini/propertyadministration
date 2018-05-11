@@ -16,7 +16,7 @@ public class NewFunctionalUnitServlet extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       Integer propertyID = Integer.parseInt(req.getParameter("specificProperty"));
-      Integer propertyIndex = Integer.parseInt(req.getParameter("propertyIndex"));
+      Integer propertyIndex = Integer.parseInt(req.getParameter("chosenProperty"));
       Property property = DatabaseOps.getInstance().getPropertyByID(propertyID, req.getRemoteUser());
       Property property1 = DatabaseOps.getInstance().getProperty(propertyIndex, req.getRemoteUser());
       req.setAttribute("propertyId", propertyID);

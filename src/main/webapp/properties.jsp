@@ -36,6 +36,11 @@
     <link href="propertyadmin/dist/css/pages/dashboard1.css" rel="stylesheet">
     <!--Toaster Popup message CSS -->
     <link href="assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <!-- page css -->
+    <!-- Footable CSS -->
+    <link href="assets/node_modules/footable/css/footable.core.css" rel="stylesheet">
+    <link href="assets/node_modules/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="propertyadmin/dist/css/pages/footable-page.css" rel="stylesheet">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -181,7 +186,7 @@
 								<li class="breadcrumb-item"><a href="home.jsp">Inicio</a></li>
 								<li class="breadcrumb-item active">Propiedades</li>
 							</ol>
-	                        <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="newProperty.jsp"> Nueva Propiedad</a></button>
+	                        <button type="submit" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="newProperty.jsp"> Nueva Propiedad</a></button>
 					</div>
 				</div>
 			</div>
@@ -208,18 +213,17 @@
 							%>
 							<!-- Property Items -->
 							<div class="card">
-								<%--<!-- row -->https://drive.google.com/open?export=view&id=<%=propertyList.get(i).getImageLink()%>--%>
+								<%--<!-- row -->--%>
 								<div class="row no-gutters">
-                                    <div class="col-md-4" style="background: center center / cover no-repeat; min-height:250px; max-width: 500px; max-height: 300px;">
-                                        <img src="<%=propertyList.get(i).getImageLink()%>" width="400" height="250">
+                                    <div class="col-md-3" style="background: url(<%=propertyList.get(i).getImageLink()%>)center center / cover no-repeat; min-height:250px;">
                                     </div>
                                     <!-- column -->
-									<div class="col-md-8">
+									<div class="col-md-6">
 										<!-- Row -->
 										<div class="row no-gutters">
 											<!-- column -->
-											<div class="col-md-6 border-right border-bottom">
-												<div class="p-20">
+											<div class="col-md-4 border-right border-bottom">
+												<div class="p-25">
                                                     <form action="/goToProperty" method="POST">
 	                                                    <input type="hidden" name="theProperty" value="<%=propertyList.get(i)%>">
                                                     <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
@@ -230,6 +234,65 @@
 											<!-- column -->
 											<div class="col-md-6 border-bottom">
 												<div class="p-20">
+                                                    <div class="d-flex no-block align-items-center">
+                                                        <div class="button-box">
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10 text-muted"> Nueva U.F.</span></button>
+                                                        </div>
+                                                        <div class="modal fade" id="newFU" tabindex="-1" role="dialog" aria-labelledby="newFULabel">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title" id="newFULabel">Nueva U.F.</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form method="post" action="/addFunctionalUnit">
+                                                                            <div class="form-group">
+                                                                                <label for="fuName" class="control-label">Nombre:</label>
+                                                                                <input type="text" class="form-control" id="fuName" name="fuName">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="fuAddress" class="control-label">Direccion:</label>
+                                                                                <input type="text" class="form-control" id="fuAddress" name="fuAddress">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="fuAddressTown" class="control-label">Localidad:</label>
+                                                                                <input type="text" class="form-control" id="fuAddressTown" name="fuAddressTown">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="fuAddressCity" class="control-label">Ciudad / Partido:</label>
+                                                                                <input type="text" class="form-control" id="fuAddressCity" name="fuAddressCity">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="fuAddressProvince" class="control-label">Provincia / Estado:</label>
+                                                                                <input type="text" class="form-control" id="fuAddressProvince" name="fuAddressProvince">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="fuAddressCountry" class="control-label">Pais:</label>
+                                                                                <input type="text" class="form-control" id="fuAddressCountry" name="fuAddressCountry">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label for="fuType">Tipo:</label>
+                                                                                <select name="fuType" class="form-control custom-select" id="fuType">
+                                                                                    <option value="0" disabled selected>--------</option>
+                                                                                    <option value="Vivienda">Vivienda</option>
+                                                                                    <option value="Oficina">Oficina</option>
+                                                                                    <option value="Local">Local Comercial</option>
+                                                                                    <option value="Garage">Garage</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="submit" class="submit-btn btn-primary">Agregar</button>
+                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal -->
+                                                    </div>
 													<div class="d-flex no-block align-items-center">
 														<span><img src="assets/images/property/pro-garage.png"></span>
 														<span class="p-10 text-muted"> Unidades funcionales</span>
@@ -240,13 +303,67 @@
 														<span class="p-10 text-muted"> Unidades funcionales ocupadas</span>
 														<span class="badge badge-pill badge-secondary ml-auto"><%=propertyList.get(i).getOccupiedFunctionalUnits()%></span>
 													</div>
+                                                    <div class="d-flex no-block align-items-center">
+                                                        <div class="button-box">
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fuTable" data-whatever="@fuTable"><span class="p-10 text-muted"> Lista U.F.</span></button>
+                                                        </div>
+                                                        <div class="modal fade" id="fuTable" tabindex="-1" role="dialog" aria-labelledby="fuTableLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 class="modal-title" id="fuTableLabel">Lista U.F.</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form method="post" action="/goToFunctionalUnit">
+                                                                            <div class="card">
+                                                                                <div class="card-body">
+                                                                                    <h4 class="card-title">Lista de Unidades Funcionales de la propiedad: "<%=propertyList.get(i).getName()%>"</h4>
+                                                                                    <table id="demo-foo-row-toggler" class="table toggle-circle table-hover">
+                                                                                        <thead>
+                                                                                        <tr>
+                                                                                            <th data-toggle="true"> First Name </th>
+                                                                                            <th> Last Name </th>
+                                                                                            <th > Job Title </th>
+                                                                                            <th > DOB </th>
+                                                                                            <th > Status </th>
+                                                                                        </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                        <tr>
+                                                                                            <td>Isidra</td>
+                                                                                            <td>Boudreaux</td>
+                                                                                            <td>Traffic Court Referee</td>
+                                                                                            <td>22 Jun 1972</td>
+                                                                                            <td><span class="label label-table label-success">Active</span></td>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                        <tfoot>
+                                                                                        <tr>
+                                                                                            <td colspan="5">
+                                                                                                <div class="text-right">
+                                                                                                    <ul class="pagination pagination-split m-t-30"> </ul>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        </tfoot>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal -->
+                                                    </div>
 												</div>
 											</div>
 											<!-- column -->
 											<div class="col-md-12">
 												<div class="p-20">
 													<div class="d-flex no-block align-items-center">
-														<a href="javascript:void(0)" class="m-r-15" ><img alt="img" class="thumb-md img-circle m-r-10" src="assets/images/users/default.jpg"></a>
+														<a href="javascript:void(0)" class="m-r-10" ><img alt="img" class="thumb-md img-circle m-r-10" src="assets/images/users/default.jpg"></a>
 														<div>
 															<h5 class="card-title m-b-0"><%=nameAcc%></h5>
 														</div>

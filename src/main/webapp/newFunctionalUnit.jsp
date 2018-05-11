@@ -185,7 +185,7 @@
 					<div class="card-body">
 						<form class="pro-add-form" action="/addFunctionalUnit" method="POST">
 							<div class="form-group">
-								<input type="hidden" name="chosenProperty" value="<%=request.getAttribute("propertyIndex")%>">
+								<input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
 								<input type="hidden" name="propertyId" value="<%=request.getAttribute("propertyId")%>">
 								<input type="hidden" name="propertyObject" value="<%=request.getAttribute("propertyObject")%>">
 								<input type="hidden" name="propertyObject1" value="<%=request.getAttribute("propertyObject1")%>">

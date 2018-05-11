@@ -2,6 +2,7 @@ package propertyAdmin.web.servlets;
 
 import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.property.FunctionalUnit;
+import propertyAdmin.structure.property.Property;
 import propertyAdmin.structure.property.specifics.BusinessPremise;
 import propertyAdmin.structure.property.specifics.Garage;
 import propertyAdmin.structure.property.specifics.LivingPlace;
@@ -18,9 +19,8 @@ import java.io.IOException;
 public class AddFunctionalUnit extends HttpServlet {
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      Integer chosenProperty = Integer.valueOf(req.getParameter("chosenProperty"));
-
-      String name = req.getParameter("fuName");
+       Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
+       String name = req.getParameter("fuName");
       String address = req.getParameter("fuAddress");
       String addressTown = req.getParameter("fuAddressTown");
       String addressCity = req.getParameter("fuAddressCity");
@@ -28,6 +28,7 @@ public class AddFunctionalUnit extends HttpServlet {
       String addressCountry = req.getParameter("fuAddressCountry");
       String type = req.getParameter("fuType");
 
+      Property result = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
       FunctionalUnit functionalUnit = null;
       switch (type) {
          case "Vivienda" :
@@ -45,8 +46,8 @@ public class AddFunctionalUnit extends HttpServlet {
          default:
             break;
       }
-      DatabaseOps.getInstance().addFunctionalUnitToDatabase(req.getRemoteUser(), DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser()) , functionalUnit);
-      resp.sendRedirect("specificProperty.jsp");
+      DatabaseOps.getInstance().addFunctionalUnitToDatabase(req.getRemoteUser(), result , functionalUnit);
+      resp.sendRedirect("properties.jsp");
    }
 
 }

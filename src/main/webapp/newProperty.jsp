@@ -208,7 +208,6 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-info d-none d-lg-block m-l-15" ><i class="fa fa-plus-circle"></i>Agregar</button>
-
                             </form>
                         </div>
                     </div>

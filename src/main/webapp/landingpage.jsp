@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="google-site-verification" content="zWq42vPNNnO8-4AEqz93pc59BjOhgOldIK5zbxFI5aU" />
 
     <!-- Title -->
     <title> Property Admin - Pagina de Inicio</title>

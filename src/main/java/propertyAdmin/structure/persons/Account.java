@@ -43,8 +43,6 @@ public class   Account {
    private String imageLink;
    @CollectionTable @OneToMany
    private List<Property> properties;
-   @Column(name = "IS_LOGGED")
-   private boolean logged;
 
     public Account(String name, String surname, String id, String nationality, String address, String addressCountry,
                    String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone,
@@ -64,15 +62,10 @@ public class   Account {
        this.password = password;
        this.username = username;
        properties = new ArrayList<>();
-       logged = true;
        imageLink = "";
     }
 
    public Account() {
-   }
-
-   public void setLogged(boolean logged) {
-      this.logged = logged;
    }
 
    public String getName() {
@@ -131,6 +124,14 @@ public class   Account {
        } return null;
    }
 
+   public String getImageLink() {
+      return imageLink;
+   }
+
+   public void setImageLink(String imageLink) {
+      this.imageLink = imageLink;
+   }
+
    public Integer getAmountOfProperties() {
       return getProperties().size();
    }
@@ -160,9 +161,6 @@ public class   Account {
    public Property getSpecificPropertyByIndex(int index) {
        return properties.get(index);
    }
-   public boolean isLogged() {
-      return logged;
-   }
 
     public String getUsername() {
         return username;
@@ -186,7 +184,6 @@ public class   Account {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", properties=" + properties +
-                ", logged=" + logged +
                 '}';
     }
 

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/goToProperty")
+@WebServlet(name = "goToProperty", value = "/goToProperty")
 public class GoToPropertyServlet extends HttpServlet {
 
     @Override

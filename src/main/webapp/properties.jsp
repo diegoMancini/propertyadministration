@@ -104,7 +104,7 @@
                         <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getUsername()%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <!-- text-->
-                            <a href="/propertyadmin/profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
+                            <a href="profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
                             <!-- text-->
                             <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
                             <!-- text-->
@@ -202,28 +202,31 @@
 							String nameAcc = account.getFullName();
 							String addressAcc = account.getFullAddress();
 							request.setAttribute("Property", propertyList.get(i));
-							List<FunctionalUnit> functionalUnitList = propertyList.get(i).getFunctionalUnits();
 							%>
 							<!-- Property Items -->
 							<div class="card">
 								<%--<!-- row -->--%>
+									<div class="row-lg-3">
+								<h4><button type="submit" class="btn btn-info waves-effect waves-light m-l-30 m-t-10 m-b-10" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
+								</h4>
+							</div>
 								<div class="row no-gutters">
-                                    <div class="col-md-3" style="background: url(<%=propertyList.get(i).getImageLink()%>)center center / cover no-repeat; min-height:250px;">
+                                    <div class="col-md-3 m-l-20 m-b-15" style="background: url(<%=propertyList.get(i).getImageLink()%>)center center / cover no-repeat; min-height:250px;">
                                     </div>
                                     <!-- column -->
 									<div class="col-md-8">
 										<!-- Row -->
 										<div class="row no-gutters">
 											<!-- column -->
-											<div class="col-md-3 border-right border-bottom">
-												<div class="p-40">
-                                                    <form action="/goToProperty" method="POST">
-	                                                    <input type="hidden" name="theProperty" value="<%=propertyList.get(i)%>">
-                                                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
-                                                    </form>
-													<h5 class="text-success"> &#36;<%=propertyList.get(i).getValue()%></h5>
-												</div>
-											</div>
+											<%--<div class="col-md-3 border-right border-bottom">--%>
+												<%--<div class="p-40">--%>
+                                                    <%--<form action="/goToProperty" method="POST">--%>
+	                                                    <%--<input type="hidden" name="theProperty" value="<%=propertyList.get(i)%>">--%>
+                                                    <%--<button type="submit" class="btn btn-info waves-effect waves-light m-r-10" name="chosenProperty2" id="chosenProperty2" value="<%=i%>"><%=name%></button>--%>
+                                                    <%--</form>--%>
+													<%--<h5 class="text-success"> &#36;<%=propertyList.get(i).getValue()%></h5>--%>
+												<%--</div>--%>
+											<%--</div>--%>
 											<!-- column -->
 											<div class="col-md-6 border-bottom">
 												<div class="p-40">
@@ -243,7 +246,7 @@
                                                 <div class="p-40">
                                                     <div class="d-flex no-block align-items-center">
                                                         <div class="button-box">
-                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10 text-muted"> Nueva U.F.</span></button>
+                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10"> Nueva U.F.</span></button>
                                                         </div>
                                                         <div class="modal fade" id="newFU" tabindex="-1" role="dialog" aria-labelledby="newFULabel">
                                                             <div class="modal-dialog " role="document">
@@ -303,7 +306,7 @@
                                                     </div>
                                                     <div class="d-flex no-block align-items-center">
                                                         <div class="button-box">
-                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#fuTable" data-whatever="@fuTable"><span class="p-10 text-muted"> Lista U.F.</span></button>
+                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#fuTable" data-whatever="@fuTable"><span class="p-10 "> Lista U.F.</span></button>
                                                         </div>
                                                         <div class="modal fade" id="fuTable" tabindex="-1" role="dialog" aria-labelledby="fuTableLabel">
                                                             <div class="modal-dialog" role="document">
@@ -330,33 +333,33 @@
                                                                                         </tr>
                                                                                         </thead>
                                                                                         <tbody>
-                                                                                        <%if (functionalUnitList.size() > 0) {%>
-                                                                                        <%for (int j = 0; j < functionalUnitList.size();j++) {%>
+                                                                                        <%if (propertyList.get(i).getFunctionalUnits().size() > 0) {%>
+                                                                                        <%for (int j = 0; j < propertyList.get(i).getFunctionalUnits().size();j++) {%>
                                                                                         <%
-                                                                                            String state = functionalUnitList.get(j).getState();
+                                                                                            String state = propertyList.get(i).getFunctionalUnits().get(j).getState();
                                                                                             String client = "";
                                                                                             Double price = 0.0;
                                                                                             String contractName = "";
                                                                                             if(state.equals("Ocupado")) {
-                                                                                                client += functionalUnitList.get(j).getContract().getTenant().getFullName();
-                                                                                                price += functionalUnitList.get(j).getContract().getPrice();
-                                                                                                contractName += functionalUnitList.get(j).getContract().getName();
+                                                                                                client += propertyList.get(i).getFunctionalUnits().get(j).getContract().getTenant().getFullName();
+                                                                                                price += propertyList.get(i).getFunctionalUnits().get(j).getContract().getPrice();
+                                                                                                contractName += propertyList.get(i).getFunctionalUnits().get(j).getContract().getName();
                                                                                             } else {
                                                                                                 client += "------";
                                                                                                 contractName += "------";
                                                                                             }
                                                                                         %>
                                                                                         <tr>
-                                                                                            <td><%=functionalUnitList.get(i).getName()%></td>
-                                                                                            <td><%=functionalUnitList.get(j).getCommercialAddress()%></td>
-                                                                                            <td><%=functionalUnitList.get(j).getType()%></td>
+                                                                                            <td><%=propertyList.get(i).getFunctionalUnits().get(j).getName()%></td>
+                                                                                            <td><%=propertyList.get(i).getFunctionalUnits().get(j).getCommercialAddress()%></td>
+                                                                                            <td><%=propertyList.get(i).getFunctionalUnits().get(j).getType()%></td>
                                                                                             <%if (state.equals("Ocupado")){%>
                                                                                             <td><span class="label label-danger"><%=state%></span> </td>
                                                                                             <%} else {%>
                                                                                             <td><span class="label label-success"><%=state%></span> </td>
                                                                                             <%}%>
                                                                                             <td>$<%=price%></td>
-                                                                                            <% if (functionalUnitList.get(j).hasContract()) {%>
+                                                                                            <% if (propertyList.get(i).getFunctionalUnits().get(j).hasContract()) {%>
                                                                                             <td><%=contractName%></td>
                                                                                             <td><%=client%></td>
                                                                                             <%} else {%>
@@ -390,7 +393,7 @@
                                                     </div>
                                                     <div class="d-flex no-block align-items-center">
                                                         <div class="button-box">
-                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#contractsTable" data-whatever="@contractsTable"><span class="p-10 text-muted"> Lista de Contratos</span></button>
+                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#contractsTable" data-whatever="@contractsTable"><span class="p-10"> Lista de Contratos</span></button>
                                                         </div>
                                                         <div class="modal fade" id="contractsTable" tabindex="-1" role="dialog" aria-labelledby="contractsTableLabel">
                                                             <div class="modal-dialog" role="document">
@@ -456,7 +459,7 @@
                                                     </div>
                                                     <div class="d-flex no-block align-items-center">
                                                         <div class="button-box">
-                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#clientsTable" data-whatever="@clientsTable"><span class="p-10 text-muted"> Lista de Clientes</span></button>
+                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#clientsTable" data-whatever="@clientsTable"><span class="p-10 "> Lista de Clientes</span></button>
                                                         </div>
                                                         <div class="modal fade" id="clientsTable" tabindex="-1" role="dialog" aria-labelledby="clientsTableLabel">
                                                             <div class="modal-dialog" role="document">

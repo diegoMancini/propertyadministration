@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/goToFunctionalUnit")
+@WebServlet(name = "goToFunctionalUnit", value = "/goToFunctionalUnit")
 public class GoToFunctionalUnitServlet extends HttpServlet {
 
     @Override

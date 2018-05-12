@@ -33,13 +33,10 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
 <body>
-<!-- Preloader Start -->
-<div class="preloader">
-    <div class="loader">
-        <div class="loader__figure"></div>
-        <p class="loader__label">Property-Admin</p>
-    </div>
-</div>
+<div class="page-wrapper">
     <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><a href="landingpage.jsp">Salir</a></button>
+<%session.invalidate();
+response.sendRedirect("/landingpage.jsp");%>
+</div>
 </body>
 </html>

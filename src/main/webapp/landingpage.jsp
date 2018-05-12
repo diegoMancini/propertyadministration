@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="google-site-verification" content="zWq42vPNNnO8-4AEqz93pc59BjOhgOldIK5zbxFI5aU" />
-
+    <meta name="google-site-verification" content="DmiLIUiFwWKhlN21IZ1JeCheevSkGyRv3coZwTcgc8M" />
     <!-- Title -->
     <title> Property Admin - Pagina de Inicio</title>
 
@@ -613,27 +612,6 @@
         </div>
     </section>
     <!-- ***** Contact Us Area End ***** -->
-
-    <!-- ***** Footer Area Start ***** -->
-    <footer class="footer-social-icon text-center section_padding_70 clearfix">
-        <!-- footer logo -->
-        <div class="footer-text">
-            <h2>Property Admin</h2>
-        </div>
-        <!-- social icon-->
-        <div class="footer-social-icon">
-            <a href="#"><i class="disabled fa fa-facebook" aria-hidden="true"></i></a>
-            <a href="#"><i class="disabled fa fa-twitter" aria-hidden="true"></i></a>
-            <a href="#"> <i class="disabled fa fa-instagram" aria-hidden="true"></i></a>
-            <a href="#"><i class="disabled fa fa-google-plus" aria-hidden="true"></i></a>
-        </div>
-        <!-- Foooter Text-->
-        <div class="copyright-text">
-            <!-- ***** Removing this text is now allowed! This template is licensed under CC BY 3.0 ***** -->
-            <p>Copyright©2018 P.A.</p>
-        </div>
-    </footer>
-    <!-- ***** Footer Area Start ***** -->
 
     <!-- Jquery-2.2.4 JS -->
     <script src="/propertyadmin/dist/js/jquery-2.2.4.min.js"></script>

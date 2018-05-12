@@ -377,11 +377,7 @@
                                 <h3 class="box-title m-b-12"> Datos cuenta </h3>
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" name="username" required="" placeholder="Nombre de usuario">
-                            </div>
-                        </div>
+
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <input class="form-control" type="email" name="email" required="" placeholder="Email">
@@ -400,6 +396,11 @@
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
                                 Ya tienes una cuenta ? <a href="login.jsp" class="text-info m-l-5"><b>Iniciar Sesion</b></a>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="username" required="" placeholder="Nombre de usuario">
                             </div>
                         </div>
                     </form>

@@ -82,10 +82,6 @@
 							<input type="text" class="form-control" placeholder="Buscar...">
 						</form>
 					</li>
-					<li class="nav-item"> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu">Inicio</span></a></li>
-					<li class="nav-item"> <a class="waves-effect waves-dark" href="properties.jsp"><i class="ti-home"></i><span class="hide-menu">Propiedades</span></a></li>
-					<li class="nav-item"> <a class="waves-effect waves-dark" href="functionalUnits.jsp"><i class="ti-layout"></i><span class="hide-menu">U. Funcionales</span></a></li>
-					<li class="nav-item"> <a class="waves-effect waves-dark" href="clients.jsp"><i class="ti-user"></i><span class="hide-menu">Clientes</span></a></li>
 				</ul>
 				<!-- ============================================================== -->
 				<!-- User profile and search -->

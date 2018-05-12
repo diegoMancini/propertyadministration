@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/newProperty")
+@WebServlet(name = "newProperty", value = "/newProperty")
 @MultipartConfig
 public class NewPropertyServlet extends HttpServlet {
 

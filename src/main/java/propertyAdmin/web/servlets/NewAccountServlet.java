@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/signup")
+@WebServlet(name = "signup", value = "/signup")
 public class NewAccountServlet extends HttpServlet {
 
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
@@ -29,11 +29,11 @@ public class NewAccountServlet extends HttpServlet {
         String address = req.getParameter("address");
         String addressZipCode = req.getParameter("addressZipCode");
         String username = req.getParameter("username");
-        String email = req.getParameter("email").toLowerCase();
+        String email = req.getParameter("email");
         String password = req.getParameter("password");
 
         Account account = new Account(name, surname, identityNumber, nationality, address, addressCountry, addressProvince,
-                addressCity, addressTown, addressZipCode, phoneNumber, email, password, username);
+                addressCity, addressTown, addressZipCode, phoneNumber, email.toLowerCase(), password, username);
 
         String page = "";
         if(!databaseOps.hasAccount(email)){

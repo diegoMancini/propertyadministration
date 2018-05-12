@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/logoutAccount")
+@WebServlet(name = "logoutAccount", value = "/logoutAccount")
 public class LogOutServlet extends HttpServlet {
 
     private DatabaseOps databaseOps = DatabaseOps.getInstance();

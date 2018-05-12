@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/newFunctionalUnit")
+@WebServlet(name = "newFunctionalUnit", value = "/newFunctionalUnit")
 public class NewFunctionalUnitServlet extends HttpServlet {
 
    @Override

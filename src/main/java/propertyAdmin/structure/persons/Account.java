@@ -15,7 +15,7 @@ public class   Account {
    private String name;
    @Column(name = "SURNAME")
    private String surname;
-   @Column(name = "USERNAME")
+   @Id @Column(name = "USERNAME", unique = true)
    private String username;
    @Column(name = "ID")
    private String id;
@@ -35,7 +35,7 @@ public class   Account {
    private String addressZipCode;
    @Column(name = "PHONE")
    private String phone;
-   @Id @Column(name = "EMAIL", unique = true)
+   @Column(name = "EMAIL", unique = true)
    private String email;
    @Column(name = "PASSWORD")
    private String password;
@@ -68,14 +68,25 @@ public class   Account {
    public Account() {
    }
 
-   public Account(String name, String surname, String id, String nationality, String phone, String email, String password) {
+
+   public Account(String name, String surname, String username, String nationality, String phone, String email, String password) {
       this.name = name;
       this.surname = surname;
-      this.id = id;
+      this.username = username;
       this.nationality = nationality;
       this.phone = phone;
       this.email = email;
+      this.id = null;
+      addressCountry = null;
+      address = null;
+      addressProvince = null;
+      addressCity = null;
+      addressTown = null;
+      addressZipCode = null;
       this.password = password;
+      properties = new ArrayList<>();
+      imageLink = "";
+
    }
 
    public String getName() {

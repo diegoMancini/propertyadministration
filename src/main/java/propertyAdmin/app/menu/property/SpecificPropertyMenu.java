@@ -92,16 +92,16 @@ public class SpecificPropertyMenu extends PropertyMenu {
         FunctionalUnit functionalUnit = null;
         switch (type) {
             case "vivienda":
-                functionalUnit = new LivingPlace(name, country, province, city, town, address);
+                functionalUnit = new LivingPlace(name, address);
                 break;
             case "oficina":
-                functionalUnit = new Office(name, country, province, city, town, address);
+                functionalUnit = new Office(name, address);
                 break;
             case "local comercial":
-                functionalUnit = new BusinessPremise(name, country, province, city, town, address);
+                functionalUnit = new BusinessPremise(name,address);
                 break;
             case "garage":
-                functionalUnit = new Garage(name, country, province, city, town, address);
+                functionalUnit = new Garage(name, address);
                 break;
             default:
                 System.out.println("AZA");

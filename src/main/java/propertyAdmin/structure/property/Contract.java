@@ -32,8 +32,6 @@ public class Contract {
     private Guarantor guarantor;
     @Column(name = "PRICE")
     private Double price;
-    @Column(name = "DEPOSIT")
-    private Double deposit;
     @Column(name = "DAILY_INTEREST_FOR_DELAYED_PAYMENT")
     private Double dailyInterestForDelayedPayment;
 
@@ -42,7 +40,7 @@ public class Contract {
 
     public Contract(String name,
                     Date dateIssued, Date contractDateStart, Date contractDateEnd, Landlord owner,
-                    Tenant tenant, Guarantor guarantor, Double price, Double deposit, Double dailyInterestForDelayedPayment) {
+                    Tenant tenant, Guarantor guarantor, Double price, Double dailyInterestForDelayedPayment) {
         this.name = name;
         this.dateIssued = dateIssued;
         this.contractDateStart = contractDateStart;
@@ -51,7 +49,6 @@ public class Contract {
         this.tenant = tenant;
         this.guarantor = guarantor;
         this.price = price;
-        this.deposit = deposit;
         this.dailyInterestForDelayedPayment = dailyInterestForDelayedPayment;
     }
 
@@ -89,10 +86,6 @@ public class Contract {
 
     public Double getPrice() {
         return price;
-    }
-
-    public Double getDeposit() {
-        return deposit;
     }
 
     public Double getDailyInterestForDelayedPayment() {

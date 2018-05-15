@@ -35,7 +35,7 @@
 <div class="preloader">
 	<div class="loader">
 		<div class="loader__figure"></div>
-		<p class="loader__label">Elite realestate</p>
+		<p class="loader__label">Property Admin</p>
 	</div>
 </div>
 <!-- ============================================================== -->
@@ -187,20 +187,36 @@
                                 <div class="form-group">
                                     <label>Nombre de la propiedad<span class="help"></span></label>
                                     <input type="text" name="propertyName" id="propertyName" class="form-control form-control-line" value=""> </div>
-                                <div class="form-group">
-                                    <label>Direccion<span class="help"></span></label>
-                                    <input type="text" id="propertyAddress" name="propertyAddress" class="form-control" placeholder=""> </div>
-                                <div class="form-group">
-                                    <label>Valor (U$D)<span class="help"></span></label>
-                                    <input type="text" id="propertyValue" name="propertyValue" class="form-control" placeholder=""> </div>
-                                <div class="form-group">
-                                    <label>Descripcion</label>
-                                    <textarea name="propertyDescription" id="propertyDescription" class="form-control" rows="3"></textarea>
+	                            <div class="form-group">
+		                            <label>Direccion<span class="help"></span></label>
+		                            <input type="text" id="propertyAddress" name="propertyAddress" class="form-control" placeholder="">
+	                            </div>
+
+	                            <div class="form-group">
+		                             <label>Localidad<span class="help"></span></label>
+	                                 <input type="text" id="propertyTown" name="propertyTown" class="form-control" placeholder="">
                                 </div>
+
+	                            <div class="form-group">
+		                            <label>Ciudad<span class="help"></span></label>
+		                            <input type="text" id="propertyCity" name="propertyCity" class="form-control" placeholder="">
+	                            </div>
+	                            <div class="form-group">
+		                            <label>Provincia<span class="help"></span></label>
+		                            <input type="text" id="propertyProvince" name="propertyProvince" class="form-control" placeholder="">
+	                            </div>
+	                            <div class="form-group">
+                                    <label>Pais<span class="help"></span></label>
+                                    <input type="text" id="propertyCountry" name="propertyCountry" class="form-control" placeholder="">
+	                            </div>
+	                            <div class="form-group">
+		                            <label>Descripcion</label>
+		                            <textarea name="propertyDescription" id="propertyDescription" class="form-control" rows="3"></textarea>
+	                            </div>
                                 <div class="form-group">
                                     <label>Imagen</label>
                                     <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                        <input type="file" name="propertyImage" id="propertyImage" accept=".pdf, .jpg, .png, .jpeg">
+                                        <input type="file" name="propertyImage" id="propertyImage" accept=" .jpg, .png, .jpeg">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-info d-none d-lg-block m-l-15" ><i class="fa fa-plus-circle"></i>Agregar</button>

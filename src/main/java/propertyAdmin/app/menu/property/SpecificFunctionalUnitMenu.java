@@ -2,12 +2,8 @@ package propertyAdmin.app.menu.property;
 
 import propertyAdmin.app.abc.Scanner;
 import propertyAdmin.structure.persons.Account;
-import propertyAdmin.structure.persons.Guarantor;
-import propertyAdmin.structure.persons.Landlord;
-import propertyAdmin.structure.persons.Tenant;
 import propertyAdmin.structure.property.FunctionalUnit;
 import propertyAdmin.structure.property.Property;
-import propertyAdmin.structure.property.Contract;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -87,11 +83,11 @@ public class SpecificFunctionalUnitMenu extends SpecificPropertyMenu {
       String guarantorName = Scanner.getString("Nombre garante: ");
       String guarantorSurname = Scanner.getString("Apellido garante: ");
       String guarantorID = Scanner.getString("DNI garante: ");
-      Landlord landlord = new Landlord(account.getName(), account.getSurname(), account.getId());
-      Tenant tenant = new Tenant(tenantName, tenantSurname, tenantID);
-      Guarantor guarantor = new Guarantor(guarantorName, guarantorSurname, guarantorID);
-      Contract contract = new Contract(name, dateIssued, dateStart, dateEnd,landlord, tenant, guarantor, price, deposit, dailyInterest);
-      getDatabaseOps().addContractToFunctionalUnitToDatabase(account.getEmail(), aProperty, functionalUnit, contract);
+//      Landlord landlord = new Landlord(account.getName(), account.getSurname(), account.getId());
+//      Tenant tenant = new Tenant(tenantName, tenantSurname, tenantID);
+//      Guarantor guarantor = new Guarantor(guarantorName, guarantorSurname, guarantorID);
+//      Contract contract = new Contract(name, dateIssued, dateStart, dateEnd,landlord, tenant, guarantor, price, deposit, dailyInterest);
+//      getDatabaseOps().addContractToFunctionalUnitToDatabase(account.getEmail(), aProperty, functionalUnit, contract);
    }
 
    private String displayContractDetails(Account account, Property aProperty, FunctionalUnit functionalUnit) {

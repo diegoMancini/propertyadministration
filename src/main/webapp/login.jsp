@@ -47,11 +47,11 @@
     <div class="login-register" style="background-image:url(assets/images/background/admin-background.jpg);">
         <div class="login-box card">
             <div class="card-body">
-                <form method="POST" class="form-horizontal form-material" id="loginform" action="/j_security_check">
+                <form method="POST" class="form-horizontal form-material" id="loginform" action="j_security_check">
                     <h3 class="box-title m-b-20">Iniciar Sesion</h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" name="j_username" type="text" required="" placeholder="Correo electronico"> </div>
+                            <input class="form-control" name="j_username" type="text" required="" placeholder="Nombre de Usuario"> </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">

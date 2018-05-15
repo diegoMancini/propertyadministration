@@ -178,7 +178,10 @@
 								<li class="breadcrumb-item"><a href="home.jsp">Inicio</a></li>
 								<li class="breadcrumb-item active">Propiedades</li>
 							</ol>
-	                        <button type="submit" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="newProperty.jsp"> Nueva Propiedad</a></button>
+							<form action="addProperty" method="post">
+								<input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+								<button type="submit" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Nueva Propiedad</button>
+							</form>
 					</div>
 				</div>
 			</div>
@@ -205,10 +208,9 @@
 												<th data-toggle="true">No</th>
 												<th>Nombre</th>
 												<th>Direccion</th>
-												<th>Valor</th>
+												<th>UF Ocupadas</th>
+												<th>UF Disponibles</th>
 												<th data-hide="all">Unidades Funcionales</th>
-												<th data-hide="all">UF Ocupadas</th>
-												<th data-hide="all">UF Disponibles</th>
 											</tr>
 											</thead>
 											<tbody>
@@ -221,17 +223,25 @@
 											<tr>
 												<td><%=i%></td>
 												<td>
-													<form action="/goToProperty" method="post">
+													<form action="goToSpecificProperty" method="post">
 														<img src="<%=propertyList.get(i).getImageLink()%>" alt="user" width="60" height="60" class="img-circle" />
 													<button type="submit" class="btn btn-info waves-effect waves-light m-r-20 m-b-5 m-l-15" name="chosenProperty" id="chosenProperty" value="<%=i%>"> <%=propertyList.get(i).getName()%></button>
 													</form>
 												</td>
 
 												<td><%=propertyList.get(i).getAddress()%></td>
-												<td><%=propertyList.get(i).getValue()%></td>
-												<td><%=propertyList.get(i).getFunctionalUnits().size()%></td>
 												<td><%=propertyList.get(i).getOccupiedFunctionalUnits()%></td>
 												<td><%=propertyList.get(i).getAvailableFunctionalUnits()%></td>
+												<%if (propertyList.get(i).getFunctionalUnits().size() == 0) {%>
+												<td>NO HAY UNIDADES FUNCIONALES</td>
+												<%} else {%>
+												<td><%for (FunctionalUnit functionalUnit : propertyList.get(i).getFunctionalUnits()){%>
+													<form action="goToSpecificFunctionalUnit" method="post">
+														<li><a class="waves-effect waves-red"><%=functionalUnit.getName()%></a></li>
+													</form>
+													<%}%>
+												</td>
+												<%}%>
 											</tr>
 											</tbody>
 											<%}%>

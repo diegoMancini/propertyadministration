@@ -67,8 +67,8 @@ public class PropertyMenu extends LogInMenu {
         String description = Scanner.getString("Descripcion: ");
         String address = Scanner.getString("Direccion: ");
         String value = Scanner.getString("Valor: ");
-        Property property = new Property(name, description, address, value);
-        getDatabaseOps().addPropertyToDatabase(account.getEmail(), property);
+//        Property property = new Property(name, description, address, value);
+//        getDatabaseOps().addPropertyToDatabase(account.getEmail(), property);
     }
 
     private void removeProperty(Account account) {

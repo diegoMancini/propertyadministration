@@ -54,12 +54,19 @@ public class Tenant {
         this.functionalUnit = getFunctionalUnit();
     }
 
-    public Tenant(String name, String surname, String dni) {
+    public Tenant(String name, String surname, String dni, String phone, String email) {
         this.name = name;
         this.surname = surname;
         this.dni = dni;
         this.functionalUnit = getFunctionalUnit();
-
+        this.phone = phone;
+        this.email = email;
+        this.address = null;
+        this.addressTown = null;
+        this.addressCity = null;
+        this.addressProvince = null;
+        this.addressCountry = null;
+        this.addressZipCode= null;
     }
 
     public Tenant() {

@@ -53,7 +53,7 @@
         <div class="row" id="validation">
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="/signup" method="post">
+                    <form class="form-horizontal form-material" id="loginform" action="signup" method="post">
                         <h3 class="box-title m-b-20">Crear cuenta</h3>
                         <div class="form-group row">
                             <div class="col-md-12">
@@ -70,11 +70,11 @@
                                 <input class="form-control required" type="text" name="surname" required="" placeholder="Apellido">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <input class="form-control required" type="text" name="identityNumber" required="" placeholder="D.N.I.">
-                            </div>
-                        </div>
+                        <%--<div class="form-group">--%>
+                            <%--<div class="col-xs-12">--%>
+                                <%--<input class="form-control required" type="text" name="identityNumber" required="" placeholder="D.N.I.">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="phoneNumber" required="" placeholder="Telefono">
@@ -337,47 +337,46 @@
                             </select>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <h3 class="box-title m-b-12"> Direccion </h3>
-                            </div>
-                        </div>
+                        <%--<div class="form-group row">--%>
+                            <%--<div class="col-md-12">--%>
+                                <%--<h3 class="box-title m-b-12"> Direccion </h3>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="form-group ">--%>
+                            <%--<div class="col-xs-12">--%>
+                                <%--<input class="form-control" type="text" name="address" required="" placeholder="Direccion">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="form-group ">--%>
+                            <%--<div class="col-xs-12">--%>
+                                <%--<input class="form-control" type="text" name="addressTown" required="" placeholder="Localidad">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="form-group ">--%>
+                            <%--<div class="col-xs-12">--%>
+                                <%--<input class="form-control" type="text" name="addressCity" required="" placeholder="Ciudad">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="form-group ">--%>
+                            <%--<div class="col-xs-12">--%>
+                                <%--<input class="form-control" type="text" name="addressProvince" required="" placeholder="Provincia">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="form-group ">--%>
+                            <%--<div class="col-xs-12">--%>
+                                <%--<input class="form-control" type="text" name="addressCountry" required="" placeholder="Pais">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="form-group ">--%>
+                            <%--<div class="col-xs-12">--%>
+                                <%--<input class="form-control" type="text" name="addressZipCode" required="" placeholder="Codigo Postal">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" name="address" required="" placeholder="Direccion">
+                                <input class="form-control" type="text" name="username" required="" placeholder="Nombre de usuario">
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" name="addressTown" required="" placeholder="Localidad">
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" name="addressCity" required="" placeholder="Ciudad">
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" name="addressProvince" required="" placeholder="Provincia">
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" name="addressCountry" required="" placeholder="Pais">
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" name="addressZipCode" required="" placeholder="Codigo Postal">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <h3 class="box-title m-b-12"> Datos cuenta </h3>
-                            </div>
-                        </div>
-
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <input class="form-control" type="email" name="email" required="" placeholder="Email">
@@ -398,11 +397,7 @@
                                 Ya tienes una cuenta ? <a href="login.jsp" class="text-info m-l-5"><b>Iniciar Sesion</b></a>
                             </div>
                         </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" name="username" required="" placeholder="Nombre de usuario">
-                            </div>
-                        </div>
+
                     </form>
                 </div>
             </div>

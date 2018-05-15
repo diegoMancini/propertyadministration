@@ -1,4 +1,4 @@
-package propertyAdmin.web.servlets;
+package propertyAdmin.web.servlets.go;
 
 import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.property.FunctionalUnit;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "goToProperty", value = "/goToProperty")
-public class GoToPropertyServlet extends HttpServlet {
+@WebServlet(name = "GoToSpecificProperty", value = "goToSpecificProperty")
+public class GoToSpecificPropertyServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,7 +24,7 @@ public class GoToPropertyServlet extends HttpServlet {
         req.setAttribute("property", property);
         req.setAttribute("propertyFU", list);
         req.setAttribute("propertyName", property.getName());
-        String path = "/specificProperty.jsp";
+        String path = "specificProperty.jsp";
         req.getRequestDispatcher(path).forward(req, resp);
     }
 }

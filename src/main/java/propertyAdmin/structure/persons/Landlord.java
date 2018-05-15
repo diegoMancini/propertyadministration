@@ -52,7 +52,7 @@ public class    Landlord {
    public Landlord() {
    }
 
-    public Landlord(String name, String surname, String dni) {
+    public Landlord(String name, String surname, String dni ) {
         this.name = name;
         this.surname = surname;
         this.dni = dni;

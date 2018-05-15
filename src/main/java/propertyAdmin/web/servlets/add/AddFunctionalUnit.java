@@ -1,4 +1,4 @@
-package propertyAdmin.web.servlets;
+package propertyAdmin.web.servlets.add;
 
 import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.property.FunctionalUnit;
@@ -22,26 +22,22 @@ public class AddFunctionalUnit extends HttpServlet {
        Integer chosenProperty = Integer.parseInt(req.getParameter("propertyIndex"));
        String name = req.getParameter("fuName");
       String address = req.getParameter("fuAddress");
-      String addressTown = req.getParameter("fuAddressTown");
-      String addressCity = req.getParameter("fuAddressCity");
-      String addressProvince = req.getParameter("fuAddressProvince");
-      String addressCountry = req.getParameter("fuAddressCountry");
       String type = req.getParameter("fuType");
 
       Property result = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
       FunctionalUnit functionalUnit = null;
       switch (type) {
          case "Vivienda" :
-            functionalUnit = new LivingPlace(name, addressCountry, addressProvince, addressCity, addressTown ,address);
+            functionalUnit = new LivingPlace(name, address);
             break;
          case "Local":
-            functionalUnit = new BusinessPremise(name, addressCountry, addressProvince, addressCity, addressTown ,address);
+            functionalUnit = new BusinessPremise(name,address);
             break;
          case "Oficina":
-            functionalUnit = new Office(name, addressCountry, addressProvince, addressCity, addressTown, address);
+            functionalUnit = new Office(name, address);
             break;
          case "Garage":
-            functionalUnit = new Garage(name, addressCountry, addressProvince, addressCity, addressTown, address);
+            functionalUnit = new Garage(name,address);
             break;
          default:
             break;

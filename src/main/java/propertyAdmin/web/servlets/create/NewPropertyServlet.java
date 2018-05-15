@@ -1,4 +1,4 @@
-package propertyAdmin.web.servlets;
+package propertyAdmin.web.servlets.create;
 
 import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.property.Property;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "newProperty", value = "/newProperty")
+@WebServlet(name = "newProperty", value = "newProperty")
 @MultipartConfig
 public class NewPropertyServlet extends HttpServlet {
 
@@ -20,13 +20,16 @@ public class NewPropertyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("propertyName");
-        String address = req.getParameter("propertyAddress");
         String description = req.getParameter("propertyDescription");
-        String value = req.getParameter("propertyValue");
-        Property property = new Property(name, description, address, value);
+        String address = req.getParameter("propertyAddress");
+        String country = req.getParameter("propertyCountry");
+        String province = req.getParameter("propertyProvince");
+        String city = req.getParameter("propertyCity");
+        String town = req.getParameter("propertyTown");
+        Property property = new Property(name, description, country, province, city, town, address);
         property.setImageLink(databaseOps.getImageUrl(req, resp, "property-administration.appspot.com"));
         databaseOps.addPropertyToDatabase(req.getRemoteUser(), property);
-        resp.sendRedirect("/properties.jsp");
+        resp.sendRedirect("properties.jsp");
     }
 
 }

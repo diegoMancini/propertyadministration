@@ -8,8 +8,8 @@ import javax.persistence.*;
 public class Office extends FunctionalUnit {
 
 
-   public Office(String name, String country, String province, String city, String town, String address) {
-      super(name, country,province,city,town,address);
+   public Office(String name, String address) {
+      super(name,address);
    }
 
    public Office() {

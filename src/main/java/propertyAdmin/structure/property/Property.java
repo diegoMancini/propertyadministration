@@ -24,6 +24,16 @@ public class Property {
    private String description;
    @Column(name = "IMAGE_LINK")
    private String imageLink;
+   @Column(name = "COUNTRY")
+   private String country; //Argentina
+   @Column(name = "PROVINCE")
+   private String province; //Buenos Aires
+   @Column(name = "CITY")
+   private String city; //Malvinas Argentinas
+   @Column(name = "TOWN")
+   private String town; //Grand Bourg
+   @Column(name = "ADDRESS")
+   private String address;
    @OneToMany(cascade = {CascadeType.ALL})
    private List<Services> services; //Luz, gas, tel
    @OneToMany(cascade = {CascadeType.ALL})
@@ -32,8 +42,6 @@ public class Property {
    private List<FunctionalUnit> functionalUnits;
    @OneToMany(cascade = {CascadeType.ALL})
    private List<Expenses> expenses;
-   @Column(name = "ADDRESS")
-   private String address;
    @Column(name = "VALUE")
    private String value;
    @Column(name = "IS_DELETED")
@@ -46,18 +54,20 @@ public class Property {
    public Property() {
    }
 
-   public Property(String name, String description, String address, String value) {
+   public Property(String name, String description,  String country, String province, String city, String town, String address) {
       this.name = name;
       this.description = description;
+      this.imageLink = "";
+      this.country = country;
+      this.province = province;
+      this.city = city;
+      this.town = town;
       this.address = address;
-      this.value = value;
-      functionalUnits = new ArrayList<>();
-      services = new ArrayList<>();
+      this.amountFunctionalUnits = 0;
+      this.amountOccupied = 0;
       taxes = new ArrayList<>();
-      isDeleted = false;
-      amountOccupied = 0;
-      amountFunctionalUnits = 0;
-      imageLink = "";
+      services = new ArrayList<>();
+      expenses = new ArrayList<>();
    }
 
    public Integer getOccupiedFunctionalUnits() {
@@ -205,11 +215,31 @@ public class Property {
         isDeleted = deleted;
     }
 
-    public void deleteFunctionalUnit(FunctionalUnit functionalUnit) {
-       functionalUnit.setDeleted(true);
-    }
+   public String getCountry() {
+      return country;
+   }
 
-    public List<Tenant> getTenantList() {
+   public String getProvince() {
+      return province;
+   }
+
+   public String getCity() {
+      return city;
+   }
+
+   public String getTown() {
+      return town;
+   }
+
+   public Integer getAmountFunctionalUnits() {
+      return amountFunctionalUnits;
+   }
+
+   public Integer getAmountOccupied() {
+      return amountOccupied;
+   }
+
+   public List<Tenant> getTenantList() {
         List<Tenant> result = null;
         if (getOccupiedFUList().size() == 0) {
             System.out.println("EMPTY");

@@ -1,4 +1,4 @@
-package propertyAdmin.web.servlets;
+package propertyAdmin.web.servlets.create;
 
 import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.property.Property;

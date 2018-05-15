@@ -22,18 +22,17 @@ public class NewAccountServlet extends HttpServlet {
         String identityNumber = req.getParameter("identityNumber"); //check
         String phoneNumber = req.getParameter("phoneNumber"); //idem
         String nationality = req.getParameter("nationality");
-        String addressCountry = req.getParameter("addressCountry");
-        String addressProvince = req.getParameter("addressProvince");
-        String addressCity = req.getParameter("addressCity");
-        String addressTown = req.getParameter("addressTown");
-        String address = req.getParameter("address");
-        String addressZipCode = req.getParameter("addressZipCode");
-        String username = req.getParameter("username");
+//        String addressCountry = req.getParameter("addressCountry");
+//        String addressProvince = req.getParameter("addressProvince");
+//        String addressCity = req.getParameter("addressCity");
+//        String addressTown = req.getParameter("addressTown");
+//        String address = req.getParameter("address");
+//        String addressZipCode = req.getParameter("addressZipCode");
+//        String username = req.getParameter("username");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        Account account = new Account(name, surname, identityNumber, nationality, address, addressCountry, addressProvince,
-                addressCity, addressTown, addressZipCode, phoneNumber, email.toLowerCase(), password, username);
+        Account account = new Account(name, surname, identityNumber, nationality, phoneNumber, email, password);
 
         String page = "";
         if(!databaseOps.hasAccount(email)){

@@ -192,375 +192,63 @@
 			<div class="row">
 				<!-- column -->
 				<div class="col-lg-12">
-					<%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());
-						Account account = DatabaseOps.getInstance().getAccount(request.getRemoteUser());
-					%>
-						<%if (propertyList.size() > 0) {%>
-						<%for (int i = 0;i < propertyList.size(); i++) {%>
-							<%String name = propertyList.get(i).getName();
-							Integer fu = propertyList.get(i).getFunctionalUnits().size();
-							String nameAcc = account.getFullName();
-							String addressAcc = account.getFullAddress();
-							request.setAttribute("Property", propertyList.get(i));
-							%>
+
 							<!-- Property Items -->
 							<div class="card">
-								<%--<!-- row -->--%>
-									<div class="row-lg-3">
-								<h4><button type="submit" class="btn btn-info waves-effect waves-light m-l-30 m-t-10 m-b-10" name="chosenProperty" id="chosenProperty" value="<%=i%>"><%=name%></button>
-								</h4>
-							</div>
-								<div class="row no-gutters">
-                                    <div class="col-md-3 m-l-20 m-b-15" style="background: url(<%=propertyList.get(i).getImageLink()%>)center center / cover no-repeat; min-height:250px;">
-                                    </div>
-                                    <!-- column -->
-									<div class="col-md-8">
-										<!-- Row -->
-										<div class="row no-gutters">
-											<!-- column -->
-											<%--<div class="col-md-3 border-right border-bottom">--%>
-												<%--<div class="p-40">--%>
-                                                    <%--<form action="/goToProperty" method="POST">--%>
-	                                                    <%--<input type="hidden" name="theProperty" value="<%=propertyList.get(i)%>">--%>
-                                                    <%--<button type="submit" class="btn btn-info waves-effect waves-light m-r-10" name="chosenProperty2" id="chosenProperty2" value="<%=i%>"><%=name%></button>--%>
-                                                    <%--</form>--%>
-													<%--<h5 class="text-success"> &#36;<%=propertyList.get(i).getValue()%></h5>--%>
-												<%--</div>--%>
-											<%--</div>--%>
-											<!-- column -->
-											<div class="col-md-6 border-bottom">
-												<div class="p-40">
-													<div class="d-flex no-block align-items-center">
-														<span><img src="assets/images/property/pro-garage.png"></span>
-														<span class="p-10"> Unidades funcionales</span>
-														<span class="badge badge-pill badge-secondary ml-auto"><%=fu%></span>
-													</div>
-													<div class="d-flex no-block align-items-center">
-														<span><img src="assets/images/property/pro-garage.png"></span>
-														<span class="p-10"> Unidades funcionales ocupadas</span>
-														<span class="badge badge-pill badge-secondary ml-auto"><%=propertyList.get(i).getOccupiedFunctionalUnits()%></span>
-													</div>
-												</div>
-											</div>
-                                            <div class="col-md-3 border-left border-bottom">
-                                                <div class="p-40">
-                                                    <div class="d-flex no-block align-items-center">
-                                                        <div class="button-box">
-                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10"> Nueva U.F.</span></button>
-                                                        </div>
-                                                        <div class="modal fade" id="newFU" tabindex="-1" role="dialog" aria-labelledby="newFULabel">
-                                                            <div class="modal-dialog " role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="newFULabel">Nueva U.F.</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form method="post" action="/addFunctionalUnit">
-                                                                            <input type="hidden" name="propertyIndex" value="<%=i%>">
-                                                                            <div class="form-group">
-                                                                                <label for="fuName" class="control-label">Nombre:</label>
-                                                                                <input type="text" class="form-control" id="fuName" name="fuName">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="fuAddress" class="control-label">Direccion:</label>
-                                                                                <input type="text" class="form-control" id="fuAddress" name="fuAddress">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="fuAddressTown" class="control-label">Localidad:</label>
-                                                                                <input type="text" class="form-control" id="fuAddressTown" name="fuAddressTown">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="fuAddressCity" class="control-label">Ciudad / Partido:</label>
-                                                                                <input type="text" class="form-control" id="fuAddressCity" name="fuAddressCity">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="fuAddressProvince" class="control-label">Provincia / Estado:</label>
-                                                                                <input type="text" class="form-control" id="fuAddressProvince" name="fuAddressProvince">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="fuAddressCountry" class="control-label">Pais:</label>
-                                                                                <input type="text" class="form-control" id="fuAddressCountry" name="fuAddressCountry">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="fuType">Tipo:</label>
-                                                                                <select name="fuType" class="form-control custom-select" id="fuType">
-                                                                                    <option value="0" disabled selected>--------</option>
-                                                                                    <option value="Vivienda">Vivienda</option>
-                                                                                    <option value="Oficina">Oficina</option>
-                                                                                    <option value="Local">Local Comercial</option>
-                                                                                    <option value="Garage">Garage</option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="submit" class="submit-btn btn-primary">Agregar</button>
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
+								<div class="card-body">
+									<h4 class="card-title">Contact Emplyee list</h4>
+									<h6 class="card-subtitle"></h6>
+									<div class="table-responsive">
+										<table id="demo-foo-addrow" class="table toggle-circle table-hover footable contact-list" data-page-size="5">
+											<thead>
+											<tr>
+												<th data-toggle="true">No</th>
+												<th>Nombre</th>
+												<th>Direccion</th>
+												<th>Valor</th>
+												<th data-hide="all">Unidades Funcionales</th>
+												<th data-hide="all">UF Ocupadas</th>
+												<th data-hide="all">UF Disponibles</th>
+											</tr>
+											</thead>
+											<tbody>
+											<%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());
+												if (propertyList.size() > 0) {%>
+											<%for (int i = 0;i < propertyList.size(); i++) {%>
+											<%
+												request.setAttribute("Property", propertyList.get(i));
+											%>
+											<tr>
+												<td><%=i%></td>
+												<td>
+													<form action="/goToProperty" method="post">
+														<img src="<%=propertyList.get(i).getImageLink()%>" alt="user" width="60" height="60" class="img-circle" />
+													<button type="submit" class="btn btn-info waves-effect waves-light m-r-20 m-b-5 m-l-15" name="chosenProperty" id="chosenProperty" value="<%=i%>"> <%=propertyList.get(i).getName()%></button>
+													</form>
+												</td>
 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.modal -->
-                                                    </div>
-                                                    <div class="d-flex no-block align-items-center">
-                                                        <div class="button-box">
-                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#fuTable" data-whatever="@fuTable"><span class="p-10 "> Lista U.F.</span></button>
-                                                        </div>
-                                                        <div class="modal fade" id="fuTable" tabindex="-1" role="dialog" aria-labelledby="fuTableLabel">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="fuTableLabel">Lista U.F.</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                            <div class="card">
-                                                                                <div class="card-body">
-                                                                                    <h4 class="card-title">Lista de Unidades Funcionales</h4>
-                                                                                    <table id="fu-toggler-table" class="table toggle-circle table-hover footable">
-                                                                                        <thead>
-                                                                                        <tr>
-                                                                                            <th data-toggle="true">Nombre</th>
-                                                                                            <th>Direccion</th>
-                                                                                            <th>Tipo</th>
-                                                                                            <th>Estado</th>
-                                                                                            <th>Precio</th>
-                                                                                            <th data-hide="all">Contrato</th>
-                                                                                            <th data-hide="all">Cliente</th>
-                                                                                            <th>Cuenta Corriente</th>
-                                                                                        </tr>
-                                                                                        </thead>
-                                                                                        <tbody>
-                                                                                        <%if (propertyList.get(i).getFunctionalUnits().size() > 0) {%>
-                                                                                        <%for (int j = 0; j < propertyList.get(i).getFunctionalUnits().size();j++) {%>
-                                                                                        <%
-                                                                                            String state = propertyList.get(i).getFunctionalUnits().get(j).getState();
-                                                                                            String client = "";
-                                                                                            Double price = 0.0;
-                                                                                            String contractName = "";
-                                                                                            if(state.equals("Ocupado")) {
-                                                                                                client += propertyList.get(i).getFunctionalUnits().get(j).getContract().getTenant().getFullName();
-                                                                                                price += propertyList.get(i).getFunctionalUnits().get(j).getContract().getPrice();
-                                                                                                contractName += propertyList.get(i).getFunctionalUnits().get(j).getContract().getName();
-                                                                                            } else {
-                                                                                                client += "------";
-                                                                                                contractName += "------";
-                                                                                            }
-                                                                                        %>
-                                                                                        <tr>
-                                                                                            <td><%=propertyList.get(i).getFunctionalUnits().get(j).getName()%></td>
-                                                                                            <td><%=propertyList.get(i).getFunctionalUnits().get(j).getCommercialAddress()%></td>
-                                                                                            <td><%=propertyList.get(i).getFunctionalUnits().get(j).getType()%></td>
-                                                                                            <%if (state.equals("Ocupado")){%>
-                                                                                            <td><span class="label label-danger"><%=state%></span> </td>
-                                                                                            <%} else {%>
-                                                                                            <td><span class="label label-success"><%=state%></span> </td>
-                                                                                            <%}%>
-                                                                                            <td>$<%=price%></td>
-                                                                                            <% if (propertyList.get(i).getFunctionalUnits().get(j).hasContract()) {%>
-                                                                                            <td><%=contractName%></td>
-                                                                                            <td><%=client%></td>
-                                                                                            <%} else {%>
-                                                                                            <td> ADD CONTRACT </td>
-                                                                                            <td> -----------</td>
-                                                                                            <%}%>
-                                                                                            <td>
-                                                                                                <button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago"><i class="ti-close" aria-hidden="true"></i></button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <%}%>
-                                                                                        <%}%>
-                                                                                        </tbody>
-                                                                                        <tfoot>
-                                                                                        <tr>
-                                                                                            <td colspan="5">
-                                                                                                <div class="text-right">
-                                                                                                    <ul class="pagination pagination-split m-t-30"> </ul>
-                                                                                                </div>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </tfoot>
-                                                                                    </table>
-                                                                                </div>
-                                                                            </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.modal -->
-                                                    </div>
-                                                    <div class="d-flex no-block align-items-center">
-                                                        <div class="button-box">
-                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#contractsTable" data-whatever="@contractsTable"><span class="p-10"> Lista de Contratos</span></button>
-                                                        </div>
-                                                        <div class="modal fade" id="contractsTable" tabindex="-1" role="dialog" aria-labelledby="contractsTableLabel">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="contractsTableLabel">Lista de Contratos</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form method="post" action="">
-                                                                            <div class="card">
-                                                                                <div class="card-body">
-                                                                                    <h4 class="card-title">Lista de Contratos</h4>
-                                                                                    <table id="contracts-toggler-table" class="table toggle-circle table-hover">
-                                                                                        <thead>
-                                                                                        <tr>
-                                                                                            <th data-toggle="true">Nombre</th>
-                                                                                            <th>Fecha inicio</th>
-                                                                                            <th>Fecha fin</th>
-                                                                                            <th>Precio</th>
-                                                                                            <th data-hide="all">Cliente</th>
-                                                                                        </tr>
-                                                                                        </thead>
-                                                                                        <tbody>
-
-                                                                                        <%if (propertyList.get(i).getOccupiedFunctionalUnits()> 0) {%>
-                                                                                        <%for (int k = 0; k < propertyList.get(i).getOccupiedFUList().size();k++) {%>
-                                                                                        <%
-                                                                                            String contractName = propertyList.get(i).getOccupiedFUList().get(k).getContract().getName();
-                                                                                            String startDate = propertyList.get(i).getOccupiedFUList().get(k).getContract().getContractDateStart().toString();
-                                                                                            String endDate = propertyList.get(i).getOccupiedFUList().get(k).getContract().getContractDateEnd().toString();
-                                                                                            Tenant tenant = propertyList.get(i).getOccupiedFUList().get(k).getContract().getTenant();
-                                                                                            Double price = propertyList.get(i).getOccupiedFUList().get(k).getContract().getPrice();
-                                                                                        %>
-                                                                                        <tr>
-                                                                                            <td><%=contractName%></td>
-                                                                                            <td><%=startDate%></td>
-                                                                                            <td><%=endDate%></td>
-                                                                                            <td>$<%=price%></td>
-                                                                                            <td><%=tenant.getName()%></td>
-                                                                                        </tr>
-                                                                                        <%}%>
-                                                                                        <%}%>
-                                                                                        </tbody>
-                                                                                        <tfoot>
-                                                                                        <tr>
-                                                                                            <td colspan="5">
-                                                                                                <div class="text-right">
-                                                                                                    <ul class="pagination pagination-split m-t-30"> </ul>
-                                                                                                </div>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </tfoot>
-                                                                                    </table>
-                                                                                </div>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.modal -->
-                                                    </div>
-                                                    <div class="d-flex no-block align-items-center">
-                                                        <div class="button-box">
-                                                            <button type="button" class="btn btn-info waves-effect waves-light m-r-10 m-b-5" data-toggle="modal" data-target="#clientsTable" data-whatever="@clientsTable"><span class="p-10 "> Lista de Clientes</span></button>
-                                                        </div>
-                                                        <div class="modal fade" id="clientsTable" tabindex="-1" role="dialog" aria-labelledby="clientsTableLabel">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h4 class="modal-title" id="clientsTableLabel">Lista de Clientes</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form method="post" action="">
-                                                                            <div class="card">
-                                                                                <div class="card-body">
-                                                                                    <h4 class="card-title">Lista de Clientes</h4>
-                                                                                    <table id="clients-toggler-table" class="table toggle-circle table-hover">
-                                                                                        <thead>
-                                                                                        <tr>
-                                                                                            <th>Nº</th>
-                                                                                            <th data-toggle="true">Nombre</th>
-                                                                                            <th>DNI</th>
-                                                                                            <th>Telefono</th>
-                                                                                            <th>Email</th>
-                                                                                            <th>Cuenta Corriente</th>
-                                                                                            <th data-hide="all">Nacionalidad</th>
-                                                                                            <th data-hide="all">Direccion</th>
-                                                                                            <th data-hide="all">Localidad</th>
-                                                                                            <th data-hide="all">Ciudad</th>
-                                                                                            <th data-hide="all">Provincia</th>
-                                                                                            <th data-hide="all">Pais</th>
-                                                                                            <th data-hide="all">Codigo Postal</th>
-                                                                                        </tr>
-                                                                                        </thead>
-                                                                                        <tbody>
-                                                                                        <%if (propertyList.get(i).getOccupiedFunctionalUnits() > 0) {%>
-                                                                                        <%for (int l = 0; l < propertyList.get(i).getTenantList().size();l++) {%>
-                                                                                        <%
-                                                                                            String tenantName = propertyList.get(i).getTenantList().get(l).getFullName();
-                                                                                            String tenantID = propertyList.get(i).getTenantList().get(l).getDni();
-                                                                                            String phone = propertyList.get(i).getTenantList().get(l).getPhone();
-                                                                                            String email = propertyList.get(i).getTenantList().get(l).getEmail();
-                                                                                            String tenantNationality = propertyList.get(i).getTenantList().get(l).getNationality();
-                                                                                            String[] addressList = {propertyList.get(i).getTenantList().get(l).getAddress(), propertyList.get(i).getTenantList().get(l).getAddressTown(), propertyList.get(i).getTenantList().get(l).getAddressCity(), propertyList.get(i).getTenantList().get(l).getAddressProvince(), propertyList.get(i).getTenantList().get(l).getAddressCountry(),propertyList.get(i).getTenantList().get(l).getAddressZipCode()};
-                                                                                        %>
-                                                                                        <tr>
-                                                                                            <td><%=l+1%></td>
-                                                                                            <td><%=tenantName%></td>
-                                                                                            <td><%=tenantID%></td>
-                                                                                            <td><%=phone%></td>
-                                                                                            <td><%=email%></td>
-                                                                                            <td><%=tenantNationality%></td>
-                                                                                            <td><%=addressList[0]%></td>
-                                                                                            <td><%=addressList[1]%></td>
-                                                                                            <td><%=addressList[2]%></td>
-                                                                                            <td><%=addressList[3]%></td>
-                                                                                            <td><%=addressList[4]%></td>
-                                                                                            <td><%=addressList[5]%></td>
-                                                                                        </tr>
-                                                                                        <%}%>
-                                                                                        <%}%>
-                                                                                        </tbody>
-                                                                                        <tfoot>
-                                                                                        <tr>
-                                                                                            <td colspan="5">
-                                                                                                <div class="text-right">
-                                                                                                    <ul class="pagination pagination-split m-t-30"> </ul>
-                                                                                                </div>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        </tfoot>
-                                                                                    </table>
-                                                                                </div>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.modal -->
-                                                    </div>
-                                                </div>
-                                            </div>
-											<!-- column -->
-											<div class="col-md-12">
-												<div class="p-20">
-													<div class="d-flex no-block align-items-center">
-														<a href="javascript:void(0)" class="m-r-10" ><img alt="img" class="thumb-md img-circle m-r-10" src="assets/images/users/default.jpg"></a>
-														<div>
-															<h5 class="card-title m-b-0"><%=nameAcc%></h5>
-														</div>
-														<div class="ml-auto text-muted text-right">
-															<i class="fa fa-map-marker text-danger m-r-10"></i> <%=addressAcc%>
-														</div>
+												<td><%=propertyList.get(i).getAddress()%></td>
+												<td><%=propertyList.get(i).getValue()%></td>
+												<td><%=propertyList.get(i).getFunctionalUnits().size()%></td>
+												<td><%=propertyList.get(i).getOccupiedFunctionalUnits()%></td>
+												<td><%=propertyList.get(i).getAvailableFunctionalUnits()%></td>
+											</tr>
+											</tbody>
+											<%}%>
+											<%}%>
+											<tfoot>
+											<tr>
+												<td colspan="7">
+													<div class="text-right">
+														<ul class="pagination"> </ul>
 													</div>
-												</div>
-											</div>
-											<!-- column -->
-										</div>
+												</td>
+											</tr>
+											</tfoot>
+										</table>
 									</div>
 								</div>
-							</div>
-					<%}%>
-					<%}%>
+									</div>
 				</div>
 			</div>
 			<!-- /row -->
@@ -673,16 +361,6 @@
 <script src="assets/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
 <!-- Popup message jquery -->
 <script src="assets/node_modules/toast-master/js/jquery.toast.js"></script>
-<script>
-    jQuery(function($){
-    $("#fu-toggler-table").footable();
-    });
-    jQuery(function($){
-    $("#contracts-toggler-table").footable();
-    });
-    jQuery(function($){
-    $("#clients-toggler-table").footable();
-    });
-</script>
+
 </body>
 </html>

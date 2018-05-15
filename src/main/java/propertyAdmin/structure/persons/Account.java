@@ -68,6 +68,16 @@ public class   Account {
    public Account() {
    }
 
+   public Account(String name, String surname, String id, String nationality, String phone, String email, String password) {
+      this.name = name;
+      this.surname = surname;
+      this.id = id;
+      this.nationality = nationality;
+      this.phone = phone;
+      this.email = email;
+      this.password = password;
+   }
+
    public String getName() {
       return name;
    }

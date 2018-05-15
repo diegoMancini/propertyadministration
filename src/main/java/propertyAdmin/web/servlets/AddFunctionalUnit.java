@@ -47,7 +47,7 @@ public class AddFunctionalUnit extends HttpServlet {
             break;
       }
       DatabaseOps.getInstance().addFunctionalUnitToDatabase(req.getRemoteUser(), result , functionalUnit);
-      resp.sendRedirect("properties.jsp");
+      resp.sendRedirect("specificProperty.jsp");
    }
 
 }

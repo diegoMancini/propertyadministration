@@ -39,7 +39,7 @@
 
     <!-- make the session time-out after one minute -->
     <session-config>
-        <session-timeout>1000</session-timeout>
+        <session-timeout>5</session-timeout>
     </session-config>
 
     <welcome-file-list>

@@ -65,20 +65,10 @@ public abstract class FunctionalUnit {
         type = getType();
     }
 
-    public FunctionalUnit(String name, String country, String province, String city, String town, String address, Integer bathroomsAmount, String phone, String businessType,
-                          String kitchenFurniture, String bedroomFurniture, String bathFurniture) {
+    public FunctionalUnit(String name, String address, String businessType) {
         this.name = name;
         this.address = address;
-        this.country = country;
-        this.province = province;
-        this.city = city;
-        this.town = town;
-        this.bathroomsAmount = bathroomsAmount;
-        this.phone = phone;
         this.businessType = businessType;
-        this.kitchenFurniture = kitchenFurniture;
-        this.bedroomFurniture = bedroomFurniture;
-        this.bathFurniture = bathFurniture;
         contract = null;
         type = getType();
     }

@@ -209,10 +209,10 @@ public class DatabaseOps {
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
         Account account = session.get(Account.class, email);
-        FunctionalUnit functionalUnit1 = account.getSpecificPropertyById(property.getId()).getSpecificFunctionalUnitById(functionalUnit.getId());
-        functionalUnit1.setContract(contract);
+//        FunctionalUnit functionalUnit1 = account.getSpecificPropertyById(property.getId()).getSpecificFunctionalUnitById(functionalUnit.getId());
+        functionalUnit.setContract(contract);
         session.saveOrUpdate(contract);
-        session.saveOrUpdate(contract.getLandlord());
+//        session.saveOrUpdate(contract.getLandlord());
         session.saveOrUpdate(contract.getTenant());
         session.saveOrUpdate(contract.getGuarantor());
         transaction.commit();

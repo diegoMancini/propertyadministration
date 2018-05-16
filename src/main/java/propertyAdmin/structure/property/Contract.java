@@ -1,5 +1,8 @@
 package propertyAdmin.structure.property;
 
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import propertyAdmin.structure.persons.Guarantor;
 import propertyAdmin.structure.persons.Landlord;
 import propertyAdmin.structure.persons.Tenant;
@@ -18,12 +21,15 @@ public class Contract {
     private Integer id;
     @Column(name = "NAME")
     private String name;
-    @Temporal(TemporalType.DATE)
-    private Date dateIssued; //29/09/2017
-    @Temporal(TemporalType.DATE)
-    private Date contractDateStart;
-    @Temporal(TemporalType.DATE)
-    private Date contractDateEnd;
+    @Column(name = "ISSUED_DATE")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private LocalDateTime dateIssued; //29/09/2017
+    @Column(name = "START_DATE")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private LocalDateTime contractDateStart;
+    @Column(name = "END_DATE")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private LocalDateTime contractDateEnd;
     @ManyToOne(cascade = {CascadeType.ALL})
     private Landlord owner; //Gabriela Fernanda Bello
     @ManyToOne(cascade = {CascadeType.ALL})
@@ -31,16 +37,20 @@ public class Contract {
     @ManyToOne(cascade = {CascadeType.ALL})
     private Guarantor guarantor;
     @Column(name = "PRICE")
-    private Double price;
+    private Integer price;
+    @Column(name = "INFLATION_MONTHS_PERIOD")
+    private Integer inflationMonthsPeriod;
+    @Column(name = "INFLATION_RATE")
+    private Integer inflationRate;
     @Column(name = "DAILY_INTEREST_FOR_DELAYED_PAYMENT")
-    private Double dailyInterestForDelayedPayment;
+    private Integer dailyInterestForDelayedPayment;
 
     public Contract() {
     }
 
     public Contract(String name,
-                    Date dateIssued, Date contractDateStart, Date contractDateEnd, Landlord owner,
-                    Tenant tenant, Guarantor guarantor, Double price, Double dailyInterestForDelayedPayment) {
+                    LocalDateTime dateIssued, LocalDateTime contractDateStart, LocalDateTime contractDateEnd, Landlord owner,
+                    Tenant tenant, Guarantor guarantor, Integer price, Integer dailyInterestForDelayedPayment) {
         this.name = name;
         this.dateIssued = dateIssued;
         this.contractDateStart = contractDateStart;
@@ -52,7 +62,7 @@ public class Contract {
         this.dailyInterestForDelayedPayment = dailyInterestForDelayedPayment;
     }
 
-    public Contract(String name, Date contractDateStart, Date contractDateEnd, Tenant tenant, Guarantor guarantor, Double price, Double dailyInterestForDelayedPayment) {
+    public Contract(String name, LocalDateTime contractDateStart, LocalDateTime contractDateEnd, Tenant tenant, Guarantor guarantor, Integer price, Integer inflationMonthsPeriod, Integer inflationRate) {
         this.name = name;
         this.owner = null;
         this.contractDateStart = contractDateStart;
@@ -60,7 +70,8 @@ public class Contract {
         this.tenant = tenant;
         this.guarantor = guarantor;
         this.price = price;
-        this.dailyInterestForDelayedPayment = dailyInterestForDelayedPayment;
+        this.inflationMonthsPeriod = inflationMonthsPeriod;
+        this.inflationRate = inflationRate;
     }
 
     public String getName() {
@@ -71,15 +82,15 @@ public class Contract {
         return id;
     }
 
-    public Date getDateIssued() {
+    public LocalDateTime getDateIssued() {
         return dateIssued;
     }
 
-    public Date getContractDateStart() {
+    public LocalDateTime getContractDateStart() {
         return contractDateStart;
     }
 
-    public Date getContractDateEnd() {
+    public LocalDateTime getContractDateEnd() {
         return contractDateEnd;
     }
 
@@ -95,11 +106,19 @@ public class Contract {
         return guarantor;
     }
 
-    public Double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public Double getDailyInterestForDelayedPayment() {
+    public Integer getInflationMonthsPeriod() {
+        return inflationMonthsPeriod;
+    }
+
+    public Integer getInflationRate() {
+        return inflationRate;
+    }
+
+    public Integer getDailyInterestForDelayedPayment() {
         return dailyInterestForDelayedPayment;
     }
 

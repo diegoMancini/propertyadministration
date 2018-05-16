@@ -28,7 +28,6 @@
           <element id="library" level="project" name="Gradle: org.postgresql:postgresql:42.2.2" />
           <element id="library" level="project" name="Gradle: org.hibernate:hibernate-core:5.2.15.Final" />
           <element id="library" level="project" name="Gradle: com.google.cloud:google-cloud-core:1.28.0" />
-          <element id="library" level="project" name="Gradle: joda-time:joda-time:2.9.2" />
           <element id="library" level="project" name="Gradle: com.google.apis:google-api-services-storage:v1-rev114-1.23.0" />
           <element id="library" level="project" name="Gradle: com.google.oauth-client:google-oauth-client-java6:1.23.0" />
           <element id="library" level="project" name="Gradle: com.google.oauth-client:google-oauth-client:1.23.0" />
@@ -78,6 +77,13 @@
           <element id="library" level="project" name="Gradle: org.codehaus.jackson:jackson-core-asl:1.9.11" />
           <element id="library" level="project" name="Gradle: com.google.errorprone:error_prone_annotations:2.2.0" />
           <element id="library" level="project" name="Gradle: io.grpc:grpc-context:1.9.0" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/jstl/jstl/1.2/74aca283cd4f4b4f3e425f5820cda58f44409547/jstl-1.2.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.9.9/f7b520c458572890807d143670c9b24f4de90897/joda-time-2.9.9.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jadira.usertype/usertype.core/7.0.0.CR1/818991d0b4d8fce6da9f27ea61187111efcae1a1/usertype.core-7.0.0.CR1.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.mail/mail/1.4/1aa1579ae5ecd41920c4f355b0a9ef40b68315dd/mail-1.4.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jadira.usertype/usertype.spi/7.0.0.CR1/895f79b8a1c33f2e17ebc839f80ecaf62924e784/usertype.spi-7.0.0.CR1.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.activation/activation/1.1/e6cb541461c2834bdea3eb920f1884d1eb508b50/activation-1.1.jar" />
         </element>
       </element>
     </root>

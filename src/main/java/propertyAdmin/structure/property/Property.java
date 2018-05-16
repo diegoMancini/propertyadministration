@@ -279,4 +279,8 @@ public class Property {
     public String getFullAddress() {
         return address + ", " + town + ", " + city + ", " + province  + ", " + country;
     }
+
+    public FunctionalUnit getSpecificFunctionalUnitByIndex(Integer chosenFunctionalUnit) {
+        return functionalUnits.get(chosenFunctionalUnit);
+    }
 }

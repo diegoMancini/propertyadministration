@@ -33,7 +33,7 @@ public class Tenant {
     private String addressZipCode;
     @Column (name = "ADDRESS_PHONE")
     private String phone;
-    @Column(name = "EMAIL", unique = true)
+    @Column(name = "EMAIL")
     private String email;
     @OneToOne(cascade = CascadeType.ALL)
     private FunctionalUnit functionalUnit;

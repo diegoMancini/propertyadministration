@@ -263,69 +263,70 @@
 					</div>
 					<div class="card">
 						<div class="card-body">
-							<h4 class="card-title">Lista de Unidades Funcionales </h4>
-							<table id="fu-toggler-table" class="table toggle-circle table-hover footable">
-								<thead>
-								<tr>
-									<th data-toggle="true">Nombre</th>
-									<th>Direccion</th>
-									<th>Tipo</th>
-                                    <th>Estado</th>
-									<th>Cuenta Corriente</th>
-									<th data-hide="all">Contrato</th>
-									<th data-hide="all">Cliente</th>
-								</tr>
-								</thead>
-                                <div class="m-t-40">
-                                    <div class="d-flex">
-                                        <div class="mr-auto">
-                                            <div class="button-box">
-                                                <button type="button" class="btn btn-info waves-effect waves-light m-r-20 m-b-15 m-l-15" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10"> Nueva U.F.</span></button>
-                                            </div>
-                                            <div class="modal fade" id="newFU" tabindex="-1" role="dialog" aria-labelledby="newFULabel">
-                                                <div class="modal-dialog " role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="newFULabel">Nueva U.F.</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form method="post" action="addFunctionalUnit">
-                                                                <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
-                                                                <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
-                                                                <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control" id="fuName" name="fuName" placeholder="Nombre...">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control" id="fuAddress" name="fuAddress" placeholder="Direccion...">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <select name="fuType" class="form-control custom-select" id="fuType">
-                                                                        <option value="0" disabled selected>Tipo de Unidad Funcional</option>
-                                                                        <option value="Vivienda">Vivienda</option>
-                                                                        <option value="Oficina">Oficina</option>
-                                                                        <option value="Local">Local Comercial</option>
-                                                                        <option value="Garage">Garage</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="submit-btn btn-primary">Agregar</button>
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                            </form>
+                            <div class="row">
+                                <div class="col-md-10">
+							        <h4 class="card-title">Lista de Unidades Funcionales </h4>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="m-t-40">
+                                        <div class="d-flex">
+                                            <div class="mr-auto">
+                                                <div class="button-box">
+                                                    <button type="button" class="btn btn-info waves-effect waves-light m-r-20 m-b-15 m-l-15" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10"> Nueva U.F.</span></button>
+                                                </div>
+                                                <div class="modal fade" id="newFU" tabindex="-1" role="dialog" aria-labelledby="newFULabel">
+                                                    <div class="modal-dialog " role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="newFULabel">Nueva U.F.</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form method="post" action="addFunctionalUnit">
+                                                                    <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
+                                                                    <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
+                                                                    <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control" id="fuName" name="fuName" placeholder="Nombre...">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control" id="fuAddress" name="fuAddress" placeholder="Direccion...">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select name="fuType" class="form-control custom-select" id="fuType">
+                                                                            <option value="0" disabled selected>Tipo de Unidad Funcional</option>
+                                                                            <option value="Vivienda">Vivienda</option>
+                                                                            <option value="Oficina">Oficina</option>
+                                                                            <option value="Local">Local Comercial</option>
+                                                                            <option value="Garage">Garage</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit" class="submit-btn btn-primary">Agregar</button>
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="ml-auto">
-                                            <div class="form-group">
-                                                <input id="demo-input-search2" type="text" placeholder="Buscar..." autocomplete="off">
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
+                            </div>
+							<table id="fu-toggler-table" class="table toggle-circle table-hover footable">
+								<thead>
+								<tr>
+									<th>Nombre</th>
+									<th>Direccion</th>
+									<th>Tipo</th>
+                                    <th>Estado</th>
+									<th>Cuenta Corriente</th>
+									<th>Contrato</th>
+									<th>Cliente</th>
+								</tr>
+								</thead>
 								<tbody>
 								<%if (property.getFunctionalUnits().size() > 0) {
 									for (int j = 0; j < property.getFunctionalUnits().size();j++) {
@@ -369,19 +370,20 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <form action="addContract" method="post" id="addContract">
-                                                                <input type="hidden" name="accountUsername" value="<%=request.getAttribute("username")%>">
-                                                                <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
+                                                                <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
                                                                 <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+                                                                <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
+                                                                <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
                                                                 <h4>Datos Contrato</h4>
                                                                 <div class="row">
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <input type="text" class="form-control" id="fcontractName" name="contractName" placeholder="Nombre...">
+                                                                            <input type="text" class="form-control" id="contractName" name="contractName" placeholder="Nombre...">
                                                                         </div>
                                                                     </div>
                                                                         <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <input type="text" class="form-control" id="contractPrice" name="contractAddress" placeholder="Precio...">
+                                                                            <input type="number" class="form-control" id="contractPrice" name="contractPrice" placeholder="Precio...">
                                                                         </div>
                                                                         </div>
                                                                     </div>
@@ -400,12 +402,12 @@
                                                                 <div class="row">
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <input type="datetime-local" class="form-control" id="contractStartDate" name="contractStartDate" placeholder="Fecha inicio...">
+                                                                            <input type="date" class="form-control" id="contractStartDate" name="contractStartDate" placeholder="Fecha inicio...">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                     <div class="form-group">
-                                                                            <input type="datetime-local" class="form-control" id="contractEndDate" name="contractEndDate" placeholder="contractEndDate">
+                                                                            <input type="date" class="form-control" id="contractEndDate" name="contractEndDate" placeholder="contractEndDate">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -435,13 +437,30 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <input type="text" class="form-control" name="tenantEMail" id="tenantEmail" placeholder="Correo Electronico...">
+                                                                            <input type="text" class="form-control" name="tenantEmail" id="tenantEmail" placeholder="Correo Electronico...">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <h4>Datos Garante</h4>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="guarantorName" id="guarantorName" placeholder="Nombre del garante...">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="guarantorId" id="guarantorId" placeholder="DNI del garante...">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="guarantorPhone" id="guarantorPhone" placeholder="Telefono del garante...">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="submit" class="submit-btn btn-primary">Agregar</button>
+                                                                    <button type="submit" name="chosenFunctionalUnit" value="<%=j%>" class="submit-btn btn-primary">Agregar</button>
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                                 </div>
                                                             </form>
@@ -495,7 +514,7 @@
                                     <div class="d-flex">
                                         <div class="ml-auto">
                                             <div class="form-group">
-                                                <input id="demo-foo-search" type="text" placeholder="Buscar..." autocomplete="off">
+                                                <input id="demo-input-search2" type="text" placeholder="Buscar..." autocomplete="off">
                                             </div>
                                         </div>
                                     </div>
@@ -690,17 +709,6 @@
     });
     jQuery(function($){
         $("#clients-toggler-table").footable();
-    });
-    jQuery(function ($) {
-        $('#demo-input-search2').on('input', function (e) {
-            e.preventDefault();
-            addrow.trigger('footable_filter', {filter: $(this).val()});});
-    });
-    jQuery(function ($) {
-        $('#demo-foo-search').on('input', function (e) {
-            e.preventDefault();
-            filtering.trigger('footable_filter', {filter: $(this).val()});
-        });
     });
 </script>
 </body>

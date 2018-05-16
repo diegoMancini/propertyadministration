@@ -53,8 +53,8 @@ public class Test {
                   System.out.println(endDate);
                   Tenant tenant = propertyList.get(i).getOccupiedFUList().get(k).getContract().getTenant();
                   System.out.println(tenant.getName());
-                  Double price = propertyList.get(i).getOccupiedFUList().get(k).getContract().getPrice();
-                  System.out.println(price);
+//                  Double price = propertyList.get(i).getOccupiedFUList().get(k).getContract().getPrice();
+//                  System.out.println(price);
                }
             }
             if (propertyList.get(i).getOccupiedFunctionalUnits() > 0) {

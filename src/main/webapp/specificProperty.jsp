@@ -318,13 +318,13 @@
 							<table id="fu-toggler-table" class="table toggle-circle table-hover footable">
 								<thead>
 								<tr>
-									<th>Nombre</th>
+									<th data-toggle="true">Nombre</th>
 									<th>Direccion</th>
 									<th>Tipo</th>
                                     <th>Estado</th>
 									<th>Cuenta Corriente</th>
-									<th>Contrato</th>
-									<th>Cliente</th>
+									<th data-hide="all">Contrato</th>
+									<th data-hide="all">Cliente</th>
 								</tr>
 								</thead>
 								<tbody>

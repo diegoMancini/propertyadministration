@@ -1,5 +1,7 @@
 package propertyAdmin.web.servlets.create;
 
+import propertyAdmin.operations.DatabaseOps;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +11,10 @@ import java.io.IOException;
 
 @WebServlet(name = "NewContractServlet", value = "/newContract")
 public class NewContractServlet extends HttpServlet {
-   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    private DatabaseOps databaseOps = DatabaseOps.getInstance();
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
    }
 

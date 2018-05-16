@@ -14,6 +14,7 @@ import java.util.List;
 
 @WebServlet(name = "HomeServlet", value = "/homeServlet")
 public class HomeServlet extends HttpServlet {
+
    private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

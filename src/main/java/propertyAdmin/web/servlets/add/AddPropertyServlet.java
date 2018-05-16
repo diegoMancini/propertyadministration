@@ -12,6 +12,7 @@ import java.io.IOException;
 
 @WebServlet(name = "AddPropertyServlet", value = "/addProperty")
 public class AddPropertyServlet extends HttpServlet {
+
    private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

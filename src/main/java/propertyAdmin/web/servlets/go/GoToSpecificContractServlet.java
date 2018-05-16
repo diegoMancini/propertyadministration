@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "GoToClientsServlet", value = "/goToClients")
-public class GoToClientsServlet extends HttpServlet {
+@WebServlet(name = "GoToSpecificContractServlet", value = "/goToSpecificContract")
+public class GoToSpecificContractServlet extends HttpServlet {
 
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-   }
+    }
 
-   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-   }
+    }
 }

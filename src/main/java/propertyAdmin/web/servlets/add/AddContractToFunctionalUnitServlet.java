@@ -30,7 +30,6 @@ public class AddContractToFunctionalUnitServlet extends HttpServlet {
        req.setAttribute("chosenProperty", chosenProperty);
        req.setAttribute("property", property);
        req.setAttribute("propertyName", property.getName());
-       String contractName = req.getParameter("contractName");
        Integer contractPrice = Integer.valueOf(req.getParameter("contractPrice"));
        Integer contractMonthsInflationPeriod = Integer.valueOf(req.getParameter("contractInflationMonths"));
        Integer contractInflationRate= Integer.valueOf(req.getParameter("contractInflationRate"));
@@ -47,6 +46,7 @@ public class AddContractToFunctionalUnitServlet extends HttpServlet {
        String guarantorId = req.getParameter("guarantorPhone");
        Tenant tenant = new Tenant(tenantName, tenantSurname, tenantId, tenantPhone, tenantEmail);
        Guarantor guarantor = new Guarantor(guarantorName, guarantorPhone, guarantorId);
+       String contractName = "Contrato -  " + tenantName + ", " + functionalUnit.getName();
        Contract contract = new Contract(contractName, contractStartDate, contractEndDate, tenant, guarantor, contractPrice, contractMonthsInflationPeriod, contractInflationRate);
 
        databaseOps.addContractToFunctionalUnitToDatabase(accountUsername, property, functionalUnit, contract);

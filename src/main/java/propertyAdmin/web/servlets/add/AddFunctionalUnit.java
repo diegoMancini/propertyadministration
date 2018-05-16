@@ -17,7 +17,10 @@ import java.io.IOException;
 
 @WebServlet(name="addFunctionalUnit", value = "/addFunctionalUnit")
 public class AddFunctionalUnit extends HttpServlet {
-   @Override
+
+    private DatabaseOps databaseOps = DatabaseOps.getInstance();
+
+    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
        String accountUsername = req.getParameter("account");
@@ -30,7 +33,7 @@ public class AddFunctionalUnit extends HttpServlet {
        req.setAttribute("property", property);
        req.setAttribute("propertyName", property.getName());
 
-      Property result = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
+      Property result = databaseOps.getProperty(chosenProperty, req.getRemoteUser());
       FunctionalUnit functionalUnit = null;
       switch (type) {
          case "Vivienda" :

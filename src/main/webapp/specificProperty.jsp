@@ -267,53 +267,6 @@
                                 <div class="col-md-10">
 							        <h4 class="card-title">Lista de Unidades Funcionales </h4>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="m-t-40">
-                                        <div class="d-flex">
-                                            <div class="mr-auto">
-                                                <div class="button-box">
-                                                    <button type="button" class="btn btn-info waves-effect waves-light m-r-20 m-b-15 m-l-15" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10"> Nueva U.F.</span></button>
-                                                </div>
-                                                <div class="modal fade" id="newFU" tabindex="-1" role="dialog" aria-labelledby="newFULabel">
-                                                    <div class="modal-dialog " role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title" id="newFULabel">Nueva U.F.</h4>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form method="post" action="addFunctionalUnit">
-                                                                    <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
-                                                                    <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
-                                                                    <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control" id="fuName" name="fuName" placeholder="Nombre...">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control" id="fuAddress" name="fuAddress" placeholder="Direccion...">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <select name="fuType" class="form-control custom-select" id="fuType">
-                                                                            <option value="0" disabled selected>Tipo de Unidad Funcional</option>
-                                                                            <option value="Vivienda">Vivienda</option>
-                                                                            <option value="Oficina">Oficina</option>
-                                                                            <option value="Local">Local Comercial</option>
-                                                                            <option value="Garage">Garage</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="submit" class="submit-btn btn-primary">Agregar</button>
-                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 							<table id="fu-toggler-table" class="table toggle-circle table-hover footable">
 								<thead>
@@ -327,6 +280,56 @@
 									<th data-hide="all">Cliente</th>
 								</tr>
 								</thead>
+                                <div class="m-t-40">
+                                    <div class="d-flex">
+                                        <div class="mr-auto">
+                                            <div class="button-box">
+                                                <button type="button" class="btn btn-info waves-effect waves-light m-r-20 m-b-15 m-l-15" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10"> Nueva U.F.</span></button>
+                                            </div>
+                                            <div class="modal fade" id="newFU" tabindex="-1" role="dialog" aria-labelledby="newFULabel">
+                                                <div class="modal-dialog " role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="newFULabel">Nueva U.F.</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post" action="addFunctionalUnit">
+                                                                <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
+                                                                <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
+                                                                <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" id="fuName" name="fuName" placeholder="Nombre...">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" id="fuAddress" name="fuAddress" placeholder="Direccion...">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <select name="fuType" class="form-control custom-select" id="fuType">
+                                                                        <option value="0" disabled selected>Tipo de Unidad Funcional</option>
+                                                                        <option value="Vivienda">Vivienda</option>
+                                                                        <option value="Oficina">Oficina</option>
+                                                                        <option value="Local">Local Comercial</option>
+                                                                        <option value="Garage">Garage</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="submit-btn btn-primary">Agregar</button>
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <div class="form-group">
+                                                <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 								<tbody>
 								<%if (property.getFunctionalUnits().size() > 0) {
 									for (int j = 0; j < property.getFunctionalUnits().size();j++) {
@@ -354,8 +357,16 @@
                                         <button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago"><i class="ti-home" aria-hidden="true"></i></button>
                                     </td>
 									<%if (property.getFunctionalUnits().get(j).getContract() != null) {%>
-									<td><%=contractName%></td>
-									<td><%=client%></td>
+									<td>
+                                            <form action="goToSpecificContract" method="post" id="goToSpecificContract">
+                                                <a onclick="goToSpecificContract.submit()" class="waves-effect waves-orange" href=""><%=contractName%></a>
+                                            </form>
+                                    </td>
+                                    <td>
+                                            <form action="goToSpecificClient" method="post" id="goToSpecificClient">
+                                                <a onclick="goToSpecificClient.submit()" class="waves-effect waves-orange" href=""><%=client%></a>
+                                            </form>
+									</td>
 									<%} else {%>
                                     <td>
                                             <div class="button-box">
@@ -376,26 +387,21 @@
                                                                 <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
                                                                 <h4>Datos Contrato</h4>
                                                                 <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" id="contractName" name="contractName" placeholder="Nombre...">
-                                                                        </div>
-                                                                    </div>
                                                                         <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <input type="number" class="form-control" id="contractPrice" name="contractPrice" placeholder="Precio...">
+                                                                            <input type="number" class="form-control" id="contractPrice" name="contractPrice" step=".01" placeholder="Precio...">
                                                                         </div>
                                                                         </div>
                                                                     </div>
                                                                 <div class="row">
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
-                                                                            <input type="number" class="form-control" id="contractInflationMonths" name="contractInflationMonths" placeholder="Cada cuantos meses se aplica la tasa de inflacion... ">
+                                                                            <input type="number" class="form-control" id="contractInflationMonths" name="contractInflationMonths" step=".01" placeholder="Cada cuantos meses se aplica la tasa de inflacion... ">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                     <div class="form-group">
-                                                                            <input type="number" class="form-control" id="contractInflationRate" name="contractInflationRate" placeholder="Porcentaje que se aumenta de inflacion... ">
+                                                                            <input type="number" class="form-control" id="contractInflationRate" name="contractInflationRate" step=".01" placeholder="Porcentaje que se aumenta de inflacion... ">
                                                                         </div>
                                                                     </div>
                                                                     </div>
@@ -471,7 +477,7 @@
 
                                         </form>
                                     </td>
-									<td> ---------</td>
+									<td> --------- </td>
 									<%}%>
 								</tr>
 								<%}%>
@@ -489,76 +495,76 @@
 							</table>
 						</div>
 					</div>
-					<div class="card">
-						<div class="card-body">
-							<h4 class="card-title">Lista de Clientes</h4>
-							<table id="clients-toggler-table" class="table toggle-circle table-hover">
-								<thead>
-								<tr>
-									<th>Nº</th>
-									<th data-toggle="true">Nombre</th>
-									<th>DNI</th>
-									<th>Telefono</th>
-									<th>Email</th>
-									<th>Cuenta Corriente</th>
-									<th data-hide="all">Nacionalidad</th>
-									<th data-hide="all">Direccion</th>
-									<th data-hide="all">Localidad</th>
-									<th data-hide="all">Ciudad</th>
-									<th data-hide="all">Provincia</th>
-									<th data-hide="all">Pais</th>
-									<th data-hide="all">Codigo Postal</th>
-								</tr>
-								</thead>
-                                <div class="m-t-40">
-                                    <div class="d-flex">
-                                        <div class="ml-auto">
-                                            <div class="form-group">
-                                                <input id="demo-input-search2" type="text" placeholder="Buscar..." autocomplete="off">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-								<tbody>
-								<%if (property.getOccupiedFunctionalUnits() > 0) {%>
-								<%for (int l = 0; l < property.getTenantList().size();l++) {%>
-								<%
-									String tenantName = property.getTenantList().get(l).getFullName();
-									String tenantID = property.getTenantList().get(l).getDni();
-									String phone = property.getTenantList().get(l).getPhone();
-									String email = property.getTenantList().get(l).getEmail();
-									String tenantNationality = property.getTenantList().get(l).getNationality();
-									String[] addressList = {property.getTenantList().get(l).getAddress(), property.getTenantList().get(l).getAddressTown(), property.getTenantList().get(l).getAddressCity(), property.getTenantList().get(l).getAddressProvince(), property.getTenantList().get(l).getAddressCountry(),property.getTenantList().get(l).getAddressZipCode()};
-								%>
-								<tr>
-									<td><%=l+1%></td>
-									<td><%=tenantName%></td>
-									<td><%=tenantID%></td>
-									<td><%=phone%></td>
-									<td><%=email%></td>
-									<td><%=tenantNationality%></td>
-									<td><%=addressList[0]%></td>
-									<td><%=addressList[1]%></td>
-									<td><%=addressList[2]%></td>
-									<td><%=addressList[3]%></td>
-									<td><%=addressList[4]%></td>
-									<td><%=addressList[5]%></td>
-								</tr>
-								<%}%>
-								<%}%>
-								</tbody>
-								<tfoot>
-								<tr>
-									<td colspan="5">
-										<div class="text-right">
-											<ul class="pagination pagination-split m-t-30"> </ul>
-										</div>
-									</td>
-								</tr>
-								</tfoot>
-							</table>
-						</div>
-					</div>
+					<%--<div class="card">--%>
+						<%--<div class="card-body">--%>
+							<%--<h4 class="card-title">Lista de Clientes</h4>--%>
+							<%--<table id="clients-toggler-table" class="table toggle-circle table-hover">--%>
+								<%--<thead>--%>
+								<%--<tr>--%>
+									<%--<th>Nº</th>--%>
+									<%--<th data-toggle="true">Nombre</th>--%>
+									<%--<th>DNI</th>--%>
+									<%--<th>Telefono</th>--%>
+									<%--<th>Email</th>--%>
+									<%--<th>Cuenta Corriente</th>--%>
+									<%--<th data-hide="all">Nacionalidad</th>--%>
+									<%--<th data-hide="all">Direccion</th>--%>
+									<%--<th data-hide="all">Localidad</th>--%>
+									<%--<th data-hide="all">Ciudad</th>--%>
+									<%--<th data-hide="all">Provincia</th>--%>
+									<%--<th data-hide="all">Pais</th>--%>
+									<%--<th data-hide="all">Codigo Postal</th>--%>
+								<%--</tr>--%>
+								<%--</thead>--%>
+                                <%--<div class="m-t-40">--%>
+                                    <%--<div class="d-flex">--%>
+                                        <%--<div class="ml-auto">--%>
+                                            <%--<div class="form-group">--%>
+                                                <%--<input id="demo-input-search2" type="text" placeholder="Buscar..." autocomplete="off">--%>
+                                            <%--</div>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+								<%--<tbody>--%>
+								<%--<%if (property.getOccupiedFunctionalUnits() > 0) {%>--%>
+								<%--<%for (int l = 0; l < property.getTenantList().size();l++) {%>--%>
+								<%--<%--%>
+									<%--String tenantName = property.getTenantList().get(l).getFullName();--%>
+									<%--String tenantID = property.getTenantList().get(l).getDni();--%>
+									<%--String phone = property.getTenantList().get(l).getPhone();--%>
+									<%--String email = property.getTenantList().get(l).getEmail();--%>
+									<%--String tenantNationality = property.getTenantList().get(l).getNationality();--%>
+									<%--String[] addressList = {property.getTenantList().get(l).getAddress(), property.getTenantList().get(l).getAddressTown(), property.getTenantList().get(l).getAddressCity(), property.getTenantList().get(l).getAddressProvince(), property.getTenantList().get(l).getAddressCountry(),property.getTenantList().get(l).getAddressZipCode()};--%>
+								<%--%>--%>
+								<%--<tr>--%>
+									<%--<td><%=l+1%></td>--%>
+									<%--<td><%=tenantName%></td>--%>
+									<%--<td><%=tenantID%></td>--%>
+									<%--<td><%=phone%></td>--%>
+									<%--<td><%=email%></td>--%>
+									<%--<td><%=tenantNationality%></td>--%>
+									<%--<td><%=addressList[0]%></td>--%>
+									<%--<td><%=addressList[1]%></td>--%>
+									<%--<td><%=addressList[2]%></td>--%>
+									<%--<td><%=addressList[3]%></td>--%>
+									<%--<td><%=addressList[4]%></td>--%>
+									<%--<td><%=addressList[5]%></td>--%>
+								<%--</tr>--%>
+								<%--<%}%>--%>
+								<%--<%}%>--%>
+								<%--</tbody>--%>
+								<%--<tfoot>--%>
+								<%--<tr>--%>
+									<%--<td colspan="5">--%>
+										<%--<div class="text-right">--%>
+											<%--<ul class="pagination pagination-split m-t-30"> </ul>--%>
+										<%--</div>--%>
+									<%--</td>--%>
+								<%--</tr>--%>
+								<%--</tfoot>--%>
+							<%--</table>--%>
+						<%--</div>--%>
+					<%--</div>--%>
 				</div>
 			</div>
 				<!-- Right sidebar -->
@@ -709,6 +715,10 @@
     });
     jQuery(function($){
         $("#clients-toggler-table").footable();
+    });
+    $('#search-input').on('input', function (e) {
+        e.preventDefault();
+        addrow.trigger('footable_filter', {filter: $(this).val()});
     });
 </script>
 </body>

@@ -1,5 +1,7 @@
 package propertyAdmin.web.servlets.go;
 
+import propertyAdmin.operations.DatabaseOps;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,9 @@ import java.io.IOException;
 
 @WebServlet(name = "GoToMyBalanceServlet", value = "/goToMyBalance")
 public class GoToMyBalanceServlet extends HttpServlet {
+
+    private DatabaseOps databaseOps = DatabaseOps.getInstance();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

@@ -1,5 +1,7 @@
 package propertyAdmin.web.servlets.go;
 
+import propertyAdmin.operations.DatabaseOps;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,8 @@ import java.io.IOException;
 
 @WebServlet(name = "goToSpecificClient" , value = "/goToSpecificClient")
 public class GoToSpecificClientServlet extends HttpServlet {
+
+    private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

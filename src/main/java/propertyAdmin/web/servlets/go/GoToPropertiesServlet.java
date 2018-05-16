@@ -14,7 +14,9 @@ import java.util.List;
 
 @WebServlet(name = "GoToProperties", value = "/goToProperties")
 public class GoToPropertiesServlet extends HttpServlet {
+
    private DatabaseOps databaseOps = DatabaseOps.getInstance();
+
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       String auxUsername = request.getParameter("account");
       Account account = databaseOps.getAccount(request.getRemoteUser());

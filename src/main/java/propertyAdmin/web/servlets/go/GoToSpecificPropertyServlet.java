@@ -16,11 +16,13 @@ import java.util.List;
 @WebServlet(name = "GoToSpecificProperty", value = "/goToSpecificProperty")
 public class GoToSpecificPropertyServlet extends HttpServlet {
 
+    private DatabaseOps databaseOps = DatabaseOps.getInstance();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
         String accountUsername = req.getParameter("account") ;
-        Property property = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
+        Property property = databaseOps.getProperty(chosenProperty, req.getRemoteUser());
         List<FunctionalUnit> list = property.getFunctionalUnits();
         req.setAttribute("accountUsername", accountUsername);
         req.setAttribute("chosenProperty", chosenProperty);

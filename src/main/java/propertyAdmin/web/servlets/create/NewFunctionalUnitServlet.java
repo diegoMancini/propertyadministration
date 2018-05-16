@@ -13,7 +13,9 @@ import java.io.IOException;
 @WebServlet(name = "newFunctionalUnit", value = "/newFunctionalUnit")
 public class NewFunctionalUnitServlet extends HttpServlet {
 
-   @Override
+    private DatabaseOps databaseOps = DatabaseOps.getInstance();
+
+    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       Integer propertyID = Integer.parseInt(req.getParameter("specificProperty"));
       Integer propertyIndex = Integer.parseInt(req.getParameter("chosenProperty"));

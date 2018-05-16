@@ -63,7 +63,6 @@ public class Contract {
     }
 
     public Contract(String name, LocalDateTime contractDateStart, LocalDateTime contractDateEnd, Tenant tenant, Guarantor guarantor, Integer price, Integer inflationMonthsPeriod, Integer inflationRate) {
-        this.name = name;
         this.owner = null;
         this.contractDateStart = contractDateStart;
         this.contractDateEnd = contractDateEnd;
@@ -72,6 +71,7 @@ public class Contract {
         this.price = price;
         this.inflationMonthsPeriod = inflationMonthsPeriod;
         this.inflationRate = inflationRate;
+        this.name = name;
     }
 
     public String getName() {

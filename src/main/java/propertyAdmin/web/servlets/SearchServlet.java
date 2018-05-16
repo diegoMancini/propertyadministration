@@ -20,6 +20,6 @@ public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Property> searchedProperties = databaseOps.getSearchResult(req.getRemoteUser(),req.getParameter("searchInput"));
         req.setAttribute("searchedProperties", searchedProperties);
-        req.getRequestDispatcher("/searchResult.jsp").forward(req, resp);
+        req.getRequestDispatcher("searchResult.jsp").forward(req, resp);
     }
 }

@@ -101,24 +101,34 @@
                             <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getUsername()%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <!-- text-->
-                                <a href="profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
+                                <form>
+                                <a onclick="" href="profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
+                                </form>
                                 <!-- text-->
+                                <form>
                                 <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
+                                </form>
                                 <!-- text-->
+                                <form>
                                 <div class="dropdown-divider"></div>
+                                </form>
                                 <!-- text-->
+                                <form>
                                 <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Ajustes</a>
+                                </form>
                                 <!-- text-->
                                 <div class="dropdown-divider"></div>
                                 <!-- text-->
+                                <form>
                                 <a href="logout.jsp" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
+                                </form>
                                 <!-- text-->
                             </div>
                         </li>
                         <!-- ============================================================== -->
                         <!-- End User Profile -->
                         <!-- ============================================================== -->
-                        <li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>
+                        <%--<li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>--%>
                     </ul>
                 </div>
             </nav>
@@ -138,17 +148,36 @@
                         <%--has-arrow va antes de waves-effect --%>
                         <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu">Inicio</span></a></li>
+
+                        <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu"> Inicio</span></a></li>
                             <form action="goToProperties" method="post" id="goToProperties">
                                 <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
-                                <li onclick="goToProperties.submit()"> <a class="waves-effect waves-dark"><i class="ti-home"></i><span class="hide-menu"> Propiedades</span></a></li>
+                                <li> <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">  - Propiedades</span></a></li>
                             </form>
-                            <li> <a class="waves-effect waves-dark" href="functionalUnits.jsp"><i class="ti-layout"></i><span class="hide-menu">U. Funcionales</span></a></li>
-                            <li> <a class="waves-effect waves-dark" href="clients.jsp"><i class="ti-user"></i><span class="hide-menu">Clientes</span></a></li>
-                            <li><a class="waves-effect waves-dark" href="balance.jsp"><i class="ti-wallet"></i> <span class="hide-menu">Mi balance</span></a></li>
-                            <li> <a class="waves-effect waves-dark" href="profile.jsp"><i class="ti-user"></i><span class="hide-menu">Mi perfil</span></a> </li>
-                        <li> <a class="waves-effect waves-dark" href="faqs.jsp" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">Preguntas</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="logout.jsp" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Cerrar sesion</span></a></li>
+                            <form action="goToFunctionalUnits" method="post" id="goToFunctionalUnits">
+                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                                <li onclick="goToFunctionalUnits.submit()"> <a class="waves-effect waves-dark" ><i class="ti-layout"></i><span class="hide-menu">  - U. Funcionales</span></a></li>
+                            </form>
+                            <form action="goToClients" method="post" id="goToClients">
+                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                                <li onclick="goToClients.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Clientes</span></a></li>
+                            </form>
+                            <form action="goToMyBalance" method="post" id="goToMyBalance">
+                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                                <li ><a class="waves-effect waves-dark" onclick="goToMyBalance.submit()"><i class="ti-wallet"></i> <span class="hide-menu">  - Mi balance</span></a></li>
+                            </form>
+                            <form action="goToMyProfile" method="post" id="goToMyProfile">
+                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                                <li onclick="goToMyProfile.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Mi perfil</span></a> </li>
+                            </form>
+                            <form action="goToQuestions" method="post" id="goToQuestions">
+                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                                <li onclick="goToQuestions.submit()"> <a class="waves-effect waves-dark"  aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">  - Preguntas</span></a></li>
+                            </form>
+                            <form action="logoutAccount" method="post" id="logout">
+                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                                <li onclick="logout.submit()"> <a class="waves-effect waves-dark" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">  - Cerrar sesion</span></a></li>
+                            </form>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

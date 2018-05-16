@@ -122,29 +122,51 @@
 	<!-- ============================================================== -->
 	<!-- Left Sidebar - style you can find in sidebar.scss  -->
 	<!-- ============================================================== -->
-	<aside class="left-sidebar">
-		<!-- Sidebar scroll-->
-		<div class="scroll-sidebar">
-			<!-- Sidebar navigation-->
-			<nav class="sidebar-nav">
-				<ul id="sidebarnav">
-					<%--has-arrow va antes de waves-effect --%>
-					<li class="user-pro"> <a class="waves-effect waves-dark" href="home.jsp" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName() %></span></a>
-					</li>
-					<li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu">Inicio</span></a></li>
-					<li> <a class="waves-effect waves-dark" href="properties.jsp"><i class="ti-home"></i><span class="hide-menu">Propiedades</span></a></li>
-					<li> <a class="waves-effect waves-dark" href="functionalUnits.jsp"><i class="ti-layout"></i><span class="hide-menu">U. Funcionales</span></a></li>
-					<li> <a class="waves-effect waves-dark" href="clients.jsp"><i class="ti-user"></i><span class="hide-menu">Clientes</span></a></li>
-					<li><a class="waves-effect waves-dark" href="balance.jsp"><i class="ti-wallet"></i> <span class="hide-menu">Mi balance</span></a></li>
-					<li> <a class="waves-effect waves-dark" href="profile.jsp"><i class="ti-user"></i><span class="hide-menu">Mi perfil</span></a> </li>
-					<li> <a class="waves-effect waves-dark" href="faqs.jsp" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">Preguntas</span></a></li>
-					<li> <a class="waves-effect waves-dark" href="logout.jsp" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">Cerrar sesion</span></a></li>
-				</ul>
-			</nav>
-			<!-- End Sidebar navigation -->
-		</div>
-		<!-- End Sidebar scroll-->
-	</aside>
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <%--has-arrow va antes de waves-effect --%>
+                    <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a>
+                    </li>
+
+                    <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu"> Inicio</span></a></li>
+                    <form action="goToProperties" method="post" id="goToProperties">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                        <li> <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">  - Propiedades</span></a></li>
+                    </form>
+                    <form action="goToFunctionalUnits" method="post" id="goToFunctionalUnits">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                        <li onclick="goToFunctionalUnits.submit()"> <a class="waves-effect waves-dark" ><i class="ti-layout"></i><span class="hide-menu">  - U. Funcionales</span></a></li>
+                    </form>
+                    <form action="goToClients" method="post" id="goToClients">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                        <li onclick="goToClients.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Clientes</span></a></li>
+                    </form>
+                    <form action="goToMyBalance" method="post" id="goToMyBalance">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                        <li ><a class="waves-effect waves-dark" onclick="goToMyBalance.submit()"><i class="ti-wallet"></i> <span class="hide-menu">  - Mi balance</span></a></li>
+                    </form>
+                    <form action="goToMyProfile" method="post" id="goToMyProfile">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                        <li onclick="goToMyProfile.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Mi perfil</span></a> </li>
+                    </form>
+                    <form action="goToQuestions" method="post" id="goToQuestions">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                        <li onclick="goToQuestions.submit()"> <a class="waves-effect waves-dark"  aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">  - Preguntas</span></a></li>
+                    </form>
+                    <form action="logoutAccount" method="post" id="logout">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                        <li onclick="logout.submit()"> <a class="waves-effect waves-dark" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">  - Cerrar sesion</span></a></li>
+                    </form>
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </aside>
 	<!-- ============================================================== -->
 	<!-- End Left Sidebar - style you can find in sidebar.scss  -->
 	<!-- ============================================================== -->

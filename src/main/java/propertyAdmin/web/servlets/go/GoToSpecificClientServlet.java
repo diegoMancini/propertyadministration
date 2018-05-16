@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "goToClient" , value = "/goToClient")
+@WebServlet(name = "goToSpecificClient" , value = "/goToSpecificClient")
 public class GoToSpecificClientServlet extends HttpServlet {
 
     @Override

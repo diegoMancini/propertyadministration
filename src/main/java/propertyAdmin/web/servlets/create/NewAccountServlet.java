@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "signup", value = "signup")
+@WebServlet(name = "signup", value = "/signup")
 public class NewAccountServlet extends HttpServlet {
 
     private DatabaseOps databaseOps = DatabaseOps.getInstance();

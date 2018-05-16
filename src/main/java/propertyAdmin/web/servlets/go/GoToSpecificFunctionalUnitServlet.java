@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "goToFunctionalUnit", value = "/goToFunctionalUnit")
-public class GoToFunctionalUnitServlet extends HttpServlet {
+@WebServlet(name = "goToSpecificFunctionalUnit", value = "/goToSpecificFunctionalUnit")
+public class GoToSpecificFunctionalUnitServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

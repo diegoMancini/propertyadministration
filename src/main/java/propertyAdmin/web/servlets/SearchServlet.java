@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/search")
+@WebServlet(name = "SearchServlet", value = "/search")
 public class SearchServlet extends HttpServlet {
 
     DatabaseOps databaseOps = DatabaseOps.getInstance();

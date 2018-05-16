@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "GoToProperties", value = "goToProperties")
+@WebServlet(name = "GoToProperties", value = "/goToProperties")
 public class GoToPropertiesServlet extends HttpServlet {
    private DatabaseOps databaseOps = DatabaseOps.getInstance();
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

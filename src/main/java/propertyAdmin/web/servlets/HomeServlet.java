@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "HomeServlet", value = "homeServlet")
+@WebServlet(name = "HomeServlet", value = "/homeServlet")
 public class HomeServlet extends HttpServlet {
    private DatabaseOps databaseOps = DatabaseOps.getInstance();
 

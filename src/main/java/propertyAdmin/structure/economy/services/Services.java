@@ -1,4 +1,4 @@
-package propertyAdmin.structure.services;
+package propertyAdmin.structure.economy.services;
 
 import javax.persistence.*;
 

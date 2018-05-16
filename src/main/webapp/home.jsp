@@ -101,12 +101,12 @@
                             <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getUsername()%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <!-- text-->
-                                <form>
-                                <a onclick="" href="profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
+                                <form action="goToMyProfile" method="post">
+                                <a onclick="goToMyProfile.submit()" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
                                 </form>
                                 <!-- text-->
-                                <form>
-                                <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
+                                <form action="goToMyBalance" method="post">
+                                <a onclick="goToMyBalance.submit()" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
                                 </form>
                                 <!-- text-->
                                 <form>
@@ -119,8 +119,8 @@
                                 <!-- text-->
                                 <div class="dropdown-divider"></div>
                                 <!-- text-->
-                                <form>
-                                <a href="logout.jsp" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
+                                <form action="logoutAccount" method="post">
+                                <a onclick="logoutAccount.submit()" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
                                 </form>
                                 <!-- text-->
                             </div>

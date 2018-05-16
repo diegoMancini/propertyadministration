@@ -35,13 +35,13 @@
         <mapping class="propertyAdmin.structure.property.FunctionalUnit"/>
         <mapping class="propertyAdmin.structure.property.Property"/>
         <mapping class="propertyAdmin.structure.property.Contract"/>
-        <mapping class="propertyAdmin.structure.rents.Expenses"/>
-        <mapping class="propertyAdmin.structure.services.specifics.Electricity"/>
-        <mapping class="propertyAdmin.structure.services.specifics.Gas"/>
-        <mapping class="propertyAdmin.structure.services.specifics.Telephone"/>
-        <mapping class="propertyAdmin.structure.services.specifics.Water"/>
-        <mapping class="propertyAdmin.structure.services.Services"/>
-        <mapping class="propertyAdmin.structure.taxes.Taxes"/>
+        <mapping class="propertyAdmin.structure.economy.rents.Expenses"/>
+        <mapping class="propertyAdmin.structure.economy.services.specifics.Electricity"/>
+        <mapping class="propertyAdmin.structure.economy.services.specifics.Gas"/>
+        <mapping class="propertyAdmin.structure.economy.services.specifics.Telephone"/>
+        <mapping class="propertyAdmin.structure.economy.services.specifics.Water"/>
+        <mapping class="propertyAdmin.structure.economy.services.Services"/>
+        <mapping class="propertyAdmin.structure.economy.taxes.Taxes"/>
 
     </session-factory>
 </hibernate-configuration>

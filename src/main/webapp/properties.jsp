@@ -93,6 +93,10 @@
                             <input type="text" class="form-control" placeholder="Buscar...">
                         </form>
                     </li>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="font-bold">  Inicio</span></a></li>--%>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="properties.jsp"><i class="ti-home"></i><span class="font-bold">  Propiedades</span></a></li>--%>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="functionalUnits.jsp"><i class="ti-layout"></i><span class="font-bold">  U.F.</span></a></li>--%>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="clients.jsp"><i class="ti-user"></i><span class="font-bold">  Clientes</span></a></li>--%>
                 </ul>
                 <!-- ============================================================== -->
                 <!-- User profile and search -->
@@ -100,28 +104,39 @@
                 <ul class="navbar-nav my-lg-0">
                     <!-- User Profile -->
                     <!-- ============================================================== -->
+
                     <li class="nav-item dropdown u-pro">
                         <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getUsername()%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <!-- text-->
-                            <a href="profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
+                            <form action="goToMyProfile" method="post">
+                                <a onclick="goToMyProfile.submit()" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
+                            </form>
                             <!-- text-->
-                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
+                            <form action="goToMyBalance" method="post">
+                                <a onclick="goToMyBalance.submit()" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
+                            </form>
+                            <!-- text-->
+                            <form>
+                                <div class="dropdown-divider"></div>
+                            </form>
+                            <!-- text-->
+                            <form>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Ajustes</a>
+                            </form>
                             <!-- text-->
                             <div class="dropdown-divider"></div>
                             <!-- text-->
-                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Ajustes</a>
-                            <!-- text-->
-                            <div class="dropdown-divider"></div>
-                            <!-- text-->
-                            <a href="logout.jsp" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
+                            <form action="logoutAccount" method="post">
+                                <a onclick="logoutAccount.submit()" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
+                            </form>
                             <!-- text-->
                         </div>
                     </li>
                     <!-- ============================================================== -->
                     <!-- End User Profile -->
                     <!-- ============================================================== -->
-                    <li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>
+                    <%--<li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>--%>
                 </ul>
             </div>
         </nav>
@@ -217,70 +232,63 @@
 			<div class="row">
 				<!-- column -->
 				<div class="col-lg-12">
-
 							<!-- Property Items -->
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">Contact Emplyee list</h4>
-									<h6 class="card-subtitle"></h6>
-									<div class="table-responsive">
-										<table id="demo-foo-addrow" class="table toggle-circle table-hover footable contact-list" data-page-size="5">
-											<thead>
-											<tr>
-												<th data-toggle="true">No</th>
-												<th>Nombre</th>
-												<th>Direccion</th>
-												<th>UF Ocupadas</th>
-												<th>UF Disponibles</th>
-												<th data-hide="all">Unidades Funcionales</th>
-											</tr>
-											</thead>
-											<tbody>
-											<%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());
-												if (propertyList.size() > 0) {%>
-											<%for (int i = 0;i < propertyList.size(); i++) {%>
-											<%
-												request.setAttribute("Property", propertyList.get(i));
-											%>
-											<tr>
-												<td><%=i%></td>
-												<td>
-													<form action="goToSpecificProperty" method="post">
-														<img src="<%=propertyList.get(i).getImageLink()%>" alt="user" width="60" height="60" class="img-circle" />
-													<button type="submit" class="btn btn-info waves-effect waves-light m-r-20 m-b-5 m-l-15" name="chosenProperty" id="chosenProperty" value="<%=i%>"> <%=propertyList.get(i).getName()%></button>
-													</form>
-												</td>
-
-												<td><%=propertyList.get(i).getAddress()%></td>
-												<td><%=propertyList.get(i).getOccupiedFunctionalUnits()%></td>
-												<td><%=propertyList.get(i).getAvailableFunctionalUnits()%></td>
-												<%if (propertyList.get(i).getFunctionalUnits().size() == 0) {%>
-												<td>NO HAY UNIDADES FUNCIONALES</td>
-												<%} else {%>
-												<td><%for (FunctionalUnit functionalUnit : propertyList.get(i).getFunctionalUnits()){%>
-													<form action="goToSpecificFunctionalUnit" method="post">
-														<li><a class="waves-effect waves-red"><%=functionalUnit.getName()%></a></li>
-													</form>
-													<%}%>
-												</td>
-												<%}%>
-											</tr>
-											</tbody>
-											<%}%>
-											<%}%>
-											<tfoot>
-											<tr>
-												<td colspan="7">
-													<div class="text-right">
-														<ul class="pagination"> </ul>
-													</div>
-												</td>
-											</tr>
-											</tfoot>
-										</table>
-									</div>
-								</div>
-									</div>
+                    <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());
+                        if (propertyList.size() > 0) {%>
+                    <%for (int i = 0;i < propertyList.size(); i++) {%>
+                    <%
+                        request.setAttribute("Property", propertyList.get(i));
+                    %>
+                    <div class="card">
+                        <%--<!-- row -->--%>
+                        <div class="row-lg-3">
+                            <form action="goToSpecificProperty" method="post" id="goToSpecificProperty">
+                                    <input type="hidden" name="chosenProperty" id="chosenProperty" value="<%=i%>">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light m-l-30 m-t-10 m-b-10" name="chosenProperty" value="<%=i%>"><%=propertyList.get(i).getName()%></button>
+                            </form>
+                        </div>
+                        <div class="row no-gutters">
+                            <div class="col-md-3 m-l-20 m-b-15" style="background: url(<%=propertyList.get(i).getImageLink()%>)center center / cover no-repeat; min-height:250px;">
+                            </div>
+                            <!-- column -->
+                            <div class="col-md-8">
+                                <!-- Row -->
+                                <div class="row no-gutters">
+                                    <div class="col-md-6 border-bottom">
+                                        <div class="p-40">
+                                            <div class="d-flex no-block align-items-center">
+                                                <span><img src="assets/images/property/pro-garage.png"></span>
+                                                <span class="p-10"> Unidades funcionales</span>
+                                                <span class="badge badge-pill badge-secondary ml-auto"><%=propertyList.get(i).getFunctionalUnits().size()%></span>
+                                            </div>
+                                            <div class="d-flex no-block align-items-center">
+                                                <span><img src="assets/images/property/pro-garage.png"></span>
+                                                <span class="p-10"> Unidades funcionales ocupadas</span>
+                                                <span class="badge badge-pill badge-secondary ml-auto"><%=propertyList.get(i).getOccupiedFunctionalUnits()%></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- column -->
+                                    <div class="col-md-12">
+                                        <div class="p-20">
+                                            <div class="d-flex no-block align-items-center">
+                                                <a href="javascript:void(0)" class="m-r-10" ><img alt="img" class="thumb-md img-circle m-r-10" src="assets/images/users/default.jpg"></a>
+                                                <div>
+                                                    <h5 class="card-title m-b-0"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getName()%></h5>
+                                                </div>
+                                                <div class="ml-auto text-muted text-right">
+                                                    <i class="fa fa-map-marker text-danger m-r-10"></i> <%=propertyList.get(i).getFullAddress()%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- column -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                    <%}%>
 				</div>
 			</div>
 			<!-- /row -->

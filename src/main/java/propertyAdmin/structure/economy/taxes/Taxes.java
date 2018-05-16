@@ -1,4 +1,4 @@
-package propertyAdmin.structure.taxes;
+package propertyAdmin.structure.economy.taxes;
 
 import javax.persistence.*;
 

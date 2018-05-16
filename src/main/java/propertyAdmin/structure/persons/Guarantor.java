@@ -8,10 +8,8 @@ public class Guarantor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "ID")
     private Integer id;
-   @Column(name = "NAME")
-   private String name;
-   @Column (name = "SURNAME")
-   private String surname;
+   @Column(name = "FULL_NAME")
+   private String fullName;
     @Column(name = "DNI")
     private String dni;
    @Column (name = "ADDRESS_PHONE")
@@ -22,31 +20,22 @@ public class Guarantor {
    public Guarantor() {
    }
 
-   public Guarantor(String name, String surname, String dni, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email) {
-      this.name = name;
-      this.surname = surname;
+   public Guarantor(String fullName,String dni, String nationality, String maritalStatus, String address, String addressCountry, String addressProvince, String addressCity, String addressTown, String addressZipCode, String phone, String email) {
+      this.fullName = fullName;
       this.dni = dni;
       this.phone = phone;
       this.email = email;
    }
 
-   public Guarantor(String name, String surname, String dni) {
-      this.name = name;
-      this.surname = surname;
+   public Guarantor(String fullName, String phone, String dni) {
+      this.fullName = fullName;
+      this.phone = phone;
       this.dni = dni;
    }
 
     public Integer getId() {
         return id;
     }
-
-    public String getName() {
-      return name;
-   }
-
-   public String getSurname() {
-      return surname;
-   }
 
     public String getDni() {
         return dni;
@@ -64,11 +53,13 @@ public class Guarantor {
       return email;
    }
 
-   @Override
+    public String getFullName() {
+        return fullName;
+    }
+
+    @Override
    public String toString() {
       return "Guarantor{" +
-              "name='" + name + '\'' +
-              ", surname='" + surname + '\'' +
               ", id='" + id + '\'' +
               ", phone='" + phone + '\'' +
               ", email='" + email + '\'' +

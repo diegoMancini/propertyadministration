@@ -52,6 +52,17 @@ public class Contract {
         this.dailyInterestForDelayedPayment = dailyInterestForDelayedPayment;
     }
 
+    public Contract(String name, Date contractDateStart, Date contractDateEnd, Tenant tenant, Guarantor guarantor, Double price, Double dailyInterestForDelayedPayment) {
+        this.name = name;
+        this.owner = null;
+        this.contractDateStart = contractDateStart;
+        this.contractDateEnd = contractDateEnd;
+        this.tenant = tenant;
+        this.guarantor = guarantor;
+        this.price = price;
+        this.dailyInterestForDelayedPayment = dailyInterestForDelayedPayment;
+    }
+
     public String getName() {
         return name;
     }

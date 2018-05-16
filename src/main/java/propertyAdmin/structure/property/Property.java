@@ -1,13 +1,11 @@
 package propertyAdmin.structure.property;
 
 import propertyAdmin.structure.persons.Tenant;
-import propertyAdmin.structure.rents.Expenses;
-import propertyAdmin.structure.services.Services;
-import propertyAdmin.structure.taxes.Taxes;
+import propertyAdmin.structure.economy.rents.Expenses;
+import propertyAdmin.structure.economy.services.Services;
+import propertyAdmin.structure.economy.taxes.Taxes;
 
 import javax.persistence.*;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -278,4 +276,7 @@ public class Property {
         return value;
     }
 
+    public String getFullAddress() {
+        return address + ", " + town + ", " + city + ", " + province  + ", " + country;
+    }
 }

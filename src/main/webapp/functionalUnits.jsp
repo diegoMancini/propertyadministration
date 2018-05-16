@@ -95,6 +95,10 @@
                             <input type="text" class="form-control" placeholder="Buscar...">
                         </form>
                     </li>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="font-bold">  Inicio</span></a></li>--%>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="properties.jsp"><i class="ti-home"></i><span class="font-bold">  Propiedades</span></a></li>--%>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="functionalUnits.jsp"><i class="ti-layout"></i><span class="font-bold">  U.F.</span></a></li>--%>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="clients.jsp"><i class="ti-user"></i><span class="font-bold">  Clientes</span></a></li>--%>
                 </ul>
                 <!-- ============================================================== -->
                 <!-- User profile and search -->
@@ -102,28 +106,39 @@
                 <ul class="navbar-nav my-lg-0">
                     <!-- User Profile -->
                     <!-- ============================================================== -->
+
                     <li class="nav-item dropdown u-pro">
                         <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getUsername()%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <!-- text-->
-                            <a href="/profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
+                            <form action="goToMyProfile" method="post">
+                                <a onclick="goToMyProfile.submit()" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
+                            </form>
                             <!-- text-->
-                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
+                            <form action="goToMyBalance" method="post">
+                                <a onclick="goToMyBalance.submit()" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
+                            </form>
+                            <!-- text-->
+                            <form>
+                                <div class="dropdown-divider"></div>
+                            </form>
+                            <!-- text-->
+                            <form>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Ajustes</a>
+                            </form>
                             <!-- text-->
                             <div class="dropdown-divider"></div>
                             <!-- text-->
-                            <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Ajustes</a>
-                            <!-- text-->
-                            <div class="dropdown-divider"></div>
-                            <!-- text-->
-                            <a href="logout.jsp" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
+                            <form action="logoutAccount" method="post">
+                                <a onclick="logoutAccount.submit()" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
+                            </form>
                             <!-- text-->
                         </div>
                     </li>
                     <!-- ============================================================== -->
                     <!-- End User Profile -->
                     <!-- ============================================================== -->
-                    <li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>
+                    <%--<li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>--%>
                 </ul>
             </div>
         </nav>

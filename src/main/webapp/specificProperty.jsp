@@ -46,76 +46,91 @@
 	<!-- ============================================================== -->
 	<!-- Topbar header - style you can find in pages.scss -->
 	<!-- ============================================================== -->
-	<header class="topbar">
-		<nav class="navbar top-navbar navbar-expand-md navbar-dark">
-			<!-- ============================================================== -->
-			<!-- Logo -->
-			<!-- ============================================================== -->
-			<div class="navbar-header">
-				<a class="navbar-brand" href="home.jsp">
-					<!-- Logo icon --><b>
-					<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-					<!-- Dark Logo icon -->
-					<img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-					<!-- Light Logo icon -->
-					<img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-				</b>
-					<!--End Logo icon -->
-					<span class="hidden-xs"><span class="font-bold">elite</span>realestate</span>
-				</a>
-			</div>
-			<!-- ============================================================== -->
-			<!-- End Logo -->
-			<!-- ============================================================== -->
-			<div class="navbar-collapse">
-				<!-- ============================================================== -->
-				<!-- toggle and nav items -->
-				<!-- ============================================================== -->
-				<ul class="navbar-nav mr-auto">
-					<!-- This is  -->
-					<li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-					<li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
-					<!-- ============================================================== -->
-					<!-- Search -->
-					<!-- ============================================================== -->
-					<li class="nav-item">
-						<form class="app-search d-none d-md-block d-lg-block">
-							<input type="text" class="form-control" placeholder="Buscar...">
-						</form>
-					</li>
-				</ul>
-				<!-- ============================================================== -->
-				<!-- User profile and search -->
-				<!-- ============================================================== -->
-				<ul class="navbar-nav my-lg-0">
-					<!-- User Profile -->
-					<!-- ============================================================== -->
-					<li class="nav-item dropdown u-pro">
-						<a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getUsername()%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
-						<div class="dropdown-menu dropdown-menu-right animated flipInY">
-							<!-- text-->
-							<a href="profile.jsp" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
-							<!-- text-->
-							<a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
-							<!-- text-->
-							<div class="dropdown-divider"></div>
-							<!-- text-->
-							<a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Ajustes</a>
-							<!-- text-->
-							<div class="dropdown-divider"></div>
-							<!-- text-->
-							<a href="logout.jsp" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
-							<!-- text-->
-						</div>
-					</li>
-					<!-- ============================================================== -->
-					<!-- End User Profile -->
-					<!-- ============================================================== -->
-					<li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>
-				</ul>
-			</div>
-		</nav>
-	</header>
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <!-- ============================================================== -->
+            <!-- Logo -->
+            <!-- ============================================================== -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="home.jsp">
+                    <!-- Logo icon --><b>
+                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                    <!-- Dark Logo icon -->
+                    <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                    <!-- Light Logo icon -->
+                    <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                </b>
+                    <!--End Logo icon -->
+                    <span class="hidden-xs"><span class="font-bold">elite</span>realestate</span>
+                </a>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Logo -->
+            <!-- ============================================================== -->
+            <div class="navbar-collapse">
+                <!-- ============================================================== -->
+                <!-- toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav mr-auto">
+                    <!-- This is  -->
+                    <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
+                    <!-- ============================================================== -->
+                    <!-- Search -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item">
+                        <form class="app-search d-none d-md-block d-lg-block">
+                            <input type="text" class="form-control" placeholder="Buscar...">
+                        </form>
+                    </li>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="font-bold">  Inicio</span></a></li>--%>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="properties.jsp"><i class="ti-home"></i><span class="font-bold">  Propiedades</span></a></li>--%>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="functionalUnits.jsp"><i class="ti-layout"></i><span class="font-bold">  U.F.</span></a></li>--%>
+                    <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="clients.jsp"><i class="ti-user"></i><span class="font-bold">  Clientes</span></a></li>--%>
+                </ul>
+                <!-- ============================================================== -->
+                <!-- User profile and search -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav my-lg-0">
+                    <!-- User Profile -->
+                    <!-- ============================================================== -->
+
+                    <li class="nav-item dropdown u-pro">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getUsername()%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                        <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                            <!-- text-->
+                            <form action="goToMyProfile" method="post">
+                                <a onclick="goToMyProfile.submit()" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
+                            </form>
+                            <!-- text-->
+                            <form action="goToMyBalance" method="post">
+                                <a onclick="goToMyBalance.submit()" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
+                            </form>
+                            <!-- text-->
+                            <form>
+                                <div class="dropdown-divider"></div>
+                            </form>
+                            <!-- text-->
+                            <form>
+                                <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Ajustes</a>
+                            </form>
+                            <!-- text-->
+                            <div class="dropdown-divider"></div>
+                            <!-- text-->
+                            <form action="logoutAccount" method="post">
+                                <a onclick="logoutAccount.submit()" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
+                            </form>
+                            <!-- text-->
+                        </div>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- End User Profile -->
+                    <!-- ============================================================== -->
+                    <%--<li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>--%>
+                </ul>
+            </div>
+        </nav>
+    </header>
 	<!-- ============================================================== -->
 	<!-- End Topbar header -->
 	<!-- ============================================================== -->
@@ -173,7 +188,8 @@
 	<!-- Page wrapper  -->
 	<!-- ============================================================== -->
 	<div class="page-wrapper">
-		<!-- ============================================================== -->
+        <%Property property = (Property) request.getAttribute("property");%>
+        <!-- ============================================================== -->
 		<!-- Container fluid  -->
 		<!-- ============================================================== -->
 		<div class="container-fluid">
@@ -181,8 +197,6 @@
 			<!-- Bread crumb and right sidebar toggle -->
 			<!-- ============================================================== -->
 			<div class="row page-titles">
-				<%Property property = (Property) request.getAttribute("property");%>
-
 				<div class="col-md-5 align-self-center">
 					<h4 class="text-themecolor">Propiedades</h4>
 				</div>
@@ -192,63 +206,6 @@
 							<li class="breadcrumb-item"><a href="home.jsp">Inicio</a></li>
 							<li class="breadcrumb-item"><a href="properties.jsp">Propiedades</a></li>
 							<li class="breadcrumb-item active m-r-10"><%=request.getAttribute("propertyName")%></li>
-							<div class="d-flex no-block align-items-center">
-								<div class="button-box">
-									<button type="button" class="btn btn-info waves-effect waves-light m-r-20 m-b-5 m-l-15" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10"> Nueva U.F.</span></button>
-								</div>
-								<div class="modal fade" id="newFU" tabindex="-1" role="dialog" aria-labelledby="newFULabel">
-									<div class="modal-dialog " role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h4 class="modal-title" id="newFULabel">Nueva U.F.</h4>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											</div>
-											<div class="modal-body">
-												<form method="post" action="/addFunctionalUnit">
-													<input type="hidden" name="propertyIndex" value="<%=request.getAttribute("chosenProperty")%>">
-													<div class="form-group">
-														<input type="text" class="form-control" id="fuName" name="fuName" placeholder="Nombre...">
-													</div>
-													<div class="form-group">
-														<input type="text" class="form-control" id="fuAddress" name="fuAddress" placeholder="Direccion...">
-													</div>
-													<%--<div class="form-group">--%>
-													<%--<label for="fuAddressTown" class="control-label">Localidad:</label>--%>
-													<%--<input type="text" class="form-control" id="fuAddressTown" name="fuAddressTown">--%>
-													<%--</div>--%>
-													<%--<div class="form-group">--%>
-													<%--<label for="fuAddressCity" class="control-label">Ciudad / Partido:</label>--%>
-													<%--<input type="text" class="form-control" id="fuAddressCity" name="fuAddressCity">--%>
-													<%--</div>--%>
-													<%--<div class="form-group">--%>
-													<%--<label for="fuAddressProvince" class="control-label">Provincia / Estado:</label>--%>
-													<%--<input type="text" class="form-control" id="fuAddressProvince" name="fuAddressProvince">--%>
-													<%--</div>--%>
-													<%--<div class="form-group">--%>
-													<%--<label for="fuAddressCountry" class="control-label">Pais:</label>--%>
-													<%--<input type="text" class="form-control" id="fuAddressCountry" name="fuAddressCountry">--%>
-													<%--</div>--%>
-													<div class="form-group">
-														<select name="fuType" class="form-control custom-select" id="fuType">
-															<option value="0" disabled selected>Tipo de Unidad Funcional</option>
-															<option value="Vivienda">Vivienda</option>
-															<option value="Oficina">Oficina</option>
-															<option value="Local">Local Comercial</option>
-															<option value="Garage">Garage</option>
-														</select>
-													</div>
-													<div class="modal-footer">
-														<button type="submit" class="submit-btn btn-primary">Agregar</button>
-														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-													</div>
-												</form>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<!-- /.modal -->
-							</div>
 						</ol>
 						</div>
 				</div>
@@ -261,7 +218,7 @@
 						<%--<!-- row -->--%>
 						<div class="row-lg-3">
 								<h4>
-									<button type="submit" class="btn btn-info waves-effect waves-light m-l-30 m-t-10 m-b-10"><%=property.getName()%></button>
+									<button type="submit" class="btn btn-info waves-effect waves-light m-l-30 m-t-10 m-b-10"><%=request.getAttribute("propertyName")%></button>
 								</h4>
 						</div>
 						<div class="row no-gutters">
@@ -294,7 +251,7 @@
 													<h5 class="card-title m-b-0"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getName()%></h5>
 												</div>
 												<div class="ml-auto text-muted text-right">
-													<i class="fa fa-map-marker text-danger m-r-10"></i> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullAddress()%>
+													<i class="fa fa-map-marker text-danger m-r-10"></i> <%=property.getFullAddress()%>
 												</div>
 											</div>
 										</div>
@@ -313,23 +270,70 @@
 									<th data-toggle="true">Nombre</th>
 									<th>Direccion</th>
 									<th>Tipo</th>
-									<th>Estado</th>
-									<th>Precio</th>
+                                    <th>Estado</th>
+									<th>Cuenta Corriente</th>
 									<th data-hide="all">Contrato</th>
 									<th data-hide="all">Cliente</th>
-									<th>Cuenta Corriente</th>
 								</tr>
 								</thead>
+                                <div class="m-t-40">
+                                    <div class="d-flex">
+                                        <div class="mr-auto">
+                                            <div class="button-box">
+                                                <button type="button" class="btn btn-info waves-effect waves-light m-r-20 m-b-15 m-l-15" data-toggle="modal" data-target="#newFU" data-whatever="@newFU"><span class="p-10"> Nueva U.F.</span></button>
+                                            </div>
+                                            <div class="modal fade" id="newFU" tabindex="-1" role="dialog" aria-labelledby="newFULabel">
+                                                <div class="modal-dialog " role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="newFULabel">Nueva U.F.</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post" action="addFunctionalUnit">
+                                                                <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
+                                                                <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
+                                                                <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" id="fuName" name="fuName" placeholder="Nombre...">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control" id="fuAddress" name="fuAddress" placeholder="Direccion...">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <select name="fuType" class="form-control custom-select" id="fuType">
+                                                                        <option value="0" disabled selected>Tipo de Unidad Funcional</option>
+                                                                        <option value="Vivienda">Vivienda</option>
+                                                                        <option value="Oficina">Oficina</option>
+                                                                        <option value="Local">Local Comercial</option>
+                                                                        <option value="Garage">Garage</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="submit-btn btn-primary">Agregar</button>
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <div class="form-group">
+                                                <input id="demo-input-search2" type="text" placeholder="Buscar..." autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 								<tbody>
 								<%if (property.getFunctionalUnits().size() > 0) {
 									for (int j = 0; j < property.getFunctionalUnits().size();j++) {
 										String state = property.getFunctionalUnits().get(j).getState();
 										String client = "";
-										Double price = 0.0;
 										String contractName = "";
 										if(state.equals("Ocupado")) {
 											client += property.getFunctionalUnits().get(j).getContract().getTenant().getFullName();
-											price += property.getFunctionalUnits().get(j).getContract().getPrice();
 											contractName += property.getFunctionalUnits().get(j).getContract().getName();
 										} else {
 											client += "------";
@@ -338,24 +342,118 @@
 								%>
 								<tr>
 									<td><%=property.getFunctionalUnits().get(j).getName()%></td>
-									<td><%=property.getFunctionalUnits().get(j).getCommercialAddress()%></td>
+									<td><%=property.getFunctionalUnits().get(j).getAddress()%></td>
 									<td><%=property.getFunctionalUnits().get(j).getType()%></td>
 									<%if (state.equals("Ocupado")){%>
 									<td><span class="label label-danger"><%=state%></span> </td>
 									<%} else {%>
 									<td><span class="label label-success"><%=state%></span> </td>
 									<%}%>
-									<td>$<%=price%></td>
-									<% if (property.getFunctionalUnits().get(j).hasContract()) {%>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago"><i class="ti-home" aria-hidden="true"></i></button>
+                                    </td>
+									<%if (property.getFunctionalUnits().get(j).getContract() != null) {%>
 									<td><%=contractName%></td>
 									<td><%=client%></td>
 									<%} else {%>
-									<td> ADD CONTRACT </td>
-									<td> -----------</td>
+                                    <td>
+                                            <div class="button-box">
+                                                <button type="button" class="btn btn-info waves-effect waves-light m-r-20 m-b-15 m-l-15" data-toggle="modal" data-target="#newContract" data-whatever="@newContract"><span class="p-10"> Agregar Contrato</span></button>
+                                            </div>
+                                            <div class="modal fade" id="newContract" tabindex="-1" role="dialog" aria-labelledby="newContract">
+                                                <div class="modal-dialog " role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="newContractLabel">Nuevo Contrato</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="addContract" method="post" id="addContract">
+                                                                <input type="hidden" name="accountUsername" value="<%=request.getAttribute("username")%>">
+                                                                <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
+                                                                <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+                                                                <h4>Datos Contrato</h4>
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" id="fcontractName" name="contractName" placeholder="Nombre...">
+                                                                        </div>
+                                                                    </div>
+                                                                        <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" id="contractPrice" name="contractAddress" placeholder="Precio...">
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <input type="number" class="form-control" id="contractInflationMonths" name="contractInflationMonths" placeholder="Cada cuantos meses se aplica la tasa de inflacion... ">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                            <input type="number" class="form-control" id="contractInflationRate" name="contractInflationRate" placeholder="Porcentaje que se aumenta de inflacion... ">
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <input type="datetime-local" class="form-control" id="contractStartDate" name="contractStartDate" placeholder="Fecha inicio...">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                            <input type="datetime-local" class="form-control" id="contractEndDate" name="contractEndDate" placeholder="contractEndDate">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <h4>Datos Inquilino</h4>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" id="tenantName" name="tenantName" placeholder="Nombre del inquilino...">
+                                                                        </div>
+                                                                    </div>
+                                                                        <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" id="tenantSurname" name="tenantSurname" placeholder="Apellido del inquilino...">
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="tenantId" id="tenantId" placeholder="DNI inquilino...">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                            <input type="text" class="form-control" name="tenantPhone" id="tenantPhone" placeholder="Telefono...">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="tenantEMail" id="tenantEmail" placeholder="Correo Electronico...">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <h4>Datos Garante</h4>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" class="submit-btn btn-primary">Agregar</button>
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </td>
+									<td> ---------</td>
 									<%}%>
-									<td>
-										<button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago"><i class="ti-close" aria-hidden="true"></i></button>
-									</td>
 								</tr>
 								<%}%>
 								<%}%>
@@ -393,6 +491,15 @@
 									<th data-hide="all">Codigo Postal</th>
 								</tr>
 								</thead>
+                                <div class="m-t-40">
+                                    <div class="d-flex">
+                                        <div class="ml-auto">
+                                            <div class="form-group">
+                                                <input id="demo-foo-search" type="text" placeholder="Buscar..." autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 								<tbody>
 								<%if (property.getOccupiedFunctionalUnits() > 0) {%>
 								<%for (int l = 0; l < property.getTenantList().size();l++) {%>
@@ -583,6 +690,17 @@
     });
     jQuery(function($){
         $("#clients-toggler-table").footable();
+    });
+    jQuery(function ($) {
+        $('#demo-input-search2').on('input', function (e) {
+            e.preventDefault();
+            addrow.trigger('footable_filter', {filter: $(this).val()});});
+    });
+    jQuery(function ($) {
+        $('#demo-foo-search').on('input', function (e) {
+            e.preventDefault();
+            filtering.trigger('footable_filter', {filter: $(this).val()});
+        });
     });
 </script>
 </body>

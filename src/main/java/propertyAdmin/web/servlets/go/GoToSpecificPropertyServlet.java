@@ -1,6 +1,7 @@
 package propertyAdmin.web.servlets.go;
 
 import propertyAdmin.operations.DatabaseOps;
+import propertyAdmin.structure.persons.Account;
 import propertyAdmin.structure.property.FunctionalUnit;
 import propertyAdmin.structure.property.Property;
 
@@ -18,8 +19,10 @@ public class GoToSpecificPropertyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
+        String accountUsername = req.getParameter("account") ;
         Property property = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
         List<FunctionalUnit> list = property.getFunctionalUnits();
+        req.setAttribute("accountUsername", accountUsername);
         req.setAttribute("chosenProperty", chosenProperty);
         req.setAttribute("property", property);
         req.setAttribute("propertyFU", list);

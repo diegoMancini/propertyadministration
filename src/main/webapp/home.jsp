@@ -45,6 +45,7 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper">
+        <%session.setAttribute("account", request.getRemoteUser());%>
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -150,11 +151,11 @@
                         </li>
 
                         <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu"> Inicio</span></a></li>
-                            <form action="goToProperties" method="post" id="goToProperties">
+                            <%--<form action="goToProperties" method="get" id="goToProperties">--%>
                                 <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
-                                <li> <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">  - Propiedades</span></a></li>
-                            </form>
-                            <form action="goToFunctionalUnits" method="post" id="goToFunctionalUnits">
+                                <li> <a class="waves-effect waves-dark" href="properties.jsp" ><i class="ti-home"></i><span class="hide-menu">  - Propiedades</span></a></li>
+                            <%--</form>--%>
+                            <form action="goToFunctionalUnits" method="get" id="goToFunctionalUnits">
                                 <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                                 <li onclick="goToFunctionalUnits.submit()"> <a class="waves-effect waves-dark" ><i class="ti-layout"></i><span class="hide-menu">  - U. Funcionales</span></a></li>
                             </form>

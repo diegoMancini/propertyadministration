@@ -1,8 +1,6 @@
 package propertyAdmin.web.servlets.go;
 
 import propertyAdmin.operations.DatabaseOps;
-import propertyAdmin.structure.persons.Account;
-import propertyAdmin.structure.property.FunctionalUnit;
 import propertyAdmin.structure.property.Property;
 
 import javax.servlet.ServletException;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "GoToSpecificProperty", value = "/goToSpecificProperty")
 public class GoToSpecificPropertyServlet extends HttpServlet {
@@ -19,17 +16,12 @@ public class GoToSpecificPropertyServlet extends HttpServlet {
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
-        String accountUsername = req.getParameter("account") ;
-        Property property = databaseOps.getProperty(chosenProperty, req.getRemoteUser());
-        List<FunctionalUnit> list = property.getFunctionalUnits();
-        req.setAttribute("accountUsername", accountUsername);
-        req.setAttribute("chosenProperty", chosenProperty);
-        req.setAttribute("property", property);
-        req.setAttribute("propertyFU", list);
-        req.setAttribute("propertyName", property.getName());
-        String path = "specificProperty.jsp";
-        req.getRequestDispatcher(path).forward(req, resp);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Integer chosenProperty = Integer.valueOf(req.getParameter("chosenProperty"));
+        String accountUsername = (String) req.getSession(false).getAttribute("account");
+        Property property = databaseOps.getProperty(chosenProperty, accountUsername);
+        req.getSession(false).setAttribute("chosenProperty", chosenProperty);
+        req.getSession(false).setAttribute("propertyName", property.getName());
+        req.getRequestDispatcher("specificProperty.jsp").forward(req,resp);
     }
 }

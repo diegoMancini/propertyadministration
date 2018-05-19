@@ -22,10 +22,10 @@ public class AddFunctionalUnit extends HttpServlet {
 
     @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
-       String accountUsername = req.getParameter("account");
-       Property property = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
-       String name = req.getParameter("fuName");
+      Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
+      String accountUsername = req.getParameter("account");
+      Property property = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
+      String name = req.getParameter("fuName");
       String address = req.getParameter("fuAddress");
       String type = req.getParameter("fuType");
        req.setAttribute("accountUsername", accountUsername);

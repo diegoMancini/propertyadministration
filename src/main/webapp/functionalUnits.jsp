@@ -270,7 +270,7 @@
                                             <td>
                                                 <a href="specificFunctionalUnit.jsp"> <%=functionalUnitList.get(i).getName()%></a>
                                             </td>
-                                            <td><%=functionalUnitList.get(i).getCommercialAddress()%></td>
+                                            <td><%=functionalUnitList.get(i).getAddress()%></td>
                                             <td><%=functionalUnitList.get(i).getType()%></td>
                                             <%if (state.equals("Ocupado")){%>
                                             <td><span class="label label-danger"><%=state%></span> </td>

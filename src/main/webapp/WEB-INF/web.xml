@@ -81,12 +81,12 @@
     </servlet-mapping>
     //NewAccount
     <servlet>
-        <servlet-name>newAccount</servlet-name>
+        <servlet-name>signup</servlet-name>
         <servlet-class>propertyAdmin.web.servlets.create.NewAccountServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>newAccount</servlet-name>
-        <url-pattern>/newAccount</url-pattern>
+        <servlet-name>signup</servlet-name>
+        <url-pattern>/signup</url-pattern>
     </servlet-mapping>
     //NewContract
     <servlet>

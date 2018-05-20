@@ -1,7 +1,6 @@
 <%@ page import="propertyAdmin.operations.DatabaseOps" %>
 <%@ page import="propertyAdmin.structure.persons.Tenant" %>
 <%@ page import="propertyAdmin.structure.property.Property" %>
-<%@ page import="propertyAdmin.structure.persons.Account" %>
 <%--
   Created by IntelliJ IDEA.
   User: diego
@@ -20,7 +19,7 @@
 	<meta name="author" content="">
 	<!-- Favicon icon -->
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-	<title>P.A. - Propiedad: <%session.getAttribute("propertyName");%></title>
+	<title>P.A. - Propiedad: <%=request.getAttribute("propertyName")%></title>
 	<!-- Custom CSS -->
 	<link href="propertyadmin/dist/css/style.min.css" rel="stylesheet">
 	<!-- Footable CSS -->
@@ -150,31 +149,31 @@
 
                     <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu"> Inicio</span></a></li>
                     <form action="goToProperties" method="post" id="goToProperties">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li> <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">  - Propiedades</span></a></li>
                     </form>
                     <form action="goToFunctionalUnits" method="post" id="goToFunctionalUnits">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li onclick="goToFunctionalUnits.submit()"> <a class="waves-effect waves-dark" ><i class="ti-layout"></i><span class="hide-menu">  - U. Funcionales</span></a></li>
                     </form>
                     <form action="goToClients" method="post" id="goToClients">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li onclick="goToClients.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Clientes</span></a></li>
                     </form>
                     <form action="goToMyBalance" method="post" id="goToMyBalance">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li ><a class="waves-effect waves-dark" onclick="goToMyBalance.submit()"><i class="ti-wallet"></i> <span class="hide-menu">  - Mi balance</span></a></li>
                     </form>
                     <form action="goToMyProfile" method="post" id="goToMyProfile">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li onclick="goToMyProfile.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Mi perfil</span></a> </li>
                     </form>
                     <form action="goToQuestions" method="post" id="goToQuestions">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li onclick="goToQuestions.submit()"> <a class="waves-effect waves-dark"  aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">  - Preguntas</span></a></li>
                     </form>
                     <form action="logoutAccount" method="post" id="logout">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li onclick="logout.submit()"> <a class="waves-effect waves-dark" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">  - Cerrar sesion</span></a></li>
                     </form>
                 </ul>
@@ -189,11 +188,7 @@
 	<!-- Page wrapper  -->
 	<!-- ============================================================== -->
 	<div class="page-wrapper">
-        <%Integer chosenProperty = (Integer) session.getAttribute("chosenProperty");
-            String username = (String) session.getAttribute("account");
-	        Account account = DatabaseOps.getInstance().getAccount(username);
-	        Property property = DatabaseOps.getInstance().getProperty(chosenProperty, username);%>
-	        <%--Property property = (Property) request.getAttribute("property");%>--%>
+        <%Property property = (Property) request.getAttribute("property");%>
         <!-- ============================================================== -->
 		<!-- Container fluid  -->
 		<!-- ============================================================== -->
@@ -210,7 +205,7 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="home.jsp">Inicio</a></li>
 							<li class="breadcrumb-item"><a href="properties.jsp">Propiedades</a></li>
-							<li class="breadcrumb-item active m-r-10"><%=property.getName()%></li>
+							<li class="breadcrumb-item active m-r-10"><%=request.getAttribute("propertyName")%></li>
 						</ol>
 						</div>
 				</div>
@@ -223,7 +218,7 @@
 						<%--<!-- row -->--%>
 						<div class="row-lg-3">
 								<h4>
-									<button type="submit" class="btn btn-info waves-effect waves-light m-l-30 m-t-10 m-b-10"><%=property.getName()%></button>
+									<button type="submit" class="btn btn-info waves-effect waves-light m-l-30 m-t-10 m-b-10"><%=request.getAttribute("propertyName")%></button>
 								</h4>
 						</div>
 						<div class="row no-gutters">
@@ -253,7 +248,7 @@
 											<div class="d-flex no-block align-items-center">
 												<a href="javascript:void(0)" class="m-r-10" ><img alt="img" class="thumb-md img-circle m-r-10" src="assets/images/users/default.jpg"></a>
 												<div>
-													<h5 class="card-title m-b-0"><%=account.getName()%></h5>
+													<h5 class="card-title m-b-0"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getName()%></h5>
 												</div>
 												<div class="ml-auto text-muted text-right">
 													<i class="fa fa-map-marker text-danger m-r-10"></i> <%=property.getFullAddress()%>
@@ -300,6 +295,9 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <form method="post" action="addFunctionalUnit">
+                                                                <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
+                                                                <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
+                                                                <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control" id="fuName" name="fuName" placeholder="Nombre...">
                                                                 </div>
@@ -384,6 +382,9 @@
                                                         <div class="modal-body">
                                                             <form action="addContract" method="post" id="addContract">
                                                                 <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
+                                                                <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+                                                                <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
+                                                                <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
                                                                 <h4>Datos Contrato</h4>
                                                                 <div class="row">
                                                                         <div class="col-md-4">

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "GoToSpecificProperty", value = "/goToSpecificProperty")
+@WebServlet(name = "GoToSpecificProperty", value = "/goToSpecificProperty", urlPatterns = "/goToSpecificProperty")
 public class GoToSpecificPropertyServlet extends HttpServlet {
 
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
@@ -18,10 +18,12 @@ public class GoToSpecificPropertyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer chosenProperty = Integer.valueOf(req.getParameter("chosenProperty"));
-        String accountUsername = (String) req.getSession(false).getAttribute("account");
+        String accountUsername = req.getParameter("username");
         Property property = databaseOps.getProperty(chosenProperty, accountUsername);
-        req.getSession(false).setAttribute("chosenProperty", chosenProperty);
-        req.getSession(false).setAttribute("propertyName", property.getName());
+        req.setAttribute("chosenProperty", chosenProperty);
+        req.setAttribute("property", property);
+        req.setAttribute("propertyName", property.getName());
+        req.setAttribute("username", accountUsername);
         req.getRequestDispatcher("specificProperty.jsp").forward(req,resp);
     }
 }

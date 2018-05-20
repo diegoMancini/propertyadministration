@@ -1,17 +1,35 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
+apply plugin: 'com.google.cloud.tools.appengine'  // App Engine tasks
+
 
 apply plugin: 'war'
 
-mainClassName = 'GCSExample'
+buildscript {    // Configuration for building
+    repositories {
+        jcenter()    // Bintray's repository - a fast Maven Central mirror & more
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.cloud.tools:appengine-gradle-plugin:+'    // latest App Engine Gradle tasks
+    }
+}
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.google.truth:truth:0.33'
+    testCompile 'org.mockito:mockito-all:1.10.19'
+    testCompile 'com.google.appengine:appengine-testing:+'
+    testCompile 'com.google.appengine:appengine-api-stubs:+'
+    testCompile 'com.google.appengine:appengine-tools-sdk:+'
 
+    compile 'com.google.appengine:appengine-api-1.0-sdk:+'  // Latest App Engine Api's
     compile 'com.google.cloud:google-cloud-storage:1.28.0'
     compile 'com.google.api-client:google-api-client:1.23.0'
     compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
@@ -26,8 +44,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.15.Final'
-
-    compile 'com.google.cloud:google-cloud-bigquery:1.24.1'
+    compile 'com.google.cloud:google-cloud-bigquery:1.28.0'
+//    compile 'com.google.cloud:google-cloud-bigquery:1.24.1'
 
     // https://mvnrepository.com/artifact/jstl/jstl
     compile group: 'jstl', name: 'jstl', version: '1.2'
@@ -43,3 +61,34 @@ dependencies {
 
     // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'}
+
+// Always run unit tests
+appengineDeploy.dependsOn test
+appengineStage.dependsOn test
+
+appengine {  // App Engine tasks configuration
+    deploy {   // deploy configuration
+
+    }
+}
+
+test {
+    useJUnit()
+    testLogging.showStandardStreams = true
+    beforeTest { descriptor ->
+        logger.lifecycle("test: " + descriptor + "  Running")
+    }
+
+    onOutput { descriptor, event ->
+        logger.lifecycle("test: " + descriptor + ": " + event.message )
+    }
+    afterTest { descriptor, result ->
+        logger.lifecycle("test: " + descriptor + ": " + result )
+    }
+}
+
+group   = "com.example.appenginej8"        // Generated output GroupId
+version = "1.0-SNAPSHOT"       // Version in generated output
+
+sourceCompatibility = 1.8     // App Engine Flexible uses Java 8
+targetCompatibility = 1.8     // App Engine Flexible uses Java 8

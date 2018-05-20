@@ -53,9 +53,6 @@
 <!-- Main wrapper - style you can find in pages.scss -->
 <!-- ============================================================== -->
 <div id="main-wrapper">
-	<%
-		String username = (String) session.getAttribute("account");
-	%>
 	<!-- ============================================================== -->
 	<!-- Topbar header - style you can find in pages.scss -->
 	<!-- ============================================================== -->
@@ -109,7 +106,7 @@
                     <!-- ============================================================== -->
 
                     <li class="nav-item dropdown u-pro">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=username%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getUsername()%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <!-- text-->
                             <form action="goToMyProfile" method="post">
@@ -157,36 +154,36 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     <%--has-arrow va antes de waves-effect --%>
-                    <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(username).getFullName()%></span></a>
+                    <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a>
                     </li>
 
                     <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu"> Inicio</span></a></li>
                     <form action="goToProperties" method="post" id="goToProperties">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li> <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">  - Propiedades</span></a></li>
                     </form>
                     <form action="goToFunctionalUnits" method="post" id="goToFunctionalUnits">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li onclick="goToFunctionalUnits.submit()"> <a class="waves-effect waves-dark" ><i class="ti-layout"></i><span class="hide-menu">  - U. Funcionales</span></a></li>
                     </form>
                     <form action="goToClients" method="post" id="goToClients">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li onclick="goToClients.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Clientes</span></a></li>
                     </form>
                     <form action="goToMyBalance" method="post" id="goToMyBalance">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li ><a class="waves-effect waves-dark" onclick="goToMyBalance.submit()"><i class="ti-wallet"></i> <span class="hide-menu">  - Mi balance</span></a></li>
                     </form>
                     <form action="goToMyProfile" method="post" id="goToMyProfile">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li onclick="goToMyProfile.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Mi perfil</span></a> </li>
                     </form>
                     <form action="goToQuestions" method="post" id="goToQuestions">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li onclick="goToQuestions.submit()"> <a class="waves-effect waves-dark"  aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">  - Preguntas</span></a></li>
                     </form>
                     <form action="logoutAccount" method="post" id="logout">
-                        <input type="hidden" name="account" value="<%=session.getAttribute("account")%>">
+                        <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                         <li onclick="logout.submit()"> <a class="waves-effect waves-dark" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">  - Cerrar sesion</span></a></li>
                     </form>
                 </ul>
@@ -218,11 +215,11 @@
 								<li class="breadcrumb-item"><a href="home.jsp">Inicio</a></li>
 								<li class="breadcrumb-item active">Propiedades</li>
 							</ol>
-							<%--<form action="addProperty" method="post">--%>
-								<%--<input type="hidden" name="account" value="<%=username%>">--%>
-							<li> <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i><a href="newProperty.jsp"> Nueva Propiedad </a> </button> </li>
-						<%--</form>--%>
-						</div>
+							<form action="addProperty" method="get">
+								<input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+								<button type="submit" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Nueva Propiedad</button>
+							</form>
+					</div>
 				</div>
 			</div>
 			<!-- ============================================================== -->
@@ -236,16 +233,19 @@
 				<!-- column -->
 				<div class="col-lg-12">
 							<!-- Property Items -->
-                    <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(username);
+                    <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());
                         if (propertyList.size() > 0) {%>
-                    <%for (int i = 0; i < propertyList.size(); i++) {%>
+                    <%for (int i = 0;i < propertyList.size(); i++) {%>
+                    <%
+                        request.setAttribute("Property", propertyList.get(i));
+                    %>
                     <div class="card">
                         <%--<!-- row -->--%>
                         <div class="row-lg-3">
-	                        <form action="goToSpecificProperty" method="get">
-		                        <input type="hidden" name="chosenProperty" id="chosenProperty" value="<%=i%>">
-		                        <button type="submit" class="btn btn-info waves-effect waves-light m-l-30 m-t-10 m-b-10" name="chosenProperty" value="<%=i%>" ><%=propertyList.get(i).getName()%> </button>
-	                        </form>
+                            <form action="goToSpecificProperty" method="get" id="goToSpecificProperty">
+                                    <input type="hidden" name="username" id="username" value="<%=request.getRemoteUser()%>">
+                                    <button type="submit" class="btn btn-info waves-effect waves-light m-l-30 m-t-10 m-b-10" name="chosenProperty" value="<%=i%>"><%=propertyList.get(i).getName()%></button>
+                            </form>
                         </div>
                         <div class="row no-gutters">
                             <div class="col-md-3 m-l-20 m-b-15" style="background: url(<%=propertyList.get(i).getImageLink()%>)center center / cover no-repeat; min-height:250px;">
@@ -274,7 +274,7 @@
                                             <div class="d-flex no-block align-items-center">
                                                 <a href="javascript:void(0)" class="m-r-10" ><img alt="img" class="thumb-md img-circle m-r-10" src="assets/images/users/default.jpg"></a>
                                                 <div>
-                                                    <h5 class="card-title m-b-0"><%=DatabaseOps.getInstance().getAccount(username).getName()%></h5>
+                                                    <h5 class="card-title m-b-0"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getName()%></h5>
                                                 </div>
                                                 <div class="ml-auto text-muted text-right">
                                                     <i class="fa fa-map-marker text-danger m-r-10"></i> <%=propertyList.get(i).getFullAddress()%>

@@ -15,18 +15,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AddContractToFunctionalUnitServlet", value = "/addContract")
+@WebServlet(name = "AddContractToFunctionalUnitServlet", value = "/addContractToFunctionalUnit")
 public class AddContractToFunctionalUnitServlet extends HttpServlet {
 
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
-       Integer chosenFunctionalUnit = Integer.valueOf(req.getParameter("chosenFunctionalUnit"));
-       String accountUsername = req.getParameter("account");
+       Integer chosenProperty = (Integer) req.getAttribute("chosenProperty");
+       Integer chosenFunctionalUnit = (Integer) req.getAttribute("chosenFunctionalUnit");
+       String accountUsername = (String) req.getAttribute("account");
        Property property = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
        FunctionalUnit functionalUnit = property.getSpecificFunctionalUnitByIndex(chosenFunctionalUnit);
-       req.setAttribute("accountUsername", accountUsername);
+       req.setAttribute("username", accountUsername);
        req.setAttribute("chosenProperty", chosenProperty);
        req.setAttribute("property", property);
        req.setAttribute("propertyName", property.getName());

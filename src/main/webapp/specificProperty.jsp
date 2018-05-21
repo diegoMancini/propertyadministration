@@ -271,7 +271,8 @@
 							<table id="fu-toggler-table" class="table toggle-circle table-hover footable">
 								<thead>
 								<tr>
-									<th data-toggle="true">Nombre</th>
+									<th data-toggle="true">N°</th>
+									<th>Nombre</th>
 									<th>Direccion</th>
 									<th>Tipo</th>
                                     <th>Estado</th>
@@ -323,11 +324,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="ml-auto">
-                                            <div class="form-group">
-                                                <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off">
-                                            </div>
-                                        </div>
+	                                    <div class="ml-auto">
+		                                    <div class="form-group">
+			                                    <input id="demo-input-search2" type="text" placeholder="Buscar..." autocomplete="off">
+		                                    </div>
+	                                    </div>
                                     </div>
                                 </div>
 								<tbody>
@@ -345,7 +346,15 @@
 										}
 								%>
 								<tr>
-									<td><%=property.getFunctionalUnits().get(j).getName()%></td>
+									<td><%=j+1%></td>
+									<td>
+										<form action="goToSpecificFunctionalUnit" method="post" id="goToSpecificFunctionalUnit">
+											<input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+											<input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+											<input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
+											<a class="waves-effect waves-dark" onclick="goToSpecificFunctionalUnit.submit()"> <%=property.getFunctionalUnits().get(j).getName()%></a>
+										</form>
+									</td>
 									<td><%=property.getFunctionalUnits().get(j).getAddress()%></td>
 									<td><%=property.getFunctionalUnits().get(j).getType()%></td>
 									<%if (state.equals("Ocupado")){%>
@@ -354,128 +363,139 @@
 									<td><span class="label label-success"><%=state%></span> </td>
 									<%}%>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago"><i class="ti-home" aria-hidden="true"></i></button>
+	                                    <form action="goToFunctionalUnitCheckingAccount" method="post" id="goToFunctionalUnitCheckingAccount">
+		                                    <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+		                                    <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+		                                    <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
+		                                    <input type="hidden" name="propertyName" value="<%=property.getName()%>">
+		                                    <button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago" onclick="goToFunctionalUnitCheckingAccount.submit()"><i class="ti-home" aria-hidden="true"></i></button>
+	                                    </form>
                                     </td>
 									<%if (property.getFunctionalUnits().get(j).getContract() != null) {%>
 									<td>
                                             <form action="goToSpecificContract" method="post" id="goToSpecificContract">
-                                                <a onclick="goToSpecificContract.submit()" class="waves-effect waves-orange" href=""><%=contractName%></a>
+	                                            <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
+	                                            <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+	                                            <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
+	                                            <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
+	                                            <a onclick="goToSpecificContract.submit()" class="waves-effect waves-dark"><%=contractName%></a>
                                             </form>
                                     </td>
                                     <td>
                                             <form action="goToSpecificClient" method="post" id="goToSpecificClient">
-                                                <a onclick="goToSpecificClient.submit()" class="waves-effect waves-orange" href=""><%=client%></a>
+                                                <a onclick="goToSpecificClient.submit()" class="waves-effect waves-dark" href=""><%=client%></a>
                                             </form>
 									</td>
 									<%} else {%>
                                     <td>
-                                            <div class="button-box">
-                                                <button type="button" class="btn btn-info waves-effect waves-light m-r-20 m-b-15 m-l-15" data-toggle="modal" data-target="#newContract" data-whatever="@newContract"><span class="p-10"> Agregar Contrato</span></button>
-                                            </div>
-                                            <div class="modal fade" id="newContract" tabindex="-1" role="dialog" aria-labelledby="newContract">
-                                                <div class="modal-dialog " role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="newContractLabel">Nuevo Contrato</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="addContract" method="post" id="addContract">
-                                                                <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
-                                                                <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
-                                                                <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
-                                                                <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
-                                                                <h4>Datos Contrato</h4>
-                                                                <div class="row">
-                                                                        <div class="col-md-4">
-                                                                        <div class="form-group">
-                                                                            <input type="number" class="form-control" id="contractPrice" name="contractPrice" step=".01" placeholder="Precio...">
-                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <div class="form-group">
-                                                                            <input type="number" class="form-control" id="contractInflationMonths" name="contractInflationMonths" step=".01" placeholder="Cada cuantos meses se aplica la tasa de inflacion... ">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                            <input type="number" class="form-control" id="contractInflationRate" name="contractInflationRate" step=".01" placeholder="Porcentaje que se aumenta de inflacion... ">
-                                                                        </div>
-                                                                    </div>
-                                                                    </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-4">
-                                                                        <div class="form-group">
-                                                                            <input type="date" class="form-control" id="contractStartDate" name="contractStartDate" placeholder="Fecha inicio...">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                            <input type="date" class="form-control" id="contractEndDate" name="contractEndDate" placeholder="contractEndDate">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <h4>Datos Inquilino</h4>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" id="tenantName" name="tenantName" placeholder="Nombre del inquilino...">
-                                                                        </div>
-                                                                    </div>
-                                                                        <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" id="tenantSurname" name="tenantSurname" placeholder="Apellido del inquilino...">
-                                                                        </div>
-                                                                        </div>
-                                                                    </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-3">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" name="tenantId" id="tenantId" placeholder="DNI inquilino...">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                            <input type="text" class="form-control" name="tenantPhone" id="tenantPhone" placeholder="Telefono...">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" name="tenantEmail" id="tenantEmail" placeholder="Correo Electronico...">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <h4>Datos Garante</h4>
-                                                                <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" name="guarantorName" id="guarantorName" placeholder="Nombre del garante...">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" name="guarantorId" id="guarantorId" placeholder="DNI del garante...">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control" name="guarantorPhone" id="guarantorPhone" placeholder="Telefono del garante...">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" name="chosenFunctionalUnit" value="<%=j%>" class="submit-btn btn-primary">Agregar</button>
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+	                                    <form action="newContract" method="post">
+		                                    <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+		                                    <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+		                                    <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
+		                                    <input type="hidden" name="propertyName" value="<%=property.getName()%>">
+		                                    <button type="submit" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Agregar contrato </button>
+	                                    </form>
 
-                                        </form>
+                                            <%--<div class="modal fade" id="newContract" tabindex="-1" role="dialog" aria-labelledby="newContract">--%>
+                                                <%--<div class="modal-dialog " role="document">--%>
+                                                    <%--<div class="modal-content">--%>
+                                                        <%--<div class="modal-header">--%>
+                                                            <%--<h4 class="modal-title" id="newContractLabel">Nuevo Contrato</h4>--%>
+                                                            <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--%>
+                                                        <%--</div>--%>
+                                                        <%--<div class="modal-body">--%>
+                                                            <%--<form action="addContractToFunctionalUnit" method="post" id="addContract">--%>
+                                                                <%--<input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">--%>
+                                                                <%--<input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">--%>
+                                                                <%--<input type="hidden" name="account" value="<%=request.getAttribute("username")%>">--%>
+                                                                <%--<input type="hidden" name="property" value="<%=request.getAttribute("property")%>">--%>
+                                                                <%--<h4>Datos Contrato</h4>--%>
+                                                                <%--<div class="row">--%>
+                                                                        <%--<div class="col-md-2">--%>
+                                                                        <%--<div class="form-group">--%>
+                                                                            <%--<input type="number" class="form-control" id="contractPrice" name="contractPrice" step=".01" placeholder="Precio...">--%>
+                                                                        <%--</div>--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                    <%--<div class="col-md-2">--%>
+                                                                        <%--<div class="form-group">--%>
+                                                                            <%--<input type="number" class="form-control" id="contractInflationMonths" name="contractInflationMonths" step=".01" placeholder="Cada cuantos meses se aplica la tasa de inflacion... ">--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                    <%--<div class="col-md-2">--%>
+                                                                    <%--<div class="form-group">--%>
+                                                                            <%--<input type="number" class="form-control" id="contractInflationRate" name="contractInflationRate" step=".01" placeholder="Porcentaje que se aumenta de inflacion... ">--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                <%--<div class="row">--%>
+                                                                    <%--<div class="col-md-3">--%>
+                                                                        <%--<div class="form-group">--%>
+                                                                            <%--<input type="date" class="form-control" id="contractStartDate" name="contractStartDate" placeholder="Fecha inicio...">--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                    <%--<div class="col-md-3">--%>
+                                                                    <%--<div class="form-group">--%>
+                                                                            <%--<input type="date" class="form-control" id="contractEndDate" name="contractEndDate" placeholder="contractEndDate">--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                <%--</div>--%>
+                                                                <%--<h4>Datos Inquilino</h4>--%>
+                                                                <%--<div class="row">--%>
+                                                                    <%--<div class="col-md-2">--%>
+                                                                        <%--<div class="form-group">--%>
+                                                                            <%--<input type="text" class="form-control" id="tenantName" name="tenantName" placeholder="Nombre del inquilino...">--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                        <%--<div class="col-md-2">--%>
+                                                                        <%--<div class="form-group">--%>
+                                                                            <%--<input type="text" class="form-control" id="tenantSurname" name="tenantSurname" placeholder="Apellido del inquilino...">--%>
+                                                                        <%--</div>--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+	                                                            <%--<div class="col-md-2">--%>
+	                                                            <%--<div class="form-group">--%>
+		                                                            <%--<input type="text" class="form-control" name="tenantId" id="tenantId" placeholder="DNI inquilino...">--%>
+	                                                            <%--</div>--%>
+                                                                <%--</div>--%>
+                                                                <%--<div class="row">--%>
+                                                                    <%--<div class="col-md-2">--%>
+                                                                    <%--<div class="form-group">--%>
+                                                                            <%--<input type="text" class="form-control" name="tenantPhone" id="tenantPhone" placeholder="Telefono...">--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                    <%--<div class="col-md-4">--%>
+                                                                        <%--<div class="form-group">--%>
+                                                                            <%--<input type="text" class="form-control" name="tenantEmail" id="tenantEmail" placeholder="Correo Electronico...">--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                <%--</div>--%>
+                                                                <%--<h4>Datos Garante</h4>--%>
+                                                                <%--<div class="row">--%>
+                                                                    <%--<div class="col-md-2">--%>
+                                                                        <%--<div class="form-group">--%>
+                                                                            <%--<input type="text" class="form-control" name="guarantorName" id="guarantorName" placeholder="Nombre del garante...">--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                    <%--<div class="col-md-2">--%>
+                                                                        <%--<div class="form-group">--%>
+                                                                            <%--<input type="text" class="form-control" name="guarantorId" id="guarantorId" placeholder="DNI del garante...">--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                    <%--<div class="col-md-2">--%>
+                                                                        <%--<div class="form-group">--%>
+                                                                            <%--<input type="text" class="form-control" name="guarantorPhone" id="guarantorPhone" placeholder="Telefono del garante...">--%>
+                                                                        <%--</div>--%>
+                                                                    <%--</div>--%>
+                                                                <%--</div>--%>
+                                                                <%--<div class="modal-footer">--%>
+                                                                    <%--<button type="submit" name="chosenFunctionalUnit" value="<%=j%>" class="submit-btn btn-primary">Agregar</button>--%>
+                                                                    <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+                                                                <%--</div>--%>
+                                                            <%--</form>--%>
+                                                        <%--</div>--%>
+                                                    <%--</div>--%>
+                                                <%--</div>--%>
+                                            <%--</div>--%>
                                     </td>
 									<td> --------- </td>
 									<%}%>
@@ -495,76 +515,6 @@
 							</table>
 						</div>
 					</div>
-					<%--<div class="card">--%>
-						<%--<div class="card-body">--%>
-							<%--<h4 class="card-title">Lista de Clientes</h4>--%>
-							<%--<table id="clients-toggler-table" class="table toggle-circle table-hover">--%>
-								<%--<thead>--%>
-								<%--<tr>--%>
-									<%--<th>Nº</th>--%>
-									<%--<th data-toggle="true">Nombre</th>--%>
-									<%--<th>DNI</th>--%>
-									<%--<th>Telefono</th>--%>
-									<%--<th>Email</th>--%>
-									<%--<th>Cuenta Corriente</th>--%>
-									<%--<th data-hide="all">Nacionalidad</th>--%>
-									<%--<th data-hide="all">Direccion</th>--%>
-									<%--<th data-hide="all">Localidad</th>--%>
-									<%--<th data-hide="all">Ciudad</th>--%>
-									<%--<th data-hide="all">Provincia</th>--%>
-									<%--<th data-hide="all">Pais</th>--%>
-									<%--<th data-hide="all">Codigo Postal</th>--%>
-								<%--</tr>--%>
-								<%--</thead>--%>
-                                <%--<div class="m-t-40">--%>
-                                    <%--<div class="d-flex">--%>
-                                        <%--<div class="ml-auto">--%>
-                                            <%--<div class="form-group">--%>
-                                                <%--<input id="demo-input-search2" type="text" placeholder="Buscar..." autocomplete="off">--%>
-                                            <%--</div>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-								<%--<tbody>--%>
-								<%--<%if (property.getOccupiedFunctionalUnits() > 0) {%>--%>
-								<%--<%for (int l = 0; l < property.getTenantList().size();l++) {%>--%>
-								<%--<%--%>
-									<%--String tenantName = property.getTenantList().get(l).getFullName();--%>
-									<%--String tenantID = property.getTenantList().get(l).getDni();--%>
-									<%--String phone = property.getTenantList().get(l).getPhone();--%>
-									<%--String email = property.getTenantList().get(l).getEmail();--%>
-									<%--String tenantNationality = property.getTenantList().get(l).getNationality();--%>
-									<%--String[] addressList = {property.getTenantList().get(l).getAddress(), property.getTenantList().get(l).getAddressTown(), property.getTenantList().get(l).getAddressCity(), property.getTenantList().get(l).getAddressProvince(), property.getTenantList().get(l).getAddressCountry(),property.getTenantList().get(l).getAddressZipCode()};--%>
-								<%--%>--%>
-								<%--<tr>--%>
-									<%--<td><%=l+1%></td>--%>
-									<%--<td><%=tenantName%></td>--%>
-									<%--<td><%=tenantID%></td>--%>
-									<%--<td><%=phone%></td>--%>
-									<%--<td><%=email%></td>--%>
-									<%--<td><%=tenantNationality%></td>--%>
-									<%--<td><%=addressList[0]%></td>--%>
-									<%--<td><%=addressList[1]%></td>--%>
-									<%--<td><%=addressList[2]%></td>--%>
-									<%--<td><%=addressList[3]%></td>--%>
-									<%--<td><%=addressList[4]%></td>--%>
-									<%--<td><%=addressList[5]%></td>--%>
-								<%--</tr>--%>
-								<%--<%}%>--%>
-								<%--<%}%>--%>
-								<%--</tbody>--%>
-								<%--<tfoot>--%>
-								<%--<tr>--%>
-									<%--<td colspan="5">--%>
-										<%--<div class="text-right">--%>
-											<%--<ul class="pagination pagination-split m-t-30"> </ul>--%>
-										<%--</div>--%>
-									<%--</td>--%>
-								<%--</tr>--%>
-								<%--</tfoot>--%>
-							<%--</table>--%>
-						<%--</div>--%>
-					<%--</div>--%>
 				</div>
 			</div>
 				<!-- Right sidebar -->
@@ -716,9 +666,10 @@
     jQuery(function($){
         $("#clients-toggler-table").footable();
     });
-    $('#search-input').on('input', function (e) {
+    var table = $('#fu-toggler-table');
+    $('#demo-input-search2').on('input', function (e) {
         e.preventDefault();
-        addrow.trigger('footable_filter', {filter: $(this).val()});
+        table.trigger('footable_filter', {filter: $(this).val()});
     });
 </script>
 </body>

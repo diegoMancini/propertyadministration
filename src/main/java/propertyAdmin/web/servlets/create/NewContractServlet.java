@@ -15,10 +15,16 @@ public class NewContractServlet extends HttpServlet {
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      Integer chosenProperty = Integer.valueOf(request.getParameter("chosenProperty"));
+      Integer chosenFunctionalUnit = Integer.valueOf(request.getParameter("chosenFunctionalUnit"));
+      String propertyName = request.getParameter("propertyName");
+      String username = request.getParameter("account");
+      request.setAttribute("chosenProperty", chosenProperty);
+      request.setAttribute("chosenFunctionalUnit", chosenFunctionalUnit);
+      request.setAttribute("propertyName", propertyName);
+      request.setAttribute("account", username);
+       request.getRequestDispatcher("addContract.jsp").forward(request,response);
 
    }
 
-   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-   }
 }

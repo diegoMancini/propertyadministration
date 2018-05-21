@@ -148,9 +148,8 @@
                         <%--has-arrow va antes de waves-effect --%>
                         <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a>
                         </li>
-
                         <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu"> Inicio</span></a></li>
-                            <form action="/goToProperties" method="post" id="goToProperties">
+                            <form action="goToProperties" method="post" id="goToProperties">
                                 <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                                 <li> <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">  - Propiedades</span></a></li>
                             </form>

@@ -70,6 +70,20 @@
         <servlet-name>addFunctionalUnit</servlet-name>
         <url-pattern>/addFunctionalUnit</url-pattern>
     </servlet-mapping>
+    //AddPDFToFunctionalUnit
+    <servlet>
+        <servlet-name>addPDFToContract</servlet-name>
+        <servlet-class>propertyAdmin.web.servlets.add.AddPDFToContractServlet</servlet-class>
+        <multipart-config>
+            <max-file-size>10000000</max-file-size>
+            <max-request-size>20000000</max-request-size>
+            <file-size-threshold>50000000</file-size-threshold>
+        </multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addPDFToContract</servlet-name>
+        <url-pattern>/addPDFToContract</url-pattern>
+    </servlet-mapping>
     //AddProperty
     <servlet>
         <servlet-name>addProperty</servlet-name>
@@ -101,6 +115,11 @@
     <servlet>
         <servlet-name>newProperty</servlet-name>
         <servlet-class>propertyAdmin.web.servlets.create.NewPropertyServlet</servlet-class>
+        <multipart-config>
+            <max-file-size>10000000</max-file-size>
+            <max-request-size>20000000</max-request-size>
+            <file-size-threshold>50000000</file-size-threshold>
+        </multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>newProperty</servlet-name>
@@ -132,6 +151,15 @@
     <servlet-mapping>
         <servlet-name>goToClients</servlet-name>
         <url-pattern>/goToClients</url-pattern>
+    </servlet-mapping>
+    //GoToFunctionalUnitCheckingAccount
+    <servlet>
+        <servlet-name>goToFunctionalUnitCheckingAccount</servlet-name>
+        <servlet-class>propertyAdmin.web.servlets.go.GoToFunctionalUnitCheckingAccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>goToFunctionalUnitCheckingAccount</servlet-name>
+        <url-pattern>/goToFunctionalUnitCheckingAccount</url-pattern>
     </servlet-mapping>
     //GoToFunctionalUnits
     <servlet>

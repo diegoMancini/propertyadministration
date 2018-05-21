@@ -1,5 +1,6 @@
 package propertyAdmin.app.abc;
 
+import propertyAdmin.app.menu.form.StartMenu;
 import propertyAdmin.operations.DatabaseOps;
 
 import java.io.IOException;
@@ -74,7 +75,7 @@ public class Main {
 //        System.out.println(dateStart.toString());
 //        System.out.println(dateEnd.toString());
 
-//        new StartMenu().operate();
+        new StartMenu().operate();
     }
 
 }

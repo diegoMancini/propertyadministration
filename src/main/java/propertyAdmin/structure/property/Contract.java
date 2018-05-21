@@ -1,14 +1,12 @@
 package propertyAdmin.structure.property;
 
 import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 import propertyAdmin.structure.persons.Guarantor;
 import propertyAdmin.structure.persons.Landlord;
 import propertyAdmin.structure.persons.Tenant;
 
 import javax.persistence.*;
-import java.util.Date;
 
 //Base de contrato Bello-Ngom-Depto1
 
@@ -44,6 +42,10 @@ public class Contract {
     private Integer inflationRate;
     @Column(name = "DAILY_INTEREST_FOR_DELAYED_PAYMENT")
     private Integer dailyInterestForDelayedPayment;
+    @Column(name = "IMAGE_LINK")
+    private String imageLink;
+    @Column(name = "HAS_PDF")
+    private boolean hasPDF;
 
     public Contract() {
     }
@@ -72,6 +74,8 @@ public class Contract {
         this.inflationMonthsPeriod = inflationMonthsPeriod;
         this.inflationRate = inflationRate;
         this.name = name;
+        this.imageLink = "";
+        this.hasPDF = false;
     }
 
     public String getName() {
@@ -124,5 +128,18 @@ public class Contract {
 
     public Landlord getLandlord() {
         return owner;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+        this.hasPDF = true;
+    }
+
+    public boolean hasPDF() {
+        return hasPDF;
+    }
+
+    public String getImageLink() {
+        return imageLink;
     }
 }

@@ -238,8 +238,6 @@
                     <%for (int i = 0;i < propertyList.size(); i++) {%>
                     <%
                         request.setAttribute("Property", propertyList.get(i));
-                        javax.servlet.jsp.JspWriter out1 = out;
-                        return out1;
                     %>
                     <div class="card">
                         <%--<!-- row -->--%>

@@ -62,32 +62,32 @@ dependencies {
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'}
 
 // Always run unit tests
-appengineDeploy.dependsOn test
-appengineStage.dependsOn test
-
-appengine {  // App Engine tasks configuration
-    deploy {   // deploy configuration
-
-    }
-}
-
-test {
-    useJUnit()
-    testLogging.showStandardStreams = true
-    beforeTest { descriptor ->
-        logger.lifecycle("test: " + descriptor + "  Running")
-    }
-
-    onOutput { descriptor, event ->
-        logger.lifecycle("test: " + descriptor + ": " + event.message )
-    }
-    afterTest { descriptor, result ->
-        logger.lifecycle("test: " + descriptor + ": " + result )
-    }
-}
-
-group   = "com.example.appenginej8"        // Generated output GroupId
-version = "1.0-SNAPSHOT"       // Version in generated output
-
-sourceCompatibility = 1.8     // App Engine Flexible uses Java 8
-targetCompatibility = 1.8     // App Engine Flexible uses Java 8
+//appengineDeploy.dependsOn test
+//appengineStage.dependsOn test
+//
+//appengine {  // App Engine tasks configuration
+//    deploy {   // deploy configuration
+//
+//    }
+//}
+//
+//test {
+//    useJUnit()
+//    testLogging.showStandardStreams = true
+//    beforeTest { descriptor ->
+//        logger.lifecycle("test: " + descriptor + "  Running")
+//    }
+//
+//    onOutput { descriptor, event ->
+//        logger.lifecycle("test: " + descriptor + ": " + event.message )
+//    }
+//    afterTest { descriptor, result ->
+//        logger.lifecycle("test: " + descriptor + ": " + result )
+//    }
+//}
+//
+//group   = "com.example.appenginej8"        // Generated output GroupId
+//version = "1.0-SNAPSHOT"       // Version in generated output
+//
+//sourceCompatibility = 1.8     // App Engine Flexible uses Java 8
+//targetCompatibility = 1.8     // App Engine Flexible uses Java 8

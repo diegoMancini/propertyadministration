@@ -10,7 +10,7 @@
         <property name="connection.password">Perrito1</property>
 
         <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">100</property>
+        <property name="connection.pool_size">500</property>
 
 
         <!-- Echo all executed SQL to stdout -->

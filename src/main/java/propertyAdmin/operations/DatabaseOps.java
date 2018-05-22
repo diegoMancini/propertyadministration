@@ -58,7 +58,7 @@ public class DatabaseOps {
             storageOptions = StorageOptions.newBuilder()
                         .setProjectId("10e02c3ff7bcc7079252aa055d374810e94fd7f4\t")
                         .setCredentials(GoogleCredentials.fromStream(new
-                                FileInputStream("/Users/DiegoMancini/IdeaProjects/propertyadministration/out/artifacts/propertyadministration_main_Web_exploded/WEB-INF/classes/filetransfer.json"))).build();
+                                FileInputStream("assets/filetransfer.json"))).build();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -212,12 +212,13 @@ public class DatabaseOps {
         Session session = openSession();
         Transaction transaction = session.beginTransaction();
         Account account = session.get(Account.class, email);
-//        FunctionalUnit functionalUnit1 = account.getSpecificPropertyById(property.getId()).getSpecificFunctionalUnitById(functionalUnit.getId());
-        functionalUnit.setContract(contract);
+        FunctionalUnit functionalUnit1 = account.getSpecificPropertyById(property.getId()).getSpecificFunctionalUnitById(functionalUnit.getId());
+        functionalUnit1.setContract(contract);
         session.saveOrUpdate(contract);
-//        session.saveOrUpdate(contract.getLandlord());
+        session.saveOrUpdate(contract.getLandlord());
         session.saveOrUpdate(contract.getTenant());
         session.saveOrUpdate(contract.getGuarantor());
+        session.merge(functionalUnit1);
         transaction.commit();
         closeSession(session);
     }

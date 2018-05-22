@@ -39,7 +39,7 @@
 
     <!-- make the session time-out after one minute -->
     <session-config>
-        <session-timeout>-1</session-timeout>
+        <session-timeout>600</session-timeout>
     </session-config>
 
     <welcome-file-list>
@@ -110,6 +110,15 @@
     <servlet-mapping>
         <servlet-name>newContract</servlet-name>
         <url-pattern>/newContract</url-pattern>
+    </servlet-mapping>
+    //NewFunctionalUnit
+    <servlet>
+        <servlet-name>newFunctionalUnit</servlet-name>
+        <servlet-class>propertyAdmin.web.servlets.create.NewFunctionalUnitServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newFunctionalUnit</servlet-name>
+        <url-pattern>/newFunctionalUnit</url-pattern>
     </servlet-mapping>
     //NewProperty
     <servlet>

@@ -19,7 +19,7 @@
     <!-- This page CSS -->
     <!-- chartist CSS -->
     <link href="assets/node_modules/morrisjs/morris.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="propertyadmin/css/jquery.autocomplete.css" />
+    <link rel="stylesheet" type="text/css" href="propertyadmin/dist/css/jquery.autocomplete.css" />
     <!--Toaster Popup message CSS -->
     <link href="assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- Calendar CSS -->
@@ -29,7 +29,7 @@
     <!-- Dashboard 1 Page CSS -->
     <link href="propertyadmin/dist/css/pages/dashboard1.css" rel="stylesheet">
 
-    <script src="propertyadmin/js/jquery.autocomplete.js"></script>
+    <script src="propertyadmin/dist/js/jquery.autocomplete.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -176,50 +176,71 @@
                     <ul id="sidebarnav">
                         <%--has-arrow va antes de waves-effect --%>
                         <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a></li>
-                            <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">Propiedades<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size()%></span></span></a>
+                            <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-home"></i><span class="hide-menu">Propiedades<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size()%></span></span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <% if (DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size() > 0){%>
                                     <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());%>
                                         <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
-                                        <li>
                                             <form action="goToSpecificProperty" method="post" id="goToSpecificProperty">
-                                                <a href="javascript:void(0)" class="has-arrow"><%=propertyList.get(i).getName()%> <span class="badge badge-pill badge-success pull-right"><%=propertyList.get(i).getFunctionalUnits().size()%></span></a>
+                                                <input type="hidden" name="username" value="<%=request.getRemoteUser()%>">
+                                                <li onclick="goToSpecificProperty.submit()"> <a class="waves-effect waves-dark" name="chosenProperty" value="<%=i%>" > <i class="ti-home"></i> - <%=propertyList.get(i).getName()%></a></li>
                                             </form>
-                                                <ul aria-expanded="false" class="collapse">
-                                                    <li>
-                                                        <a href="javascript:void(0)" class="has-arrow">Unidades Funcionales<span class="badge badge-pill badge-success pull-right"><%=propertyList.get(i).getFunctionalUnits()%></span></a>
-                                                        <ul aria-expanded="false" class="collapse">
-                                                            <%if (propertyList.get(i).getFunctionalUnits().size() > 0) {%>
-                                                                <%for (int j = 0 ; j < propertyList.get(i).getFunctionalUnits().size() ; j++) {%>
-                                                                    <li>
-                                                                        <form action="goToSpecificFunctionalUnit" id="goToSpecificFunctionalUnit" method="post">
-                                                                            <a href="" onclick="goToSpecificFunctionalUnit.submit()" name="chosenFU" value="<%=j%>"><%=propertyList.get(i).getFunctionalUnits().get(j).getName()%></a>
-                                                                        </form>
-                                                                    </li>
-                                                                <%}%>
-                                                            <%}%>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="javascript:void(0)" class="has-arrow">Clientes<span class="badge badge-pill badge-success pull-right"><%=propertyList.get(i).getFunctionalUnits()%></span></a>
-                                                        <ul aria-expanded="false" class="collapse">
-                                                            <%if (propertyList.get(i).getOccupiedFunctionalUnits() > 0) {%>
-                                                                <%for (int j = 0; j < propertyList.get(i).getTenantList().size();j++) {%>
-                                                                    <li>
-                                                                        <form action="goToSpecificClient" id="goToSpecificClient" method="post">
-                                                                            <a href="" onclick="goToSpecificClient.submit()" name="chosenTenant" value="<%=j%>"><%=propertyList.get(i).getTenantList().get(j).getName()%></a>
-                                                                        </form>
-                                                                    </li>
-                                                                <%}%>
-                                                            <%}%>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
                                         <%}%>
                                     <%}%>
                                 </ul>
-                                </li>
-                                <form action="goToMyProfile" method="post" id="goToMyProfile">
+                            </li>
+                            <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-home"></i><span class="hide-menu">U.F.<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfFunctionalUnits()%></span></span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <% if (DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size() > 0){%>
+                                    <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());%>
+                                    <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
+                                    <li>
+                                        <a href="javascript:void(0)" class="has-arrow"><%=propertyList.get(i).getName()%></a>
+                                        <ul aria-expanded="false" class="collapse">
+                                            <%if (propertyList.get(i).getFunctionalUnits().size() > 0) {%>
+                                            <%for (int j = 0 ; j < propertyList.get(i).getFunctionalUnits().size() ; j++) {%>
+                                            <form action="goToSpecificFunctionalUnit" id="goToSpecificFunctionalUnit" method="post">
+                                                <li onclick="goToSpecificFunctionalUnit.submit()"> <a name="chosenFU" value="<%=j%>"> <i class="ti-home"></i> - <%=propertyList.get(i).getFunctionalUnits().get(j).getName()%></a></li>
+                                            </form>
+                                            <%}%>
+                                            <%} else {%>
+                                            <form action="newFunctionalUnit" method="post" >
+                                                <li>
+                                                    <input type="hidden" name="chosenProperty" value="<%=i%>">
+                                                    <button type="submit" >Agregar UF</button>
+                                                </li>
+                                            </form>
+                                            <%}%>
+                                        </ul>
+                                    </li>
+                                    <%}%>
+                                    <%}%>
+                                </ul>
+                            </li>
+                            <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-user"></i><span class="hide-menu">Clientes<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfOccupiedFunctionalUnits()%></span></span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <% if (DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size() > 0){%>
+                                    <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());%>
+                                    <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
+                                    <li>
+                                        <a href="javascript:void(0)" class="has-arrow"><%=propertyList.get(i).getName()%></a>
+                                        <ul aria-expanded="false" class="collapse">
+                                            <%if (DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfOccupiedFunctionalUnits() > 0) {%>
+                                            <%for (int j = 0 ; j < propertyList.get(i).getOccupiedFUList().size() ; j++) {%>
+                                            <form action="goToSpecificClient" id="goToSpecificClient" method="post">
+                                                <li onclick="goToSpecificClient.submit()"><a name="chosenFU" value="<%=j%>"> <i class="ti-user"></i> - <%=propertyList.get(i).getFunctionalUnits().get(j).getContract().getTenant().getName()%></a></li>
+                                            </form>
+                                            <%}%>
+                                            <%} else {%>
+                                            <li> ----- </li>
+                                            <%}%>
+                                        </ul>
+                                    </li>
+                                    <%}%>
+                                    <%}%>
+                                </ul>
+                            </li>
+                            <form action="goToMyProfile" method="post" id="goToMyProfile">
                                 <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                                 <li onclick="goToMyProfile.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Mi perfil</span></a> </li>
                             </form>

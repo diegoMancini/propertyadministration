@@ -165,7 +165,7 @@ public class   Account {
    }
    public Integer getAmountOfOccupiedFunctionalUnits() {
       Integer res = getAmountOfFunctionalUnits();
-      for (Property property:getProperties()) {
+      for (Property property:properties) {
          for (FunctionalUnit functionalUnit: property.getFunctionalUnits()) {
             if (!functionalUnit.hasContract()) {
                res--;

@@ -181,15 +181,17 @@
                                     <% if (DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size() > 0){%>
                                     <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());%>
                                         <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
+                                        <li>
                                             <form action="goToSpecificProperty" method="post" id="goToSpecificProperty">
                                                 <input type="hidden" name="username" value="<%=request.getRemoteUser()%>">
-                                                <li onclick="goToSpecificProperty.submit()"> <a class="waves-effect waves-dark" name="chosenProperty" value="<%=i%>" > <i class="ti-home"></i> - <%=propertyList.get(i).getName()%></a></li>
+                                                <a name="chosenProperty" value="<%=i%>" onclick="goToSpecificProperty.submit()" ><i class="ti-home"></i> <%=propertyList.get(i).getName()%></a>
                                             </form>
+                                        </li>
                                         <%}%>
                                     <%}%>
                                 </ul>
                             </li>
-                            <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-home"></i><span class="hide-menu">U.F.<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfFunctionalUnits()%></span></span></a>
+                            <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">U.F.<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfFunctionalUnits()%></span></span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <% if (DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size() > 0){%>
                                     <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());%>
@@ -199,17 +201,19 @@
                                         <ul aria-expanded="false" class="collapse">
                                             <%if (propertyList.get(i).getFunctionalUnits().size() > 0) {%>
                                             <%for (int j = 0 ; j < propertyList.get(i).getFunctionalUnits().size() ; j++) {%>
-                                            <form action="goToSpecificFunctionalUnit" id="goToSpecificFunctionalUnit" method="post">
-                                                <li onclick="goToSpecificFunctionalUnit.submit()"> <a name="chosenFU" value="<%=j%>"> <i class="ti-home"></i> - <%=propertyList.get(i).getFunctionalUnits().get(j).getName()%></a></li>
-                                            </form>
+                                            <li>
+                                                <form action="goToSpecificFunctionalUnit" id="goToSpecificFunctionalUnit" method="post">
+                                                    <a onclick="goToSpecificFunctionalUnit.submit()" name="chosenFU" value="<%=j%>"><i class="ti-files"></i>  <%=propertyList.get(i).getFunctionalUnits().get(j).getName()%></a>
+                                                </form>
+                                            </li>
                                             <%}%>
                                             <%} else {%>
-                                            <form action="newFunctionalUnit" method="post" >
-                                                <li>
+                                            <li>
+                                                <form action="newFunctionalUnit" method="post" >
                                                     <input type="hidden" name="chosenProperty" value="<%=i%>">
                                                     <button type="submit" >Agregar UF</button>
-                                                </li>
-                                            </form>
+                                                </form>
+                                            </li>
                                             <%}%>
                                         </ul>
                                     </li>
@@ -227,9 +231,11 @@
                                         <ul aria-expanded="false" class="collapse">
                                             <%if (DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfOccupiedFunctionalUnits() > 0) {%>
                                             <%for (int j = 0 ; j < propertyList.get(i).getOccupiedFUList().size() ; j++) {%>
-                                            <form action="goToSpecificClient" id="goToSpecificClient" method="post">
-                                                <li onclick="goToSpecificClient.submit()"><a name="chosenFU" value="<%=j%>"> <i class="ti-user"></i> - <%=propertyList.get(i).getFunctionalUnits().get(j).getContract().getTenant().getName()%></a></li>
-                                            </form>
+                                            <li>
+                                                <form action="goToSpecificClient" id="goToSpecificClient" method="post">
+                                                    <a onclick="goToSpecificClient.submit()" name="chosenFU" value="<%=j%>"><i class="ti-user"></i><%=propertyList.get(i).getFunctionalUnits().get(j).getContract().getTenant().getName()%></a>
+                                                </form>
+                                            </li>
                                             <%}%>
                                             <%} else {%>
                                             <li> ----- </li>

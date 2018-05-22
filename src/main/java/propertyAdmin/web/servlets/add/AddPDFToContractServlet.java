@@ -2,6 +2,7 @@ package propertyAdmin.web.servlets.add;
 
 import propertyAdmin.operations.DatabaseOps;
 import propertyAdmin.structure.property.Contract;
+import propertyAdmin.structure.property.FunctionalUnit;
 import propertyAdmin.structure.property.Property;
 
 import javax.servlet.ServletException;
@@ -20,12 +21,17 @@ public class AddPDFToContractServlet extends HttpServlet {
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       Integer chosenProperty = Integer.valueOf(request.getParameter("chosenProperty"));
+      Integer chosenFunctionalUnit = Integer.valueOf(request.getParameter("chosenFunctionalUnit"));
       Property property = databaseOps.getProperty(chosenProperty, request.getRemoteUser());
+       FunctionalUnit functionalUnit = (FunctionalUnit) request.getAttribute("functionalUnit");
+
       request.setAttribute("chosenProperty", chosenProperty);
+      request.setAttribute("chosenFunctionalUnit", chosenFunctionalUnit);
       request.setAttribute("property", property);
       request.setAttribute("propertyName", property.getName());
       request.setAttribute("username", request.getRemoteUser());
-      Contract contract = (Contract) request.getAttribute("contract");
+
+      Contract contract = functionalUnit.getContract();
       contract.setImageLink(databaseOps.getImageUrl(request, response, "property-administration.appspot.com"));
       request.getRequestDispatcher("specificProperty.jsp").forward(request,response);
    }

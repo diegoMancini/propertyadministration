@@ -1,4 +1,8 @@
 <%@ page import="propertyAdmin.operations.DatabaseOps" %>
+<%@ page import="propertyAdmin.structure.property.Property" %>
+<%@ page import="propertyAdmin.structure.property.FunctionalUnit" %>
+<%@ page import="propertyAdmin.structure.persons.Tenant" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +19,7 @@
     <!-- This page CSS -->
     <!-- chartist CSS -->
     <link href="assets/node_modules/morrisjs/morris.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="propertyadmin/css/jquery.autocomplete.css" />
     <!--Toaster Popup message CSS -->
     <link href="assets/node_modules/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- Calendar CSS -->
@@ -23,6 +28,8 @@
     <link href="propertyadmin/dist/css/style.min.css" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
     <link href="propertyadmin/dist/css/pages/dashboard1.css" rel="stylesheet">
+
+    <script src="propertyadmin/js/jquery.autocomplete.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -82,13 +89,35 @@
                         <!-- ============================================================== -->
                         <li class="nav-item">
                             <form class="app-search d-none d-md-block d-lg-block">
-                                <input type="text" class="form-control" placeholder="Buscar...">
+                                <input type="text" class="form-control" name="searchInput" id="searchInput" placeholder="Buscar...">
                             </form>
                         </li>
-                        <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="font-bold">  Inicio</span></a></li>--%>
-                        <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="properties.jsp"><i class="ti-home"></i><span class="font-bold">  Propiedades</span></a></li>--%>
-                        <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="functionalUnits.jsp"><i class="ti-layout"></i><span class="font-bold">  U.F.</span></a></li>--%>
-                        <%--<li class="nav-item"> <a class="nav-link waves-effect waves-dark" href="clients.jsp"><i class="ti-user"></i><span class="font-bold">  Clientes</span></a></li>--%>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <form action="goToProperties" method="post" id="goToProperties">
+                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                                <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">Propiedades</span></a>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <form action="goToFunctionalUnits" method="post" id="goToFunctionalUnits">
+                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                                <a class="waves-effect waves-dark" onclick="goToFunctionalUnits.submit()"><i class="ti-layout"></i><span class="hide-menu">U. Funcionales</span></a>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                        <form action="goToClients" method="post" id="goToClients">
+                            <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                            <a class="waves-effect waves-dark" onclick="goToClients.submit()"><i class="ti-user"></i><span class="hide-menu">Clientes</span></a>
+                        </form>
+                        </li>
+                        <li class="nav-item">
+                        <form action="goToMyBalance" method="post" id="goToMyBalance">
+                            <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                            <a class="waves-effect waves-dark" onclick="goToMyBalance.submit()"><i class="ti-wallet"></i> <span class="hide-menu">Mi balance</span></a>
+                        </form>
+                        </li>
                     </ul>
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
@@ -120,7 +149,7 @@
                                 <div class="dropdown-divider"></div>
                                 <!-- text-->
                                 <form action="logoutAccount" method="post">
-                                <a onclick="logoutAccount.submit()" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
+                                    <a onclick="logoutAccount.submit()" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar sesion</a>
                                 </form>
                                 <!-- text-->
                             </div>
@@ -146,26 +175,51 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <%--has-arrow va antes de waves-effect --%>
-                        <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="home.jsp"><i class="icon-speedometer"></i><span class="hide-menu"> Inicio</span></a></li>
-                            <form action="goToProperties" method="post" id="goToProperties">
-                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
-                                <li> <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">  - Propiedades</span></a></li>
-                            </form>
-                            <form action="goToFunctionalUnits" method="post" id="goToFunctionalUnits">
-                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
-                                <li onclick="goToFunctionalUnits.submit()"> <a class="waves-effect waves-dark" ><i class="ti-layout"></i><span class="hide-menu">  - U. Funcionales</span></a></li>
-                            </form>
-                            <form action="goToClients" method="post" id="goToClients">
-                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
-                                <li onclick="goToClients.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Clientes</span></a></li>
-                            </form>
-                            <form action="goToMyBalance" method="post" id="goToMyBalance">
-                                <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
-                                <li ><a class="waves-effect waves-dark" onclick="goToMyBalance.submit()"><i class="ti-wallet"></i> <span class="hide-menu">  - Mi balance</span></a></li>
-                            </form>
-                            <form action="goToMyProfile" method="post" id="goToMyProfile">
+                        <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a></li>
+                            <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">Propiedades<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size()%></span></span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <% if (DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size() > 0){%>
+                                    <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());%>
+                                        <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
+                                        <li>
+                                            <form action="goToSpecificProperty" method="post" id="goToSpecificProperty">
+                                                <a href="javascript:void(0)" class="has-arrow"><%=propertyList.get(i).getName()%> <span class="badge badge-pill badge-success pull-right"><%=propertyList.get(i).getFunctionalUnits().size()%></span></a>
+                                            </form>
+                                                <ul aria-expanded="false" class="collapse">
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="has-arrow">Unidades Funcionales<span class="badge badge-pill badge-success pull-right"><%=propertyList.get(i).getFunctionalUnits()%></span></a>
+                                                        <ul aria-expanded="false" class="collapse">
+                                                            <%if (propertyList.get(i).getFunctionalUnits().size() > 0) {%>
+                                                                <%for (int j = 0 ; j < propertyList.get(i).getFunctionalUnits().size() ; j++) {%>
+                                                                    <li>
+                                                                        <form action="goToSpecificFunctionalUnit" id="goToSpecificFunctionalUnit" method="post">
+                                                                            <a href="" onclick="goToSpecificFunctionalUnit.submit()" name="chosenFU" value="<%=j%>"><%=propertyList.get(i).getFunctionalUnits().get(j).getName()%></a>
+                                                                        </form>
+                                                                    </li>
+                                                                <%}%>
+                                                            <%}%>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="javascript:void(0)" class="has-arrow">Clientes<span class="badge badge-pill badge-success pull-right"><%=propertyList.get(i).getFunctionalUnits()%></span></a>
+                                                        <ul aria-expanded="false" class="collapse">
+                                                            <%if (propertyList.get(i).getOccupiedFunctionalUnits() > 0) {%>
+                                                                <%for (int j = 0; j < propertyList.get(i).getTenantList().size();j++) {%>
+                                                                    <li>
+                                                                        <form action="goToSpecificClient" id="goToSpecificClient" method="post">
+                                                                            <a href="" onclick="goToSpecificClient.submit()" name="chosenTenant" value="<%=j%>"><%=propertyList.get(i).getTenantList().get(j).getName()%></a>
+                                                                        </form>
+                                                                    </li>
+                                                                <%}%>
+                                                            <%}%>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        <%}%>
+                                    <%}%>
+                                </ul>
+                                </li>
+                                <form action="goToMyProfile" method="post" id="goToMyProfile">
                                 <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
                                 <li onclick="goToMyProfile.submit()"> <a class="waves-effect waves-dark" ><i class="ti-user"></i><span class="hide-menu">  - Mi perfil</span></a> </li>
                             </form>
@@ -458,6 +512,9 @@
     <script src="assets/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
     <!-- Popup message jquery -->
     <script src="assets/node_modules/toast-master/js/jquery.toast.js"></script>
+    <script>
+        $("#searchInput").autocomplete("getSearchData.jsp");
+    </script>
 </body>
 
 </html>

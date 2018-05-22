@@ -58,7 +58,7 @@ public class DatabaseOps {
             storageOptions = StorageOptions.newBuilder()
                         .setProjectId("10e02c3ff7bcc7079252aa055d374810e94fd7f4\t")
                         .setCredentials(GoogleCredentials.fromStream(new
-                                FileInputStream("assets/filetransfer.json"))).build();
+                                FileInputStream("/Users/DiegoMancini/IdeaProjects/propertyadministration/out/artifacts/propertyadministration_main_Web_exploded/WEB-INF/classes/filetransfer.json"))).build();
         } catch (IOException e) {
             e.printStackTrace();
         }

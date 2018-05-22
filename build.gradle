@@ -3,7 +3,6 @@ apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'com.google.cloud.tools.appengine'  // App Engine tasks
 
-
 apply plugin: 'war'
 
 buildscript {    // Configuration for building

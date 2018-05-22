@@ -222,10 +222,6 @@
 					<div class="card">
 						<div class="card-body">
 							<form action="addContractToFunctionalUnit" method="POST" class="form-material m-t-40" enctype="multipart/form-data">
-								<input type="hidden" name="chosenFunctionalUnit" value="<%=request.getAttribute("chosenFunctionalUnit")%>">
-								<input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
-								<input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
-								<input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
 								<h4>Datos Contrato</h4>
 								<div class="row">
 									<div class="col-md-2">
@@ -305,7 +301,7 @@
 									</div>
 								</div>
 								<div class="modal-footer">
-									<button type="submit" name="chosenFunctionalUnit" value="<%=request.getAttribute("chosenFunctionalUnit")%>" class="submit-btn btn-primary">Agregar</button>
+									<button type="submit" class="submit-btn btn-primary">Agregar</button>
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</form>

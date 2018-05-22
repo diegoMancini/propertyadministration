@@ -23,13 +23,15 @@ public class AddContractToFunctionalUnitServlet extends HttpServlet {
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        Integer chosenProperty = (Integer) req.getAttribute("chosenProperty");
        Integer chosenFunctionalUnit = (Integer) req.getAttribute("chosenFunctionalUnit");
-       String accountUsername = (String) req.getAttribute("account");
        Property property = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
        FunctionalUnit functionalUnit = property.getSpecificFunctionalUnitByIndex(chosenFunctionalUnit);
-       req.setAttribute("username", accountUsername);
+
        req.setAttribute("chosenProperty", chosenProperty);
+       req.setAttribute("chosenFunctionalUnit", chosenFunctionalUnit);
        req.setAttribute("property", property);
+       req.setAttribute("functionalUnit", functionalUnit);
        req.setAttribute("propertyName", property.getName());
+
        Integer contractPrice = Integer.valueOf(req.getParameter("contractPrice"));
        Integer contractMonthsInflationPeriod = Integer.valueOf(req.getParameter("contractInflationMonths"));
        Integer contractInflationRate= Integer.valueOf(req.getParameter("contractInflationRate"));
@@ -44,17 +46,14 @@ public class AddContractToFunctionalUnitServlet extends HttpServlet {
        String guarantorName = req.getParameter("guarantorName");
        String guarantorPhone = req.getParameter("guarantorId");
        String guarantorId = req.getParameter("guarantorPhone");
+
        Tenant tenant = new Tenant(tenantName, tenantSurname, tenantId, tenantPhone, tenantEmail);
        Guarantor guarantor = new Guarantor(guarantorName, guarantorPhone, guarantorId);
        String contractName = "Contrato -  " + tenantName + ", " + functionalUnit.getName();
        Contract contract = new Contract(contractName, contractStartDate, contractEndDate, tenant, guarantor, contractPrice, contractMonthsInflationPeriod, contractInflationRate);
 
-       databaseOps.addContractToFunctionalUnitToDatabase(accountUsername, property, functionalUnit, contract);
+       databaseOps.addContractToFunctionalUnitToDatabase(req.getRemoteUser(), property, functionalUnit, contract);
 
        req.getRequestDispatcher("specificProperty.jsp").forward(req,resp);
-   }
-
-   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
    }
 }

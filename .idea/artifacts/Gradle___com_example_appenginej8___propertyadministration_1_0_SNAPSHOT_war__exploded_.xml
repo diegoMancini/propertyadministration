@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Gradle : propertyadministration.war (exploded)">
-    <output-path>$PROJECT_DIR$/build/libs/exploded/propertyadministration.war</output-path>
+  <artifact type="exploded-war" name="Gradle : com.example.appenginej8 : propertyadministration-1.0-SNAPSHOT.war (exploded)">
+    <output-path>$PROJECT_DIR$/build/libs/exploded/propertyadministration-1.0-SNAPSHOT.war</output-path>
     <properties id="gradle-properties">
       <options external-project-path="$PROJECT_DIR$">
         <manifest>TWFuaWZlc3QtVmVyc2lvbjogMS4wDQoNCg==</manifest>
@@ -8,15 +8,16 @@
     </properties>
     <root id="root">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/build/libs/exploded/propertyadministration.war/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/build/libs/exploded/propertyadministration-1.0-SNAPSHOT.war/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="propertyadministration_main/web/Web Gradle : propertyadministration.war" />
+      <element id="javaee-facet-resources" facet="propertyadministration_main/web/Web Gradle : propertyadministration-1.0-SNAPSHOT.war" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="propertyadministration_main" />
           <element id="dir-copy" path="$PROJECT_DIR$/out/production/resources" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: com.google.appengine:appengine-api-1.0-sdk:1.9.63" />
           <element id="library" level="project" name="Gradle: com.google.cloud:google-cloud-storage:1.28.0" />
           <element id="library" level="project" name="Gradle: com.google.apis:google-api-services-drive:v3-rev110-1.23.0" />
           <element id="library" level="project" name="Gradle: com.google.cloud:google-cloud-bigquery:1.28.0" />

@@ -241,7 +241,7 @@
                                             <input type="hidden" name="account" value="<%=username%>">
                                             <input type="hidden" name="chosenProperty" value="<%=i%>">
                                             <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
-                                            <a name="chosenFU" value="<%=j%>" class="waves-effect waves-dark text-dark"><i class="ti-user"></i>  <%=propertyList.get(i).getFunctionalUnits().get(j).getContract().getTenant().getName()%></a>
+                                            <a name="chosenFU" value="<%=j%>" class="waves-effect waves-dark text-dark"><i class="ti-user"></i>  <%=propertyList.get(i).getOccupiedFUList().get(j).getContract().getTenant().getName()%></a>
                                         </li>
                                     </form>
                                     <%}%>
@@ -373,7 +373,7 @@
 									<th>Tipo</th>
                                     <th>Estado</th>
 									<th>Cuenta Corriente</th>
-									<th data-hide="all">Contrato</th>
+									<th>Contrato</th>
 									<th data-hide="all">Cliente</th>
 								</tr>
 								</thead>
@@ -464,7 +464,7 @@
 		                                    <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
 		                                    <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
 		                                    <input type="hidden" name="propertyName" value="<%=property.getName()%>">
-		                                    <button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago" onclick="goToFunctionalUnitCheckingAccount.submit()"><i class="ti-home" aria-hidden="true"></i></button>
+		                                    <button type="button" class="btn btn-sm btn-icon btn-pure  btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago" onclick="goToFunctionalUnitCheckingAccount.submit()"><i class="ti-home" aria-hidden="true"></i> Cuenta Corriente</button>
 	                                    </form>
                                     </td>
 									<%if (property.getFunctionalUnits().get(j).getContract() != null) {%>
@@ -488,13 +488,13 @@
 									</td>
 									<%} else {%>
                                     <td>
-	                                    <form action="newContract" method="post" id="newContract">
-		                                    <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
-		                                    <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
-		                                    <input type="hidden" name="propertyName" value="<%=property.getName()%>">
-		                                    <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
-                                            <a onclick="newContract.submit()" class="waves-effect waves-dark text-info" > Agregar Contrato </a>
-	                                    </form>
+                                        <form action="newContract" method="post" id="newContract">
+                                            <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+                                            <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
+                                            <input type="hidden" name="propertyName" value="<%=property.getName()%>">
+                                            <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
+                                            <button type="submit" name="chosenFunctionalUnit" value="<%=j%>" class="btn btn-info btn-sm d-none d-sm-block" ><a class="waves-effect waves-dark text-dark" name="chosenFunctionalUnit" value="<%=j%>"><i class="ti-file"></i> Agregar Contrato</a></button>
+                                        </form>
                                     </td>
 									<td> No hay aun </td>
 									<%}%>
@@ -504,7 +504,7 @@
 								</tbody>
 								<tfoot>
 								<tr>
-									<td colspan="5">
+									<td colspan="10">
 										<div class="text-right">
 											<ul class="pagination pagination-split m-t-30"> </ul>
 										</div>

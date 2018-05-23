@@ -241,7 +241,7 @@
                                             <input type="hidden" name="account" value="<%=username%>">
                                             <input type="hidden" name="chosenProperty" value="<%=i%>">
                                             <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
-                                            <a name="chosenFU" value="<%=j%>" class="waves-effect waves-dark text-dark"><i class="ti-user"></i>  <%=propertyList.get(i).getFunctionalUnits().get(j).getContract().getTenant().getName()%></a>
+                                            <a name="chosenFU" value="<%=j%>" class="waves-effect waves-dark text-dark"><i class="ti-user"></i>  <%=propertyList.get(i).getOccupiedFUList().get(j).getContract().getTenant().getName()%></a>
                                         </li>
                                     </form>
                                     <%}%>
@@ -330,17 +330,17 @@
 											<input type="number" class="form-control" id="contractPrice" name="contractPrice" step=".01" placeholder="Precio...">
 										</div>
 									</div>
-								</div>
-								<div class="col-md-2">
-									<div class="form-group">
-										<input type="number" class="form-control" id="contractInflationMonths" name="contractInflationMonths" step=".01" placeholder="Cada cuantos meses se aplica la tasa de inflacion... ">
-									</div>
-								</div>
-								<div class="col-md-2">
-									<div class="form-group">
-										<input type="number" class="form-control" id="contractInflationRate" name="contractInflationRate" step=".01" placeholder="Porcentaje que se aumenta de inflacion... ">
-									</div>
-								</div>
+								    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="contractInflationMonths" name="contractInflationMonths" step=".01" placeholder="Cada cuantos meses se aplica la tasa de inflacion... ">
+                                        </div>
+								    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="contractInflationRate" name="contractInflationRate" step=".01" placeholder="Porcentaje que se aumenta de inflacion... ">
+                                        </div>
+                                    </div>
+                                </div>
 								<div class="row">
 									<div class="col-md-3">
 										<div class="form-group">
@@ -349,7 +349,7 @@
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
-											<input type="date" class="form-control" id="contractEndDate" name="contractEndDate" placeholder="contractEndDate">
+											<input type="date" class="form-control" id="contractEndDate" name="contractEndDate" placeholder="Fecha finalizacion...">
 										</div>
 									</div>
 								</div>
@@ -365,11 +365,11 @@
 											<input type="text" class="form-control" id="tenantSurname" name="tenantSurname" placeholder="Apellido del inquilino...">
 										</div>
 									</div>
-								</div>
-								<div class="col-md-2">
-									<div class="form-group">
-										<input type="text" class="form-control" name="tenantId" id="tenantId" placeholder="DNI inquilino...">
-									</div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="tenantId" id="tenantId" placeholder="DNI inquilino...">
+                                        </div>
+                                    </div>
 								</div>
 								<div class="row">
 									<div class="col-md-2">

@@ -250,7 +250,7 @@
                                             <input type="hidden" name="account" value="<%=username%>">
                                             <input type="hidden" name="chosenProperty" value="<%=i%>">
                                             <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
-                                            <a name="chosenFU" value="<%=j%>" class="waves-effect waves-dark text-dark"><i class="ti-user"></i>  <%=propertyList.get(i).getFunctionalUnits().get(j).getContract().getTenant().getName()%></a>
+                                            <a name="chosenFU" value="<%=j%>" class="waves-effect waves-dark text-dark"><i class="ti-user"></i>  <%=propertyList.get(i).getOccupiedFUList().get(j).getContract().getTenant().getName()%></a>
                                         </li>
                                     </form>
                                     <%}%>

@@ -88,11 +88,7 @@ public abstract class FunctionalUnit {
     public abstract String getType();
 
     public boolean hasContract() {
-        if (contract == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return contract != null;
     }
 
 

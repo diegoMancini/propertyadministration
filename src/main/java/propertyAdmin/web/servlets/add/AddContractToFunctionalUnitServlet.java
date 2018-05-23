@@ -21,9 +21,10 @@ public class AddContractToFunctionalUnitServlet extends HttpServlet {
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       Integer chosenProperty = (Integer) req.getAttribute("chosenProperty");
-       Integer chosenFunctionalUnit = (Integer) req.getAttribute("chosenFunctionalUnit");
-       Property property = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
+       Integer chosenProperty = Integer.valueOf(req.getParameter("chosenProperty"));
+       Integer chosenFunctionalUnit = Integer.valueOf(req.getParameter("chosenFunctionalUnit"));
+       String username = req.getParameter("account");
+       Property property = DatabaseOps.getInstance().getProperty(chosenProperty, username);
        FunctionalUnit functionalUnit = property.getSpecificFunctionalUnitByIndex(chosenFunctionalUnit);
 
        req.setAttribute("chosenProperty", chosenProperty);
@@ -52,7 +53,7 @@ public class AddContractToFunctionalUnitServlet extends HttpServlet {
        String contractName = "Contrato -  " + tenantName + ", " + functionalUnit.getName();
        Contract contract = new Contract(contractName, contractStartDate, contractEndDate, tenant, guarantor, contractPrice, contractMonthsInflationPeriod, contractInflationRate);
 
-       databaseOps.addContractToFunctionalUnitToDatabase(req.getRemoteUser(), property, functionalUnit, contract);
+       databaseOps.addContractToFunctionalUnitToDatabase(username, property, functionalUnit, contract);
 
        req.getRequestDispatcher("specificProperty.jsp").forward(req,resp);
    }

@@ -11,6 +11,7 @@
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">500</property>
+        <property name="hibernate.connection.pool_size">500</property>
 
 
         <!-- Echo all executed SQL to stdout -->

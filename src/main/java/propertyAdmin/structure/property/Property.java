@@ -170,21 +170,17 @@ public class Property {
     }
 
     public List<FunctionalUnit> getOccupiedFUList() {
-       List<FunctionalUnit> result = null;
-       for (FunctionalUnit functionalUnit:functionalUnits) {
+       List<FunctionalUnit> result = new ArrayList<>();
+       for (FunctionalUnit functionalUnit : functionalUnits) {
            if (functionalUnit.hasContract()) {
                result.add(functionalUnit);
            }
        }
-       if (result != null) {
         return result;
-       } else {
-           return functionalUnits;
-       }
     }
 
     public List<FunctionalUnit> getAvailableFUList() {
-        List<FunctionalUnit> result = null;
+        List<FunctionalUnit> result = new ArrayList<>();
         for (FunctionalUnit functionalUnit:functionalUnits) {
             if (!functionalUnit.hasContract()) {
                 result.add(functionalUnit);

@@ -14,7 +14,7 @@ public class GoToPropertiesServlet extends HttpServlet {
 
    private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
-   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //      Account account = databaseOps.getAccount(request.getRemoteUser());
 //      List<Property> propertyList = account.getProperties();
       String username = request.getRemoteUser();

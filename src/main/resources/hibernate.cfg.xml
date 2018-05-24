@@ -2,17 +2,23 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql://35.199.126.247:5432/usersdb</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://35.198.21.16:3306/propertyAdmin</property>
         <property name="connection.username">Diegonfx</property>
         <property name="connection.password">Perrito1</property>
+
+        <!--<property name="connection.driver_class">org.postgresql.Driver</property>-->
+        <!--<property name="connection.url">jdbc:postgresql://35.199.126.247:5432/usersdb</property>-->
+        <!--<property name="connection.username">Diegonfx</property>-->
+        <!--<property name="connection.password">Perrito1</property>-->
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">500</property>
         <property name="hibernate.connection.pool_size">500</property>
-
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
@@ -21,6 +27,12 @@
         <property name="hbm2ddl.auto">update</property>
 
         <property name="dateTime">org.joda.time.contrib.hibernate.PersistentDateTime</property>
+
+        <!--<property name="hibernate.dbcp.initialSize">10</property>-->
+        <!--<property name="hibernate.dbcp.maxActive">200</property>-->
+        <!--<property name="hibernate.dbcp.maxIdle">20</property>-->
+        <!--<property name="hibernate.dbcp.minIdle">0</property>-->
+
 
         <!-- DB schema will be updated if needed -->
         <!-- <propertyAdmin.structure.property name="hbm2ddl.auto">update</propertyAdmin.structure.property> -->
@@ -45,4 +57,5 @@
         <mapping class="propertyAdmin.structure.economy.taxes.Taxes"/>
 
     </session-factory>
+
 </hibernate-configuration>

@@ -33,6 +33,12 @@ dependencies {
     compile 'com.google.api-client:google-api-client:1.23.0'
     compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
 
+    // https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
+
+    // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc
+    compile group: 'org.apache.tomcat', name: 'tomcat-jdbc', version: '9.0.8'
+
     compile 'com.google.apis:google-api-services-drive:v3-rev110-1.23.0'
 
     // https://mvnrepository.com/artifact/securityfilter/securityfilter
@@ -57,6 +63,10 @@ dependencies {
 
     // https://mvnrepository.com/artifact/javax.mail/mail
     compile group: 'javax.mail', name: 'mail', version: '1.4'
+
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+
 
     // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.0'}

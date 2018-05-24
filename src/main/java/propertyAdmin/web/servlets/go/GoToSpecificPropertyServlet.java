@@ -16,7 +16,7 @@ public class GoToSpecificPropertyServlet extends HttpServlet {
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer chosenProperty = Integer.valueOf(req.getParameter("chosenProperty"));
         String accountUsername = req.getParameter("username");
         Property property = databaseOps.getProperty(chosenProperty, accountUsername);
@@ -25,5 +25,6 @@ public class GoToSpecificPropertyServlet extends HttpServlet {
         req.setAttribute("propertyName", property.getName());
         req.setAttribute("username", accountUsername);
         req.getRequestDispatcher("specificProperty.jsp").forward(req,resp);
+        resp.setIntHeader("Refresh", 1);
     }
 }

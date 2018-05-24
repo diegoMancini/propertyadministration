@@ -14,7 +14,7 @@ public class NewContractServlet extends HttpServlet {
 
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       Integer chosenProperty = Integer.valueOf(request.getParameter("chosenProperty"));
       Integer chosenFunctionalUnit = Integer.valueOf(request.getParameter("chosenFunctionalUnit"));
       String propertyName = request.getParameter("propertyName");

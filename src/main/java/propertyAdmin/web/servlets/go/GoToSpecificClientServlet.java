@@ -15,7 +15,7 @@ public class GoToSpecificClientServlet extends HttpServlet {
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     }
 }

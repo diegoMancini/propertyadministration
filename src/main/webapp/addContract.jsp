@@ -236,7 +236,7 @@
                                 <ul aria-expanded="false" class="collapse">
                                     <%if (amountOfFunctionalUnitsOccupied > 0) {%>
                                     <%for (int j = 0 ; j < propertyList.get(i).getOccupiedFUList().size() ; j++) {%>
-                                    <form action="goToSpecificClient" id="goToSpecificClient" method="post">
+                                    <form action="goToSpecificClient" id="goToSpecificClient" method="get">
                                         <li onclick="goToSpecificClient.submit()">
                                             <input type="hidden" name="account" value="<%=username%>">
                                             <input type="hidden" name="chosenProperty" value="<%=i%>">
@@ -255,19 +255,19 @@
                         </ul>
                     </li>
                     <li onclick="goToMyProfile.submit()">
-                        <form action="goToMyProfile" method="post" id="goToMyProfile">
+                        <form action="goToMyProfile" method="get" id="goToMyProfile">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark text-dark" ><i class="ti-user"></i><span class="hide-menu">  Mi perfil</span></a>
                         </form>
                     </li>
                     <li onclick="goToQuestions.submit()">
-                        <form action="goToQuestions" method="post" id="goToQuestions">
+                        <form action="goToQuestions" method="get" id="goToQuestions">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark text-dark" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">  Preguntas</span></a>
                         </form>
                     </li>
                     <li onclick="logout.submit()">
-                        <form action="logoutAccount" method="post" id="logout">
+                        <form action="logoutAccount" method="get" id="logout">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark text-dark" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">  Cerrar sesion</span></a>
                         </form>

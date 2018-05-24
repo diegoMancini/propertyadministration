@@ -25,11 +25,11 @@
              project:instance        for Cloud SQL 1st Generation
         -->
         <INSTANCE_CONNECTION_NAME>
-            houseadmin-2018:southamerica-east1:usersdb //TODO asdas
+            property-administration:southamerica-east1:propertyadmindb //TODO asdas
         </INSTANCE_CONNECTION_NAME>
         <user>Diegonfx</user>
         <password>Perrito1</password>
-        <propertyAdmin.database>usersdb</propertyAdmin.database>
+        <propertyAdmin.database>propertyAdmin</propertyAdmin.database>
 
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -104,18 +104,5 @@
 
         </plugins>
     </build>
-
-
-    <!--<groupId>groupId</groupId>-->
-    <!--<artifactId>Property_Administration</artifactId>-->
-    <!--<version>1.0-SNAPSHOT</version>-->
-    <!--<dependencies>-->
-        <!--<dependency>-->
-            <!--<groupId>javax.servlet</groupId>-->
-            <!--<artifactId>javax.servlet-api</artifactId>-->
-            <!--<version>3.1.0</version>-->
-        <!--</dependency>-->
-    <!--</dependencies>-->
-
 
 </project>

@@ -18,6 +18,8 @@
     <orderEntry type="library" name="Gradle: com.google.apis:google-api-services-bigquery:v2-rev377-1.23.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.api-client:google-api-client:1.23.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.oauth-client:google-oauth-client-jetty:1.23.0" level="project" />
+    <orderEntry type="library" name="Gradle: commons-dbcp:commons-dbcp:1.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.tomcat:tomcat-jdbc:9.0.8" level="project" />
     <orderEntry type="library" name="Gradle: securityfilter:securityfilter:2.0" level="project" />
     <orderEntry type="library" name="Gradle: org.postgresql:postgresql:42.2.2" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.2.15.Final" level="project" />
@@ -26,6 +28,7 @@
     <orderEntry type="library" name="Gradle: joda-time:joda-time:2.9.9" level="project" />
     <orderEntry type="library" name="Gradle: org.jadira.usertype:usertype.core:7.0.0.CR1" level="project" />
     <orderEntry type="library" name="Gradle: javax.mail:mail:1.4" level="project" />
+    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.6" level="project" />
     <orderEntry type="library" name="Gradle: javax.servlet:javax.servlet-api:4.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.truth:truth:0.33" level="project" />
     <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
@@ -42,6 +45,8 @@
     <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-jackson2:1.23.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava-jdk5:17.0" level="project" />
     <orderEntry type="library" name="Gradle: org.mortbay.jetty:jetty:6.1.26" level="project" />
+    <orderEntry type="library" name="Gradle: commons-pool:commons-pool:1.5.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.tomcat:tomcat-juli:9.0.8" level="project" />
     <orderEntry type="library" name="Gradle: commons-digester:commons-digester:1.6" level="project" />
     <orderEntry type="library" name="Gradle: commons-beanutils:commons-beanutils:1.6" level="project" />
     <orderEntry type="library" name="Gradle: com.google.http-client:google-http-client-appengine:1.23.0" level="project" />

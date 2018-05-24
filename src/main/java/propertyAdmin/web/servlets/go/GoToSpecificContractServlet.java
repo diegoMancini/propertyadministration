@@ -19,7 +19,7 @@ public class GoToSpecificContractServlet extends HttpServlet {
 
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
         Integer chosenFunctionalUnit = Integer.valueOf(req.getParameter("chosenFunctionalUnit"));
         String accountUsername = req.getParameter("account");

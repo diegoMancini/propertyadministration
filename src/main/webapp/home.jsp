@@ -101,25 +101,25 @@
                     </ul>
                     <ul class="navbar-nav mr-auto text-white font-weight-normal text-lg-">
                         <li class="nav-item m-r-30 m-l-30" >
-                            <form action="goToProperties" method="post" id="goToProperties">
+                            <form action="goToProperties" method="get" id="goToProperties">
                                 <input type="hidden" name="account" value="<%=username%>">
                                 <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">  Propiedades</span></a>
                             </form>
                         </li>
                         <li class="nav-item m-r-30 m-l-30">
-                            <form action="goToFunctionalUnits" method="post" id="goToFunctionalUnits">
+                            <form action="goToFunctionalUnits" method="get" id="goToFunctionalUnits">
                                 <input type="hidden" name="account" value="<%=username%>">
                                 <a class="waves-effect waves-dark" onclick="goToFunctionalUnits.submit()"><i class="ti-layout"></i><span class="hide-menu">  U.F.</span></a>
                             </form>
                         </li>
                         <li class="nav-item m-r-30 m-l-30">
-                        <form action="goToClients" method="post" id="goToClients">
+                        <form action="goToClients" method="get" id="goToClients">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark" onclick="goToClients.submit()"><i class="ti-user"></i><span class="hide-menu">  Clientes</span></a>
                         </form>
                         </li>
                         <li class="nav-item m-r-30 m-l-30">
-                        <form action="goToMyBalance" method="post" id="goToMyBalance">
+                        <form action="goToMyBalance" method="get" id="goToMyBalance">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark" onclick="goToMyBalance.submit()"><i class="ti-wallet"></i> <span class="hide-menu">  Balance</span></a>
                         </form>
@@ -136,11 +136,11 @@
                             <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=username%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <!-- text-->
-                                <form action="goToMyProfile" method="post">
+                                <form action="goToMyProfile" method="get">
                                 <a onclick="goToMyProfile.submit()" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
                                 </form>
                                 <!-- text-->
-                                <form action="goToMyBalance" method="post">
+                                <form action="goToMyBalance" method="get">
                                 <a onclick="goToMyBalance.submit()" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
                                 </form>
                                 <!-- text-->
@@ -188,13 +188,21 @@
                                     <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(username);%>
                                         <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
                                             <li onclick="goToSpecificProperty.submit()">
-                                                <form action="goToSpecificProperty" method="post" id="goToSpecificProperty">
+                                                <form action="goToSpecificProperty" method="get" id="goToSpecificProperty">
                                                     <input type="hidden" name="username" value="<%=username%>">
                                                     <%--<input type="hidden" name="chosenProperty" value="<%=i%>">--%>
                                                     <button type="submit" name="chosenProperty" value="<%=i%>" style="background-color: transparent" class="btn btn-sm d-none d-lg-block m-b-5 m-t-5" ><a class="waves-effect waves-dark text-dark" name="chosenProperty" value="<%=i%>"><i class="ti-home"></i> <%=propertyList.get(i).getName()%></a></button>
                                                 </form>
                                             </li>
                                         <%}%>
+                                    <%} else {%>
+                                    <li>
+                                        <form action="addProperty" method="get" id="addProperty">
+                                            <input type="hidden" name="account" value="<%=username%>">
+                                            <%--<input type="hidden" name="chosenProperty" value="<%=i%>">--%>
+                                            <button type="submit" style="background-color: transparent" class="btn btn-sm d-none d-lg-block m-b-5 m-t-5" ><a class="waves-effect waves-dark text-dark"><i class="ti-file"></i> Agregar Propiedad</a></button>
+                                        </form>
+                                    </li>
                                     <%}%>
                                 </ul>
                             </li>
@@ -208,7 +216,7 @@
                                         <ul aria-expanded="false" class="collapse">
                                             <%if (propertyList.get(i).getFunctionalUnits().size() > 0) {%>
                                             <%for (int j = 0 ; j < propertyList.get(i).getFunctionalUnits().size() ; j++) {%>
-                                                <form action="goToSpecificFunctionalUnit" id="goToSpecificFunctionalUnit" method="post">
+                                                <form action="goToSpecificFunctionalUnit" id="goToSpecificFunctionalUnit" method="get">
                                                     <li onclick="goToSpecificFunctionalUnit.submit()">
                                                         <input type="hidden" name="chosenProperty" value="<%=i%>">
                                                         <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
@@ -242,7 +250,7 @@
                                         <ul aria-expanded="false" class="collapse">
                                             <%if (amountOfFunctionalUnitsOccupied > 0) {%>
                                             <%for (int j = 0 ; j < propertyList.get(i).getOccupiedFUList().size() ; j++) {%>
-                                                <form action="goToSpecificClient" id="goToSpecificClient" method="post">
+                                                <form action="goToSpecificClient" id="goToSpecificClient" method="get">
                                                     <li onclick="goToSpecificClient.submit()">
                                                         <input type="hidden" name="account" value="<%=username%>">
                                                         <input type="hidden" name="chosenProperty" value="<%=i%>">
@@ -261,19 +269,19 @@
                                 </ul>
                             </li>
                             <li onclick="goToMyProfile.submit()">
-                                <form action="goToMyProfile" method="post" id="goToMyProfile">
+                                <form action="goToMyProfile" method="get" id="goToMyProfile">
                                     <input type="hidden" name="account" value="<%=username%>">
                                      <a class="waves-effect waves-dark text-dark m-b-10 m-t-10" ><i class="ti-user"></i><span class="hide-menu">  Mi perfil</span></a>
                                 </form>
                             </li>
                             <li onclick="goToQuestions.submit()">
-                                <form action="goToQuestions" method="post" id="goToQuestions">
+                                <form action="goToQuestions" method="get" id="goToQuestions">
                                     <input type="hidden" name="account" value="<%=username%>">
                                      <a class="waves-effect waves-dark text-dark m-b-10 m-t-10" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">  Preguntas</span></a>
                                 </form>
                             </li>
                             <li onclick="logout.submit()">
-                                <form action="logoutAccount" method="post" id="logout">
+                                <form action="logoutAccount" method="get" id="logout">
                                     <input type="hidden" name="account" value="<%=username%>">
                                      <a class="waves-effect waves-dark text-dark" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">  Cerrar sesion</span></a>
                                 </form>

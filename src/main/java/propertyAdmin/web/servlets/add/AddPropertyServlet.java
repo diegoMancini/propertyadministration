@@ -8,10 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "AddPropertyServlet" , value = "/addProperty")
-public class AddPropertyServlet extends HttpServlet {
-   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-   }
+public class AddPropertyServlet extends HttpServlet {
+
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       String username = request.getParameter("account");

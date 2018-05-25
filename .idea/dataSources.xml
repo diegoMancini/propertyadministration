@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="jdbc:postgresql://35.199.126.247:5432/usersdb" uuid="65524656-d851-43c3-b114-8a77cb292fc6">
-      <driver-ref>postgresql</driver-ref>
+    <data-source source="LOCAL" name="propertyAdmin@35.198.21.16" uuid="b5586f83-cf13-4923-820b-bfc34c39cd46">
+      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://35.199.126.247:5432/usersdb</jdbc-url>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://35.198.21.16:3306/propertyAdmin</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
     </data-source>
     <data-source source="LOCAL" name="propertyAdmin" uuid="15ad1738-fdcf-48c4-a4c1-ee6c6ba335ea">
       <driver-ref>mysql</driver-ref>

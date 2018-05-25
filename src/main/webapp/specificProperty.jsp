@@ -96,19 +96,19 @@
                 </ul>
                 <ul class="navbar-nav mr-auto text-white font-weight-normal text-lg-">
                     <li class="nav-item m-r-30 m-l-30" >
-                        <form action="goToProperties" method="post" id="goToProperties">
+                        <form action="goToProperties" method="get" id="goToProperties">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">  Propiedades</span></a>
                         </form>
                     </li>
                     <li class="nav-item m-r-30 m-l-30">
-                        <form action="goToFunctionalUnits" method="post" id="goToFunctionalUnits">
+                        <form action="goToFunctionalUnits" method="get" id="goToFunctionalUnits">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark" onclick="goToFunctionalUnits.submit()"><i class="ti-layout"></i><span class="hide-menu">  U.F.</span></a>
                         </form>
                     </li>
                     <li class="nav-item m-r-30 m-l-30">
-                        <form action="goToClients" method="post" id="goToClients">
+                        <form action="goToClients" method="get" id="goToClients">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark" onclick="goToClients.submit()"><i class="ti-user"></i><span class="hide-menu">  Clientes</span></a>
                         </form>
@@ -444,11 +444,11 @@
 								<tr>
 									<td><%=j+1%></td>
 									<td>
-										<form action="goToSpecificFunctionalUnit" method="post" id="goToSpecificFunctionalUnit">
+										<form action="goToSpecificFunctionalUnit" method="get" id="goToSpecificFunctionalUnit">
 											<input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
 											<input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
 											<input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
-											<button type="button" onclick="goToSpecificFunctionalUnit.submit()" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="  <%=property.getFunctionalUnits().get(j).getName()%>" ><i class="ti-home" aria-hidden="true"></i><%=property.getFunctionalUnits().get(j).getName()%></button>
+											<button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="  <%=property.getFunctionalUnits().get(j).getName()%>" ><i class="ti-home" aria-hidden="true"></i><%=property.getFunctionalUnits().get(j).getName()%></button>
 										</form>
 									</td>
 									<td><%=property.getFunctionalUnits().get(j).getAddress()%></td>
@@ -459,41 +459,41 @@
 									<td><span class="label label-success"><%=state%></span> </td>
 									<%}%>
                                     <td>
-	                                    <form action="goToFunctionalUnitCheckingAccount" method="post" id="goToFunctionalUnitCheckingAccount">
+	                                    <form action="goToFunctionalUnitCheckingAccount" method="get" id="goToFunctionalUnitCheckingAccount">
 		                                    <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
 		                                    <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
 		                                    <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
 		                                    <input type="hidden" name="propertyName" value="<%=property.getName()%>">
-		                                    <button type="button" onclick="goToFunctionalUnitCheckingAccount.submit()" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago" ><i class="ti-money" aria-hidden="true"></i>  Cuenta Corriente</button>
+		                                    <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago" ><i class="ti-money" aria-hidden="true"></i>  Cuenta Corriente</button>
 	                                    </form>
                                     </td>
 									<%if (property.getFunctionalUnits().get(j).getContract() != null) {%>
 									<td>
-                                            <form action="goToSpecificContract" method="post" id="goToSpecificContract">
+                                            <form action="goToSpecificContract" method="get" id="goToSpecificContract">
 	                                            <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
 	                                            <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
 	                                            <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
 	                                            <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
-	                                            <button type="button" onclick="goToSpecificContract.submit()" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title=""><i class="ti-file" aria-hidden="true"></i>  <%=property.getFunctionalUnits().get(j).getContract().getName()%></button>
+	                                            <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title=""><i class="ti-file" aria-hidden="true"></i>  <%=property.getFunctionalUnits().get(j).getContract().getName()%></button>
                                             </form>
                                     </td>
                                     <td>
-                                        <form action="goToSpecificClient" method="post" id="goToSpecificClient1">
+                                        <form action="goToSpecificClient" method="get" id="goToSpecificClient1">
                                             <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
                                             <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
                                             <input type="hidden" name="account" value="<%=request.getAttribute("username")%>">
                                             <input type="hidden" name="property" value="<%=request.getAttribute("property")%>">
-	                                        <button type="button" onclick="goToSpecificClient1.submit()" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="" ><i class="ti-user" aria-hidden="true"></i>  <%=property.getFunctionalUnits().get(j).getContract().getTenant().getName()%></button>
+	                                        <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="" ><i class="ti-user" aria-hidden="true"></i>  <%=property.getFunctionalUnits().get(j).getContract().getTenant().getName()%></button>
                                         </form>
 									</td>
 									<%} else {%>
                                     <td>
-                                        <form action="newContract" method="post" id="newContract">
+                                        <form action="newContract" method="get" id="newContract">
                                             <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
                                             <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
                                             <input type="hidden" name="propertyName" value="<%=property.getName()%>">
                                             <input type="hidden" name="account" value="<%=request.getRemoteUser()%>">
-	                                        <button type="button" onclick="newContract.submit()" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="" ><i class="ti-file" aria-hidden="true"></i>  Nuevo Contrato</button>
+	                                        <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="" ><i class="ti-file" aria-hidden="true"></i>  Nuevo Contrato</button>
                                         </form>
                                     </td>
 									<td> No hay clientes </td>

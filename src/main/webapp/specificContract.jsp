@@ -42,15 +42,15 @@
 	</div>
 </div>
 <div id="main-wrapper">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
     <%
         Integer amountOfProperties = DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfProperties();
         Integer amountOfFunctionalUnits = DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfFunctionalUnits();
         Integer amountOfFunctionalUnitsOccupied = DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfOccupiedFunctionalUnits();
         String username = request.getRemoteUser();
     %>
-    <!-- ============================================================== -->
-    <!-- Topbar header - style you can find in pages.scss -->
-    <!-- ============================================================== -->
     <header class="topbar">
         <nav class="navbar top-navbar navbar-expand-md navbar-dark">
             <!-- ============================================================== -->
@@ -91,25 +91,25 @@
                 </ul>
                 <ul class="navbar-nav mr-auto text-white font-weight-normal text-lg-">
                     <li class="nav-item m-r-30 m-l-30" >
-                        <form action="goToProperties" method="post" id="goToProperties">
+                        <form action="goToProperties" method="get" id="goToProperties">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark" onclick="goToProperties.submit()" ><i class="ti-home"></i><span class="hide-menu">  Propiedades</span></a>
                         </form>
                     </li>
                     <li class="nav-item m-r-30 m-l-30">
-                        <form action="goToFunctionalUnits" method="post" id="goToFunctionalUnits">
+                        <form action="goToFunctionalUnits" method="get" id="goToFunctionalUnits">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark" onclick="goToFunctionalUnits.submit()"><i class="ti-layout"></i><span class="hide-menu">  U.F.</span></a>
                         </form>
                     </li>
                     <li class="nav-item m-r-30 m-l-30">
-                        <form action="goToClients" method="post" id="goToClients">
+                        <form action="goToClients" method="get" id="goToClients">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark" onclick="goToClients.submit()"><i class="ti-user"></i><span class="hide-menu">  Clientes</span></a>
                         </form>
                     </li>
                     <li class="nav-item m-r-30 m-l-30">
-                        <form action="goToMyBalance" method="post" id="goToMyBalance">
+                        <form action="goToMyBalance" method="get" id="goToMyBalance">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark" onclick="goToMyBalance.submit()"><i class="ti-wallet"></i> <span class="hide-menu">  Balance</span></a>
                         </form>
@@ -121,16 +121,15 @@
                 <ul class="navbar-nav my-lg-0">
                     <!-- User Profile -->
                     <!-- ============================================================== -->
-
                     <li class="nav-item dropdown u-pro">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=username%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="home.jsp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=username%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <!-- text-->
-                            <form action="goToMyProfile" method="post">
+                            <form action="goToMyProfile" method="get">
                                 <a onclick="goToMyProfile.submit()" class="dropdown-item"><i class="ti-user"></i> Mi perfil</a>
                             </form>
                             <!-- text-->
-                            <form action="goToMyBalance" method="post">
+                            <form action="goToMyBalance" method="get">
                                 <a onclick="goToMyBalance.submit()" class="dropdown-item"><i class="ti-wallet"></i> Mi balance</a>
                             </form>
                             <!-- text-->
@@ -158,6 +157,12 @@
             </div>
         </nav>
     </header>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
     <aside class="left-sidebar">
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
@@ -165,39 +170,46 @@
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     <%--has-arrow va antes de waves-effect --%>
-                    <li class="user-pro"> <a class="waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a></li>
-                    <li> <a class="has-arrow waves-effect waves-dark text-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-home"></i><span class="hide-menu">Propiedades<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size()%></span></span></a>
+                    <li class="user-pro"> <a class="waves-effect waves-dark text-dark m-b-10 m-t-10" href="home.jsp" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a></li>
+                    <li> <a class="has-arrow waves-effect waves-dark text-dark m-b-10 m-t-10" href="javascript:void(0)" aria-expanded="false"><i class="ti-home"></i><span class="hide-menu"> Propiedades<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size()%></span></span></a>
                         <ul aria-expanded="false" class="collapse">
                             <% if (amountOfProperties > 0){%>
                             <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(username);%>
                             <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
-                            <form action="goToSpecificProperty" method="post" id="goToSpecificProperty">
-                                <li onclick="goToSpecificProperty.submit()" >
+                            <li onclick="goToSpecificProperty.submit()">
+                                <form action="goToSpecificProperty" method="get" id="goToSpecificProperty">
                                     <input type="hidden" name="username" value="<%=username%>">
-                                    <input type="hidden" name="chosenProperty" value="<%=i%>">
-                                    <a name="chosenProperty" value="<%=i%>" class="waves-effect waves-dark text-dark"><i class="ti-home"></i> <%=propertyList.get(i).getName()%></a>
-                                </li>
-                            </form>
+                                    <button type="submit" name="chosenProperty" value="<%=i%>" style="background-color: transparent" class="btn btn-sm d-none d-lg-block m-b-5 m-t-5" ><a class="waves-effect waves-dark text-dark" name="chosenProperty" value="<%=i%>"><i class="ti-home"></i> <%=propertyList.get(i).getName()%></a></button>
+                                </form>
+                            </li>
                             <%}%>
+                            <%} else {%>
+                            <li>
+                                <form action="addProperty" method="get" id="addProperty">
+                                    <input type="hidden" name="account" value="<%=username%>">
+                                    <%--<input type="hidden" name="chosenProperty" value="<%=i%>">--%>
+                                    <button type="submit" style="background-color: transparent" class="btn btn-sm d-none d-lg-block m-b-5 m-t-5" ><a class="waves-effect waves-dark text-dark"><i class="ti-file"></i> Agregar Propiedad</a></button>
+                                </form>
+                            </li>
                             <%}%>
                         </ul>
                     </li>
-                    <li> <a class="has-arrow waves-effect waves-dark text-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-files"></i><span class="hide-menu">U.F.<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfFunctionalUnits()%></span></span></a>
+                    <li> <a class="has-arrow waves-effect waves-dark text-dark m-b-10 m-t-10" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout"></i><span class="hide-menu">U.F.<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfFunctionalUnits()%></span></span></a>
                         <ul aria-expanded="false" class="collapse">
                             <% if (amountOfProperties > 0){%>
                             <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());%>
                             <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
                             <li>
-                                <a href="javascript:void(0)" class="has-arrow text-dark"><%=propertyList.get(i).getName()%></a>
+                                <a href="javascript:void(0)" class="has-arrow text-dark m-b-5 m-t-5"><%=propertyList.get(i).getName()%></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <%if (propertyList.get(i).getFunctionalUnits().size() > 0) {%>
                                     <%for (int j = 0 ; j < propertyList.get(i).getFunctionalUnits().size() ; j++) {%>
-                                    <form action="goToSpecificFunctionalUnit" id="goToSpecificFunctionalUnit" method="post">
+                                    <form action="goToSpecificFunctionalUnit" id="goToSpecificFunctionalUnit" method="get">
                                         <li onclick="goToSpecificFunctionalUnit.submit()">
                                             <input type="hidden" name="chosenProperty" value="<%=i%>">
                                             <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
                                             <input type="hidden" name="account" value="<%=username%>">
-                                            <a name="chosenFU" value="<%=j%>" class="waves-effect waves-dark text-dark"><i class="ti-layout"></i>  <%=propertyList.get(i).getFunctionalUnits().get(j).getName()%></a>
+                                            <button type="submit" name="chosenFunctionalUnit" value="<%=j%>" style="background-color: transparent" class="btn btn-sm d-none d-lg-block m-b-15 m-t-10" ><a class="waves-effect waves-dark text-dark" name="chosenProperty" value="<%=i%>"><i class="ti-layout"></i> <%=propertyList.get(i).getFunctionalUnits().get(j).getName()%></a></button>
                                         </li>
                                     </form>
                                     <%}%>
@@ -216,22 +228,22 @@
                             <%}%>
                         </ul>
                     </li>
-                    <li> <a class="has-arrow waves-effect waves-dark text-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-user"></i><span class="hide-menu">Clientes<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfOccupiedFunctionalUnits()%></span></span></a>
+                    <li> <a class="has-arrow waves-effect waves-dark text-dark m-b-10 m-t-10" href="javascript:void(0)" aria-expanded="false"><i class="ti-user"></i><span class="hide-menu">Clientes<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfOccupiedFunctionalUnits()%></span></span></a>
                         <ul aria-expanded="false" class="collapse">
                             <% if (amountOfProperties > 0){%>
                             <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(username);%>
                             <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
                             <li>
-                                <a href="javascript:void(0)" class="has-arrow text-dark"> <%=propertyList.get(i).getName()%></a>
+                                <a href="javascript:void(0)" class="has-arrow text-dark text-dark m-b-5 m-t-5"> <%=propertyList.get(i).getName()%></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <%if (amountOfFunctionalUnitsOccupied > 0) {%>
                                     <%for (int j = 0 ; j < propertyList.get(i).getOccupiedFUList().size() ; j++) {%>
-                                    <form action="goToSpecificClient" id="goToSpecificClient" method="post">
+                                    <form action="goToSpecificClient" id="goToSpecificClient" method="get">
                                         <li onclick="goToSpecificClient.submit()">
                                             <input type="hidden" name="account" value="<%=username%>">
                                             <input type="hidden" name="chosenProperty" value="<%=i%>">
                                             <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
-                                            <a name="chosenFU" value="<%=j%>" class="waves-effect waves-dark text-dark"><i class="ti-user"></i>  <%=propertyList.get(i).getFunctionalUnits().get(j).getContract().getTenant().getName()%></a>
+                                            <button type="submit" name="chosenFunctionalUnit" value="<%=j%>" style="background-color: transparent" class="btn btn-sm d-none d-lg-block m-b-15 m-t-10" ><a class="waves-effect waves-dark text-dark" name="chosenProperty" value="<%=i%>"><i class="ti-user"></i> <%=propertyList.get(i).getOccupiedFUList().get(j).getContract().getTenant().getName()%></a></button>
                                         </li>
                                     </form>
                                     <%}%>
@@ -245,19 +257,19 @@
                         </ul>
                     </li>
                     <li onclick="goToMyProfile.submit()">
-                        <form action="goToMyProfile" method="post" id="goToMyProfile">
+                        <form action="goToMyProfile" method="get" id="goToMyProfile">
                             <input type="hidden" name="account" value="<%=username%>">
-                            <a class="waves-effect waves-dark text-dark" ><i class="ti-user"></i><span class="hide-menu">  Mi perfil</span></a>
+                            <a class="waves-effect waves-dark text-dark m-b-10 m-t-10" ><i class="ti-user"></i><span class="hide-menu">  Mi perfil</span></a>
                         </form>
                     </li>
                     <li onclick="goToQuestions.submit()">
-                        <form action="goToQuestions" method="post" id="goToQuestions">
+                        <form action="goToQuestions" method="get" id="goToQuestions">
                             <input type="hidden" name="account" value="<%=username%>">
-                            <a class="waves-effect waves-dark text-dark" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">  Preguntas</span></a>
+                            <a class="waves-effect waves-dark text-dark m-b-10 m-t-10" aria-expanded="false"><i class="fa fa-circle-o text-info"></i><span class="hide-menu">  Preguntas</span></a>
                         </form>
                     </li>
                     <li onclick="logout.submit()">
-                        <form action="logoutAccount" method="post" id="logout">
+                        <form action="logoutAccount" method="get" id="logout">
                             <input type="hidden" name="account" value="<%=username%>">
                             <a class="waves-effect waves-dark text-dark" aria-expanded="false"><i class="fa fa-circle-o text-success"></i><span class="hide-menu">  Cerrar sesion</span></a>
                         </form>

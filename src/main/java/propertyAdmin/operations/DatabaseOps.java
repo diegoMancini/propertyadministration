@@ -204,6 +204,7 @@ public class DatabaseOps {
             }
         }
         session.save(functionalUnit);
+        session.flush();
         transaction.commit();
         session.close();
     }
@@ -218,6 +219,7 @@ public class DatabaseOps {
         session.save(contract.getTenant());
         session.save(contract.getGuarantor());
         session.merge(functionalUnit1);
+        session.flush();
         transaction.commit();
         closeSession(session);
     }
@@ -250,15 +252,6 @@ public class DatabaseOps {
             }
         }
         return functionalUnit;
-    }
-
-    public Account doLogin(String mail, String password) {
-        Account account = getAccount(mail);
-        if (account.getPassword().equals(password)) {
-            return account;
-        } else {
-            return null;
-        }
     }
 
     public void removeContractFromFunctionalUnit(String email, Property aProperty, FunctionalUnit functionalUnit) {

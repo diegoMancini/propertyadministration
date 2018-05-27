@@ -52,15 +52,16 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper">
+
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
         <%
             Integer amountOfProperties = DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfProperties();
             Integer amountOfFunctionalUnits = DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfFunctionalUnits();
             Integer amountOfFunctionalUnitsOccupied = DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfOccupiedFunctionalUnits();
             String username = request.getRemoteUser();
         %>
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                 <!-- ============================================================== -->
@@ -131,7 +132,6 @@
                     <ul class="navbar-nav my-lg-0">
                         <!-- User Profile -->
                         <!-- ============================================================== -->
-
                         <li class="nav-item dropdown u-pro">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="home.jsp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user" class=""> <span class="hidden-md-down"> <%=username%> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
@@ -181,7 +181,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <%--has-arrow va antes de waves-effect --%>
-                        <li class="user-pro"> <a class="waves-effect waves-dark text-dark m-b-10 m-t-10" href="javascript:void(0)" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a></li>
+                        <li class="user-pro"> <a class="waves-effect waves-dark text-dark m-b-10 m-t-10" href="home.jsp" aria-expanded="false"><img src="assets/images/users/default.jpg" alt="user-img" class="img-circle"><span class="hide-menu"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getFullName()%></span></a></li>
                             <li> <a class="has-arrow waves-effect waves-dark text-dark m-b-10 m-t-10" href="javascript:void(0)" aria-expanded="false"><i class="ti-home"></i><span class="hide-menu"> Propiedades<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size()%></span></span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <% if (amountOfProperties > 0){%>

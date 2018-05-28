@@ -2,6 +2,7 @@ package propertyAdmin.structure.property;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
+import org.joda.time.Months;
 import propertyAdmin.structure.persons.Guarantor;
 import propertyAdmin.structure.persons.Landlord;
 import propertyAdmin.structure.persons.Tenant;
@@ -141,5 +142,13 @@ public class Contract {
 
     public String getImageLink() {
         return imageLink;
+    }
+
+    public Integer getCurrentPrice() {
+        return (price / Months.monthsBetween(contractDateStart, contractDateEnd).getMonths()) * inflationRate;
+    }
+
+    public void setHasPDF(boolean b) {
+        hasPDF = b;
     }
 }

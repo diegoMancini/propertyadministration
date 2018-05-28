@@ -374,6 +374,18 @@ public class DatabaseOps {
         }
         return imageUrl;
     }
+
+    public void refreshContract(String remoteUser, Integer chosenProperty, Integer chosenFunctionalUnit) {
+        Session session = openSession();
+        Transaction transaction = session.beginTransaction();
+        FunctionalUnit functionalUnit = getFunctionalUnit(chosenFunctionalUnit, getAccount(remoteUser), getProperty(chosenProperty, remoteUser));
+        Contract contract = functionalUnit.getContract();
+        contract.setHasPDF(true);
+        session.merge(contract);
+        transaction.commit();
+        closeSession(session);
+    }
+
     // [END getImageUrl]
 
 }

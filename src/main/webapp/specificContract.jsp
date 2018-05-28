@@ -308,24 +308,24 @@
 							<h4 class="m-b-0 text-white">Contrato</h4>
 						</div>
 						<div class="card-body">
-							<form class="form-horizontal" role="form">
+							<%--<form class="form-horizontal" role="form">--%>
 								<div class="form-body">
 									<h3 class="box-title">Datos Inquilino</h3>
 									<hr class="m-t-0 m-b-40">
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3">Nombre:</label>
-												<div class="col-md-9">
+												<label class="control-label text-right col-md-6">Nombre:</label>
+												<div class="col-md-6">
 													<p class="form-control-static"> <%=tenant.getName()%> </p>
 												</div>
 											</div>
 										</div>
 										<!--/span-->
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3">Apellido:</label>
-												<div class="col-md-9">
+												<label class="control-label text-right col-md-6">Apellido:</label>
+												<div class="col-md-6">
 													<p class="form-control-static"> <%=tenant.getSurname()%> </p>
 												</div>
 											</div>
@@ -336,8 +336,8 @@
 									<div class="row">
 										<div class="col-md-3">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3">DNI:</label>
-												<div class="col-md-3">
+												<label class="control-label text-right col-md-6">DNI:</label>
+												<div class="col-md-6">
 													<p class="form-control-static"> <%=tenant.getDni()%> </p>
 												</div>
 											</div>
@@ -345,16 +345,18 @@
 										<!--/span-->
 										<div class="col-md-3">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3">Telefono:</label>
-												<div class="col-md-3">
+												<label class="control-label text-right col-md-6">Telefono:</label>
+												<div class="col-md-6">
 													<p class="form-control-static"> <%=tenant.getPhone()%> </p>
 												</div>
 											</div>
 										</div>
+                                    </div>
+                                    <div class="row">
 										<div class="col-md-6">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-6">Correo Electronico</label>
-												<div class="col-md-6">
+												<label class="control-label text-right col-md-9">Correo Electronico</label>
+												<div class="col-md-9">
 													<p class="form-control-static"> <%=tenant.getEmail()%> </p>
 												</div>
 											</div>
@@ -366,10 +368,10 @@
 									<hr class="m-t-0 m-b-40">
 									<%if (contract.hasPDF()) {%>
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-4">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3"> CONTRATO PDF:</label>
-												<div class="col-md-9">
+												<label class="control-label text-right col-md-6"> CONTRATO PDF:</label>
+												<div class="col-md-6">
 													<div class="col-md-3 m-l-20 m-b-15" style="background: url(<%=contract.getImageLink()%>) center center / cover no-repeat; min-height:250px;">
 												</div>
 											</div>
@@ -377,42 +379,42 @@
 									</div>
 									<%}%>
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3">Precio total:</label>
-												<div class="col-md-9">
+												<label class="control-label text-right col-md-6">Precio total:</label>
+												<div class="col-md-6">
 													<p class="form-control-static"> <%=contract.getPrice()%></p>
 												</div>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-4">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3"> PRECIO POR MES </label>
+												<label class="control-label text-right col-md-6"> PRECIO POR MES </label>
 												<p class="form-control-static"></p>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-4">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3"> Cantidad de meses: </label>
+												<label class="control-label text-right col-md-6"> Cantidad de meses: </label>
 												<p class="form-control-static"></p>
 											</div>
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3">Fecha de Inicio:</label>
-												<div class="col-md-9">
-													<p class="form-control-static"> <%=contract.getContractDateStart().toString()%> </p>
+												<label class="control-label text-right col-md-6">Fecha de Inicio:</label>
+												<div class="col-md-6">
+													<p class="form-control-static"> <%=contract.getContractDateStart().toString("dd-MM-yy")%> </p>
 												</div>
 											</div>
 										</div>
 										<!--/span-->
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3">Fecha de Finalizacion:</label>
-												<div class="col-md-9">
-													<p class="form-control-static"> <%=contract.getContractDateEnd().toString() %></p>
+												<label class="control-label text-right col-md-6">Fecha de Finalizacion:</label>
+												<div class="col-md-6">
+													<p class="form-control-static"> <%=contract.getContractDateEnd().toString("dd-MM-yy") %></p>
 												</div>
 											</div>
 										</div>
@@ -420,19 +422,19 @@
 									</div>
 									<!--/row-->
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3"> Interes de inflacion:</label>
-												<div class="col-md-9">
+												<label class="control-label text-right col-md-6"> Interes de inflacion:</label>
+												<div class="col-md-6">
 													<p class="form-control-static"> <%=contract.getInflationRate()%> </p>
 												</div>
 											</div>
 										</div>
 										<!--/span-->
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group row">
-												<label class="control-label text-right col-md-3">Intervalo de meses inflacion:</label>
-												<div class="col-md-9">
+												<label class="control-label text-right col-md-6">Intervalo de meses inflacion:</label>
+												<div class="col-md-6">
 													<p class="form-control-static"> <%=contract.getInflationMonthsPeriod()%> </p>
 												</div>
 											</div>
@@ -441,37 +443,33 @@
 									</div>
 								</div>
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="row">
-												<div class="col-md-offset-3 col-md-9">
+												<div class="col-md-offset-3 col-md-6">
 													<%if (!contract.hasPDF()) {%>
 													<div class="form-group">
-														<form action="addPDFToContract" method="post" enctype="multipart/form-data">
+														<form action="addPDFToContract" method="post" enctype="multipart/form-data" id="addPDFToContract">
 								                            <div class="form-actions">
 														<label>Contrato</label>
 														<div class="fileinput fileinput-new input-group" data-provides="fileinput">
 															<input type="file" name="propertyImage" id="propertyImage" accept=" .pdf .doc .jpg, .png, .jpeg">
+                                                            <input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
+                                                            <input type="hidden" name="chosenFunctionalUnit" value="<%=request.getAttribute("chosenFunctionalUnit")%>">
 														</div>
-															<button type="submit" class="btn btn-danger"> <i class="fa fa-pencil"></i> Agregar</button>
+															<button type="submit" onclick="addPDFToContract.submit()" class="btn btn-danger"> <i class="fa fa-pencil"></i> Agregar</button>
                                                             </div>
 														</form>
-														<form action="goToProperties" method="post">
-															<input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
-															<button type="submit" class="btn btn-inverse"> Volver</button>
-														</form>
+															<button type="button" onclick="history.back()" class="btn btn-inverse"> Volver</button>
 													</div>
 													<%} else {%>
-													<form action="goToProperties" method="post">
-														<input type="hidden" name="chosenProperty" value="<%=request.getAttribute("chosenProperty")%>">
-														<button type="submit" class="btn btn-inverse"> Volver</button>
-													</form>
+														<button type="button" onclick="history.back()" class="btn btn-inverse"> Volver</button>
 													<%}%>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</form>
+							<%--</form>--%>
 						</div>
 					</div>
 				</div>

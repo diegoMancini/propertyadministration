@@ -219,4 +219,14 @@ public class   Account {
    public String getFullAddress() {
       return address + ", " + addressTown + ", " + addressCity + ", " + addressProvince + ", " +addressCountry;
    }
+
+   public FunctionalUnit getSpecificFunctionalUnitById(Integer functionalUnitID) {
+       FunctionalUnit res = null;
+      for (Property property: properties) {
+         for (FunctionalUnit functionalUnit:property.getFunctionalUnits()) {
+            if (functionalUnit.getId().equals(functionalUnitID))
+               res = functionalUnit;
+         }
+      } return res;
+   }
 }

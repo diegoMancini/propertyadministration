@@ -20,10 +20,10 @@ public class GoToSpecificContractServlet extends HttpServlet {
     private DatabaseOps databaseOps = DatabaseOps.getInstance();
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer chosenProperty = Integer.parseInt(req.getParameter("chosenProperty"));
+        Integer chosenProperty = Integer.valueOf(req.getParameter("chosenProperty"));
         Integer chosenFunctionalUnit = Integer.valueOf(req.getParameter("chosenFunctionalUnit"));
         String accountUsername = req.getParameter("account");
-        Property property = DatabaseOps.getInstance().getProperty(chosenProperty, req.getRemoteUser());
+        Property property = databaseOps.getProperty(chosenProperty, accountUsername);
         FunctionalUnit functionalUnit = property.getSpecificFunctionalUnitByIndex(chosenFunctionalUnit);
         Contract contract = functionalUnit.getContract();
         Tenant tenant = contract.getTenant();
@@ -33,6 +33,8 @@ public class GoToSpecificContractServlet extends HttpServlet {
         req.setAttribute("property", property);
         req.setAttribute("propertyName", property.getName());
         req.setAttribute("functionalUnit", functionalUnit);
+        req.setAttribute("chosenFunctionalUnit", chosenFunctionalUnit);
+        req.setAttribute("functionalUnitName", functionalUnit.getName());
         req.setAttribute("contract", contract);
         req.setAttribute("tenant", tenant);
         req.setAttribute("guarantor", guarantor);

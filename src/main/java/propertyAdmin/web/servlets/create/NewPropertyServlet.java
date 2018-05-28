@@ -29,7 +29,6 @@ public class NewPropertyServlet extends HttpServlet {
         Property property = new Property(name, description, country, province, city, town, address);
         property.setImageLink(databaseOps.getImageUrl(req, resp, "property-administration.appspot.com"));
         databaseOps.addPropertyToDatabase(req.getRemoteUser(), property);
-//        req.getRequestDispatcher("properties.jsp").forward(req,resp);
         resp.sendRedirect("properties.jsp");
 
     }

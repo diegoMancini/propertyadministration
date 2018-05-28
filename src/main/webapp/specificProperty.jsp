@@ -371,14 +371,15 @@
 							<table id="fu-toggler-table" class="table toggle-circle table-hover footable">
 								<thead>
 								<tr>
-									<th data-toggle="true">N°</th>
+									<%--<th data-toggle="true">N°</th>--%>
 									<th>Nombre</th>
 									<th>Direccion</th>
 									<%--<th>Tipo</th>--%>
                                     <th>Estado</th>
 									<th>Cuenta Corriente</th>
 									<th>Contrato</th>
-									<th data-hide="all">Cliente</th>
+                                    <%--<th data-hide="all">Cliente</th>    --%>
+									<th>Cliente</th>
 								</tr>
 								</thead>
                                 <div class="m-t-40">
@@ -446,7 +447,7 @@
 										}
 								%>
 								<tr>
-									<td><%=j+1%></td>
+									<%--<td><%=j+1%></td>--%>
 									<td>
 										<form action="goToSpecificFunctionalUnit" method="get">
 											<input type="hidden" name="account" value="<%=request.getRemoteUser()%>">

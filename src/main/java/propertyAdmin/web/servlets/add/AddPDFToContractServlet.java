@@ -23,7 +23,7 @@ public class AddPDFToContractServlet extends HttpServlet {
       Integer chosenProperty = Integer.valueOf(request.getParameter("chosenProperty"));
       Integer chosenFunctionalUnit = Integer.valueOf(request.getParameter("chosenFunctionalUnit"));
       Property property = databaseOps.getProperty(chosenProperty, request.getRemoteUser());
-       FunctionalUnit functionalUnit = (FunctionalUnit) request.getAttribute("functionalUnit");
+      FunctionalUnit functionalUnit = property.getSpecificFunctionalUnitByIndex(chosenFunctionalUnit);
 
       request.setAttribute("chosenProperty", chosenProperty);
       request.setAttribute("chosenFunctionalUnit", chosenFunctionalUnit);
@@ -33,6 +33,7 @@ public class AddPDFToContractServlet extends HttpServlet {
 
       Contract contract = functionalUnit.getContract();
       contract.setImageLink(databaseOps.getImageUrl(request, response, "property-administration.appspot.com"));
+      databaseOps.refreshContract(request.getRemoteUser(), chosenProperty, chosenFunctionalUnit);
       request.getRequestDispatcher("specificProperty.jsp").forward(request,response);
    }
 

@@ -3,6 +3,8 @@
 <%@ page import="propertyAdmin.structure.property.FunctionalUnit" %>
 <%@ page import="propertyAdmin.structure.persons.Tenant" %>
 <%@ page import="java.util.List" %>
+<%@ page import="propertyAdmin.structure.persons.Account" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,6 +63,12 @@
             Integer amountOfFunctionalUnits = DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfFunctionalUnits();
             Integer amountOfFunctionalUnitsOccupied = DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfOccupiedFunctionalUnits();
             String username = request.getRemoteUser();
+            Account account = DatabaseOps.getInstance().getAccount(username);
+            List<Property> propertyList = account.getProperties();
+            List<FunctionalUnit> functionalUnitList = new ArrayList<>();
+            for (int i = 0; i < propertyList.size(); i++) {
+                functionalUnitList.addAll(propertyList.get(i).getOccupiedFUList());
+            }
         %>
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
@@ -185,7 +193,7 @@
                             <li> <a class="has-arrow waves-effect waves-dark text-dark m-b-10 m-t-10" href="javascript:void(0)" aria-expanded="false"><i class="ti-home"></i><span class="hide-menu"> Propiedades<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser()).size()%></span></span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <% if (amountOfProperties > 0){%>
-                                    <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(username);%>
+                                    <%--<%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(username);%>--%>
                                         <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
                                             <li onclick="goToSpecificProperty.submit()">
                                                 <form action="goToSpecificProperty" method="get" id="goToSpecificProperty">
@@ -208,7 +216,7 @@
                             <li> <a class="has-arrow waves-effect waves-dark text-dark m-b-10 m-t-10" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout"></i><span class="hide-menu">U.F.<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfFunctionalUnits()%></span></span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <% if (amountOfProperties > 0){%>
-                                    <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());%>
+                                    <%--<%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(request.getRemoteUser());%>--%>
                                     <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
                                     <li>
                                         <a href="javascript:void(0)" class="has-arrow text-dark m-b-5 m-t-5"><%=propertyList.get(i).getName()%></a>
@@ -242,7 +250,7 @@
                             <li> <a class="has-arrow waves-effect waves-dark text-dark m-b-10 m-t-10" href="javascript:void(0)" aria-expanded="false"><i class="ti-user"></i><span class="hide-menu">Clientes<span class="badge badge-pill badge-info"><%=DatabaseOps.getInstance().getAccount(request.getRemoteUser()).getAmountOfOccupiedFunctionalUnits()%></span></span></a>
                                 <ul aria-expanded="false" class="collapse">
                                     <% if (amountOfProperties > 0){%>
-                                    <%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(username);%>
+                                    <%--<%List<Property> propertyList = DatabaseOps.getInstance().getAccountProperties(username);%>--%>
                                     <%for (int i = 0 ; i < propertyList.size() ; i++) {%>
                                     <li>
                                         <a href="javascript:void(0)" class="has-arrow text-dark text-dark m-b-5 m-t-5"> <%=propertyList.get(i).getName()%></a>
@@ -383,76 +391,91 @@
                 <!-- .row  -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12">
                         <div class="card">
-                            <div class="">
+                            <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="card-body b-l calender-sidebar">
-                                            <div id="calendar"></div>
-                                        </div>
+                                    <div class="col-md-10">
+                                        <h4 class="card-title">Contratos</h4>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- BEGIN MODAL -->
-                <div class="modal none-border" id="my-event">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"><strong>Add Event</strong></h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="modal-body"></div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>
-                                <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Add Category -->
-                <div class="modal fade none-border" id="add-new-event">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"><strong>Add</strong> a category</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <form role="form">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label class="control-label">Category Name</label>
-                                            <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="control-label">Choose Category Color</label>
-                                            <select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
-                                                <option value="success">Success</option>
-                                                <option value="danger">Danger</option>
-                                                <option value="info">Info</option>
-                                                <option value="primary">Primary</option>
-                                                <option value="warning">Warning</option>
-                                                <option value="inverse">Inverse</option>
-                                            </select>
+                                <table id="fu-toggler-table" class="table toggle-circle table-hover footable">
+                                    <thead>
+                                    <tr>
+                                        <th>Inquilino</th>
+                                        <th>Unidad Funcional</th>
+                                        <th>Direccion</th>
+                                        <th>Contrato</th>
+                                        <th>Cuenta Corriente</th>
+                                        <th>Pago mes</th>
+                                    </tr>
+                                    </thead>
+                                    <div class="m-t-40">
+                                        <div class="d-flex">
+                                            <div class="ml-auto">
+                                                <div class="form-group">
+                                                    <input id="demo-input-search2" type="text" placeholder="Buscar..." autocomplete="off">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">Save</button>
-                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                                    <tbody>
+                                    <%if (functionalUnitList.size() > 0) {
+                                        for (int j = 0; j < functionalUnitList.size();j++) {%>
+                                    <tr>
+                                        <td>
+                                            <form action="goToSpecificClient" method="get" id="goToSpecificClient1">
+                                                <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
+                                                <input type="hidden" name="account" value="<%=username%>">
+                                                <input type="hidden" name="clientId" value="<%=functionalUnitList.get(j).getContract().getTenant().getId()%>">
+                                                <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="" ><i class="ti-user" aria-hidden="true"></i>  <%=functionalUnitList.get(j).getContract().getTenant().getName()%></button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="goToSpecificFunctionalUnit" method="get">
+                                                <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
+                                                <input type="hidden" name="account" value="<%=username%>">
+                                                <input type="hidden" name="functionalUnitId" value="<%=functionalUnitList.get(j).getId()%>">
+                                                <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="  <%=functionalUnitList.get(j).getName()%>" ><i class="ti-home" aria-hidden="true"></i><%=functionalUnitList.get(j).getName()%></button>
+                                            </form>
+                                        </td>
+                                        <td><%=functionalUnitList.get(j).getAddress()%></td>
+                                        <td>
+                                            <form action="goToSpecificContract" method="get" id="goToSpecificContract">
+                                                <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
+                                                <input type="hidden" name="contractId" value="<%=functionalUnitList.get(j).getContract().getId()%>">
+                                                <input type="hidden" name="account" value="<%=username%>">
+                                                <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title=""><i class="ti-file" aria-hidden="true"></i>  <%=functionalUnitList.get(j).getContract().getName()%></button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="goToFunctionalUnitCheckingAccount" method="get" id="goToFunctionalUnitCheckingAccount">
+                                                <input type="hidden" name="account" value="<%=username%>">
+                                                <input type="hidden" name="clientId" value="<%=functionalUnitList.get(j).getContract().getTenant().getId()%>">
+                                                <input type="hidden" name="chosenFunctionalUnit" value="<%=j%>">
+                                                <input type="hidden" name="functionalUnitId" value="<%=functionalUnitList.get(j).getId()%>">
+                                                <button type="submit" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Pago" ><i class="ti-money" aria-hidden="true"></i>  Cuenta Corriente</button>
+                                            </form>
+                                        </td>
+                                        <td> Si o No</td>
+                                    </tr>
+                                    <%}%>
+                                    <%}%>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="10">
+                                            <div class="text-right">
+                                                <ul class="pagination pagination-split m-t-30"> </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- END MODAL -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
                 <!-- End Page Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
